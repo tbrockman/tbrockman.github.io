@@ -45,6 +45,14 @@ h2 {
     text-transform: uppercase;
 }
 
+p {
+    color: #ddd;
+    font-size: 18px;
+    font-weight: 100;
+    text-align: left !important;
+    text-transform: uppercase;
+}
+
 .centered {
     text-align: center;
     padding-bottom: 1em;
@@ -93,14 +101,6 @@ h2 {
 
 .restricted-width {
     width: 55em;
-}
-
-p {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 100;
-    text-align: left !important;
-    text-transform: uppercase;
 }
 
 .column > ul {
