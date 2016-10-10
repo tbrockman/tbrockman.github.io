@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="good.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+
+<title>
+    Theodore Brockman - Software developer, pasta enthusiast,
+</title>
+</head>
+<body>
+    <div class="carousel">
+        <div class=centered>
+            <h1>THEODORE BROCKMAN</h1>
+            <div class="column-container">
+                <div class="column first-column">
+                    <p>is a 23-year-old software developer who spends most of his time playing video games and rock climbing. Occasionally he tries to be creative through music and other means. He likes coffee and hip hop and has never taken a long walk on the beach.</p>
+                    <p>If you're looking to hire someone who is usually pretty good at programming without taking himself too seriously, you should probably send him a message.</p>
+                    </br>
+                    <p>
+                        <a href="#" id="work-history"> work history</a> | <a href="#" id="projects">projects</a>
+                    </p>
+                </div>
+                <div class="column second-column">
+                    <ul>
+                        <li><a href="https://github.com/tbrockman/">https://github.com/tbrockman/</a></li>
+                        <li><a href="https://soundcloud.com/nat-port">https://soundcloud.com/nat-port</a></li>
+                        <li><a href="mailto:tbrockma@ualberta.ca">tbrockma@ualberta.ca</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="column-container">
+                <h1 class="align-left">WORK HISTORY</h1>
+                <div class="column restricted-width">
+                    <p>Most recently worked at Microquest Inc. for a period of 14 months, primarily focusing on the development of a secure chat application using Angular and Node.js</p>
+                    <p>Has previously worked as a Peer Sexual Health Educator as well as Research Writer for Options Sexual Health.</p>
+                    <p>Developed an insatiable thirst for caffeinated beverages as a Starbucks barista.</p>
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <div class="column-container">
+                <h1 class="align-left">PROJECTS</h1>
+                <div class="column">
+                    <div class="left-column">
+                        <p><a href="https://github.com/tbrockman/CMPUT404-assignment-css-hell" class="big-link">This website </a></p>
+                    </div>
+                    <div class="right-column">
+                        <p>As an assignment for a course in University, I was tasked with creating my own personal webpage. This gave me a chance to work on improving my design skills and build a lightweight website from scratch.</p>
+                    </div>
+                    <div class="left-column">
+                        <p><a href="https://dr2dr.ca" class="big-link">dr2dr </a></p>
+                    </div>
+                    <div class="right-column">
+                        <p>Gained experience working on both front-end and back-end developement of a web application during my post as a Junior Software Developer at Microquest Inc. Collaborated with a small team of other developers, learning design principles as well as gaining invaluable experience creating a functional real-world application from start to finish, including fully automated end-to-end testing.</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.carousel').slick({
+                dots: false,
+                infinite: true,
+                speed: 600,
+                slidesToShow: 1,
+                autoplay: false,
+                focusOnSelect: true,
+                accessibility: true,
+                prevArrow: '<div class="slick-prev"><i class="fa fa-chevron-left"></i></div>',
+                nextArrow: '<div class="slick-next"><i class="fa fa-chevron-right"></i></div>'
+            });
+
+            $('#projects').click(function() {
+                $('.carousel').slick('slickGoTo', 2)
+            });
+
+            $('#work-history').click(function() {
+                $('.carousel').slick('slickGoTo', 1)
+            })
+      });
+    </script>
+
+<body>
+</html>

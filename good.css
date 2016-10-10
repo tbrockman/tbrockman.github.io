@@ -1,0 +1,142 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 1px;
+    max-height: 100%;
+    background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
+    background-size: cover;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #aaa;
+}
+
+a.big-link {
+    font-size: 1.8em;
+}
+
+img {
+    width: 20em;
+    height: 20em;
+    margin: auto;
+    display: block;
+}
+
+h1 {
+    font-size: 105px;
+    margin: 0;
+    text-shadow: #fff 1px 1px 1px;
+    color: #fff;
+    text-rendering: optimizelegibility;
+}
+
+h2 {
+    text-transform: uppercase;
+}
+
+.centered {
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.centered > h1 {
+    text-align: center;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.column-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 82em;
+}
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.first-column {
+    width:47%;
+    float:left;
+}
+
+.second-column {
+    width:53%;
+    margin-left: -0.6em;
+    float: right;
+}
+
+.left-column {
+    width:23.5%;
+    float:left;
+    margin-top: -0.3em;
+}
+
+.right-column {
+    width: 76.5%;
+    float: left;
+}
+
+.restricted-width {
+    width: 55em;
+}
+
+p {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 100;
+    text-align: left !important;
+    text-transform: uppercase;
+}
+
+.column > ul {
+    list-style-type: none;
+    color: #fff;
+    font-weight: 100;
+    text-align: right;
+}
+
+.slick-next {
+    right: 15px !important;
+    margin-right: -15px;
+}
+
+.slick-prev {
+    left: 15px !important;
+    z-index: 1;
+    margin-left: -15px;
+}
+
+.slick-arrow {
+    display: flex !important;
+    align-items: center;
+    height: 100% !important;
+    justify-content: center;
+    width: 200px !important;
+}
+
+.slick-arrow:hover {
+    background-color: rgba(170,170,170,0.1) !important;
+}
+
+.carousel {
+    position: absolute !important;
+    right: 0;
+    left: 0;
+    top: 25%;
+    background-color: rgba(0,0,0,0.6);
+}
