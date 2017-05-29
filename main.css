@@ -211,6 +211,7 @@ a > p {
     .flex-container {
         max-width: 100% !important;
         flex-direction: column;
+        margin: 0.25em;
     }
 
     .name {
@@ -233,6 +234,7 @@ a > p {
     }
 
     .blog > div > p {
+        font-size: 3vmin;
         line-height: 1.2em;
     }
 
