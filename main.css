@@ -204,6 +204,10 @@ a > p {
 }
 
 @media only screen and (max-width: 1080px) {
+    body {
+        font-size: 50px;
+    }
+
     .flex-container {
         max-width: 100% !important;
         flex-direction: column;
@@ -221,6 +225,15 @@ a > p {
         display: flex;
         flex-direction: column;
         margin-top: 0;
+        padding: 0.5em;
+    }
+
+    h3 {
+        font-size: 2em;
+    }
+
+    .blog > div > p {
+        line-height: 1.2em;
     }
 
     .left-column {
