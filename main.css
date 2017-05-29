@@ -258,7 +258,6 @@ a > p {
     }
 
     .contact {
-        font-size: 84px !important;
         display: flex;
         justify-content: flex-start;
         flex-grow: 1;
@@ -275,7 +274,7 @@ a > p {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        font-size: 42px !important;
+        font-size: 43px !important;
         margin-left: 0.5em;
         background-color: #a73636;
         padding: 0.1em 0.25em;
@@ -294,5 +293,9 @@ a > p {
 
     .blog-link > h4 > a {
         padding: 0 0.25em;
+    }
+
+    a:hover {
+        color: rgba(17,17,17,0.7);
     }
 }
