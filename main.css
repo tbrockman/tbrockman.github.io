@@ -210,7 +210,11 @@ a > p {
     margin:0.25em;
 }
 
-@media only screen and (max-width: 1080px) {
+.mobile-logo {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
     body {
         font-size: 50px;
     }
@@ -259,9 +263,19 @@ a > p {
     }
 
     .logo {
-        font-size: 165px;
-        margin: auto;
-        margin-bottom: 0.1em !important;
+        display: none;
+    }
+
+    .mobile-logo {
+        display: inline-block;
+        position: relative;
+        border: 1px solid;
+        border-radius: 3px;
+        margin: 0;
+        letter-spacing: -0.1em;
+        padding-right: 0.1em;
+        background-color: #a73636;
+        font-size: 4em;
     }
 
     .contact {
@@ -269,29 +283,35 @@ a > p {
         justify-content: flex-start;
         flex-grow: 1;
         align-self: flex-start;
-        margin-right: 4.25vw;
-        margin-bottom: 0.15em;
+        margin-right: 0.5em;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-top: 3px;
+        margin-top: 0;
+        overflow: hidden;
     }
 
     .contact > li {
-        width: auto;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         overflow: hidden;
-        font-size: 43px !important;
         margin-left: 0.5em;
         background-color: #a73636;
-        padding: 0.1em 0.25em;
+        padding: 0.1em 0.5em;
         border: 1px solid #fcfcfc;
         margin-bottom: 0.3em;
         margin-top: 0;
+        font-size: 0.38em;
+    }
+
+    .contact li:last-child {
+        margin-bottom: 0;
+    }
+
+    .contact li > a {
+        width: 100%;
     }
 
     .left-column {
         padding-left: 0.25em;
+        margin-bottom: 0.25em;
     }
 
     .blog-link > h4 {
@@ -300,6 +320,10 @@ a > p {
 
     .blog-link > h4 > a {
         padding: 0 0.25em;
+    }
+
+    .blog div h3 {
+        font-size: 16vmin;
     }
 
     a:hover {
