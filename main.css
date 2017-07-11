@@ -215,9 +215,6 @@ a > p {
 }
 
 @media only screen and (max-width: 1080px) {
-    body {
-        font-size: 50px;
-    }
 
     .flex-container {
         max-width: 100% !important;
@@ -269,13 +266,13 @@ a > p {
     .mobile-logo {
         display: inline-block;
         position: relative;
-        border: 1px solid;
-        border-radius: 3px;
+        border: 3px solid;
+        border-radius: 1px;
         margin: 0;
         letter-spacing: -0.1em;
         padding-right: 0.1em;
         background-color: #a73636;
-        font-size: 4em;
+        font-size: 5.25em;
     }
 
     .contact {
@@ -295,10 +292,10 @@ a > p {
         margin-left: 0.5em;
         background-color: #a73636;
         padding: 0.1em 0.5em;
-        border: 1px solid #fcfcfc;
+        border: 3px solid #fcfcfc;
         margin-bottom: 0.3em;
         margin-top: 0;
-        font-size: 0.38em;
+        font-size: 0.5em;
     }
 
     .contact li:last-child {
