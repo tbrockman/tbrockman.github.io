@@ -203,6 +203,13 @@ a > p {
     padding-right: 1.5em;
 }
 
+.inline-bar {
+    color: #fcfcfc;
+    text-decoration: none;
+    display: inline;
+    margin:0.25em;
+}
+
 @media only screen and (max-width: 1080px) {
     body {
         font-size: 50px;
@@ -298,4 +305,13 @@ a > p {
     a:hover {
         color: rgba(17,17,17,0.7);
     }
+
+    .printer {
+        display: none !important;
+    }
+
+    .inline-bar {
+        display: none !important;
+    }
+
 }
