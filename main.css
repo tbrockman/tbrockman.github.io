@@ -19,6 +19,8 @@ html {
     font-weight: 600;
     height: 110%;
     background-image: -webkit-gradient(linear,left bottom, left top,from(rgba(0, 0, 0, 0.8)),to(rgba(0, 0, 0, 0.3))),url("theo.jpeg");
+    background-image: -webkit-linear-gradient(bottom,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
+    background-image: -o-linear-gradient(bottom,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
     background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
     background-size: cover;
     overflow: hidden;
@@ -218,7 +220,10 @@ a > p {
 
     .flex-container {
         max-width: 100% !important;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         margin: 0.25em;
     }
 
@@ -231,8 +236,13 @@ a > p {
     }
 
     .blog {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         margin-top: 0;
         padding: 0.5em;
     }
@@ -247,9 +257,16 @@ a > p {
     }
 
     .left-column {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         width: 100%;
     }
 
@@ -276,13 +293,24 @@ a > p {
     }
 
     .contact {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: flex-start;
-        flex-grow: 1;
-        align-self: flex-start;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1;
+        -ms-flex-item-align: start;
+            align-self: flex-start;
         margin-right: 0.5em;
-        flex-direction: row;
-        flex-wrap: wrap;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
         margin-top: 0;
         overflow: hidden;
     }
