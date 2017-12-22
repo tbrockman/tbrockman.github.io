@@ -22,8 +22,8 @@ html {
     background-image: -webkit-linear-gradient(bottom,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
     background-image: -o-linear-gradient(bottom,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
     background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
-    background-size: cover;
     overflow: hidden;
+
 }
 
 body {
@@ -218,6 +218,10 @@ a > p {
 
 @media only screen and (max-width: 1080px) {
 
+    body {
+        font-size: 7vw;
+    }
+
     .flex-container {
         max-width: 100% !important;
         -webkit-box-orient: vertical;
@@ -247,13 +251,25 @@ a > p {
         padding: 0.5em;
     }
 
-    h3 {
-        font-size: 2em;
+    .blog div h3 {
+        font-size: 10vw;
     }
 
     .blog > div > p {
         font-size: 3vmin;
         line-height: 1.2em;
+    }
+
+    .blog-link > h4 {
+        font-size: 1em;
+    }
+
+    .blog-link > h4 > a {
+        padding: 0 0.25em;
+    }
+
+    h3 {
+        font-size: 2em;
     }
 
     .left-column {
@@ -337,18 +353,6 @@ a > p {
     .left-column {
         padding-left: 0.25em;
         margin-bottom: 0.25em;
-    }
-
-    .blog-link > h4 {
-        font-size: 1em;
-    }
-
-    .blog-link > h4 > a {
-        padding: 0 0.25em;
-    }
-
-    .blog div h3 {
-        font-size: 16vmin;
     }
 
     a:hover {
