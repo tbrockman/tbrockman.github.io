@@ -1,7 +1,7 @@
 body {
   overflow: hidden;
-  position: absolute;
   width: 100%;
+  min-height: 100vh;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@ body > div > * {
 body > .container {
   padding: 1em 0;
   width: 100%;
-  background-color: #642ec3;
+  background: linear-gradient(77deg, rgb(96, 45, 185) 0%, rgb(123, 49, 255) 100%, rgba(255,255,255,1) 100%);
 }
 
 .main-header {
@@ -36,15 +36,15 @@ body > .container {
   padding: 0 25%;
 }
 
+.column-container > div {
+  padding: 1em;
+  width: 50%;
+}
+
 .column-container > .icon-heading {
   padding-bottom: 0;
   padding-top: 0.5em;
   font-size: 2em;
-}
-
-.column-container > div {
-  padding: 1em;
-  width: 50%;
 }
 
 .btn-override {
@@ -59,24 +59,37 @@ body > .container {
   cursor: pointer;
 }
 
+.btn-override > svg {
+  margin-right: 0.5em;
+  margin-left: -0.25em;
+}
+
 .border-right {
   border-right: 2px solid;
 }
 
-.learn-more {
+.info-btn {
   background-color: #d08f2e;
 }
 
-.learn-more:hover {
+.info-btn:hover {
   background-color: #af7012;
 }
 
-.take-test {
+.success-btn {
   background-color: #3ba21f;
 }
 
-.take-test:hover {
+.success-btn:hover {
   background-color: #2c9211;
+}
+
+.danger-btn {
+  background-color: #fb3d2f;
+}
+
+.danger-btn:hover {
+  background-color: #d02013;
 }
 
 .footer {
@@ -93,4 +106,13 @@ body > .container {
 
 .footer > div > span > a {
   text-decoration: none;
+}
+
+.email-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.email-buttons > div {
+  padding: 0 1em;
 }
