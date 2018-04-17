@@ -7,6 +7,62 @@ let emails = [
     url:'NoAReal.png',
     phishing: false
   },
+  {
+    url:'NoAPhishing.png',
+    phishing: true
+  },
+  {
+    url:'NoAReal.png',
+    phishing: false
+  },
+  {
+    url:'NoAPhishing.png',
+    phishing: true
+  },
+  {
+    url:'NoAReal.png',
+    phishing: false
+  },
+  {
+    url:'NoAPhishing.png',
+    phishing: true
+  },
+  {
+    url:'NoAReal.png',
+    phishing: false
+  },
+  {
+    url:'NoAPhishing.png',
+    phishing: true
+  },
+  {
+    url:'NoAReal.png',
+    phishing: false
+  },
+  {
+    url:'NoAPhishing.png',
+    phishing: true
+  },
+  {
+    url:'NoAReal.png',
+    phishing: false
+  },
+  {
+    url:'NoAPhishing.png',
+    phishing: true
+  },
+  {
+    url:'NoAReal.png',
+    phishing: false
+  },
+  {
+    url:'NoAPhishing.png',
+    phishing: true
+  },
+  {
+    url:'NoAReal.png',
+    phishing: false
+  },
 ];
 
 let answered = [];
@@ -26,24 +82,33 @@ let scoreTest = function() {
 
 let endTest = function() {
   emailContainer.innerHTML = '<div>' + scoreTest() + "</div>";
+  buttons = document.getElementsByClassName("email-buttons");
+  buttons[0].outerHTML = "";
+  delete buttons;
 }
 
 let renderScoreTracker = function() {
   scoreTracker.innerHTML = "";
   for (var i = 0; i < emails.length + answered.length; i++) {
-    let elem = document.createElement("i");
+    let div = document.createElement("div");
+    let count = document.createElement("div");
+    count.innerHTML = i + 1;
+    count.setAttribute("class", "test-count");
+    let icon = document.createElement("i");
     if (i >= answered.length) {
-      elem.setAttribute("class", "far fa-circle");
+      icon.setAttribute("class", "far fa-circle");
     }
     else {
       if (answered[i].correct ) {
-        elem.setAttribute("class", "fas fa-check-circle");
+        icon.setAttribute("class", "fas fa-check-circle");
       }
       else {
-        elem.setAttribute("class", "far fa-times-circle");
+        icon.setAttribute("class", "far fa-times-circle");
       }
     }
-    scoreTracker.appendChild(elem);
+    div.appendChild(count);
+    div.appendChild(icon);
+    scoreTracker.appendChild(div);
   }
 }
 

@@ -23,10 +23,17 @@ body > .container {
   width: 100%;
   background: linear-gradient(77deg, rgb(96, 45, 185) 0%, rgb(123, 49, 255) 100%, rgba(255,255,255,1) 100%);
 }
+.test {
+  justify-content: initial;
+}
 
 .test > .container {
   display: flex;
   justify-content: center;
+}
+
+.test > #button-container {
+  flex-grow: 1;
 }
 
 .main-header {
@@ -114,15 +121,28 @@ body > .container {
 }
 
 #email-container {
-  flex: 1;
+  height: 22.5em;
 }
 
-#email-container img {
-  max-height: 23em;
+#email-container > img {
+  height: 22.5em;
 }
 
-#score-tracker > svg {
-  padding-left: 0.25em;
+#score-tracker {
+  padding-bottom: 1.5em;
+}
+
+#score-tracker > div {
+  position: relative;
+  margin-left: 0.5em;
+}
+
+.test-count {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1.5em;
+  font-size: 0.5em;
 }
 
 .email-buttons {
