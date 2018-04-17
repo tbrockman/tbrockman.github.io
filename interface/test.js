@@ -6,46 +6,71 @@ let emails = [
   {
     url:'NoAReal.png',
     phishing: false
-  }
+  },
 ];
 
-let currentIndex = 0;
+let answered = [];
 let currentEmail;
-let scores = [];
+let emailContainer;
+let scoreTracker;
 
-let populateScores = function() {
-  for (var i = 0; i < emails.length; i++) {
-    scores.push(0);
+let scoreTest = function() {
+  let count = 0;
+  for (var i = 0; i < answered.length; i++) {
+    if (answered[i].correct) {
+      count++;
+    }
+  }
+  return count;
+}
+
+let endTest = function() {
+  emailContainer.innerHTML = '<div>' + scoreTest() + "</div>";
+}
+
+let renderScoreTracker = function() {
+  scoreTracker.innerHTML = "";
+  for (var i = 0; i < emails.length + answered.length; i++) {
+    let elem = document.createElement("i");
+    if (i >= answered.length) {
+      elem.setAttribute("class", "far fa-circle");
+    }
+    else {
+      if (answered[i].correct ) {
+        elem.setAttribute("class", "fas fa-check-circle");
+      }
+      else {
+        elem.setAttribute("class", "far fa-times-circle");
+      }
+    }
+    scoreTracker.appendChild(elem);
   }
 }
 
 let chooseRandomEmail = function() {
-  let emailDiv = document.getElementById('email-container');
-  emailDiv.firstChild.remove();
+  renderScoreTracker();
+  emailContainer.firstChild.remove();
   if (emails.length > 0) {
-    currentIndex = Math.floor(Math.random() * emails.length);
-    currentEmail = emails[currentIndex];
-    emails.splice(currentIndex, 1);
-    emailDiv.appendChild(createImgForEmail(currentEmail.url));
+    let index = Math.floor(Math.random() * emails.length);
+    currentEmail = emails[index];
+    emails.splice(index, 1);
+    emailContainer.appendChild(createImgForEmail(currentEmail.url));
   }
   else {
-    emailDiv.innerHTML = '<div>' + scores + "</div>";
+    endTest();
   }
 }
 
 let createImgForEmail = function(email) {
   let elem = document.createElement("img");
   elem.setAttribute("src", "emails/" + email);
-  elem.setAttribute("height", "768");
-  elem.setAttribute("width", "1024");
   elem.setAttribute("alt", "Potential phishing email");
   return elem;
 }
 
 let real = function() {
-  if (!currentEmail.phishing) {
-    scores[currentIndex] = 1;
-  }
+  currentEmail.correct = (currentEmail.phishing == false);
+  answered.push(currentEmail);
   chooseRandomEmail();
 }
 
@@ -54,13 +79,13 @@ let hint = function() {
 }
 
 let fake = function() {
-  if (currentEmail.phishing) {
-    scores[currentIndex] = 1;
-  }
+  currentEmail.correct = (currentEmail.phishing == true);
+  answered.push(currentEmail);
   chooseRandomEmail();
 }
 
 window.onload = function(e) {
-  populateScores();
+  emailContainer = document.getElementById('email-container');
+  scoreTracker = document.getElementById('score-tracker');
   chooseRandomEmail();
 }

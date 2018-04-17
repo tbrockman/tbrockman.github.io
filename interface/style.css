@@ -24,6 +24,11 @@ body > .container {
   background: linear-gradient(77deg, rgb(96, 45, 185) 0%, rgb(123, 49, 255) 100%, rgba(255,255,255,1) 100%);
 }
 
+.test > .container {
+  display: flex;
+  justify-content: center;
+}
+
 .main-header {
   margin: 0.5em auto;
   width: 9em;
@@ -106,6 +111,18 @@ body > .container {
 
 .footer > div > span > a {
   text-decoration: none;
+}
+
+#email-container {
+  flex: 1;
+}
+
+#email-container img {
+  max-height: 23em;
+}
+
+#score-tracker > svg {
+  padding-left: 0.25em;
 }
 
 .email-buttons {
