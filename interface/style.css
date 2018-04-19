@@ -217,3 +217,96 @@ a:hover {
 .email-buttons > div {
   padding: 0 1em;
 }
+
+.test-score {
+  font-size: 6em;
+  color: #000;
+  position: absolute;
+  left: 0.5em;
+  right: 0;
+}
+
+.test-score.good > * {
+  color: #efbe2e;
+}
+
+.test-score.okay > * {
+  color: #2196F3;
+}
+
+.test-score.bad > * {
+  color: #F44336;
+}
+
+.test-score > .correct {
+  padding-left: 0.25em;
+}
+
+.test-score > .slash {
+  padding-left: 0.25em;
+}
+
+.test-score > .fraction {
+  font-size: 0.5em;
+}
+
+.test-score.good > .slash {
+  color: #f1e8cf;
+}
+
+.test-score.good > .fraction  {
+  color: #f1e8cf;
+}
+
+.test-score.okay > .slash {
+  color: #2196f32b;
+}
+
+.test-score.okay > .fraction {
+  color: #2196f32b;
+}
+
+.test-score.bad > .slash {
+  color: #f9dfdb;
+}
+
+.test-score.bad > .fraction {
+  color: #f9dfdb;
+}
+
+/* WebKit and Opera browsers */
+@-webkit-keyframes spinner {
+  from { -webkit-transform: rotateY(0deg);    }
+  to   { -webkit-transform: rotateY(-360deg); }
+}
+
+/* all other browsers */
+@keyframes spinner {
+  from {
+    -moz-transform: rotateZ(0deg);
+    -ms-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+  }
+  to {
+    -moz-transform: rotateZ(-360deg);
+    -ms-transform: rotateZ(-360deg);
+    transform: rotateZ(-360deg);
+  }
+}
+
+#spinner {
+  -webkit-animation-name: spinner;
+  -webkit-animation-timing-function: cubic-bezier(1, 0, .50, 1);
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 1.5s;
+
+  animation-name: spinner;
+  animation-timing-function: cubic-bezier(1, 0, .50, 1);
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}

@@ -70,10 +70,10 @@ let scoreTest = function() {
 }
 
 let endTest = function() {
-  emailContainer.innerHTML = '<div>' + scoreTest() + "</div>";
   buttons = document.getElementsByClassName("email-buttons");
   buttons[0].outerHTML = "";
   delete buttons;
+  renderFinalScore();
 }
 
 let renderAnswerFeedback = function(correct) {
@@ -81,21 +81,54 @@ let renderAnswerFeedback = function(correct) {
   if (correct) {
     template = "<div>\
                       <i style='margin: auto;position: absolute;top: 0; left: 0; \
-                      bottom: 0; right: 0;font-size:25em;color: #3ba21f;;' \
+                      bottom: 0; right: 0;font-size:20em;color: #3ba21f;;' \
                       class='far fa-check-circle'></i>\
                     </div>";
   }
   else {
     template = "<div>\
                       <i style='margin: auto;position: absolute;top: 0; left: 0; \
-                      bottom: 0; right: 0;font-size:25em;color: #fb3d2f;' \
+                      bottom: 0; right: 0;font-size:20em;color: #fb3d2f;' \
                       class='far fa-times-circle'></i>\
                     </div>";
   }
   let test = $(template);
-  test.hide().appendTo('body').fadeIn({'duration': 100, 'done': function() {
-    test.fadeOut(800);
-  }});
+  test.hide().appendTo('body').fadeIn({
+    'duration': 0,
+    'done': function() {
+      test.fadeOut({
+        'duration': 800,
+        'done': function() {
+          test.remove();
+        }
+      });
+    }
+  });
+}
+
+let renderFinalScore = function() {
+  let finalScore = scoreTest();
+  let template = "<div class='test-score";
+  let percent = finalScore * 1.0 / answered.length;
+  if (percent >= 0.70) {
+    template += " good'><i class='fas fa-star' id='spinner'></i>";
+  }
+  else if (percent >= 0.5 && percent < 0.70){
+    template += " okay'><i class='fas fa-ambulance'></i>";
+  }
+  else {
+    template += " bad'><i class='far fa-frown'></i>";
+  }
+
+  template += "<span class='correct'>" + scoreTest() + "</span>" +
+  "<span class='slash'>/</span>" +
+  "<span class='fraction'>" + answered.length + "</span>" +
+  "</div>";
+
+
+  $('#email-container').html(template);
+  $('#email-container').css('justify-content', 'center')
+                       .css('position','relative');
 }
 
 let renderScoreTracker = function() {
@@ -149,7 +182,6 @@ let hint = function() {
     hintDialog.text(currentEmail.hints[currentEmail.hintIndex].text);
     currentEmail.hintIndex = (currentEmail.hintIndex + 1) % currentEmail.hints.length;
     hintDialog.dialog("open");
-
   }
 }
 
