@@ -93,8 +93,8 @@ let renderAnswerFeedback = function(correct) {
                     </div>";
   }
   let test = $(template);
-  test.hide().appendTo('body').fadeIn({'duration': 200, 'done': function() {
-    test.fadeOut(600);
+  test.hide().appendTo('body').fadeIn({'duration': 100, 'done': function() {
+    test.fadeOut(800);
   }});
 }
 
