@@ -222,7 +222,7 @@ a:hover {
   font-size: 6em;
   color: #000;
   position: absolute;
-  left: 0.5em;
+  left: 0;
   right: 0;
 }
 
@@ -239,7 +239,7 @@ a:hover {
 }
 
 .test-score > .correct {
-  padding-left: 0.25em;
+  padding-left: 1em;
 }
 
 .test-score > .slash {
