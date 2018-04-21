@@ -82,6 +82,17 @@ let emails = [
         putNear: '',
       }
     ]
+  },
+  {
+    url: 'commbank.html',
+    phishing: false,
+    hintIndex: 0,
+    hints: [
+      {
+        text: '',
+        putNear: '',
+      }
+    ]
   }
 ];
 
@@ -152,9 +163,8 @@ let renderFinalScoreScreen = function() {
   else if (percent >= 0.70 && percent < 1) {
     template.message += " good'>Good job!";
     template.score += " good'><i class='far fa-thumbs-up'></i>";
-    template.followup += " good'>You identified most e-mails correctly, there's\
-                          some room for improvement but you seem to know your\
-                          stuff.";
+    template.followup += " good'>You identified most e-mails correctly. There's\
+                           always room for improvement, but you know your stuff!"
   }
   else if (percent >= 0.5 && percent < 0.70){
     template.message += " okay'>You survived!";
