@@ -102,7 +102,7 @@ let endTest = function() {
   renderFinalScoreScreen();
 }
 
-let renderAnswerFeedback = function(correct, callback) {
+let renderAnswerFeedback = function(correct) {
   let template;
   if (correct) {
     template = "<div>\
@@ -128,7 +128,6 @@ let renderAnswerFeedback = function(correct, callback) {
 
       }
     });
-    callback();
   }, 200);
 }
 
@@ -182,6 +181,7 @@ let renderFinalScoreScreen = function() {
   $('#email-container').html(combined);
   $('#email-container').css('justify-content', 'center')
                        .css('position','relative');
+  $('#button-container').load("endoftestbuttons.html");
 }
 
 let renderScoreTracker = function() {
@@ -226,7 +226,8 @@ let chooseRandomEmail = function() {
 let real = function() {
   currentEmail.correct = (currentEmail.phishing == false);
   answered.push(currentEmail);
-  renderAnswerFeedback(currentEmail.correct, chooseRandomEmail);
+  renderAnswerFeedback(currentEmail.correct);
+  chooseRandomEmail();
 }
 
 let hint = function() {
@@ -240,7 +241,8 @@ let hint = function() {
 let fake = function() {
   currentEmail.correct = (currentEmail.phishing == true);
   answered.push(currentEmail);
-  renderAnswerFeedback(currentEmail.correct, chooseRandomEmail);
+  renderAnswerFeedback(currentEmail.correct);
+  chooseRandomEmail();
 }
 
 let modalCloseOnClickOutside = function() {
