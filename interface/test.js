@@ -4,28 +4,29 @@ let emails = [
   {
     url: 'dropbox.html',
     phishing: false,
+    hintIndex: 0,
     hints: [
       {
         text:'How can you verify that an e-mail comes from a trusted source? Would looking at the domain help?',
         putNear: '#email-info',
       },
     ],
-    hintIndex: 0,
   },
   {
     url: 'afterpay.html',
     phishing: false,
+    hintIndex: 0,
     hints: [
       {
         text: 'If all the links in the e-mail seem valid, and it comes from a valid address, it might be safe.',
         putNear: '',
       }
     ],
-    hintIndex: 0,
   },
   {
     url: 'edstem_phishing.html',
     phishing: true,
+    hintIndex: 0,
     hints: [
       {
         text: 'Do all the links in the e-mail lead to websites on the Ed domain?',
@@ -36,11 +37,11 @@ let emails = [
         putNear: '',
       },
     ],
-    hintIndex: 0,
   },
   {
     url: 'paypal_phishing.html',
     phishing: true,
+    hintIndex: 0,
     hints: [
       {
         text:'Check out the senders e-mail, seems like a pretty weird address for PayPal to have.',
@@ -55,11 +56,11 @@ let emails = [
         putNear:'',
       },
     ],
-    hintIndex: 0,
   },
   {
     url: 'aldi_phishing.html',
     phishing: true,
+    hintIndex: 0,
     hints: [
       {
         text: 'Is that the official Aldi e-mail?',
@@ -70,7 +71,6 @@ let emails = [
         putNear: '',
       }
     ],
-    hintIndex: 0,
   },
   {
     url: 'uofs.html',
@@ -78,7 +78,8 @@ let emails = [
     hintIndex: 0,
     hints: [
       {
-        text:'',
+        text: 'Amanda decided to choose a course load that varied wildly from \
+        her usual business courses.',
         putNear: '',
       }
     ]
@@ -89,7 +90,9 @@ let emails = [
     hintIndex: 0,
     hints: [
       {
-        text: '',
+        text: 'Sometimes organizations will have mailservers with a different \
+        domain name than the main website, but that doesn\'t necessarily mean\
+        that the e-mail can\'t be trusted.',
         putNear: '',
       }
     ]
