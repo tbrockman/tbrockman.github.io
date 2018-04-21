@@ -3,13 +3,17 @@ let answered = [];
 let emails = [
   {
     url: 'dropbox.html',
-    phishing: false,
+    phishing: true,
     hintIndex: 0,
     hints: [
       {
-        text:'How can you verify that an e-mail comes from a trusted source? Would looking at the domain help?',
-        putNear: '#email-info',
+        text: 'Sometimes text isn\'t what it appears. Try copying the senders domain into your browser.',
+        putNear: '',
       },
+      {
+        text: 'Where does the link to verify lead?',
+        putNear: '',
+      }
     ],
   },
   {
