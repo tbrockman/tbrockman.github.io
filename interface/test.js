@@ -6,8 +6,8 @@ let emails = [
     phishing: false,
     hints: [
       {
-        'text':'How can you verify that an e-mail comes from a trusted source? Would a domain lookup help?',
-        'putNear': '#email-info',
+        text:'How can you verify that an e-mail comes from a trusted source? Would looking at the domain help?',
+        putNear: '#email-info',
       },
     ],
     hintIndex: 0,
@@ -17,8 +17,8 @@ let emails = [
     phishing: false,
     hints: [
       {
-        'text': 'If all the links in the e-mail seem valid, and it comes from a valid address, it might be safe.',
-        'putNear': '',
+        text: 'If all the links in the e-mail seem valid, and it comes from a valid address, it might be safe.',
+        putNear: '',
       }
     ],
     hintIndex: 0,
@@ -28,12 +28,12 @@ let emails = [
     phishing: true,
     hints: [
       {
-        'text': 'Do all the links in the e-mail lead to websites on the Ed domain?',
-        'putNear': '',
+        text: 'Do all the links in the e-mail lead to websites on the Ed domain?',
+        putNear: '',
       },
       {
-        'text': 'Is there anything out of place with the domain name of the sender?',
-        'putNear': '',
+        text: 'Is there anything out of place with the domain name of the sender?',
+        putNear: '',
       },
     ],
     hintIndex: 0,
@@ -43,20 +43,46 @@ let emails = [
     phishing: true,
     hints: [
       {
-        'text':'Check out the senders e-mail, seems like a pretty weird domain for PayPal to have.',
-        'putNear':'',
+        text:'Check out the senders e-mail, seems like a pretty weird address for PayPal to have.',
+        putNear:'',
       },
       {
-        'text':'Try inspecting the links in the e-mail, they may not lead where you think!',
-        'putNear':'',
+        text:'Try inspecting the links in the e-mail, they may not lead where you think!',
+        putNear:'',
       },
       {
-        'text':'Think of the tone of message, does it instill a sense of false urgency?',
-        'putNear':'',
+        text:'Think of the tone of message, does it instill a sense of false urgency?',
+        putNear:'',
       },
     ],
     hintIndex: 0,
   },
+  {
+    url: 'aldi_phishing.html',
+    phishing: true,
+    hints: [
+      {
+        text: 'Is that the official Aldi e-mail?',
+        putNear: '',
+      },
+      {
+        text: 'The links in the e-mail could be suspicious.',
+        putNear: '',
+      }
+    ],
+    hintIndex: 0,
+  },
+  {
+    url: 'uofs.html',
+    phishing: false,
+    hintIndex: 0,
+    hints: [
+      {
+        text:'',
+        putNear: '',
+      }
+    ]
+  }
 ];
 
 let scoreTest = function() {
@@ -73,10 +99,10 @@ let endTest = function() {
   buttons = document.getElementsByClassName("email-buttons");
   buttons[0].outerHTML = "";
   delete buttons;
-  renderFinalScore();
+  renderFinalScoreScreen();
 }
 
-let renderAnswerFeedback = function(correct) {
+let renderAnswerFeedback = function(correct, callback) {
   let template;
   if (correct) {
     template = "<div>\
@@ -93,40 +119,67 @@ let renderAnswerFeedback = function(correct) {
                     </div>";
   }
   let test = $(template);
-  test.hide().appendTo('body').fadeIn({
-    'duration': 0,
-    'done': function() {
-      test.fadeOut({
-        'duration': 800,
-        'done': function() {
-          test.remove();
-        }
-      });
-    }
-  });
+  test.appendTo('body');
+  setTimeout(function() {
+    test.fadeOut({
+      'duration': 800,
+      'done': function() {
+        test.remove();
+
+      }
+    });
+    callback();
+  }, 200);
 }
 
-let renderFinalScore = function() {
+let renderFinalScoreScreen = function() {
   let finalScore = scoreTest();
-  let template = "<div class='test-score";
   let percent = finalScore * 1.0 / answered.length;
-  if (percent >= 0.70) {
-    template += " good'><i class='fas fa-star' id='spinner'></i>";
+  let template = {
+    'message':'',
+    'score':'',
+    'followup':'',
+  };
+
+  template.message += "<div class='test-message";
+  template.score += "<div class='test-score";
+  template.followup += "<div class='test-followup";
+
+  if (percent == 1) {
+    template.message += " ace'>Congratulations!";
+    template.score += " ace'><i class='fas fa-star' id='spinner'></i>";
+    template.followup += " ace'>You aced the test, there's nothing more we can teach you.";
+  }
+  else if (percent >= 0.70 && percent < 1) {
+    template.message += " good'>Good job!";
+    template.score += " good'><i class='far fa-thumbs-up'></i>";
+    template.followup += " good'>You identified most e-mails correctly, there's\
+                          some room for improvement but you seem to know your\
+                          stuff.";
   }
   else if (percent >= 0.5 && percent < 0.70){
-    template += " okay'><i class='fas fa-ambulance'></i>";
+    template.message += " okay'>You survived!";
+    template.score += " okay'><i class='fas fa-ambulance'></i>";
+    template.followup += " okay'>... but just barely. You passed the test, \
+                          but you might still want to brush up a bit on \
+                          your phishing knowledge.";
   }
   else {
-    template += " bad'><i class='far fa-frown'></i>";
+    template.message += " bad'>Dang.";
+    template.score += " bad'><i class='far fa-frown'></i>";
+    template.followup += " bad'>You failed the test, you definitely will want to\
+                          learn a little bit more about phishing."
   }
 
-  template += "<span class='correct'>" + scoreTest() + "</span>" +
-  "<span class='slash'>/</span>" +
-  "<span class='fraction'>" + answered.length + "</span>" +
-  "</div>";
+  template.message += "</div>";
+  template.score += "<span class='correct'>" + scoreTest() + "</span>" +
+              "<span class='slash'>/</span>" +
+              "<span class='fraction'>" + answered.length + "</span>" +
+              "</div>";
+  template.follow += "</div>";
 
-
-  $('#email-container').html(template);
+  let combined = template.message + template.score + template.followup;
+  $('#email-container').html(combined);
   $('#email-container').css('justify-content', 'center')
                        .css('position','relative');
 }
@@ -173,8 +226,7 @@ let chooseRandomEmail = function() {
 let real = function() {
   currentEmail.correct = (currentEmail.phishing == false);
   answered.push(currentEmail);
-  renderAnswerFeedback(currentEmail.correct);
-  chooseRandomEmail();
+  renderAnswerFeedback(currentEmail.correct, chooseRandomEmail);
 }
 
 let hint = function() {
@@ -188,8 +240,7 @@ let hint = function() {
 let fake = function() {
   currentEmail.correct = (currentEmail.phishing == true);
   answered.push(currentEmail);
-  renderAnswerFeedback(currentEmail.correct);
-  chooseRandomEmail();
+  renderAnswerFeedback(currentEmail.correct, chooseRandomEmail);
 }
 
 let modalCloseOnClickOutside = function() {

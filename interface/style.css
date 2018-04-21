@@ -24,6 +24,11 @@ body > .container {
   background: linear-gradient(77deg, rgb(96, 45, 185) 0%, rgb(123, 49, 255) 100%, rgba(255,255,255,1) 100%);
 }
 
+iframe {
+  margin: auto;
+  display: block;
+}
+
 a {
   color: #722af3;
 }
@@ -50,6 +55,7 @@ a:hover {
   margin: 0.5em auto;
   padding-bottom: 0.25em;
   border-bottom: 2px solid;
+  font-size: 3em;
 }
 
 .column-container {
@@ -218,23 +224,36 @@ a:hover {
   padding: 0 1em;
 }
 
+.test-followup {
+  margin: 0 15em;
+  padding-top: 1em;
+  font-size: 0.75em;
+}
+
+.test-message {
+  font-size: 4em;
+  font-weight: bold;
+  padding-bottom: 0.5em;
+}
+
 .test-score {
   font-size: 6em;
   color: #000;
-  position: absolute;
-  left: 0;
-  right: 0;
 }
 
-.test-score.good > * {
+.ace {
   color: #efbe2e;
 }
 
-.test-score.okay > * {
+.good {
+  color: #3ba21f;
+}
+
+.okay {
   color: #2196F3;
 }
 
-.test-score.bad > * {
+.bad {
   color: #F44336;
 }
 
@@ -244,18 +263,27 @@ a:hover {
 
 .test-score > .slash {
   padding-left: 0.25em;
-}
-
-.test-score > .fraction {
   font-size: 0.5em;
 }
 
-.test-score.good > .slash {
+.test-score > .fraction {
+  font-size: 0.25em;
+}
+
+.test-score.ace > .slash {
   color: #f1e8cf;
 }
 
-.test-score.good > .fraction  {
+.test-score.ace > .fraction  {
   color: #f1e8cf;
+}
+
+.test-score.good > .slash {
+  color: #b6e6a9;
+}
+
+.test-score.good > .fraction {
+  color: #b6e6a9;
 }
 
 .test-score.okay > .slash {
