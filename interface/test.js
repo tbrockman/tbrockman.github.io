@@ -118,7 +118,15 @@ let emails = [
     hintIndex: 0,
     hints: [
       {
-        text: '',
+        text: 'Where does that verify button link lead?',
+        putNear: '',
+      },
+      {
+        text: 'Why would Spotify delegate their verifaction to SheerID?',
+        putNear: '',
+      },
+      {
+        text: 'That seems like an odd domain for an e-mail from Spotify.',
         putNear: '',
       }
     ]
