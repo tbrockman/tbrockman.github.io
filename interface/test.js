@@ -100,6 +100,28 @@ let emails = [
         putNear: '',
       }
     ]
+  },
+  {
+    url: 'yashika.html',
+    phishing: false,
+    hintIndex: 0,
+    hints: [
+      {
+        text: 'It\'s legit. You can look at all the links or just take my word for it.',
+        putNear: ''
+      }
+    ],
+  },
+  {
+    url: 'spotify.html',
+    phishing: true,
+    hintIndex: 0,
+    hints: [
+      {
+        text: '',
+        putNear: '',
+      }
+    ]
   }
 ];
 

@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: Arial;
+}
+
+body > div {
+  width: 30em;
+  text-align: center;
+  align-self: center;
+}
+
+h1 {
+  background: linear-gradient(77deg, rgb(96, 45, 185) 0%, rgb(123, 49, 255) 100%, rgba(255,255,255,1) 100%);
+  color: #fff;
+  padding: 0.5em;
+}
