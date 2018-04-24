@@ -107,7 +107,8 @@ let emails = [
     hintIndex: 0,
     hints: [
       {
-        text: 'It\'s legit. You can look at all the links or just take my word for it.',
+        text: 'If you pain-stakingly examine each link in the e-mail, you\'ll \
+        probably feel pretty confident about the validity of the e-mail.',
         putNear: ''
       }
     ],
