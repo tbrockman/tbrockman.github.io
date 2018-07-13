@@ -17,12 +17,13 @@ const renderProject = function(project) {
         $.get(apiEndpoint, function(commits) {
             var date = new Date(Date.parse(commits[0].commit.author.date));
             project.text(' - latest commit ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());
+            project.prepend($('<i class="fa fa-github"></i>'));
         });
     }
 }
 
 const renderProjectURLS = function() {
-    let projects = $('.project > h2:nth-of-type(2)');
+    let projects = $('.project-header > h2:nth-of-type(2)');
 
     for (var i = 0; i < projects.length; i++) {
         let project = $(projects[i]);
