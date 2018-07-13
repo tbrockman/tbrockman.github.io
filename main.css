@@ -176,7 +176,7 @@ a > p {
 
 .blog {
     margin-top: 0.25em;
-    padding: 0.25em 0.25em 0 0.25em;
+    padding: 0.25em 0.25em 0.1em 0.25em;
     border-radius: 3px;
     background-color: rgba(17,17,17,0.7);
     overflow: auto;
@@ -295,12 +295,21 @@ a > p {
     }
 
     .flex-container {
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        justify-content: space-between;
         max-width: 100% !important;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
                 flex-direction: column;
-        margin: 0.25em;
+        margin: 0;
+    }
+
+    .flex-container > div {
+        padding: 0.5em;
+        width: fit-content;
     }
 
     .name {
@@ -315,6 +324,7 @@ a > p {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        height: 100%;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
@@ -324,13 +334,9 @@ a > p {
         width: auto;
     }
 
-    .blog div h3 {
-        font-size: 10vw;
-    }
-
-    .blog > div > p {
-        font-size: 3vmin;
-        line-height: 1.2em;
+    .blog > .bio > p {
+        font-size: 2.5vmin !important;
+        line-height: 1em !important;
     }
 
     .blog-link > h4 {
@@ -357,12 +363,16 @@ a > p {
             -ms-flex-align: center;
                 align-items: center;
         width: 100%;
+        order: 2;
     }
 
     .right-column {
+        flex: 1;
         margin-top: 0;
         margin-left: 0.25em;
         margin-right: 0.25em;
+        max-height: 40%;
+        order: 1;
     }
 
     .logo {
@@ -373,12 +383,12 @@ a > p {
         display: inline-block;
         position: relative;
         border: 3px solid;
-        border-radius: 1px;
-        margin: 0;
+        border-radius: 3px;
         letter-spacing: -0.1em;
         padding-right: 0.1em;
+        font-size: 4em;
+        margin: 0.25em 0.25em 0 0.25em;
         background-color: #a73636;
-        font-size: 5.25em;
     }
 
     .links {
@@ -407,11 +417,12 @@ a > p {
         overflow: hidden;
         margin-left: 0.5em;
         background-color: #a73636;
-        padding: 0.1em 0.5em;
+        padding: 0.25em 0.5em;
         border: 3px solid #fcfcfc;
         margin-bottom: 0.3em;
         margin-top: 0;
-        font-size: 0.5em;
+        font-size: 0.75em;
+        text-align: center;
     }
 
     .links li:last-child {
@@ -422,17 +433,21 @@ a > p {
         width: 100%;
     }
 
-    .left-column {
-        padding-left: 0.25em;
-        margin-bottom: 0.25em;
-    }
-
     a:hover {
         color: rgba(17,17,17,0.7);
     }
 
     .printer {
         display: none !important;
+    }
+
+    .projects {
+        overflow: auto;
+        font-size: inherit;
+    }
+
+    .projects > div:nth-of-type(1) {
+        margin-top: 0.25em;
     }
 
     .inline-bar {
