@@ -17,28 +17,36 @@ html {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
-    height: 110%;
+    height: 100%;
     background-image: -webkit-gradient(linear,left bottom, left top,from(rgba(0, 0, 0, 0.8)),to(rgba(0, 0, 0, 0.3))),url("theo.jpeg");
     background-image: -webkit-linear-gradient(bottom,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
     background-image: -o-linear-gradient(bottom,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
     background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.3)),url("theo.jpeg");
     overflow: hidden;
-
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
 
 body {
     height: 100%;
     font-size: 8vw;
     margin: 0;
+    overflow: auto;
 }
 
 a {
     color: #fcfcfc;
+    font-weight: bold !important;
     text-decoration: none;
 }
 
 a:hover {
     color: #ff8989;
+}
+
+a > *:hover {
+    cursor: pointer;
 }
 
 h1 {
@@ -70,7 +78,6 @@ h4 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 100%;
     margin: auto;
     max-width: 60%;
     margin-top: 0.25em;
@@ -83,6 +90,7 @@ h4 {
 .right-column {
     margin-top: 0.1em;
     margin-left: 0.25em;
+    z-index: 1;
 }
 
 .logo {
@@ -93,6 +101,10 @@ h4 {
     letter-spacing: -0.1em;
     padding-right: 0.1em;
     background-color: #a73636;
+}
+
+.logo:hover {
+    cursor: default;
 }
 
 .name {
@@ -141,11 +153,11 @@ a > p {
     margin-left: 0.5em;
 }
 
-.contact {
-    margin-top: 0.145em;
+.links {
+    margin-top: 0.25em;
 }
 
-.contact > li {
+.links > li {
     margin-bottom: 0.25em;
     width: 100%;
     text-align: right;
@@ -159,11 +171,12 @@ a > p {
 }
 
 .blog {
-    margin-top: 0.145em;
-    padding: 0.25em;
+    margin-top: 0.25em;
+    padding: 0.25em 0.25em 0 0.25em;
     border-radius: 3px;
     background-color: rgba(17,17,17,0.7);
     overflow: auto;
+    width: 5em;
 }
 
 .blog div h3 {
@@ -176,10 +189,13 @@ a > p {
 }
 
 .blog > div > p {
-    color: #fcfcfc;
     font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
-    font-size: 16px;
     line-height: 1.5em;
+}
+
+.blog > .bio > p {
+    color: #fcfcfc;
+    font-size: 16px;
 }
 
 .blog-link > h4 {
@@ -205,6 +221,10 @@ a > p {
     padding-right: 1.5em;
 }
 
+.fa:before {
+    font-weight: 100;
+}
+
 .inline-bar {
     color: #fcfcfc;
     text-decoration: none;
@@ -214,6 +234,48 @@ a > p {
 
 .mobile-logo {
     display: none;
+}
+
+.project > h2 > a {
+    font-weight: 100 !important;
+}
+
+.projects {
+    color: #fcfcfc;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    line-height: 1.5em;
+    font-size: 0.25em;
+}
+
+.projects > h1 {
+    padding-bottom: 0.25em;
+}
+
+.projects > h1, h2, h3 {
+    margin: 0;
+}
+
+.projects > div {
+    background-color: #0000004a;
+    margin: 0.5em 0;
+    padding: 0.25em 0.5em;
+}
+
+.projects > div > h2 {
+    display: inline-block;
+    font-weight: 100;
+}
+
+.projects > div > h2:nth-of-type(2) {
+    color: #464646;
+    font-size: 0.5em;
+}
+
+.projects > div > p {
+    color: #d6d6d6;
+    font-size: 16px;
+    margin-top: 0.25em;
+    line-height: 1.2em;
 }
 
 @media only screen and (max-width: 1080px) {
@@ -249,6 +311,7 @@ a > p {
                 flex-direction: column;
         margin-top: 0;
         padding: 0.5em;
+        width: auto;
     }
 
     .blog div h3 {
@@ -308,7 +371,7 @@ a > p {
         font-size: 5.25em;
     }
 
-    .contact {
+    .links {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -319,7 +382,6 @@ a > p {
             -ms-flex-positive: 1;
                 flex-grow: 1;
         -ms-flex-item-align: start;
-            align-self: flex-start;
         margin-right: 0.5em;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
@@ -331,7 +393,7 @@ a > p {
         overflow: hidden;
     }
 
-    .contact > li {
+    .links > li {
         overflow: hidden;
         margin-left: 0.5em;
         background-color: #a73636;
@@ -342,11 +404,11 @@ a > p {
         font-size: 0.5em;
     }
 
-    .contact li:last-child {
+    .links li:last-child {
         margin-bottom: 0;
     }
 
-    .contact li > a {
+    .links li > a {
         width: 100%;
     }
 
