@@ -237,10 +237,6 @@ a > p {
     margin:0.25em;
 }
 
-.mobile-logo {
-    display: none;
-}
-
 .project > h2 > a {
     font-weight: normal !important;
 }
@@ -302,7 +298,6 @@ a > p {
     }
 
     .flex-container {
-        align-items: center;
         height: 100%;
         width: 100%;
         justify-content: space-between;
@@ -312,11 +307,6 @@ a > p {
             -ms-flex-direction: column;
                 flex-direction: column;
         margin: 0;
-    }
-
-    .flex-container > div {
-        padding: 0.5em;
-        width: fit-content;
     }
 
     .name {
@@ -337,7 +327,7 @@ a > p {
             -ms-flex-direction: column;
                 flex-direction: column;
         margin-top: 0;
-        padding: 0.5em;
+        padding: 0.5em 1em;
         width: auto;
     }
 
@@ -359,36 +349,25 @@ a > p {
     }
 
     .left-column {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
         margin-top: 0.5em;
         order: 2;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        margin-bottom: 0.5em;
         width: 100%;
         z-index: 1;
     }
 
     .right-column {
-        flex: 1;
-        min-height: 3vmin;
-        margin-top: 0;
-        margin-left: 0.25em;
-        margin-right: 0.25em;
         order: 1;
+        margin: 0.5em 0.5em 0 0.5em;
+        flex-grow: 1;
+        overflow: auto;
     }
 
     .logo {
         display: none;
     }
 
-    .mobile-logo {
+    /* .mobile-logo {
         display: inline-block;
         position: relative;
         border: 3px solid;
@@ -398,33 +377,31 @@ a > p {
         font-size: 3em;
         margin: 0.25em 0.25em 0 0.25em;
         background-color: #a73636;
-    }
+    } */
 
     .links {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         -webkit-box-pack: start;
-            -ms-flex-pack: start;
-                justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
         -webkit-box-flex: 1;
-            -ms-flex-positive: 1;
-                flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
         -ms-flex-item-align: start;
-        margin-right: 0.5em;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
         -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-        margin-top: 0;
+        flex-wrap: wrap;
         overflow: hidden;
+        margin: 0 0.5em;
     }
 
     .links > li {
         overflow: hidden;
-        margin-left: 0.5em;
         background-color: #a73636;
         padding: 0.25em 0.5em;
         border: 2px solid #fcfcfc;
