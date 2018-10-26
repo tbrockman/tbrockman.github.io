@@ -52,9 +52,9 @@ const renderBio = function() {
 }
 
 const renderPage = function() {
-    if (window.location.hash == '') {
+    if (window.location.hash === '') {
         renderBio();
-    } else if (window.location.hash = 'projects') {
+    } else if (window.location.hash === 'projects') {
         renderProjects();
     }
 }
