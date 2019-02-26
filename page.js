@@ -35,7 +35,7 @@ const renderAgeText = function() {
     let text = 'is a ' + calculateAge() +
     '-year-old software developer who spends most of his spare time playing \
     video games and rock climbing. \
-    Sometimes he tries to be creative through music and other means. \
+    He also sometimes produces bad music. \
     He likes coffee and hip hop and has never taken a long walk on the beach.';
 
     $('#bio').text(text);
