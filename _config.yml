@@ -13,10 +13,11 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Theodore Brockman - developer, artist, goof
-email: tbrockma@ualberta.ca
+title: Theodore Brockman - softserve developer and goof
+email: tmanbrock@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  personal website of Theodore Brockman
+  blog of a Canadian software engineer living in the bay area
+baseurl: https://tbrockman.github.io/
   
 # Build settings
 markdown: kramdown
