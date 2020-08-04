@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/assets/css/blog.css">
+    <title>
+        theodore brockman - {{ page.title }}
+    </title>
+    {% seo %}
+  </head>
+  <body>
+    <div class="utterances post-container">
+        <div class="post-header">
+            <img class="author-image" src="/assets/img/image_cropped_v2.jpg"></img>
+            <h1>{{page.title}}</h1>
+            <h4>{{page.date | date_to_string}} - by theodore brockman</h4>
+            <div class="divider"></div>
+        </div>
+        {{ content }}
+    </div>
+    <script src="https://utteranc.es/client.js"
+        repo="tbrockman/tbrockman.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+    </script>
+      <!-- <div id="copyright" class="copyright">
+          copyright © 2020 theodore brockman
+      </div> -->
+  <body>
+</html>

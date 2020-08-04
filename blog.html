@@ -1,0 +1,25 @@
+---
+layout: blog
+title: latest
+---
+<head>
+  <title>
+      theodore brockman - {{site.posts.last.title}}
+  </title>
+  {% seo %}
+</head>
+<body>
+  <div>
+    <h1>Latest Posts</h1>
+  
+    <ul>
+      {% for post in site.posts %}
+        <li>
+          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+          {{ post.excerpt }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+
