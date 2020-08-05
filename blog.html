@@ -4,19 +4,19 @@ title: latest
 ---
 <head>
   <title>
-      theodore brockman - {{site.posts.last.title}}
+      
   </title>
-  {% seo %}
+
 </head>
 <body>
-  <div>
-    <h1>Latest Posts</h1>
-  
-    <ul>
+  <div class="page-container">
+    <h1>Posts</h1>
+    <ul class="blog-list">
       {% for post in site.posts %}
         <li>
           <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-          {{ post.excerpt }}
+          <div>{{ post.excerpt }}</div>
+          <div>{{ post.date }}{{ post.author }}</div>
         </li>
       {% endfor %}
     </ul>

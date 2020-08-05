@@ -2,6 +2,7 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2020-08-02 21:33:11 -0700
+author: theodore brockman
 categories: jekyll update
 issue: 1
 ---

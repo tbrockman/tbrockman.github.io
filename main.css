@@ -40,7 +40,7 @@ a {
 }
 
 a:hover {
-    color: #a73636;
+    color: #ff7b7b;
 }
 
 a > *:hover {
@@ -99,7 +99,7 @@ h4 {
     margin: 0;
     letter-spacing: -0.1em;
     padding-right: 0.1em;
-    background-color: #a73636;
+    background-color: #ff7b7b;
 }
 
 .logo:hover {
@@ -394,7 +394,7 @@ a > p {
         padding-right: 0.1em;
         font-size: 3em;
         margin: 0.25em 0.25em 0 0.25em;
-        background-color: #a73636;
+        background-color: #ff7b7b;
     } */
 
     .links {
@@ -420,7 +420,7 @@ a > p {
 
     .links > li {
         overflow: hidden;
-        background-color: #a73636;
+        background-color: #ff7b7b;
         padding: 0.25em 0.5em;
         border: 2px solid #fcfcfc;
         margin-bottom: 0.3em;
