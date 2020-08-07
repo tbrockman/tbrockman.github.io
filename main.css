@@ -66,7 +66,7 @@ h3 {
 }
 
 h4 {
-    color: #1f1f1f;
+    color: #252525;
     font-size: 0.25em;
     margin: 0;
 }
@@ -78,10 +78,15 @@ h4 {
     display: flex;
     margin: auto;
     justify-content: center;
+    height: 100%;
 }
 
 .left-column {
-    margin-right: 0.5em;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    background-color: #fe5858;
+    padding: 0 0.5em;
 }
 
 .right-column {
@@ -90,6 +95,9 @@ h4 {
     flex-direction: column;
     justify-content: center;
     margin-right: 1em;
+    max-width: 780px;
+    width: 100%;
+    margin-left: 0.5em;
 }
 
 .logo {
@@ -112,7 +120,7 @@ h4 {
     padding-right: 0.15em;
     padding-bottom: 0.01em;
     font-family: "Arial", sans-serif;
-    color: #1f1f1f;
+    color: #252525;
 }
 
 .description {
@@ -130,15 +138,16 @@ ul {
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
     margin: 0;
     padding: 0;
+    flex-direction: column;
 }
 
 li {
@@ -151,17 +160,22 @@ a > p {
     margin: 0;
     margin-left: 0.5em;
     font-family: "Arial", sans-serif;
-    color: #1f1f1f;
+    color: #252525;
     font-weight: 100
 }
 
 .links {
+    align-self: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .links > li {
-    margin-bottom: 1em;
-    width: 100%;
-    text-align: right;
+    margin-bottom: 1.5em;
+}
+
+.links > li > a:hover {
+    color: #fff;
 }
 
 .typewriter {
@@ -230,7 +244,7 @@ a > p {
 }
 
 .fa {
-    color: #1f1f1f;
+    color: #252525;
 }
 
 .inline-bar {

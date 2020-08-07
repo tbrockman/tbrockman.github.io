@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2020-08-02 21:33:11 -0700
+title:  "Just using a test title"
+date:   2020-09-06 23:15:00 -0700
 author: Theodore Brockman
 categories: jekyll update
-issue: 1
+issue: 2
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 

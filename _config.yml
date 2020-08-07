@@ -25,8 +25,8 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-# feed:
-#   tags: true
+feed:
+  tags: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

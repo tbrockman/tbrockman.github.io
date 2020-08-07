@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    
     <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
     <title>
         theodore brockman - {{ page.title }}
@@ -9,20 +10,22 @@
     {% seo %}
   </head>
   <body>
+    {% include navbar.html %}
     <div class="page-container post-container">
         <div class="post-header">
-            <img class="author-image" src="/assets/img/image_cropped_v2.jpg"></img>
+            <!-- <img class="author-image" src="/assets/img/image_cropped_v2.jpg"></img> -->
             <h1>{{page.title}}</h1>
-            <h4>{{page.date | date_to_string}} - by theodore brockman</h4>
+            <h4>{{page.date | date_to_string}} - {{ page.author }}</h4>
             <div class="divider"></div>
         </div>
         {{ content }}
     </div>
-    <script src="https://utteranc.es/client.js"
+    <script src="http://localhost:4000/client.js"
         repo="tbrockman/tbrockman.github.io"
-        issue-term="pathname"
+        issue-term="{{page.title}}"
         theme="github-light"
         crossorigin="anonymous"
+        autocreate="true"
         async>
     </script>
       <!-- <div id="copyright" class="copyright">

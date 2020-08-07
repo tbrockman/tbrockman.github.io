@@ -1,0 +1,31 @@
+$color-primary: #fe5858;
+$color-secondary: #252525;
+$color-mouseover: #fff;
+
+.navbar {
+    display: flex;
+    width: 100%;
+    background-color: $color-primary;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: 780px;
+}
+
+.navbar ul li a {
+    color: $color-secondary;
+    font-size: 2em;
+}
+
+.navbar ul li a:hover {
+    cursor: pointer;
+    color: $color-mouseover;
+}

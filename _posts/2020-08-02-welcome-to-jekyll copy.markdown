@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2020-08-02 21:33:11 -0700
+title:  "Test to Jekyll!"
+date:   2020-08-06 21:33:11 -0700
 author: Theodore Brockman
 categories: jekyll update
 issue: 1
