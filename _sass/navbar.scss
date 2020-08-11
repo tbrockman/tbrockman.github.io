@@ -13,16 +13,16 @@ $color-mouseover: #fff;
 .navbar ul {
     list-style-type: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
     margin: 0;
-    padding: 0;
-    max-width: 780px;
+    padding: 3em 0;
+    max-width: 1200px;
 }
 
 .navbar ul li a {
     color: $color-secondary;
-    font-size: 2em;
+    font-size: 2.5em !important;
 }
 
 .navbar ul li a:hover {

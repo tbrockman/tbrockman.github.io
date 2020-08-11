@@ -86,7 +86,11 @@ h4 {
     justify-content: center;
     display: flex;
     background-color: #fe5858;
-    padding: 0 0.5em;
+    padding: 0 0.4em;
+}
+
+.left-column ul li a {
+    font-size: 40px;
 }
 
 .right-column {
@@ -95,7 +99,7 @@ h4 {
     flex-direction: column;
     justify-content: center;
     margin-right: 1em;
-    max-width: 780px;
+    max-width: 720px;
     width: 100%;
     margin-left: 0.5em;
 }
@@ -116,7 +120,7 @@ h4 {
 
 .name {
     margin: 0;
-    font-size: 0.75em;
+    font-size: 1.25em;
     padding-right: 0.15em;
     padding-bottom: 0.01em;
     font-family: "Arial", sans-serif;
