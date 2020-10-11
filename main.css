@@ -13,6 +13,16 @@
         margin-right: -0.05em;}
 }
 
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Mono";
+    src: url("assets/fonts/Roboto/Roboto-Mono.ttf");
+}
+
 html {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -82,11 +92,11 @@ h4 {
 }
 
 .left-column {
-    height: 100%;
-    justify-content: center;
+    justify-content: space-between;
     display: flex;
     background-color: #fe5858;
-    padding: 0 0.4em;
+    padding: 0 86px;
+    height: 100%;
 }
 
 .left-column ul li a {
@@ -120,20 +130,35 @@ h4 {
 
 .name {
     margin: 0;
-    font-size: 0.8em;
+    font-size: 164px;
     padding-right: 0.15em;
     padding-bottom: 0.01em;
-    font-family: "Arial", sans-serif;
+    font-family: "Dawning of a New Day", sans-serif;
     color: #252525;
 }
 
+.adjective:first-child {
+    font-weight: bold;
+    background-color: #252525;
+    color: #fff;
+    padding-left: 0.25em;
+}
+
+.adjective {
+    font-size: 40px;
+    font-family: "Roboto Mono", sans-serif;
+    font-weight: normal;
+    padding-left: 58px;
+}
+
 .description {
-    margin-top: 0.1em;
+    margin-top: 0.25em;
 }
 
 .description > h4 {
     margin: 0;
     font-weight: normal;
+    font-family: "Arial", sans-serif;
 }
 
 ul {
@@ -171,12 +196,13 @@ a > p {
 .links {
     align-self: center;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    height: 100%;
 }
 
-.links > li {
+/* .links > li {
     margin-bottom: 1.5em;
-}
+} */
 
 .links > li > a:hover {
     color: #fff;
@@ -229,6 +255,7 @@ a > p {
 .leaf {
     height: 0.25em;
     width: 0.25em;
+    margin-bottom: -40px;
 }
 
 .copyright {

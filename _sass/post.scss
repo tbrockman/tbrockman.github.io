@@ -5,8 +5,26 @@ h1 {
     font-size: 6em;
 }
 
+h2 {
+    color: #fe5858;
+    margin-top: 1em;
+    font-size: 3em;
+    font-family: "Montserrat", sans-serif;
+}
+
+img {
+    margin: 2em 0;
+}
+
 .post-container {
     margin-bottom: 4em;
+}
+
+.post-container p {
+    font-size: 18px;
+    margin-bottom: -1em !important;
+    margin-top: 2em !important;
+    font-family: monospace;
 }
 
 .post-header {
@@ -14,6 +32,10 @@ h1 {
     justify-content: center;
     flex-direction: column;
     margin: 4em 0 0;
+}
+
+.highlighter-rouge {
+    margin: 2em 0;
 }
 
 .post-header h1 {

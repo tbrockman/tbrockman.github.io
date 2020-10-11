@@ -1,63 +1,99 @@
-const PROJECTS_LINK = "<a href='#projects' id='nav-link' class='fa fa-wrench' aria-hidden='true'><p>projects</p></a>";
-const BIO_LINK = "<a href='#' id='nav-link' class='fa fa-info-circle' aria-hidden='true'><p>bio</p></a>";
+const state = {
 
-const calculateAge = function() {
-    const BDAY = new Date(1992, 11);
-    const CURR = new Date(Date.now());
-    const diff = Math.abs(CURR.getTime() - BDAY.getTime());
-    const age = Math.floor(diff/31557600000)
-    return age;
+    adjectives: [
+        "softserve developer",
+        "artist",
+        "goof", 
+        "adventurer",
+        "dude",
+        "introvert",
+        "boyfriend",
+        "dog dad",
+        "musician",
+        "friend",
+        "family member"
+    ],
+    currentIndex: 0,
+    maxRender: 3
 }
 
-const renderProject = function(project) {
-    let repo = project.data('repo');
-    let owner = project.data('owner');
-    if (repo && owner) {
-        let apiEndpoint = `https://api.github.com/repos/${owner}/${repo}/commits`;
-        $.get(apiEndpoint, function(commits) {
-            var date = new Date(Date.parse(commits[0].commit.author.date));
-            project.text(' - latest commit ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());
-            project.prepend($('<i class="fa fa-github"></i>'));
-        });
+
+const initializePage = () => {
+    initializeAdjectives()
+}
+
+const createAdjectiveElement = (position, text) => {
+    element = document.createElement("div")
+    element.className = "adjective"
+    element.innerHTML = position == 0 ? "> " + text: text
+    return element
+}
+
+const initializeAdjectives = () => {
+    const adjectivesContainer = document.getElementById("adjectives")
+    
+    for (let i = 0; i < state.maxRender+1; i++) {
+
+        console.log(state.currentIndex, state.adjectives.length, mod(state.currentIndex + i, state.adjectives.length))
+        const adj = state.adjectives[mod(state.currentIndex + i, state.adjectives.length)]
+        console.log(adj)
+        const element = createAdjectiveElement(i, adj)
+        adjectivesContainer.appendChild(element)
     }
 }
 
-const renderProjectURLS = function() {
-    let projects = $('.project-header > h2:nth-of-type(2)');
+const renderAdjectives = () => {
+    const children = []
+    const adjectivesContainer = document.getElementById("adjectives")
+    for (let i = 0; i < state.maxRender+1; i++) {
 
-    for (var i = 0; i < projects.length; i++) {
-        let project = $(projects[i]);
-        renderProject(project);
+        console.log(state.currentIndex, state.adjectives.length, mod(state.currentIndex + i, state.adjectives.length))
+        const adj = state.adjectives[mod(state.currentIndex + i, state.adjectives.length)]
+        console.log(adj)
+        const element = createAdjectiveElement(i, adj)
+        adjectivesContainer.replaceChild(element, adjectivesContainer.children[i])
     }
 }
 
-const renderAgeText = function() {
-    let text = 'is a ' + calculateAge() +
-    '-year-old software developer who spends most of his spare time playing \
-    video games and rock climbing. \
-    He also sometimes produces bad music. \
-    He likes coffee and hip hop and has never taken a long walk on the beach.';
+const cycleDownAdjectives = () => {
+    const adjectivesContainer = document.getElementById("adjectives")
+    adjectivesContainer.removeChild(adjectivesContainer.lastChild)
+    const adj = state.adjectives[state.currentIndex]
+    const element = createAdjectiveElement(mod(state.currentIndex + state.maxRender, state.adjectives.length), adj)
 
-    $('#bio').text(text);
+    adjectivesContainer.prepend(element)
 }
 
-const renderProjects = function() {
-    $('#text-section').load('./projects.html', renderProjectURLS);
-    $('#nav-link').replaceWith(BIO_LINK);
+const cycleUpAdjectives = () => {
+    const adjectivesContainer = document.getElementById("adjectives")
+
+    adjectivesContainer.removeChild(adjectivesContainer.firstChild)
+    const adj = state.adjectives[state.currentIndex]
+    const element = createAdjectiveElement(i, adj)
+
+    adjectivesContainer.append(element)
 }
 
-const renderBio = function() {
-    $('#text-section').load('./bio.html', renderAgeText);
-    $('#nav-link').replaceWith(PROJECTS_LINK);
+const mod = (n, m) => {
+    return ((n % m) + m) % m;
 }
 
-const renderPage = function() {
-    if (window.location.hash === '') {
-        renderBio();
-    } else if (window.location.hash === 'projects') {
-        renderProjects();
+document.addEventListener('keydown', (e) => {
+    console.log(e)
+    
+
+    if (e.code == "ArrowDown") {
+        state.currentIndex =  mod(state.currentIndex + 1, state.adjectives.length)
+
+        renderAdjectives()
     }
-}
 
-$(window).on('load', renderPage);
-$(window).on('hashchange', renderPage);
+    else if (e.code == "ArrowUp") {
+        state.currentIndex =  mod(state.currentIndex - 1, state.adjectives.length)
+        
+        renderAdjectives()
+    }
+})
+
+window.addEventListener('load', initializePage);
+window.addEventListener('hashchange', initializePage);

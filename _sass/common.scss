@@ -1,5 +1,11 @@
 $color-primary: #fe5858;
 
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/fonts/font/Roboto-Regular.tff");
+}
+
 html {
     height: 100%;
 }
@@ -11,7 +17,6 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #eee;
 }
 
 .page-container {
@@ -23,10 +28,6 @@ body {
     z-index: 1;
     flex: 1;
     background-color: #fff;
-}
-
-.page-container p {
-    font-size: 32px;
 }
 
 a {
