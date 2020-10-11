@@ -11,7 +11,7 @@ Another day, another **`hello world`** software developer blog post.
 
 Today's blog is about me finding a small issue allowing abuse of an open-source application, me notifying the author poorly, the issue not being addressed, and me creating a fork that solves the problem.
 
-Let's skip the introductions and just get straight into the thick of it. 
+Let's skip the introductions and just get into it. 
 
 ## Utterances
 
@@ -27,6 +27,8 @@ Being really impressed by the plugin, suspicious of things that implement oauth,
         crossorigin="anonymous"
         async>
 ```
+
+With the above script included, Utterances will inject an iframe at the scripts location, and attempt to retrieve the comments linked to an issue specified by the repo and issue-term. It will then render all comments (with remarkably similar styling to Github) in its place.
 
 ## Helpful features
 
@@ -46,12 +48,12 @@ Usually I just give limited access to any of my accounts whenever anyone asks fo
 
 Tracing the code from the start of the flow, we see the **`Sign in to comment`** button sends us to the Utterances API server with a redirect parameter back to our original website.
 
-[utterances/src/new-comment-component.ts#L72](https://github.com/utterance/utterances/blob/master/src/new-comment-component.ts#L72)
+[`utterances/src/new-comment-component.ts#L72`](https://github.com/utterance/utterances/blob/master/src/new-comment-component.ts#L72)
 ```html
 <a class="btn btn-primary" href="${getLoginUrl(page.url)}" target="_top">Sign in to comment</a>
 ```
 
-[utterances/src/oauth.ts#L7](https://github.com/utterance/utterances/blob/master/src/oauth.ts#L7)
+[`utterances/src/oauth.ts#L7`](https://github.com/utterance/utterances/blob/master/src/oauth.ts#L7)
 ```javascript
 export function getLoginUrl(redirect_uri: string) {
   return `${UTTERANCES_API}/authorize?${param({ redirect_uri })}`;
@@ -60,7 +62,7 @@ export function getLoginUrl(redirect_uri: string) {
 
 Going to the server side code, you can see that the Utterances API generates some secret state and builds a redirect URL to request the necessary scopes for the user from Github, and sets a URL where the user will be redirected should they approve the request.
 
-[utterances-oauth/src/routes.ts#L74](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L74)
+[`utterances-oauth/src/routes.ts#L74`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L74)
 ```javascript
 async function authorizeRequestHandler(origin: string, search: URLSearchParams) {
   const { client_id, state_password } = settings;
@@ -85,7 +87,7 @@ async function authorizeRequestHandler(origin: string, search: URLSearchParams) 
 
 Assuming successful parsing of received authorization code and state from query parameters, it uses the parsed values for acquiring an access token from Github, which will then be stored as a cookie to be sent along with future requests to the Utterances API.
 
-[utterances-oauth/src/routes.ts#L123](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L123)
+[`utterances-oauth/src/routes.ts#L123`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L123)
 ```javascript
 let accessToken: string;
 try {
@@ -125,7 +127,7 @@ In order to be even more user-friendly, Utterances will go through doing some of
 
 Looking into the code, we can see the section where if there is no issue, it sends a create issue request.
 
-[utterances/src/utterances.ts#L57](https://github.com/utterance/utterances/blob/master/src/utterances.ts#L57)
+[`utterances/src/utterances.ts#L57`](https://github.com/utterance/utterances/blob/master/src/utterances.ts#L57)
 ```javascript
 const submit = async (markdown: string) => {
   await assertOrigin();
@@ -147,7 +149,7 @@ const submit = async (markdown: string) => {
 
 The handler for that request is so eager to please, it almost immediately starts to create the specified issue for you, it just makes sure you're an authenticated Github user first.
 
-[utterances-oauth/src/routes.ts#L123](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L123)
+[`utterances-oauth/src/routes.ts#L123`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L123)
 ```javascript
 const authInit = {
   method: 'GET',
@@ -181,3 +183,16 @@ try {
 ```
 
 This means that any authenticated Github user can use the Utterances API to create issues anywhere the bot is allowed. This is particularly unfortunate as it means that the bot can be abused to create issues wherever it has access. A single fake account could be used for a DoS of the application, simply by consuming the bots rate limit by spamming issue creation.
+
+## Proof of concept
+
+As someone who rarely informs others of application vulnerabilities, I made an error before responsibly disclosing the issue. Initially, I wanted to test out what I had found (and didn't believe it would honestly work), so I sent a handcrafted request to the Utterances API server which ended up [working and immediately disclosing the vulnerability](https://github.com/utterance/utterances/issues/380).
+
+![Testing the Utterances vulernability](/assets/img/utterance_testing_vulnerability.png)
+
+Frantically realizing I had goofed, I sought to contact the author and apologize for my lack of responsible disclosure:
+> Hey! I recently found out about Utterances and was super excited to implement it into my own website as I work through a redesign, and then became curious as to how things worked on the backend to prevent things like people maliciously spamming Github issue creation using the API token that the API provides to the client.
+> 
+> Not to cause you too much alarm or anything, and perhaps you're already aware of this, but the way the backend is currently setup allows anyone to take that token and create arbitrarily many Github issues on any configured repositories, proof of the vulnerability here: https://github.com/utterance/utterances/issues/380 (sorry for testing this out in a public place, in retrospect I realize this wasn't very tactful and I didn't think about it until after it was already done)
+> 
+> That said, I'm very passionate about the project, and if Github doesn't have any plans to adopt Utterances directly into Github pages or anything that would make my work obsolete, I would love to help address the vulnerability!

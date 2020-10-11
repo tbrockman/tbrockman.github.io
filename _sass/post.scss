@@ -13,7 +13,9 @@ h2 {
 }
 
 img {
-    margin: 2em 0;
+    margin: 2em auto;
+    display: flex;
+    max-width: -webkit-fill-available;
 }
 
 .post-container {
@@ -22,9 +24,14 @@ img {
 
 .post-container p {
     font-size: 18px;
-    margin-bottom: -1em !important;
-    margin-top: 2em !important;
+    line-height: 2em;
+}
+
+.post-container p a .highlighter-rouge {
     font-family: monospace;
+    display: block;
+    margin-top: 2em;
+    margin-bottom: 0;
 }
 
 .post-header {
@@ -35,7 +42,7 @@ img {
 }
 
 .highlighter-rouge {
-    margin: 2em 0;
+    margin-bottom: 2em;
 }
 
 .post-header h1 {
