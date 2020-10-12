@@ -18,13 +18,23 @@ img {
     max-width: -webkit-fill-available;
 }
 
+blockquote {
+    margin: 2em 0;
+    padding: 0 2em;
+    border-left: 0.5em solid #eee;
+}
+
+li {
+    line-height: 2rem;
+}
+
 .post-container {
     margin-bottom: 4em;
 }
 
 .post-container p {
     font-size: 18px;
-    line-height: 2em;
+    line-height: 2rem;
 }
 
 .post-container p a .highlighter-rouge {
