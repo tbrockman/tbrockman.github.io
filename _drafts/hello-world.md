@@ -11,13 +11,13 @@ Another day, another **`hello world`** software developer blog post.
 
 Today's blog is about me finding a small issue allowing abuse of an open-source application, me notifying the author poorly, the issue not being addressed, and me creating a fork that solves the problem.
 
-Let's skip the introductions and just get into it. 
+Let's get into it. 
 
 ## Utterances
 
 [Utterances](https://utteranc.es) is an open-source Typescript plugin which integrates with [Github](https://github.com) to allow comment sections backed by [Github issues](https://github.com/tbrockman/tbrockman.github.io/issues), which when you combine it with something like [Github pages](https://pages.github.com/), gives the ability to host a static website with comments, for **free**! It also looks pretty nice and works on mobile.
 
-Being really impressed by the plugin, suspicious of things that implement oauth, and naturally curious, I was eager to know how this small little Javascript application worked.
+Being really impressed by the plugin, suspicious of things that implement oauth flows, and naturally curious, I was eager to know how this small little Javascript application worked.
 
 ```html
 <script src="https://utteranc.es/client.js"
@@ -28,7 +28,7 @@ Being really impressed by the plugin, suspicious of things that implement oauth,
         async>
 ```
 
-With the above script included, Utterances will inject an iframe at the scripts location, and attempt to retrieve the comments linked to an issue specified by the repo and issue-term. It will then render all comments (with remarkably similar styling to Github) in its place.
+With the above script included on your webpage, Utterances will inject an iframe at the scripts location, and attempt to retrieve the comments linked to an issue specified by the repo and issue-term. It will then render all comments (with remarkably similar styling to Github) in its place.
 
 ## Helpful features
 
@@ -44,9 +44,9 @@ And afterwards you're able to comment, *just like you're on Github!*
 
 ![Utterances comments](/assets/img/utterance_comments.png)
 
-Usually I just give limited access to any of my accounts whenever anyone asks for it (*what's the worst that could happen?*), but the application is open-source so I thought I would peek around here a bit.
+Usually I just give access to any of my accounts whenever anyone asks for it (*what's the worst that could happen?*), but the application is open-source so I thought I may aswell peek around a little bit.
 
-Tracing the code from the start of the flow, we see the **`Sign in to comment`** button sends us to the Utterances API server with a redirect parameter back to our original website.
+Tracing the code from the start of the flow, we see the **`Sign in to comment`** button sends us to an endpoint from the Utterances API with a redirect parameter back to our original website.
 
 [`utterances/src/new-comment-component.ts#L72`](https://github.com/utterance/utterances/blob/master/src/new-comment-component.ts#L72)
 ```html
@@ -60,7 +60,7 @@ export function getLoginUrl(redirect_uri: string) {
 }
 ```
 
-Going to the server side code, you can see that the Utterances API generates some secret state and builds a redirect URL to request the necessary scopes for the user from Github, and sets a URL where the user will be redirected should they approve the request.
+Going to the backend code, you can see that the Utterances API generates some secret state and builds a redirect URL to request the necessary scopes for the user from Github, and sets a URL where the user will be redirected should they approve the request.
 
 [`utterances-oauth/src/routes.ts#L74`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L74)
 ```javascript
@@ -182,7 +182,7 @@ try {
   ...
 ```
 
-This means that any authenticated Github user can use the Utterances API to create issues anywhere the bot is allowed. A single fake account could be used for a DoS of the application, simply by consuming the bots rate limit by spamming issue creation. It doesn't even have to be an account that's specifically 
+This means that any authenticated Github user can use the Utterances API to create issues anywhere the bot is allowed. A single account could be used for a DoS'ing the application, simply by consuming the bots rate limit by spamming issue creation.
 
 ## Proof of concept
 
@@ -190,7 +190,7 @@ As someone who rarely informs others of application vulnerabilities, I made an e
 
 ![Testing the Utterances vulernability](/assets/img/utterance_testing_vulnerability.png)
 
-Frantically, realizing I had goofed, I sought to contact the author in an e-mail and apologize for my lack of responsible disclosure:
+Frantically, realizing I had goofed, I sought to contact the author in an e-mail and apologize for my lack of tact:
 > **Theo:**
 > 
 > Hey! I recently found out about Utterances and was super excited to implement it into my own website as I work through a redesign, and then became curious as to how things worked on the backend to prevent things like people maliciously spamming Github issue creation using the API token that the API provides to the client.
@@ -208,7 +208,9 @@ The author did not initially believe this to be an issue:
 > I don't think this is a vulnerability. The API token generated by utterances is specific to the user. Any user can generate a much more permissive personal access token using the github user interface:
 [https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token)
 
-I began to doubt myself, whether what I had found really *was* a problem, and my understanding of what the backend was doing was flawed. Did I know anything? Was I just an overcautious dumb dumb? But I was not deterred.
+I began to doubt myself and whether what I had found really *was* a problem. Was my understanding of the backend flawed? Did I know *anything*? Was I just an overcautious **dumb dumb**? 
+
+No. I am *software engineer*.
 
 > **Theo:**
 > 
@@ -221,14 +223,54 @@ I began to doubt myself, whether what I had found really *was* a problem, and my
 > 
 > Of course there's the possibility I've misunderstood the backend code, but hopefully this clarifies what I see as potential issues!
 
-I then suggested an embarrassing fix that was:
-1. Overcomplicated for a free open-source application
-2. Partially wrong because I misunderstood the code, I thought issue creation was using the user access token which was not the case.
+With overwhelming specificity and lack of judgement, I was successful. They lowered their guard.
+
+> **Author**:
+>
+> 1 and 2 are correct. Utterances relies on github's rate limiting. It would not make sense to create issues with the user's access token because the user would later be able to modify the title/body resulting in the issue becoming unlinked from the blog post.
+
+I then ruined my progress but suggesting a pretty poor fix that was:
+1. Overcomplicated
+2. Required **more** server-side processing and resources
+3. Immediately wrong because sometime between the previous e-mail and the last I sent I had forgotten that one check that I thought was redundant was using the *requesting users* Github access token to verify its validity (and would actually be necessary)
 
 > **Theo:**
 >
 > So you understand how the application is vulnerable to denial of service attacks leveraging the above?
 > 
 > I wasn't going to suggest that, my plan to address this myself would be to remove the first check (you don't need to check Github for whether a given token is valid, if it's not a valid token the issue creation will fail and Github will let you know, this will reduce latency of this endpoint as well), implement rate limiting on a per token basis (you could do this in memory if hosted on a single instance, or some sort of distributed cache otherwise), and finally as an added measure give users the ability to specify an optional field in the "utterances.json" file, listing the names of issues that can be created, and on issue create request Utterances would check whether a given issue with one of the matching terms has already been created, if it has the request will return a 400 status code response.
+> 
+> But if you're not worried about this at all yourself, that's totally okay.
 
-But if you're not worried about this at all yourself, that's totally okay.
+Needless to say I lost the authors faith, and have not yet heard back.
+
+## Onward and upward
+
+I don't blame the author for not responding. I can't imagine it's enjoyable maintaining an open-source project for free, let alone having random strangers come to you with *more* work they want you to do without any compensation. It would have been nice if we could have worked together to fix the problem, but everything can't always work out the way you hoped.
+
+So we have to move on and do what we can with what we have. Ruminating on my failure, I thought of more realistic ways to keep the same user-friendliness, while also avoiding having to deal with people who like to ruin nice things, and without spending more money.
+
+The crux of the problem is that we want a way of automatically creating Github issues whenever we make a new blog post. For most people linking their blog posts to Github issues, they're probably hosting their blog on Github. For those people hosting their blog on Github, they're probably using [Jekyll](https://jekyllrb.com/) underneath--people like me, who is who I'm really all this for anyways.
+
+From this, we know that any of our blog posts will be present in a folder (probably `_posts`), and having access to all the text within those files, we can create issues that are filled with that text, as well as create a helpful backlink to the specific post, and we can do all of this using...
+
+## Github Actions
+
+Heard enough about these yet?
+
+> GitHub Actions usage is free for public repositories and self-hosted runners - [source](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions)
+
+
+If you're using Github issues, your blog repo is probably public anyways, so this route is free so long as you're not creating new posts like a madman. Within Github Actions, you even have access to a `github_token` environment variable that contains an access token which you can use to create issues using the Github API.
+
+I made this Github Action, which when given a configuration file in `.github/social.yml` containing something like the following, will automatically create the issues for you:
+
+```yml
+url: 
+  base_url: 'https://tbrockman.github.io/' # blog base url, used for back-linking
+  format: jekyll # base_url/[categories/]yyyy/mm/dd/title.html
+posts: # list of Glob patterns which will match blog posts to create issues from
+  - _posts/*
+```
+
+I then deployed my own version of the API, which *does not* bend over backwards to create issues for you, and use my own version of the Utterances client (which you can find and use here) which doesn't rely on any of that functionality.

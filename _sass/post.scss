@@ -26,6 +26,13 @@ blockquote {
 
 li {
     line-height: 2rem;
+    font-size: 18px;
+    padding-left: 0.5em;
+}
+
+p > code {
+    background-color: #eee;
+    padding: 3px;
 }
 
 .post-container {
