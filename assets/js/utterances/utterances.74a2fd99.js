@@ -2142,15 +2142,20 @@ function bootstrap() {
             return [2];
           }
 
-          if (!(!issue && _pageAttributes.pageAttributes.autocreate)) return [3, 4];
-          return [4, (0, _github.createIssue)(_pageAttributes.pageAttributes.issueTerm, _pageAttributes.pageAttributes.url, _pageAttributes.pageAttributes.title, _pageAttributes.pageAttributes.description || '', _pageAttributes.pageAttributes.label)];
+          if (!(!issue && _pageAttributes.pageAttributes.autocreate)) return [3, 5];
+          return [4, assertOrigin()];
 
         case 3:
-          issue = _b.sent();
-          timeline.setIssue(issue);
-          _b.label = 4;
+          _b.sent();
+
+          return [4, (0, _github.createIssue)(_pageAttributes.pageAttributes.issueTerm, _pageAttributes.pageAttributes.url, _pageAttributes.pageAttributes.title, _pageAttributes.pageAttributes.description || '', _pageAttributes.pageAttributes.label)];
 
         case 4:
+          issue = _b.sent();
+          timeline.setIssue(issue);
+          _b.label = 5;
+
+        case 5:
           (0, _reactions.enableReactions)(!!user);
 
           submit = function submit(markdown) {
