@@ -9,15 +9,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Checkout private actions
-        uses: actions/checkout@v2
-        with:
-          repository: tbrockman/github-social-action
-          ref: master
-          token: ${{ secrets.GITHUB_TOKEN }}
-          path: .github/actions/github-social-action
       - name: Create issues
-        uses: ./.github/actions/github-social-action
-        id: yabadaba
+        uses: tbrockman/social-action@v1.0.0
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }} 
