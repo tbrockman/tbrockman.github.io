@@ -10,6 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Create issues
-        uses: tbrockman/social-action@1.0.1
+        uses: tbrockman/social-action@1.0.2
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
