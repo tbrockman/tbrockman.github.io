@@ -1,0 +1,5 @@
+url: 
+  base_url: 'https://isitajam.com/'
+  format: jekyll # base/[categories/]yyyy/mm/dd/title.html
+posts:
+  - _drafts/*
