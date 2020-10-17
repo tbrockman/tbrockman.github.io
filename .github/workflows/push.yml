@@ -15,9 +15,9 @@ jobs:
           repository: tbrockman/github-social-action
           ref: master
           token: ${{ secrets.GITHUB_TOKEN }}
-          path: action.yml
+          path: .github/actions/github-social-action
       - name: Create issues
-        uses: action.yml
+        uses: ./.github/actions/github-social-action
         id: yabadaba
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }} 
