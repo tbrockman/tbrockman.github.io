@@ -188,7 +188,7 @@ This means that any authenticated Github user can use the Utterances API to crea
 
 As someone who rarely informs others of application vulnerabilities, I made an error before responsibly disclosing the issue. Initially, I wanted to test out what I had found (and didn't believe it would honestly work), so I sent a handcrafted request to the Utterances API server which ended up [working and immediately unveiling the vulnerability](https://github.com/utterance/utterances/issues/380).
 
-![Testing the Utterances vulernability](/assets/img/utterance_testing_vulnerability.png)
+![Testing the Utterances vulernability]({% link /assets/img/utterance_testing_vulnerability.png %})
 
 Frantically, realizing I had goofed, I sought to contact the author in an e-mail and apologize for my lack of tact:
 > **Theo:**
@@ -268,11 +268,23 @@ If you're using Github issues for blogs, your Github repo is probably public any
 I made this Github Action which, when given a configuration file `.github/social.yml` containing something like the following, will automatically create new issues for you as necessary:
 
 ```yml
-url: # used for back-linking from Github to the blog post
-  base_url: 'https://tbrockman.github.io/' # blog base url, 
-  format: jekyll # base_url/[categories/]yyyy/mm/dd/title.html
-posts: # list of Glob patterns which will match blog posts to create issues from
-  - _posts/*
+renderer: jekyll # this is the only format which is supported
+                 # but perhaps one day someone will add another
+                                 
+display: content # what to be written in the issue body 
+                 # choose from a post property
+
+base_url: 'https://isitajam.com' # used for resolving relative links
+
+paths:       # list of Glob patterns which will 
+  - _posts/* # match blog posts to create issues from
 ```
 
-I then deployed my own version of the API, which *does not* bend over backwards to create issues for you, and use my own version of the Utterances client (which you can find and use here) which doesn't rely on any of that functionality.
+It imports Jekyll, renders any posts it has to, and then uses the rendered content to create issues as necessary.
+
+## (GitHub) Social OAuth
+
+I don't think I can legally name this application GitHub Social, but if anyone at Microsoft wants to make it a reality send me a message.
+
+After finishing the GitHub action I deployed my own version of the API which *doesn't* bend over backwards to create issues for you (if anything it sways *forwards*, and does very little), and set a fork of the Utterances client to point to it (which you can find and use here). It doesn't contain any of the automatic issue creation code.
+

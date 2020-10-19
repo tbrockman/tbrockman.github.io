@@ -1,5 +1,6 @@
-url: 
-  base_url: 'https://isitajam.com/'
-  format: jekyll # base/[categories/]yyyy/mm/dd/title.html
-posts:
+renderer: jekyll
+display: content
+base_url: 'https://isitajam.com'
+paths:
+  - _posts/*
   - _drafts/*

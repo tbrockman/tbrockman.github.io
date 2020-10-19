@@ -6,6 +6,4 @@ author: Theodore Brockman
 categories: windows docker
 ---
 
-
-
-https://forums.docker.com/t/docker-for-windows-should-resync-vm-time-when-computer-resumes-from-sleep/17825/29
+![Testing the Utterances vulernability]({% link /assets/img/utterance_testing_vulnerability.png %})
