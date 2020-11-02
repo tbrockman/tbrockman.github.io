@@ -1,4 +1,9 @@
 $color-primary: #fe5858;
+$color-hover: #cc4949;
+
+a:hover {
+    color: $color-hover;
+}
 
 h1 {
     color: $color-primary;
@@ -24,15 +29,16 @@ blockquote {
     border-left: 0.5em solid #eee;
 }
 
-li {
-    line-height: 2rem;
-    font-size: 18px;
-    padding-left: 0.5em;
-}
-
 p > code {
     background-color: #eee;
     padding: 3px;
+    margin: 2px;
+}
+
+p > strong > code {
+    background-color: #eee;
+    padding: 3px;
+    margin: 2px;
 }
 
 .post-container {
@@ -64,8 +70,9 @@ p > code {
 
 .post-header h1 {
     font-family: "Montserrat", sans-serif;
-    margin-bottom: 0.75em;
     font-weight: normal;
+    margin: 0;
+    margin-bottom: 0.25em;
 }
 
 .post-header h4 {

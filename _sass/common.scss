@@ -1,5 +1,5 @@
 $color-primary: #fe5858;
-
+$color-hover: #d14b4b;
 
 @font-face {
     font-family: "Roboto";
@@ -8,6 +8,12 @@ $color-primary: #fe5858;
 
 html {
     height: 100%;
+}
+
+li {
+    line-height: 2rem;
+    font-size: 18px;
+    padding-left: 0.5em;
 }
 
 body {
@@ -44,4 +50,11 @@ a.fa {
 .subtext {
     font-weight: normal;
     color: #cccccc;
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+    color: #fe5858;
+    font-size: 6em;
 }

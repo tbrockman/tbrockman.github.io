@@ -78,9 +78,28 @@ const mod = (n, m) => {
     return ((n % m) + m) % m;
 }
 
+let timer;
+let interval = 3000;
+
+const startInterval = () => {
+    timer = window.setInterval(() => {
+        state.currentIndex =  mod(state.currentIndex + 1, state.adjectives.length)
+    
+        renderAdjectives()
+    }, interval)
+}
+
+const restartInterval = () => {
+    clearInterval(timer);
+    startInterval();
+}
+
+startInterval();
+
 document.addEventListener('keydown', (e) => {
     console.log(e)
-    
+
+    restartInterval()    
 
     if (e.code == "ArrowDown") {
         state.currentIndex =  mod(state.currentIndex + 1, state.adjectives.length)
