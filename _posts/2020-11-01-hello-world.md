@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "hello world"
-date:   2020-08-02 21:33:11 -0700
+title: hello world
+date: 2020-11-01 18:18:00 -0700
 author: Theodore Brockman
-categories: plugins github utterances
+categories: security github oss utterances
 excerpt: Hey there! Come join me on a journey of discovery and disappointment as I investigate Utterances, a popular third-party Github application.
 thumbnail: /assets/img/hello_world_thumbnail.png
 ---

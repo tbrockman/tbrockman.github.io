@@ -12,4 +12,4 @@ jobs:
       - name: Create issues
         uses: tbrockman/social-action@1.0.0
         env:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
