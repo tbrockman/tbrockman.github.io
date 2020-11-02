@@ -266,7 +266,7 @@ Heard enough about these yet?
 
 If you're using Github issues for blogs, your Github repo is probably public anyways, so this route is free so long as you're not creating more than one PR every two seconds. Within Github Actions, you even have access to a secret that contains an access token which you can use to create issues using the Github API.
 
-I made this Github Action which, when given a configuration file `.github/social.yml` containing something like the following, will automatically create new issues for you as necessary:
+I made [this Github Action which](https://github.com/marketplace/actions/social-action), when given a configuration file `.github/social.yml` containing something like the following, will automatically create new issues for you as necessary:
 
 ```yml
 api_version: v1/social # versioned configuration API
@@ -286,7 +286,7 @@ paths:       # list of Glob patterns which will
 
 It imports Jekyll, renders any posts it has to, and then uses the rendered content to create issues as necessary.
 
-After finishing the GitHub action I deployed my own version of the API which *doesn't* bend over backwards to create issues for you, and set a fork of the Utterances client to point to it (which you can find and use here). It doesn't contain any of the automatic issue creation code.
+After finishing the GitHub action I deployed my own version of the API which *doesn't* bend over backwards to create issues for you, and set a fork of the Utterances client to point to it (which you can find and use [here](https://isitajam.com/client.js)). It doesn't contain any of the automatic issue creation code.
 
 That's it, that's all there is to it.
 
