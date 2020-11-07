@@ -30,9 +30,10 @@ blockquote {
 }
 
 p > code {
-    background-color: #eee;
-    padding: 3px;
-    margin: 2px;
+    padding: 5px !important;
+    margin: 4px;
+    border-radius: 0 !important;
+    color: #fff !important;
 }
 
 p > strong > code {
@@ -55,6 +56,11 @@ p > strong > code {
     display: block;
     margin-top: 2em;
     margin-bottom: 0;
+    border-radius: 0 !important;
+    width: fit-content;
+    padding: 0.25em 0.5em;
+    background-color: #fe5858;
+    color: #ffffff;
 }
 
 .post-header {
@@ -107,4 +113,5 @@ p > strong > code {
 
 .highlight pre {
     padding: 2em 1em;
+    margin: 0;
 }

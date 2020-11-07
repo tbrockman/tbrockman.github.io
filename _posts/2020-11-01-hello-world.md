@@ -290,11 +290,11 @@ After finishing the GitHub action I deployed my own version of the API which *do
 
 That's it, that's all there is to it.
 
-## Final remarks
+## Conclusion
 
 I think I would get in trouble if I tried to name this application `GitHub Social`, but if anyone at Microsoft wants to make it a reality send me a message.
 
-We'll just call it `Social` instead for now.
+Let's just call it `Social` instead for now.
 
 You can check out the code on GitHub:
 
