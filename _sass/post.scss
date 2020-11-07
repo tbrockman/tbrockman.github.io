@@ -24,9 +24,10 @@ img {
 }
 
 blockquote {
-    margin: 2em 0;
-    padding: 0 2em;
-    border-left: 0.5em solid #eee;
+    margin: 4em 0;
+    padding: 2em 4em;
+    background-color: #f6f8fa;
+    color: #101010;
 }
 
 p > code {
@@ -114,4 +115,5 @@ p > strong > code {
 .highlight pre {
     padding: 2em 1em;
     margin: 0;
+    background: #252525 !important;
 }
