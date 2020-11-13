@@ -1,6 +1,28 @@
 $color-primary: #fe5858;
 $color-secondary: #252525;
 $color-mouseover: #fff;
+$breakpoint-main: 1400px;
+
+@media(max-width: $breakpoint-main) {
+    .navbar {
+        position: fixed;
+        z-index: 10;
+
+        .container {
+            max-width: 100%;
+            justify-content: flex-end !important;
+        
+            div:not(.hamburger) {
+                display: none !important;
+            }
+
+            .hamburger {
+                display: block !important;
+                padding-right: 2em;
+            }
+        }
+    }
+}
 
 .navbar {
     display: flex;
@@ -8,24 +30,21 @@ $color-mouseover: #fff;
     background-color: $color-primary;
     align-items: center;
     justify-content: center;
-}
 
-.navbar ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 0;
-    padding: 3em 0;
-}
+    .container {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        padding: 3em 0;
+        max-width: 1600px;
 
-.navbar ul li a {
-    color: $color-secondary;
-    font-size: 2.5em !important;
-    margin: 0 1.7em;
-}
+        div a:hover {
+            cursor: pointer;
+            color: $color-mouseover;
+        }
 
-.navbar ul li a:hover {
-    cursor: pointer;
-    color: $color-mouseover;
+        .hamburger {
+            display: none;
+        }
+    }
 }

@@ -1,0 +1,113 @@
+.gold {
+    color: #e0ab3b;
+}
+
+.white {
+    color: #eee;
+}
+
+.green {
+    color: #8BC34A;
+}
+
+.blue {
+    color:#25bbff;
+}
+
+.comment-grey {
+    color: #6f6f6f;
+}
+
+.pink {
+    color: #ff8cb0;
+}
+
+body {
+    font-family: monospace;
+    background-color: #252525;
+    color: #eee;
+    margin: 0;
+    padding: 2em 0;
+}
+
+p {
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+.resume-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.resume-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.section-separator {
+    margin: auto; 
+    width: fit-content;
+    padding: 1em 0;
+}
+
+.section-icon-container {
+    display: flex;
+    justify-content: center;
+    min-width: 14em;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+}
+
+.section-icon-container div {
+    margin-top: 1em;
+}
+
+.skills-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill {
+    display: flex;
+}
+
+.work-experience-section {
+    display: flex;
+}
+
+.work-experience-header {
+    display: flex;
+}
+
+.inner-section-separator {
+    padding: 1em 0;
+}
+
+.projects-section {
+    display: flex;
+}
+
+.projects-header {
+    display: flex;
+}
+
+.open-source-section {
+    display:  flex;
+}
+
+.open-source-header {
+    display: flex;
+}
+
+.education-section {
+    display: flex;
+    justify-content: flex-start;
+}
