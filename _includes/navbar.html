@@ -1,14 +1,52 @@
 <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.min.css">
-<div class="navbar">
-    <div class="container">
+<script src="/assets/js/navbar.js"></script>
+<div id="navbar" class="navbar">
+    <div id="navbar-header" class="container">
         <!-- <li><a href="/" class="fa fa-home" aria-hidden="true" title="home"></a></li> -->
         <div><a href="/blog" class="fa fa-pencil-square" aria-hidden="true" title="blog"></a></div>
+        <div><a href="https://github.com/tbrockman/" class="fa fa-github" aria-hidden="true" title="github"></a></div>
+        <div><a href="https://www.linkedin.com/in/theodore-brockman-1a276b116/" class="fa fa-linkedin-square" aria-hidden="true" title="linkedin"></a></div>
         <div><a href="/feed.xml" class="fa fa-rss" aria-hidden="true" title="rss"></a></div>
         <div><a href="mailto:tmanbrock@gmail.com" class="fa fa-envelope-o" aria-hidden="true" title="email"></a></div>
-        <div><a href="https://www.linkedin.com/in/theodore-brockman-1a276b116/" class="fa fa-linkedin-square" aria-hidden="true" title="linkedin"></a></div>
-        <div><a href="https://github.com/tbrockman/" class="fa fa-github" aria-hidden="true" title="github"></a></div>
         <div><a href="https://soundcloud.com/nat-port/" class="fa fa-soundcloud" aria-hidden="true" title="soundcloud"></a></div>
-        <div class="hamburger"><a href="" class="fa fa-bars" aria-hidden="true" title="links"></a></div>
+    <div id="hamburger" class="hamburger"><a class="fa fa-bars" aria-hidden="true" title="links" onclick="test(event)"></a></div>
     </div>
-    <div class="hamburger-expand"></div>
+    <div id="navbar-drawer" class="navbar-drawer">
+        <a href="/blog" >
+            <div>
+                <div>blog</div>
+                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+            </div>
+        </a>
+        <a href="https://github.com/tbrockman/">
+            <div>
+                <div>github</div>
+                <i href="" class="fa fa-github" aria-hidden="true" title="github"></i>
+            </div>
+        </a>
+        <a href="https://www.linkedin.com/in/theodore-brockman-1a276b116/">
+            <div>
+                <div>linkedin</div>
+                <i class="fa fa-linkedin-square" aria-hidden="true" title="linkedin"></i>
+            </div>
+        </a>
+        <a href="/feed.xml">
+            <div>
+                <div>rss</div>
+                <i class="fa fa-rss" aria-hidden="true" title="rss"></i>
+            </div>
+        </a>
+        <a href="mailto:tmanbrock@gmail.com">
+            <div>
+                <div>email</div>
+                <i class="fa fa-envelope-o" aria-hidden="true" title="email"></i>
+            </div>
+        </a>
+        <a href="https://soundcloud.com/nat-port/">
+            <div>
+                <div>soundcloud</div>
+                <i class="fa fa-soundcloud" aria-hidden="true" title="soundcloud"></i>
+            </div>
+        </a>
+    </div>
 </div>

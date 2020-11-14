@@ -2,6 +2,50 @@ $color-primary: #fe5858;
 $color-hover: #cc4949;
 $color-secondary: #252525;
 
+$breakpoint-navbar: 1400px;
+$breakpoint-padding: 1200px;
+
+@media(max-width: $breakpoint-navbar) {
+    .blog-list-container {
+        margin-top: 178px !important;
+
+        .blog-list {
+
+            a {
+                margin: 0 4rem;
+                height: fit-content;
+                width: fit-content;
+                
+                div {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+
+    .blog-post-preview {
+        .blog-post-title {
+            font-size: 8rem;
+        }
+    }
+
+    
+    .blog-post-excerpt {
+        font-size: 2rem;
+    }
+
+    .blog-post-thumbnail {
+        align-self: center;
+    }
+}
+
+@media(max-width: $breakpoint-padding) {
+    .page-container {
+        padding: 0 6em !important;
+    }
+}
+
 body {
     margin: 0;
 }
