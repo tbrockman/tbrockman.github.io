@@ -6,6 +6,34 @@ $breakpoint-padding: 1200px;
 @media(max-width: $breakpoint-navbar) {
     .post-container {
         margin-top: 168px !important;
+
+        div {
+            h1 {
+                font-size: 12rem;
+            }
+        }
+
+        p {
+            font-size: 2rem !important;
+            line-height: 3rem !important;
+        }
+
+        .highlight {
+            font-size: 2rem;
+        }
+
+        ol {
+            li {
+                line-height: 3rem;
+                font-size: 2rem;
+            }
+        }
+
+        blockquote {
+            p {
+                overflow-wrap: break-word;
+            }
+        }
     }
 }
 

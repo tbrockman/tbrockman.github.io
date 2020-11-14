@@ -7,13 +7,19 @@ class Navbar {
         this.navbar = document.getElementById("navbar")
         document.addEventListener("click", (e) => {
 
-            if (this.navbarHeader.contains(e.target) || (!this.navbarDrawer.contains(e.target))) {
+            if (this.navbarHeader.contains(e.target)) {
                 
                 if (this.isOpened) {
                     this.closeDrawer()
                 }
                 else {
                     this.openDrawer()
+                }
+            }
+
+            else if (!this.navbarDrawer.contains(e.target)) {
+                if (this.isOpened) {
+                    this.closeDrawer()
                 }
             }
         })
