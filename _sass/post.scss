@@ -2,44 +2,59 @@ $color-primary: #fe5858;
 $color-hover: #cc4949;
 $breakpoint-navbar: 1400px;
 $breakpoint-padding: 1200px;
+$breakpoint-mobile: 800px;
+
+@media(max-width: $breakpoint-mobile) {
+    div.post-container  {
+        margin-top: 114px !important;
+    }
+
+    div.page-container {
+        padding: 0 2rem !important;
+    }
+
+    blockquote {
+        padding: 1em 3em !important;
+    }
+}
 
 @media(max-width: $breakpoint-navbar) {
     .post-container {
-        margin-top: 168px !important;
+        margin-top: 146px !important;
+
+        a {
+            line-break: auto;
+        }
 
         div {
             h1 {
-                font-size: 12rem;
+                font-size: 6rem;
             }
         }
 
         p {
-            font-size: 2rem !important;
-            line-height: 3rem !important;
+            line-height: 2rem !important;
         }
 
         .highlight {
-            font-size: 2rem;
-        }
-
-        ol {
-            li {
-                line-height: 3rem;
-                font-size: 2rem;
-            }
+            font-size: 1rem;
         }
 
         blockquote {
             p {
                 overflow-wrap: break-word;
             }
+
+            li {
+                padding-top: 1em;
+            }
         }
     }
 }
 
 @media(max-width: $breakpoint-padding) {
-    .page-container {
-        padding: 0 6em !important;
+    div.page-container {
+        padding: 0 4rem;
     }
 }
 

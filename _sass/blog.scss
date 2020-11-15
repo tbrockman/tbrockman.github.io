@@ -4,15 +4,24 @@ $color-secondary: #252525;
 
 $breakpoint-navbar: 1400px;
 $breakpoint-padding: 1200px;
+$breakpoint-mobile: 800px;
+
+@media(max-width: $breakpoint-mobile) {
+    div.blog-list-container {
+        margin-top: 114px !important;
+    }
+}
 
 @media(max-width: $breakpoint-navbar) {
     .blog-list-container {
-        margin-top: 178px !important;
+        margin-top: 146px !important;
 
-        .blog-list {
+        div.blog-list {
+
+            padding-top: 2rem;
 
             a {
-                margin: 0 4rem;
+                margin: 0 2rem;
                 height: fit-content;
                 width: fit-content;
                 
@@ -26,13 +35,13 @@ $breakpoint-padding: 1200px;
 
     .blog-post-preview {
         .blog-post-title {
-            font-size: 8rem;
+            font-size: 3rem;
         }
     }
 
     
     .blog-post-excerpt {
-        font-size: 2rem;
+        font-size: 18px;
     }
 
     .blog-post-thumbnail {
@@ -93,6 +102,7 @@ body {
 
 .blog-post-thumbnail {
     border-bottom: 1px solid #eee;
+    max-width: 100%;
 }
 
 .blog-post-excerpt {
