@@ -6,10 +6,9 @@ $breakpoint-mobile: 800px;
 
 @media(max-width: $breakpoint-mobile) {
     .navbar {
-        .navbar-drawer {
-            div {
-                padding: 1rem 2rem 1rem 0 !important;
-            }
+
+        .navbar-drawer.open {
+            padding: 1rem 0 !important;
         }
 
         #navbar-header.container {
@@ -23,6 +22,7 @@ $breakpoint-mobile: 800px;
         position: fixed;
         z-index: 10;
         flex-direction: column;
+        // animation: slide-right-close-nav 0.2s ease-in-out;
 
         .container {
             padding: 2rem 0 !important;
@@ -44,15 +44,15 @@ $breakpoint-mobile: 800px;
         .navbar-drawer {
             flex-direction: column;
             width: 100%;
+            // animation: nav-slide-out-from-left 0.2s ease-in-out;
         
             div {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: flex-end;
-                padding: 1.75rem;
-                padding-right: 2rem;
-                font-size: 3rem;
+                padding: 1rem;
+                font-size: 1.75rem;
                 font-weight: 450;
                 color: #fff !important;
             }
@@ -61,16 +61,26 @@ $breakpoint-mobile: 800px;
                 padding-right: 1rem;
                 font-size: 3rem;
                 font-weight: 450;
-                margin-top: 10px;
             }
         }
 
         .navbar-drawer.open {
-            display: flex !important;
-            box-shadow: 0px 9px 9px 0px #00252525, inset 0px 9px 20px 0px #00252525;
-            overflow-y: scroll;
-            max-height: 62vh;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            background-color: #fe5858;
+            width: 70vw;
+            top: 0vw;
+            padding: 2rem 0;
+            height: 100vh;
+            animation: nav-slide-in-from-right 0.2s ease-in-out;
+            left: 30vw;
         }
+    }
+
+    .navbar.open {
+        animation: slide-left-make-way-for-nav 0.2s ease-in-out;
+        left: -70vw;
     }
 
     a.fa {

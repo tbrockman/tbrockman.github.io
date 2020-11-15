@@ -1,3 +1,32 @@
+$breakpoint-mobile: 800px;
+
+@media(max-width: $breakpoint-mobile) {
+    body {
+        padding: 2em !important;
+    }
+
+    div.section {
+        display:  flex;
+        flex-direction: column;
+    }
+
+    .section-icon-container {
+        margin-bottom: 2em;
+    }
+
+    div.education-section {
+        align-items: center;
+    }
+
+    div.education-section > div {
+        margin-bottom: 2em;
+    }
+}
+
+.section {
+    display: flex;
+}
+
 .gold {
     color: #e0ab3b;
 }
@@ -20,6 +49,10 @@
 
 .pink {
     color: #ff8cb0;
+}
+
+div {
+    line-break: auto;
 }
 
 body {

@@ -1,5 +1,39 @@
 $color-primary: #fe5858;
 $color-hover: #d14b4b;
+$breakpoint-navbar: 1400px;
+
+@keyframes nav-slide-in-from-right {
+    0% { left: 100vw; }
+    100% { left: 30vw; }
+}
+
+@keyframes nav-slide-out-from-left {
+    0% { left: 30vw; }
+    100% { left: 100vw; }
+}
+
+@keyframes slide-left-make-way-for-nav {
+    0% { left: 0; }
+    100% { left: -70vw; }
+}
+
+@keyframes slide-right-close-nav {
+    0% { left: -70vw; position:absolute; }
+    100% { left: 0}
+}
+
+@media(max-width: $breakpoint-navbar) {
+
+    // div.page-container {
+    //     animation: slide-right-close-nav 0.2s ease-in-out;
+    // }
+
+    div.page-container.navbar-open {
+        position: absolute;
+        animation: slide-left-make-way-for-nav 0.2s ease-in-out;
+        left: -70vw;
+    }
+}
 
 @font-face {
     font-family: "Roboto";

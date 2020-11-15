@@ -4,6 +4,7 @@ class Navbar {
         this.navbarHamburger = document.getElementById("hamburger")
         this.navbarDrawer = document.getElementById("navbar-drawer")
         this.navbarHeader = document.getElementById("navbar-header")
+        this.pageContainer = document.getElementsByClassName("page-container")[0]
         this.navbar = document.getElementById("navbar")
         document.addEventListener("click", (e) => {
 
@@ -26,12 +27,16 @@ class Navbar {
     }
 
     openDrawer() {
+        this.pageContainer.classList.add("navbar-open")
+        this.navbar.classList.add("open")
         this.navbarDrawer.classList.add("open")
         this.navbarHeader.classList.add("opened")
         this.isOpened = !!! this.isOpened
     }
 
     closeDrawer() {
+        this.pageContainer.classList.remove("navbar-open")
+        this.navbar.classList.remove("open")
         this.navbarDrawer.classList.remove("open")
         this.navbarHeader.classList.remove("opened")
         this.isOpened = !!! this.isOpened
