@@ -278,7 +278,7 @@ content: full # what type of content to display for the post
               # 'full' will display entire blog post in the GitHub issue
               # there are currently no other modes
 
-base_url: 'https://isitajam.com' # used for resolving relative links
+base_url: 'https://theo.lol' # used for resolving relative links
 
 paths:       # list of Glob patterns which will 
   - _posts/* # match blog posts to create issues from
@@ -286,7 +286,7 @@ paths:       # list of Glob patterns which will
 
 It imports Jekyll, renders any posts it has to, and then uses the rendered content to create issues as necessary.
 
-After finishing the GitHub action I deployed my own version of the API which *doesn't* bend over backwards to create issues for you, and set a fork of the Utterances client to point to it (which you can find and use [here](https://isitajam.com/client.js)). It doesn't contain any of the automatic issue creation code.
+After finishing the GitHub action I deployed my own version of the API which *doesn't* bend over backwards to create issues for you, and set a fork of the Utterances client to point to it (which you can find and use [here](https://theo.lol/client.js)). It doesn't contain any of the automatic issue creation code.
 
 That's it, that's all there is to it.
 
