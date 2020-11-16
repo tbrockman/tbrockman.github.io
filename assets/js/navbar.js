@@ -6,6 +6,12 @@ class Navbar {
         this.navbarHeader = document.getElementById("navbar-header")
         this.pageContainer = document.getElementsByClassName("page-container")[0]
         this.navbar = document.getElementById("navbar")
+        this.lastY = window.pageYOffset;
+
+        window.addEventListener("scroll", () => {
+            this.onScroll()
+        })
+
         document.addEventListener("click", (e) => {
 
             if (this.navbarHeader.contains(e.target)) {
@@ -24,6 +30,28 @@ class Navbar {
                 }
             }
         })
+    }
+
+    showNavbar() {
+        this.navbar.classList.remove("hide")
+        this.navbarShown = !!! this.navbarShown
+    }
+
+    hideNavbar() {
+        this.navbar.classList.add("hide")
+        this.navbarShown = !!! this.navbarShown
+    }
+
+    onScroll() {
+        const currentY = window.pageYOffset
+
+        if (this.lastY > currentY) {
+            this.showNavbar()
+        }
+        else if (!this.isOpened) {
+            this.hideNavbar()
+        }
+        this.lastY = currentY
     }
 
     openDrawer() {
@@ -45,10 +73,10 @@ class Navbar {
 
 let navbar;
 
-window.addEventListener("load", () => {
-    navbar = new Navbar()
-})
-
 const test = (e) => {
     e.preventDefault()
 }
+
+window.addEventListener("load", () => {
+    navbar = new Navbar()
+})
