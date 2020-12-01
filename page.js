@@ -5,13 +5,13 @@ const state = {
         "artist",
         "goof", 
         "adventurer",
-        "dude",
         "introvert",
-        "boyfriend",
-        "dog dad",
+        "significant other",
+        "dog parent",
         "musician",
         "friend",
-        "family member"
+        "family man",
+        "dude"
     ],
     currentIndex: 0,
     maxRender: 3
