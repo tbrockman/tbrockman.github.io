@@ -34,9 +34,7 @@ const initializeAdjectives = () => {
     
     for (let i = 0; i < state.maxRender+1; i++) {
 
-        console.log(state.currentIndex, state.adjectives.length, mod(state.currentIndex + i, state.adjectives.length))
         const adj = state.adjectives[mod(state.currentIndex + i, state.adjectives.length)]
-        console.log(adj)
         const element = createAdjectiveElement(i, adj)
         adjectivesContainer.appendChild(element)
     }
@@ -47,9 +45,7 @@ const renderAdjectives = () => {
     const adjectivesContainer = document.getElementById("adjectives")
     for (let i = 0; i < state.maxRender+1; i++) {
 
-        console.log(state.currentIndex, state.adjectives.length, mod(state.currentIndex + i, state.adjectives.length))
         const adj = state.adjectives[mod(state.currentIndex + i, state.adjectives.length)]
-        console.log(adj)
         const element = createAdjectiveElement(i, adj)
         adjectivesContainer.replaceChild(element, adjectivesContainer.children[i])
     }
@@ -97,7 +93,6 @@ const restartInterval = () => {
 startInterval();
 
 document.addEventListener('keydown', (e) => {
-    console.log(e)
 
     restartInterval()    
 

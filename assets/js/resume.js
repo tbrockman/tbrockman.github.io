@@ -13,9 +13,6 @@ const init = () => {
     const elements = document.querySelectorAll(".section-separator");
     elements[0].innerHTML = string
     const lengthBefore = elements[0].clientWidth
-    console.log(elements[0].clientWidth)
-    console.log(elements[0].innerHTML)
-    console.log(width)
 
     dashes += "-"
     elements[0].innerHTML = dashTemplate(dashes)
@@ -27,7 +24,7 @@ const init = () => {
 
     while (fill > 0) {
         dashes += "-"
-        fill--    
+        fill--
     }
     elements[0].innerHTML = dashTemplate(dashes)
 
