@@ -1,5 +1,6 @@
 $breakpoint-mobile: 800px;
 $breakpoint-combine-header: 640px;
+$breakpoint-shrink-header-text: 540px;
 
 @font-face {
     font-family: "Roboto";
@@ -41,7 +42,7 @@ a.gold:hover {
     .hide-header-not-combined {
 
         div {
-            font-size: 3rem;
+            font-size: 13vw;
             text-transform: uppercase;
             font-weight: bold;
         }
