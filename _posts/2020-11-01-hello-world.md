@@ -10,7 +10,7 @@ thumbnail: /assets/img/hello_world_thumbnail.png
 
 Another day, another `hello world` software developer blog post. 
 
-Today's blog is about me finding a small issue allowing abuse of an open-source application, me notifying the author poorly, the issue not being addressed, and me creating a fork that solves the problem.
+My first blog post is about me finding a small issue allowing abuse of an open-source application, me notifying the author poorly, the issue not being addressed, and me creating a fork that solves the problem.
 
 Let's get into it. 
 
@@ -183,7 +183,7 @@ try {
   ...
 ```
 
-This means that any authenticated Github user can use the Utterances API to create issues anywhere the bot is allowed. A single account could be used for a DoS'ing the application, simply by consuming the bots rate limit with create issue requests.
+This means that any authenticated Github user can use the Utterances API to create issues anywhere the bot is allowed. A single account could be used by a malicious actor to cause all incoming requests to the application fail, simply by consuming the bots rate-limit for issue creation.
 
 ## Proof of concept
 
@@ -233,29 +233,21 @@ With overwhelming specificity and lack of judgement, I was successful. They had 
 I then ruined my progress but suggesting a pretty poor fix that was:
 1. Overcomplicated
 2. Required **more** server-side processing and resources
-3. Immediately wrong because sometime between the previous e-mail and the last I sent I had forgotten that one check that I thought was redundant was using the *requesting users* Github access token to verify its validity (and would actually be necessary)
-
-> **Theo:**
->
-> So you understand how the application is vulnerable to denial of service attacks leveraging the above?
-> 
-> I wasn't going to suggest that, my plan to address this myself would be to remove the first check (you don't need to check Github for whether a given token is valid, if it's not a valid token the issue creation will fail and Github will let you know, this will reduce latency of this endpoint as well), implement rate limiting on a per token basis (you could do this in memory if hosted on a single instance, or some sort of distributed cache otherwise), and finally as an added measure give users the ability to specify an optional field in the "utterances.json" file, listing the names of issues that can be created, and on issue create request Utterances would check whether a given issue with one of the matching terms has already been created, if it has the request will return a 400 status code response.
-> 
-> But if you're not worried about this at all yourself, that's totally okay.
+3. Wrong
 
 Needless to say I lost the authors faith, and have not yet heard back.
 
 ## Onward and upward
 
-I don't blame the author for not responding. I can't imagine it's enjoyable maintaining an open-source project for free, let alone having random strangers come to you with *more* work they want you to do for free. It would have been nice if we could have worked together to fix the problem, but everything can't always work out the way you hoped.
+I don't blame the author for not responding. I can't imagine it's enjoyable maintaining an open-source project for free, let alone having random strangers come to you with *more* work they want you to do. It would have been cool to work on fixing the problem together, but everything can't always work out the way you'd hoped.
 
-But we do what we can with what we have. 
+But we must persevere.
 
 Ruminating on my failure a bit, I thought of more realistic ways to keep the same user-friendliness, while also avoiding having to deal with people who like to ruin nice things, and without spending more money.
 
 The crux of the problem is that we want a way of automatically creating Github issues whenever we make a new blog post. For most people linking their blog posts to Github issues, they're probably hosting their blog on Github. For those people hosting their blog on Github, they're probably using [Jekyll](https://jekyllrb.com/) underneath--people like me, which is who I'm really doing this for anyways.
 
-From this, we know that any of our blog posts will be present in a folder (probably `_posts`), and having access to all the text within those files we can create issues that are filled with that text, and we can do all of it using...
+From this, we can assume that any of our blog posts will reside in a folder (probably `_posts`), and having access to all the text within those files we can copy that to the GitHub issue if we want to, and we can do all of it using...
 
 ## Github Actions
 
@@ -272,7 +264,7 @@ I made [this Github Action which](https://github.com/marketplace/actions/social-
 api_version: v1/social # versioned configuration API
 
 renderer: jekyll # this is the only format which is supported
-                 # but perhaps one day someone will add another
+                 # but perhaps one day there might be more
                                  
 content: full # what type of content to display for the post 
               # 'full' will display entire blog post in the GitHub issue

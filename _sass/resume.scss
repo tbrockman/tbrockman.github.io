@@ -11,14 +11,6 @@ $breakpoint-combine-header: 640px;
     src: url("../fonts/RobotoMono/RobotoMono-VariableFont_wght.ttf")
 }
 
-a {
-    text-decoration: none;
-}
-
-a.gold:hover {
-    color: #ae8631;
-}
-
 @media(max-width: $breakpoint-combine-header) {
     div.resume-header {
         flex-direction: column;
@@ -97,6 +89,14 @@ a.gold:hover {
         }
         
     }
+}
+
+a {
+    text-decoration: none;
+}
+
+a.gold:hover {
+    color: #ae8631;
 }
 
 .first-name, .last-name {
