@@ -288,11 +288,14 @@ I think I would get in trouble if I tried to name this application `GitHub Socia
 
 Let's just call it `Social` instead for now.
 
-You can check out the code on GitHub:
+
+[You can start using it here.](https://github.com/marketplace/actions/social-action)
+
+
+You can also check out the code on GitHub:
 
 1. [The Github Action](https://github.com/tbrockman/social-action)
 2. [Utterances API](https://github.com/tbrockman/social-oauth)
 3. [Utterances](https://github.com/tbrockman/utterances)
-3. [Example usage](https://github.com/tbrockman/tbrockman.github.io)
 
 And see how everything works in the comments below.
