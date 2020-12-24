@@ -19,8 +19,7 @@ const init = () => {
     const lengthAfter = elements[0].clientWidth 
 
     const delta = lengthAfter - lengthBefore
-    let fill = Math.floor((width - lengthAfter) / delta) 
-    console.log(lengthBefore, lengthAfter, delta, fill)
+    let fill = Math.floor((width - lengthAfter) / delta)
 
     while (fill > 0) {
         dashes += "-"
