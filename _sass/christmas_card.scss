@@ -3,6 +3,18 @@
     src: url("../fonts/RobotoMono/RobotoMono-VariableFont_wght.ttf")
 }
 
+$breakpoint-mobile: 800px;
+
+@media(max-width: $breakpoint-mobile) {
+    #photo-container {
+        height: unset !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+    }
+}
+
 body {
     font-family: RobotoMono;
     background-color: #252525;
