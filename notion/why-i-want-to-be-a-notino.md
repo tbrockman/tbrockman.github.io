@@ -12,10 +12,10 @@ Naturally, it seems pretty obvious to supplement this process with something a b
 
 ## *enter technology!*
 
-Technology offers us quite a few distinct benefits over our fleshy biology in this regard. We can store a lot of bits pretty reliably, and we can even recover from storage failures if necessary.
+Technology offers us quite a few distinct improvements over our fleshy biology in this regard. Notably, we can store a lot of bits pretty reliably, and we can even recover from storage failures if necessary. Devising increasingly efficient processes for both serializing and retrieving this information (in an intuitive and user-friendly way) can have a massive impact on humanity as a whole by facilitating seamless data-driven lifestyles. I would be incredibly interested and fortunate to work in this area.
 
-I think technology has done a fantastic job with helping people discover the internet, but I think it's currently lacking when it comes to helping people discover themselves. It seems like most applications fumble at some point facilitating a users data journey from creation to discovery 
-and [Notion](https://notion.so) seems like a great place to start capitalizing on that.
+I think technology has done a fantastic job with helping people discover the internet, but I think it's currently lacking when it comes to helping people discover themselves. It seems like most applications fumble at some point facilitating a users data journey from creation to discovery,
+and after using the product and looking through some of the team videos, [Notion](https://notion.so) seems like a great place to start capitalizing on that.
 
 I have ideas for the platform and would love to join the team.
 
