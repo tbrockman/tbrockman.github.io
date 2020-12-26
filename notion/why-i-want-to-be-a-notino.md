@@ -2,6 +2,7 @@
 layout: why_i_want_to_work_at_notion
 title: why I want to be a notino
 author: Theodore Brockman
+permalink: /notion/why-i-want-to-be-a-notino
 ---
 I'm excited about knowledge organization, I think there's a lot to be done to improve productivity through how we search and store information and the things we care about.
 
