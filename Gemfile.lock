@@ -261,6 +261,7 @@ GEM
 
 PLATFORMS
   ruby
+  universal-darwin-20
   x64-mingw32
 
 DEPENDENCIES
@@ -272,4 +273,4 @@ DEPENDENCIES
   wdm
 
 BUNDLED WITH
-   2.1.4
+   2.2.0

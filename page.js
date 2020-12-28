@@ -19,7 +19,7 @@ const state = {
 
 
 const initializePage = () => {
-    initializeAdjectives()
+    //initializeAdjectives()
 }
 
 const createAdjectiveElement = (position, text) => {
@@ -41,14 +41,6 @@ const initializeAdjectives = () => {
 }
 
 const renderAdjectives = () => {
-    const children = []
-    const adjectivesContainer = document.getElementById("adjectives")
-    for (let i = 0; i < state.maxRender+1; i++) {
-
-        const adj = state.adjectives[mod(state.currentIndex + i, state.adjectives.length)]
-        const element = createAdjectiveElement(i, adj)
-        adjectivesContainer.replaceChild(element, adjectivesContainer.children[i])
-    }
 }
 
 const cycleDownAdjectives = () => {
