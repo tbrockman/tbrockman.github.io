@@ -56,6 +56,19 @@ class Folder extends File {
         //TODO: do something if file already exists
         this.children[file.name] = file
     }
+
+    getFiles(type=null) {
+        let files = []
+
+        for (const [name, child] of Object.entries(this.children)) {
+
+            if (type == null || child.type == type) {
+                files.push(child)
+            }
+        }
+
+        return files
+    }
 }
 
 class Executable extends File {
