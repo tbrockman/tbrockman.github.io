@@ -1,3 +1,6 @@
+import { Terminal, Filesystem, Folder } from './assets/js/terminal.js'
+import { Shelp } from './assets/js/shelp.js'
+
 const state = {
 
     adjectives: [
@@ -20,6 +23,17 @@ const state = {
 
 const initializePage = () => {
     //initializeAdjectives()
+    const element = document.getElementById('terminal')
+    console.log(element)
+    const user = {
+        name: 'theodore brockman'
+    }
+    const environment = {}
+    const filesystem = new Filesystem()
+    const root = new Folder([], {name: '/'})
+    filesystem.storeNode('/', root)
+    const terminal = new Terminal(user, element)
+    const blash = new Shelp(terminal)
 }
 
 const createAdjectiveElement = (position, text) => {

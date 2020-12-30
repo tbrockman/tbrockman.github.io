@@ -30,36 +30,40 @@ class Filesystem {
 
 class Terminal {
 
-    constructor(filesystem, user, environment, element) {
-        this.filesystem = filesystem
+    constructor(user, element) {
         this.user = user
-        this.environment = environment
         this.element = element
-        this.emutermLogo = `███████╗███╗   ███╗██╗   ██╗████████╗███████╗██████╗ ███╗   ███╗        ██╗███████╗
-██╔════╝████╗ ████║██║   ██║╚══██╔══╝██╔════╝██╔══██╗████╗ ████║        ██║██╔════╝
-█████╗  ██╔████╔██║██║   ██║   ██║   █████╗  ██████╔╝██╔████╔██║        ██║███████╗
-██╔══╝  ██║╚██╔╝██║██║   ██║   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║   ██   ██║╚════██║
-███████╗██║ ╚═╝ ██║╚██████╔╝   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██╗╚█████╔╝███████║
-╚══════╝╚═╝     ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝ ╚════╝ ╚══════╝
+        this.emutermLogo = `
+████████╗██╗  ██╗███████╗ ██████╗ ██████╗  ██████╗ ██████╗ ███████╗    
+╚══██╔══╝██║  ██║██╔════╝██╔═══██╗██╔══██╗██╔═══██╗██╔══██╗██╔════╝    
+   ██║   ███████║█████╗  ██║   ██║██║  ██║██║   ██║██████╔╝█████╗      
+   ██║   ██╔══██║██╔══╝  ██║   ██║██║  ██║██║   ██║██╔══██╗██╔══╝      
+   ██║   ██║  ██║███████╗╚██████╔╝██████╔╝╚██████╔╝██║  ██║███████╗    
+   ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝    
+                                                                               
+██████╗ ██████╗  ██████╗  ██████╗██╗  ██╗███╗   ███╗ █████╗ ███╗   ██╗ 
+██╔══██╗██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝████╗ ████║██╔══██╗████╗  ██║ 
+██████╔╝██████╔╝██║   ██║██║     █████╔╝ ██╔████╔██║███████║██╔██╗ ██║ 
+██╔══██╗██╔══██╗██║   ██║██║     ██╔═██╗ ██║╚██╔╝██║██╔══██║██║╚██╗██║ 
+██████╔╝██║  ██║╚██████╔╝╚██████╗██║  ██╗██║ ╚═╝ ██║██║  ██║██║ ╚████║ 
+╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝                                                                                
 `
         this.lines = [
-            "Welcome " + navigator.userAgent + "\n",
             "\n",
-            "The current date is " + new Date() + "\n",
-            "\n",
-            "\n",
-            "\n",
-            "This terminal brought to you by\n",
-            "\n",
+            "This terminal brought to you by:\n",
             this.emutermLogo,
             "\n",
-            "\t\t\ta Javascript terminal emulator created by @tbrockman\n",
+            "\t\t\t\tsoftserve developer, artist, goof\n",
             "\n",
+            "\n",
+            "\n",
+            "type \"help\" to see a list of available commands\n",
             "\n"
         ]
         this.cursor = 0
         this.input = ""
         this.workdir = "~"
+        this.listeners = {}
 
         const root = document.createElement('div')
         this.root = root;
@@ -68,7 +72,7 @@ class Terminal {
 
         root.addEventListener("paste", e => {
             let paste = (e.clipboardData || window.clipboardData).getData('text');
-            // TODO: process lines (execute commands)
+            // TODO: process lines (execute commands) in necessary
             this.inserTextAtPosition(paste, this.cursor)
             e.preventDefault()
         })
@@ -76,11 +80,12 @@ class Terminal {
         root.addEventListener("keypress", (e) => {
             // console.log("keypress", e)
             if (e.key == "Enter") {
-                this.lines.push(this.buildContext() + this.input + "\n")
+                this.emit('stdin', this.input)
+                this.writeLine(this.buildContext() + this.input + "\n")
+                this.renderInput()
                 this.context = ""
                 this.input = ""
                 this.cursor = 0
-                this.render()
             }
             else {
                 this.inserTextAtPosition(e.key, this.cursor)
@@ -89,6 +94,7 @@ class Terminal {
         })
         root.addEventListener("keydown", (e) => {
             console.log(e)
+            
             if (e.key == "Backspace") {
                 this.deleteCharacterAtPosition(this.cursor)
                 e.preventDefault()
@@ -99,6 +105,7 @@ class Terminal {
         })
         root.addEventListener("input", (e) => {
             console.log(e)
+
             if (e.inputType == "deleteContentBackward") {
                 console.log(this.cursor)
                 this.deleteCharacterAtPosition(this.cursor)
@@ -111,7 +118,7 @@ class Terminal {
     }
     
     deleteCharacterAtPosition(position) {
-        console.log('deleting at: ', position)
+
         if (position > 0) {
             const text = this.input.slice(0, position-1) + this.input.slice(position)
             this.cursor -= 1
@@ -125,21 +132,37 @@ class Terminal {
         this.renderInput(nextInput)
     }
 
-    render(input = "") {
+    on(event, listener) {
+        if (event in this.listeners) {
+            this.listeners[event].push(listener)
+        }
+        else {
+            this.listeners[event] = [listener]
+        }
+    }
+
+    emit(event, data) {
+        if (event in this.listeners) {
+            this.listeners[event].map(listener => listener(data))
+        }
+    }
+
+    render(input) {
 
         // TODO: only render visible lines on terminal
-
-        // render historical lines
-
-        // render our current input line
 
         this.renderHistory()
         this.renderInput(input)
     }
 
     renderHistory() {
-        let text = this.lines.join('')
-        this.root.innerText = text
+
+        this.root.innerHTML = ""
+        this.lines.forEach(line => {
+            var node = document.createElement("div")
+            node.innerText = line
+            this.root.appendChild(node)
+        })
     }
 
     renderCaret() {
@@ -149,6 +172,7 @@ class Terminal {
         }
         this.caretElement = document.createElement('div')
         this.caretElement.innerText = "█"
+        this.caretElement.style.userSelect = "none"
         this.caretElement.style.display = "inline-block"
         this.root.appendChild(this.caretElement)
     }
@@ -157,47 +181,42 @@ class Terminal {
         return this.user.name + ":" + this.workdir + "$ "
     }
 
-    renderInput(nextInput) {
-        if (this.context) {
-            this.root.innerText = this.root.innerText.slice(0, this.root.innerText.length - (this.context.length + this.input.length + 1))
+    renderInput(nextInput = "") {
+
+        if (!this.inputElement) {
+            this.inputElement = document.createElement('div')
+            this.inputElement.style.display = "inline-block"
+            this.root.appendChild(this.inputElement)
         }
-        else {
-            this.root.innerText = this.root.innerText.slice(0, this.root.innerText.length - this.input.length + 1)
+
+        if (!this.context) {
             this.context = this.buildContext()
         }
-        this.root.innerText += (this.context + nextInput)
+
+        this.inputElement.innerText = this.context + nextInput
         this.input = nextInput
         this.renderCaret()
     }
 
-    getInputLineText() {
-        return ""
-    }
-
-    onCommandEntered(command) {
-        const output = this.executeCommand(command)
-        this.writeLines(output)
-        this.render()
-    }
-
-    executeCommand(command) {
-        console.log(command)
+    writeLine(line) {
+        this.writeLines([line])
     }
 
     writeLines(lines) {
         this.lines += lines
+
+        lines.forEach(line => {
+            const element = document.createElement("div")
+            element.innerText = line
+            this.root.insertBefore(element, this.inputElement)
+        })
+        this.inputElement.scrollIntoView()
     }
 }
 
-window.addEventListener('load', () => {
-    const element = document.getElementById('terminal')
-    console.log(element)
-    const user = {
-        name: 'theodore brockman'
-    }
-    const environment = {}
-    const filesystem = new Filesystem()
-    const root = new Folder([], {name: '/'})
-    filesystem.storeNode('/', root)
-    const terminal = new Terminal(filesystem, user, environment, element)
-})
+export {
+    Terminal,
+    Filesystem,
+    Folder,
+    File
+}
