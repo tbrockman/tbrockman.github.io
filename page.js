@@ -1,5 +1,8 @@
-import { Terminal, Filesystem, Folder } from './assets/js/terminal.js'
+import { Terminal } from './assets/js/terminal.js'
 import { Shelp } from './assets/js/shelp.js'
+import { Filesystem, MarkdownFile, Folder, Executable } from './assets/js/filesystem.js'
+import { entrypoint as Echo } from './assets/js/echo.js'
+import { entrypoint as Help } from './assets/js/help.js'
 
 const state = {
 
@@ -24,16 +27,43 @@ const state = {
 const initializePage = () => {
     //initializeAdjectives()
     const element = document.getElementById('terminal')
-    console.log(element)
     const user = {
         name: 'theodore brockman'
     }
     const environment = {}
-    const filesystem = new Filesystem()
-    const root = new Folder([], {name: '/'})
-    filesystem.storeNode('/', root)
+    const bin = new Folder('bin')
+    
+    // TODO: get javascript executable (as string)
+    // and unsafe eval (no way this could go wrong!)
+    console.log(Echo)
+    const echo = new Executable('echo', Echo)
+    const help = new Executable('help', Help)
+    bin.addFile(echo)
+    bin.addFile(help)
+
+    const usr = new Folder('usr')
+    const usrbin = new Folder('bin')
+    usr.addFile(usrbin)
+
+    const etc = new Folder('etc')
+    const shells = new Folder('shells')
+    etc.addFile(shells)
+
+    const home = new Folder('home')
+    const readme = new MarkdownFile('README.md', {})
+    home.addFile(readme)
+
+    const root = new Folder('')
+    root.addFile(bin)
+    root.addFile(usr)
+    root.addFile(etc)
+    root.addFile(home)
+
+    const filesystem = new Filesystem('webpage')
+    filesystem.mount('/', root)
+
     const terminal = new Terminal(user, element)
-    const blash = new Shelp(terminal)
+    const shelp = new Shelp(terminal, filesystem, environment)
 }
 
 const createAdjectiveElement = (position, text) => {

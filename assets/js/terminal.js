@@ -1,33 +1,3 @@
-class File {
-    constructor(name, data=[], metadata={}) {
-        this.name = name
-        this.data = data
-        this.metadata = metadata
-    }
-}
-
-class Folder {
-    constructor(children=[], metadata={}) {
-        this.children = children
-        this.metadata = metadata
-    }
-
-    appendChild(child) {
-        this.children.append(child)
-    }
-}
-
-class Filesystem {
-    constructor(root, graph={}) {
-        this.root = root
-        this.graph = graph
-    }
-
-    storeNode(key, node) {
-        this.graph[key] = node
-    }
-}
-
 class Terminal {
 
     constructor(user, element) {
@@ -80,21 +50,22 @@ class Terminal {
         root.addEventListener("keypress", (e) => {
             // console.log("keypress", e)
             if (e.key == "Enter") {
-                this.emit('stdin', this.input)
                 this.writeLine(this.buildContext() + this.input + "\n")
-                this.renderInput()
+                this.emit('stdin', this.input)
                 this.context = ""
                 this.input = ""
                 this.cursor = 0
+                this.renderInput()
             }
             else {
                 this.inserTextAtPosition(e.key, this.cursor)
             }
             e.preventDefault()
         })
+
         root.addEventListener("keydown", (e) => {
             console.log(e)
-            
+
             if (e.key == "Backspace") {
                 this.deleteCharacterAtPosition(this.cursor)
                 e.preventDefault()
@@ -103,17 +74,18 @@ class Terminal {
             if (e.ctrlKey) {
             }
         })
+
         root.addEventListener("input", (e) => {
             console.log(e)
 
             if (e.inputType == "deleteContentBackward") {
-                console.log(this.cursor)
                 this.deleteCharacterAtPosition(this.cursor)
             }
             e.preventDefault()
         })
+        
         element.replaceWith(root)
-
+        this.root.focus()
         this.render()
     }
     
@@ -216,7 +188,4 @@ class Terminal {
 
 export {
     Terminal,
-    Filesystem,
-    Folder,
-    File
 }
