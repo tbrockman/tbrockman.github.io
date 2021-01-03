@@ -37,6 +37,7 @@
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     white-space: pre-wrap;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #terminal > .input-row {

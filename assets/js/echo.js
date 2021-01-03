@@ -1,10 +1,14 @@
-const entrypoint = (args, options) => {
+const entrypoint = (args, options, fds=[]) => {
     
     let output = "\n"
+
     if (args.length > 1) {
-        output = args[1]
+        output = args.slice(1).join(' ')
     }
-    console.log(output)
+
+    fds.STDOUT.writeLines([
+        output
+    ])
 }
 
 export {

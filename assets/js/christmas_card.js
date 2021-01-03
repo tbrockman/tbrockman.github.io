@@ -1,5 +1,4 @@
 const carousel = (current_index, images) => {
-    console.log(images[current_index])
     const container = document.getElementById('photo-container')
     container.innerHTML = ""
     const image = document.createElement("img")
@@ -9,7 +8,6 @@ const carousel = (current_index, images) => {
     container.appendChild(image)
 
     requestAnimationFrame(() => {
-        console.log('removing')
         image.classList.remove("faded-out")
     })
 

@@ -64,10 +64,18 @@ class Terminal {
         })
 
         root.addEventListener("keydown", (e) => {
-            console.log(e)
+            // console.log(e)
 
             if (e.key == "Backspace") {
                 this.deleteCharacterAtPosition(this.cursor)
+                e.preventDefault()
+            }
+            else if (e.key == "ArrowLeft") {
+                this.moveCursorLeft()
+                e.preventDefault()
+            }
+            else if (e.key == "ArrowRight") {
+                this.moveCursorRight()
                 e.preventDefault()
             }
 
@@ -76,17 +84,27 @@ class Terminal {
         })
 
         root.addEventListener("input", (e) => {
-            console.log(e)
+            // console.log(e)
 
             if (e.inputType == "deleteContentBackward") {
                 this.deleteCharacterAtPosition(this.cursor)
             }
             e.preventDefault()
         })
-        
+
         element.replaceWith(root)
         this.root.focus()
         this.render()
+    }
+
+    moveCursorRight() {
+        this.cursor = Math.min(this.input.length, this.cursor + 1)
+        this.renderCaret()
+    }
+
+    moveCursorLeft() {
+        this.cursor = Math.max(0, this.cursor - 1)
+        this.renderCaret()
     }
     
     deleteCharacterAtPosition(position) {
@@ -98,8 +116,9 @@ class Terminal {
         }
     }
 
+    // TODO: fix insert, not replace
     inserTextAtPosition(text, position) {
-        const nextInput = this.input.slice(0, position) + text + this.input.slice(position + 1)
+        const nextInput = this.input.slice(0, position) + text + this.input.slice(position)
         this.cursor += text.length
         this.renderInput(nextInput)
     }
@@ -142,11 +161,23 @@ class Terminal {
         if (this.caretElement) {
             this.caretElement.remove()
         }
+
         this.caretElement = document.createElement('div')
-        this.caretElement.innerText = "█"
+
+        this.caretElement.innerText = this.inputElement.innerText.slice(0, this.buildContext().length + this.cursor) + "█"
         this.caretElement.style.userSelect = "none"
         this.caretElement.style.display = "inline-block"
-        this.root.appendChild(this.caretElement)
+        this.caretElement.style.wordBreak = "break-all"
+        this.caretElement.style.position = "absolute"
+        this.caretElement.style.top = "0"
+        this.caretElement.style.left = "0"
+        
+        if (this.inputElement) {
+            this.inputElement.appendChild(this.caretElement)
+        }
+        else {
+            this.root.appendChild(this.caretElement)
+        }
     }
 
     buildContext() {
@@ -158,6 +189,8 @@ class Terminal {
         if (!this.inputElement) {
             this.inputElement = document.createElement('div')
             this.inputElement.style.display = "inline-block"
+            this.inputElement.style.wordBreak = "break-all";
+            this.inputElement.style.position = "relative";
             this.root.appendChild(this.inputElement)
         }
 
@@ -165,7 +198,7 @@ class Terminal {
             this.context = this.buildContext()
         }
 
-        this.inputElement.innerText = this.context + nextInput
+        this.inputElement.innerText = this.context + nextInput + ' '
         this.input = nextInput
         this.renderCaret()
     }
@@ -176,13 +209,22 @@ class Terminal {
 
     writeLines(lines) {
         this.lines += lines
-
         lines.forEach(line => {
             const element = document.createElement("div")
+            // TODO: process text 
             element.innerText = line
             this.root.insertBefore(element, this.inputElement)
         })
         this.inputElement.scrollIntoView()
+    }
+
+    clear() {
+        this.lines = []
+        this.cursor = 0
+        this.input = ""
+        this.inputElement = null
+        this.caretElement = null
+        this.render()
     }
 }
 

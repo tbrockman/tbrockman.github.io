@@ -12,6 +12,45 @@ class File {
         //TODO: inodes
         throw new Error("serialize not implemented for file of type: ", this.type)
     }
+
+    deserialize() {
+        throw new Error("deserialize not implement for file of type: ", this.type)
+    }
+
+    read() {
+        throw new Error("read is not implemented for file of type: ", this.type)
+    }
+
+    write() {
+        throw new Error("write is not implemented for file of type: ", this.type)
+    }
+
+    writeLines() {
+        throw new Error("writeLines is not implemented for file of type: ", this.type)
+    }
+}
+
+class Pipe extends File {
+
+    constructor(name, data={}, metadata={}) {
+        super(name, data, Pipe, metadata)
+    }
+
+    read() {
+        let temp = this.buffer
+        this.buffer = []
+        return temp
+    }
+
+    write(bytes) {
+        this.onWriteBytes(bytes)
+    }
+
+    writeLines(lines) {
+        lines.forEach(line => {
+            this.onWriteLine(line)
+        })
+    }
 }
 
 class Filesystem extends File {
@@ -39,6 +78,11 @@ class Filesystem extends File {
 
     getFile(path) {
         return this.graph[path]
+    }
+
+    exists(path) {
+        console.log(this.graph)
+        return path in this.graph
     }
 
     serialize() {
@@ -78,7 +122,6 @@ class Executable extends File {
     }
 
     execute(options) {
-        console.log(this)
         return this.exec(options)
     }
 }
@@ -98,5 +141,6 @@ export {
     Folder,
     Executable,
     Filesystem,
-    MarkdownFile
+    MarkdownFile,
+    Pipe
 }
