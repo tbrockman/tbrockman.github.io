@@ -13,11 +13,15 @@ const entrypoint = (args, options, fds=[]) => {
     // })
 
     fds.STDOUT.writeLines([
-        '\n',
-        '<b>NOTE:</b> This started as an exercise in front-end development, and is (unfortunately) <b>not</b> a fully-functioning terminal.\n',
-        'There is no real interpreter, no kernel, and no filesystem.\n',
-        'The goal is to eventually write a functioning kernel completely in the browser, but it is very much a work in progress.\n',
-        '\n',
+        `
+<div style="border: dashed 1px #fff;width: fit-content;padding: 1em;"><b>NOTE:</b> This started as an exercise in front-end development
+and is (unfortunately) <b>not</b> a fully-functioning terminal.
+There is no real interpreter, no kernel, and no filesystem.
+The goal is to write the above completely in browser
+... but it is very much a work in progress.
+</div>
+
+`,
         'These are the commands that are currently available: \n',
         '\n',
         ...output,
