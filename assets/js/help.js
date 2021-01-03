@@ -16,7 +16,7 @@ const entrypoint = (args, options, fds=[]) => {
         '\n',
         '<b>NOTE:</b> This started as an exercise in front-end development, and is (unfortunately) <b>not</b> a fully-functioning terminal.\n',
         'There is no real interpreter, no kernel, and no filesystem.\n',
-        'It is very much a work in progress.\n',
+        'The goal is to eventually write a functioning kernel completely in the browser, but it is very much a work in progress.\n',
         '\n',
         'These are the commands that are currently available: \n',
         '\n',
