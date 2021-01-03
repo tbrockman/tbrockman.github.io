@@ -20,7 +20,6 @@ class Terminal {
 `
         this.lines = [
             "\n",
-            "This terminal brought to you by:\n",
             this.emutermLogo,
             "\n",
             "\t\t\t\tsoftserve developer, artist, goof\n",
