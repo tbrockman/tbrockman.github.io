@@ -212,7 +212,7 @@ class Terminal {
         lines.forEach(line => {
             const element = document.createElement("div")
             // TODO: process text 
-            element.innerText = line
+            element.innerHTML = line
             this.root.insertBefore(element, this.inputElement)
         })
         this.inputElement.scrollIntoView()

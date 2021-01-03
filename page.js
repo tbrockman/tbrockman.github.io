@@ -5,6 +5,7 @@ import { entrypoint as Echo } from './assets/js/echo.js'
 import { entrypoint as Help } from './assets/js/help.js'
 import { entrypoint as Cat } from './assets/js/cat.js'
 import { entrypoint as Ls } from './assets/js/ls.js'
+import { entrypoint as Youtube } from './assets/js/youtube.js'
 
 const initializePage = () => {
     //initializeAdjectives()
@@ -24,10 +25,12 @@ const initializePage = () => {
     const help = new Executable('help', Help)
     const ls = new Executable('ls', Ls)
     const cat = new Executable('cat', Cat)
+    const youtube = new Executable('youtube', Youtube)
     bin.addFile(echo)
     bin.addFile(help)
     bin.addFile(ls)
     bin.addFile(cat)
+    bin.addFile(youtube)
 
     const usr = new Folder('usr')
     const usrbin = new Folder('bin')
