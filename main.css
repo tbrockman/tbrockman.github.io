@@ -23,7 +23,6 @@
     src: url("assets/fonts/RobotoMono/RobotoMono-pwl.ttf")
 }
 
-
 .terminal-input {
     border: none;
     background: #252525;
@@ -34,7 +33,7 @@
     padding: 1rem 2rem;
     font-size: 14px;
     font-weight: normal;
-    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    font-family: Consolas, monospace;
     white-space: pre-wrap;
     overflow-y: scroll;
     overflow-x: hidden;
