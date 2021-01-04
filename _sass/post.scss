@@ -4,6 +4,8 @@ $breakpoint-navbar: 1400px;
 $breakpoint-padding: 1200px;
 $breakpoint-mobile: 800px;
 
+
+
 @media(max-width: $breakpoint-mobile) {
     div.post-container  {
         margin-top: 114px !important;
@@ -71,6 +73,8 @@ h2 {
     color: #fe5858;
     margin-top: 1em;
     font-size: 3em;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
 }
 
 img {
