@@ -9,7 +9,6 @@ import { entrypoint as Youtube } from './youtube.js'
 
 class Kernel {
     constructor() {
-        const element = document.getElementById('terminal')
         const user = {
             name: 'theodore brockman'
         }
@@ -54,7 +53,7 @@ class Kernel {
         filesystem.mount('/', root)
         window.filesystem = filesystem
     
-        const terminal = new Terminal(user, element)
+        const terminal = new Terminal(user, document.getElementById('terminal'))
         const shelp = new Shelp(terminal, filesystem, environment)
     }
 }

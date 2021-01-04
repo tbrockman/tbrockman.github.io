@@ -37,6 +37,7 @@ class Terminal {
         const root = document.createElement('div')
         this.root = root;
         root.contentEditable = true
+        root.spellcheck = false
         root.classList.add('terminal-input')
 
         root.addEventListener("paste", e => {
@@ -170,6 +171,7 @@ class Terminal {
         this.caretElement.style.position = "absolute"
         this.caretElement.style.top = "0"
         this.caretElement.style.left = "0"
+        this.caretElement.style.color = "#ffffff96"
         
         if (this.inputElement) {
             this.inputElement.appendChild(this.caretElement)
