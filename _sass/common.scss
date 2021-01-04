@@ -35,11 +35,6 @@ $breakpoint-navbar: 1400px;
     }
 }
 
-@font-face {
-    font-family: "Roboto";
-    src: url("../assets/fonts/font/Roboto-Regular.tff");
-}
-
 html {
     height: 100%;
 }
@@ -62,7 +57,7 @@ body {
 .page-container {
     box-sizing: border-box;
     width: 100%;
-    max-width: 1200px;
+    max-width: 120ch;
     margin: 0 auto;
     padding: 0em 12em 8em;
     z-index: 1;

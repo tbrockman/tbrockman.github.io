@@ -4,7 +4,7 @@ title: hello world
 date: 2020-11-01 18:18:00 -0700
 author: Theodore Brockman
 categories: security github oss utterances
-excerpt: Hi there! Come join me on a journey of discovery and disappointment as I investigate Utterances, a popular third-party Github application.
+excerpt: Hi there! Come join me on a journey of discovery and disappointment as I investigate Utterances, a popular third-party GitHub application.
 thumbnail: /assets/img/hello_world_thumbnail.png
 ---
 
@@ -16,7 +16,7 @@ Let's get into it.
 
 ## Utterances
 
-[Utterances](https://utteranc.es) is an open-source Typescript plugin which integrates with [Github](https://github.com) to allow comment sections backed by [Github issues](https://github.com/tbrockman/tbrockman.github.io/issues), which when you combine it with something like [Github pages](https://pages.github.com/), gives the ability to host a static website with comments, for **free**! It also looks pretty nice and works on mobile.
+[Utterances](https://utteranc.es) is an open-source Typescript plugin which integrates with [GitHub](https://github.com) to allow comment sections backed by [GitHub issues](https://github.com/tbrockman/tbrockman.github.io/issues), which when you combine it with something like [GitHub pages](https://pages.github.com/), gives the ability to host a static website with comments, for **free**! It also looks pretty nice and works on mobile.
 
 Being really impressed by the plugin, suspicious of things that implement oauth flows, and naturally curious, I was eager to know how this small little Javascript application worked.
 
@@ -29,11 +29,11 @@ Being really impressed by the plugin, suspicious of things that implement oauth 
         async>
 ```
 
-With the above script included on your webpage, Utterances will inject an iframe at the scripts location, and attempt to retrieve the comments linked to an issue specified by the repo and issue-term. It will then render all comments (with remarkably similar styling to Github) in its place.
+With the above script included on your webpage, Utterances will inject an iframe at the scripts location, and attempt to retrieve the comments linked to an issue specified by the repo and issue-term. It will then render all comments (with remarkably similar styling to GitHub) in its place.
 
 ## Helpful features
 
-It's one more step to navigate to Github directly to post comments on an issue itself, so the author implemented a simple OAuth flow that allows user to permit the app access to create comments on their behalf, which is pretty nice!
+It's one more step to navigate to GitHub directly to post comments on an issue itself, so the author implemented a simple OAuth flow that allows user to permit the app access to create comments on their behalf, which is pretty nice!
 
 ![Utterances sign-in to comment](/assets/img/utterance_signin_to_comment.png)
 
@@ -41,7 +41,7 @@ It's one more step to navigate to Github directly to post comments on an issue i
 
 ![Utterances OAuth prompt](/assets/img/utterance_oauth_prompt.png)
 
-And afterwards you're able to comment, *just like you're on Github!*
+And afterwards you're able to comment, *just like you're on GitHub!*
 
 ![Utterances comments](/assets/img/utterance_comments.png)
 
@@ -61,7 +61,7 @@ export function getLoginUrl(redirect_uri: string) {
 }
 ```
 
-Going to the backend code, you can see that the Utterances API generates some secret state and builds a redirect URL to request the necessary scopes for the user from Github, and sets a URL where the user will be redirected should they approve the request.
+Going to the backend code, you can see that the Utterances API generates some secret state and builds a redirect URL to request the necessary scopes for the user from GitHub, and sets a URL where the user will be redirected should they approve the request.
 
 [`utterances-oauth/src/routes.ts#L74`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L74)
 ```javascript
@@ -86,7 +86,7 @@ async function authorizeRequestHandler(origin: string, search: URLSearchParams) 
 }
 ```
 
-Assuming successful parsing of received authorization code and state from query parameters, it uses the parsed values for acquiring an access token from Github, which will then be stored as a cookie to be sent along with future requests to the Utterances API.
+Assuming successful parsing of received authorization code and state from query parameters, it uses the parsed values for acquiring an access token from GitHub, which will then be stored as a cookie to be sent along with future requests to the Utterances API.
 
 [`utterances-oauth/src/routes.ts#L123`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L123)
 ```javascript
@@ -116,7 +116,7 @@ return new Response(undefined, {
 });
 ```
 
-So overall, a relatively fine and safe OAuth flow. Utterances procurs an access token, and then sends it back for me to use to interact directly with the Github API.
+So overall, a relatively fine and safe OAuth flow. Utterances procurs an access token, and then sends it back for me to use to interact directly with the GitHub API.
 
 *...for the most part.*
 
@@ -148,7 +148,7 @@ const submit = async (markdown: string) => {
 };
 ```
 
-The handler for that request is so eager to please, it almost immediately starts to create the specified issue for you, it just makes sure you're an authenticated Github user first.
+The handler for that request is so eager to please, it almost immediately starts to create the specified issue for you, it just makes sure you're an authenticated GitHub user first.
 
 [`utterances-oauth/src/routes.ts#L123`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L123)
 ```javascript
@@ -183,7 +183,7 @@ try {
   ...
 ```
 
-This means that any authenticated Github user can use the Utterances API to create issues anywhere the bot is allowed. A single account could be used by a malicious actor to cause all incoming requests to the application fail, simply by consuming the bots rate-limit for issue creation.
+This means that any authenticated GitHub user can use the Utterances API to create issues anywhere the bot is allowed. A single account could be used by a malicious actor to cause all incoming requests to the application fail, simply by consuming the bots rate-limit for issue creation.
 
 ## Proof of concept
 
@@ -194,11 +194,11 @@ As someone who rarely informs others of application vulnerabilities, I made an e
 Frantically, realizing I had goofed, I sought to contact the author in an e-mail and apologize for my lack of tact:
 > **Theo:**
 > 
-> Hey! I recently found out about Utterances and was super excited to implement it into my own website as I work through a redesign, and then became curious as to how things worked on the backend to prevent things like people maliciously spamming Github issue creation using the API token that the API provides to the client.
+> Hey! I recently found out about Utterances and was super excited to implement it into my own website as I work through a redesign, and then became curious as to how things worked on the backend to prevent things like people maliciously spamming GitHub issue creation using the API token that the API provides to the client.
 > 
-> Not to cause you too much alarm or anything, and perhaps you're already aware of this, but the way the backend is currently setup allows anyone to take that token and create arbitrarily many Github issues on any configured repositories, proof of the vulnerability here: [https://github.com/utterance/utterances/issues/380](https://github.com/utterance/utterances/issues/380) (sorry for testing this out in a public place, in retrospect I realize this wasn't very tactful and I didn't think about it until after it was already done)
+> Not to cause you too much alarm or anything, and perhaps you're already aware of this, but the way the backend is currently setup allows anyone to take that token and create arbitrarily many GitHub issues on any configured repositories, proof of the vulnerability here: [https://github.com/utterance/utterances/issues/380](https://github.com/utterance/utterances/issues/380) (sorry for testing this out in a public place, in retrospect I realize this wasn't very tactful and I didn't think about it until after it was already done)
 > 
-> That said, I'm very passionate about the project, and if Github doesn't have any plans to adopt Utterances directly into Github pages or anything that would make my work obsolete, I would love to help address the vulnerability!
+> That said, I'm very passionate about the project, and if GitHub doesn't have any plans to adopt Utterances directly into GitHub pages or anything that would make my work obsolete, I would love to help address the vulnerability!
 
 The author did not initially believe this to be an issue:
 
@@ -245,20 +245,20 @@ But we must persevere.
 
 Ruminating on my failure a bit, I thought of more realistic ways to keep the same user-friendliness, while also avoiding having to deal with people who like to ruin nice things, and without spending more money.
 
-The crux of the problem is that we want a way of automatically creating Github issues whenever we make a new blog post. For most people linking their blog posts to Github issues, they're probably hosting their blog on Github. For those people hosting their blog on Github, they're probably using [Jekyll](https://jekyllrb.com/) underneath--people like me, which is who I'm really doing this for anyways.
+The crux of the problem is that we want a way of automatically creating GitHub issues whenever we make a new blog post. For most people linking their blog posts to GitHub issues, they're probably hosting their blog on GitHub. For those people hosting their blog on GitHub, they're probably using [Jekyll](https://jekyllrb.com/) underneath--people like me, which is who I'm really doing this for anyways.
 
 From this, we can assume that any of our blog posts will reside in a folder (probably `_posts`), and having access to all the text within those files we can copy that to the GitHub issue if we want to, and we can do all of it using...
 
-## Github Actions
+## GitHub Actions
 
 Heard enough about these yet?
 
-> "GitHub Actions usage is free for public repositories and self-hosted runners" - [Github](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions)
+> "GitHub Actions usage is free for public repositories and self-hosted runners" - [GitHub](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions)
 
 
-If you're using Github issues for blogs, your Github repo is probably public anyways, so this route is free so long as you're not creating more than one PR every two seconds. Within Github Actions, you even have access to a secret that contains an access token which you can use to create issues using the Github API.
+If you're using GitHub issues for blogs, your GitHub repo is probably public anyways, so this route is free so long as you're not creating more than one PR every two seconds. Within GitHub Actions, you even have access to a secret that contains an access token which you can use to create issues using the GitHub API.
 
-I made [this Github Action which](https://github.com/marketplace/actions/social-action), when given a configuration file `.github/social.yml` containing something like the following, will automatically create new issues for you as necessary:
+I made [this GitHub Action which](https://github.com/marketplace/actions/social-action), when given a configuration file `.github/social.yml` containing something like the following, will automatically create new issues for you as necessary:
 
 ```yml
 api_version: v1/social # versioned configuration API
@@ -294,7 +294,7 @@ Let's just call it `Social` instead for now.
 
 You can also check out the code on GitHub:
 
-1. [The Github Action](https://github.com/tbrockman/social-action)
+1. [The GitHub Action](https://github.com/tbrockman/social-action)
 2. [Utterances API](https://github.com/tbrockman/social-oauth)
 3. [Utterances](https://github.com/tbrockman/utterances)
 
