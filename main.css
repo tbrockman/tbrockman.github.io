@@ -23,6 +23,7 @@
     src: url("assets/fonts/RobotoMono/RobotoMono-pwl.ttf")
 }
 
+
 .terminal-input {
     border: none;
     background: #252525;
@@ -121,7 +122,7 @@ h4 {
 }
 
 .left-column ul li a {
-    font-size: 6vh;
+    font-size: 3rem;
 }
 
 .right-column {
