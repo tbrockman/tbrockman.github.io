@@ -1,0 +1,44 @@
+@-webkit-keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {border-right: 0.05em solid;}
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {border-right: 0.05em solid;
+        margin-right: -0.05em;}
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: "RobotoMono";
+    src: url("assets/fonts/RobotoMono/RobotoMono-pwl.ttf")
+}
+
+.terminal-input {
+    border: none;
+    background: #252525;
+    color: #fff;
+    outline: none;
+    caret-color: transparent;
+    flex-grow: 1;
+    padding: 2rem 2rem;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#terminal > .input-row {
+    display: flex;
+}

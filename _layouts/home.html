@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -20,31 +20,9 @@
     {% seo %}
   </head>
   <body>
-      <div class="flex-container">
-          <!-- <h1 class="mobile-logo">
-              <img src="leaf.svg" class="leaf"></img>
-              tb
-          </h1> -->
-
-          <div class="left-column">
-
-
-
-            <ul class="links">
-                <!-- <li><a href="#projects" id="nav-link" class="fa fa-wrench" aria-hidden="true"><p>projects</p></a> -->
-                <li><a href="/blog" class="fa fa-pencil-square" aria-hidden="true" aria-hidden="true" title="blog"></a></li>
-                <li><a href="https://github.com/tbrockman/" class="fa fa-github" aria-hidden="true" title="github"></a>
-                <li><a href="https://www.linkedin.com/in/theodore-brockman-1a276b116/" class="fa fa-linkedin-square" aria-hidden="true" title="linkedin"></a></li>
-                <li><a href="mailto:tmanbrock@gmail.com" class="fa fa-envelope-o" aria-hidden="true" title="email"></a>                
-                <li><a href="/feed.xml" class="fa fa-rss" aria-hidden="true" aria-hidden="true" title="rss"></a></li>
-                <li><a href="https://soundcloud.com/nat-port/" class="fa fa-soundcloud" aria-hidden="true" title="soundcloud"></a>
-                <!-- <li><a href="printer_friendly_resume.pdf" download class="fa fa-print printer" aria-hidden="true" title="printer friendly resume"></a></li> -->
-            </ul>
-          </div>
-          <!-- <img src="image_cropped.jpg" class="author-icon"></img> -->
-          <div class="right-column">
-            <div id="terminal"></div>
-          </div>
-      </div>
+    {% include navbar.html %}
+    <div class="page-container">
+      <div id="terminal"></div>
+    </div>
   <body>
 </html>

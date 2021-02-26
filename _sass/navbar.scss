@@ -15,6 +15,10 @@ $breakpoint-mobile: 800px;
             padding: 1rem 0 !important;
         }
     }
+
+    div.page-container {
+        margin-top: 114px !important;
+    }
 }
 
 @media(max-width: $breakpoint-main) {
