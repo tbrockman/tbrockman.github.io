@@ -44,7 +44,7 @@ class Navbar {
 
     onScroll() {
         const currentY = window.pageYOffset
-        console.log(window)
+        
         if (this.lastY > currentY) {
             this.showNavbar()
         }

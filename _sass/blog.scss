@@ -9,6 +9,7 @@ $breakpoint-mobile: 800px;
 @media(max-width: $breakpoint-mobile) {
     div.blog-list-container {
         margin-top: 114px !important;
+        padding: 0 !important;
     }
 }
 
@@ -55,10 +56,6 @@ $breakpoint-mobile: 800px;
 
 body {
     margin: 0;
-}
-
-.blog-list-container {
-    padding: 0 !important;
 }
 
 .blog-list {
