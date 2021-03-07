@@ -21,7 +21,7 @@ $breakpoint-mobile: 800px;
             padding-top: 2rem;
 
             a {
-                margin: 1rem 2rem;
+                margin: 0;
                 
                 div {
                     display: flex;
@@ -65,9 +65,9 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     padding-top: 12vh;
+    flex-direction: column;
 }
 
 .blog-list >  a {
@@ -75,7 +75,6 @@ body {
     border-radius: 3px;
     margin-right: 2em;
     margin-bottom: 2em;
-    width: 480px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -91,7 +90,8 @@ body {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    word-break: break-all;
+    word-break: break-word;
+    color: $color-primary;
 }
 
 .blog-post-preview {
@@ -110,7 +110,7 @@ body {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: #252525;
+    color: #fff;
 }
 
 .blog-list li h2 {

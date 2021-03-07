@@ -4,8 +4,6 @@ $breakpoint-navbar: 1400px;
 $breakpoint-padding: 1200px;
 $breakpoint-mobile: 800px;
 
-
-
 @media(max-width: $breakpoint-mobile) {
     div.post-container  {
         margin-top: 114px !important;
@@ -112,6 +110,7 @@ p > strong > code {
 .post-container p {
     font-size: 18px;
     line-height: 2rem;
+    margin: 4rem 0;
 }
 
 .post-container p a .highlighter-rouge {
@@ -175,7 +174,7 @@ p > strong > code {
 .highlight pre {
     padding: 2em 1em;
     margin: 0;
-    background: #252525 !important;
+    background: #171717 !important;
 }
 
 img + em {

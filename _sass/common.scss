@@ -1,5 +1,6 @@
 $color-primary: #fe5858;
 $color-hover: #d14b4b;
+$color-white: #fff;
 $breakpoint-navbar: 1400px;
 
 @keyframes nav-slide-in-from-right {
@@ -46,13 +47,14 @@ li {
 }
 
 body {
-    font-family: Arial, sans-serif;
-    color: #252525;
+    font-family: Consolas, monospace, sans-serif;
+    background-color: #252525;
     margin: 0;
     height: 100%;
     display: flex;
     flex-direction: column;
     font-size: 18px;
+    color: #fff;
 }
 
 .page-container {
@@ -63,11 +65,10 @@ body {
     padding: 0em 12em 8em;
     z-index: 1;
     flex: 1;
-    background-color: #fff;
 }
 
 a {
-    color: $color-primary;
+    color: $color-white;
     text-decoration: none;
 }
 
