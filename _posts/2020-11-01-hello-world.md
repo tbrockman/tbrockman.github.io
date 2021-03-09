@@ -247,7 +247,7 @@ But we persevere.
 
 Ruminating on my failure a bit, I thought of more realistic ways to keep the same user-friendliness, while also avoiding having to deal with people who like to ruin things, and without spending more money.
 
-The crux of the problem is that we want a way of automatically creating GitHub issues whenever we make a new blog post. For most people linking their blog posts to GitHub issues, they're probably hosting their blog on GitHub. For those people hosting their blog on GitHub, they're probably using [Jekyll](https://jekyllrb.com/)--people like me! (Which is who I'm really doing this for anyways.)
+The crux of the problem is that we want a way of automatically creating GitHub issues whenever we make a new blog post. For most people linking their blog posts to GitHub issues, they're probably hosting their blog on GitHub. For those people hosting their blog on GitHub, they're probably using [Jekyll](https://jekyllrb.com/).
 
 From this, we can assume that any of our blog posts will reside in a folder (probably `_posts`), and if we have access to all the text within those files we can copy that to the GitHub issue if we want to, and if we want to we can do all of it using...
 

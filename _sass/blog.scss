@@ -1,6 +1,9 @@
 $color-primary: #fe5858;
 $color-hover: #cc4949;
 $color-secondary: #252525;
+$hover-background-color: #383838;
+$hover-box-shadow: -1rem 1rem #171717;
+$hover-box-border: 4px solid #0a0a0a;
 
 $breakpoint-navbar: 1400px;
 $breakpoint-padding: 1200px;
@@ -22,7 +25,8 @@ $breakpoint-mobile: 800px;
             padding-top: 2rem;
 
             a {
-                margin: 0;
+                margin-left: 1em;
+                margin-right: 1em;
                 
                 div {
                     display: flex;
@@ -34,7 +38,7 @@ $breakpoint-mobile: 800px;
 
     .blog-post-preview {
         .blog-post-title {
-            font-size: 3rem;
+            font-size: 2rem;
         }
     }
 
@@ -74,7 +78,6 @@ body {
 .blog-list >  a {
     box-shadow: 0 0 12px 0px #25252530;
     border-radius: 3px;
-    margin-right: 2em;
     margin-bottom: 2em;
     transition: all 0.2s ease-in-out;
 }
@@ -98,6 +101,9 @@ body {
 
 .blog-post-preview {
     padding: 2em;
+    background-color: $hover-background-color;
+    box-shadow: $hover-box-shadow;
+    border: $hover-box-border;
 }
 
 .blog-post-thumbnail {

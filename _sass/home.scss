@@ -27,6 +27,8 @@
     background-color:#252525 !important;
     max-width: initial !important;
     padding: initial !important;
+    display: flex;
+    justify-content: center;
 }
 
 .terminal-input {
@@ -42,6 +44,7 @@
     white-space: pre-wrap;
     overflow-y: auto;
     overflow-x: hidden;
+    max-width: 80ch;
 }
 
 #terminal > .input-row {
