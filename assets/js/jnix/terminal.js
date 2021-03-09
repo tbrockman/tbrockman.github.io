@@ -201,7 +201,6 @@ software developer, artist, goof
 
         if (!this.inputElement) {
             this.inputElement = document.createElement('div')
-            this.inputElement.style.display = "inline-block"
             this.inputElement.style.wordBreak = "break-all";
             this.inputElement.style.position = "relative";
             this.root.appendChild(this.inputElement)
