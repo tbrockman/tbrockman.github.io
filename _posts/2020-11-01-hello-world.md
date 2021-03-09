@@ -18,7 +18,7 @@ Let's get into it.
 
 [Utterances](https://utteranc.es) is an open-source Typescript plugin which integrates with [GitHub](https://github.com) to allow comment sections backed by [GitHub issues](https://github.com/tbrockman/tbrockman.github.io/issues), which when you combine it with something like [GitHub pages](https://pages.github.com/), gives the ability to host a static website with comments, for **free**! It also looks pretty nice and works on mobile.
 
-Being really impressed by the plugin, suspicious of things that implement oauth flows, and naturally curious, I was eager to know how this small little Javascript application worked.
+Being impressed by the plugin (and suspicious of things that implement OAuth flows), I was curious to know how this little comment section worked.
 
 ```html
 <script src="https://utteranc.es/client.js"
@@ -46,6 +46,8 @@ And afterwards you're able to comment, *just like you're on GitHub!*
 ![Utterances comments](/assets/img/utterance_comments.png)
 
 Usually I just give access to any of my accounts whenever anyone asks for it (*what's the worst that could happen?*), but the application is open-source so I thought I may aswell peek around a little bit.
+
+## Investigation
 
 Tracing the code from the start of the flow, we see the `Sign in to comment` button sends us to an endpoint from the Utterances API with a redirect parameter back to our original website.
 
@@ -86,7 +88,7 @@ async function authorizeRequestHandler(origin: string, search: URLSearchParams) 
 }
 ```
 
-Assuming successful parsing of received authorization code and state from query parameters, it uses the parsed values for acquiring an access token from GitHub, which will then be stored as a cookie to be sent along with future requests to the Utterances API.
+Assuming successful parsing of authorization code and state (passed as URL query parameters), it uses the retrieved information for acquiring an access token from GitHub, which will then be stored as a cookie to be sent along with future requests to the Utterances API.
 
 [`utterances-oauth/src/routes.ts#L123`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L123)
 ```javascript
@@ -116,13 +118,13 @@ return new Response(undefined, {
 });
 ```
 
-So overall, a relatively fine and safe OAuth flow. Utterances procurs an access token, and then sends it back for me to use to interact directly with the GitHub API.
+So overall, a relatively fine and safe implementation. Utterances procurs an access token, and then sends it back for me to use to interact directly with the GitHub API. Perfectly reasonable.
 
 *...for the most part.*
 
 ## Maybe too helpful
 
-In order to be even more user-friendly, Utterances will go through doing some of the work making issues for you. If the issue the script is linked to doesn't exist yet and someone tries to comment, it'll send a request to the Utterances API which it will dutifully create it ahead of time.
+In order to be even *more* convenient, Utterances will sometimes go through the work of posting GitHub issues for you. If the issue the script references doesn't exist yet and someone tries to comment, the script will send a request to the Utterances API to create the missing issue.
 
 ![Utterance bot creating an issue](/assets/img/utterance_bot_issue_creation.png)
 
@@ -148,7 +150,7 @@ const submit = async (markdown: string) => {
 };
 ```
 
-The handler for that request is so eager to please, it almost immediately starts to create the specified issue for you, it just makes sure you're an authenticated GitHub user first.
+The handler for that request is so eager to please, it almost immediately starts to create the specified issue for you, it only checks that you're an authenticated GitHub user first.
 
 [`utterances-oauth/src/routes.ts#L123`](https://github.com/utterance/utterances-oauth/blob/master/src/routes.ts#L123)
 ```javascript
@@ -200,7 +202,7 @@ Frantically, realizing I had goofed, I sought to contact the author in an e-mail
 > 
 > That said, I'm very passionate about the project, and if GitHub doesn't have any plans to adopt Utterances directly into GitHub pages or anything that would make my work obsolete, I would love to help address the vulnerability!
 
-The author did not initially believe this to be an issue:
+After taking a few days to reply, the author indicated they did not believe this to be an issue:
 
 > **Author:**
 > 
@@ -224,13 +226,13 @@ I decided I just hadn't been clear enough in my communication:
 > 
 > Of course there's the possibility I've misunderstood the backend code, but hopefully this clarifies what I see as potential issues!
 
-With overwhelming specificity and lack of judgement, I was successful. They had lowered their guard.
+Through incredible verbosity I was successful. They lowered their guard:
 
 > **Author**:
 >
 > 1 and 2 are correct. Utterances relies on github's rate limiting. It would not make sense to create issues with the user's access token because the user would later be able to modify the title/body resulting in the issue becoming unlinked from the blog post.
 
-I then ruined my progress but suggesting a pretty poor fix that was:
+... I then ruined my progress but suggesting a pretty poor fix that was:
 1. Overcomplicated
 2. Required **more** server-side processing and resources
 3. Wrong
@@ -241,13 +243,13 @@ Needless to say I lost the authors faith, and have not yet heard back.
 
 I don't blame the author for not responding. I can't imagine it's enjoyable maintaining an open-source project for free, let alone having random strangers come to you with *more* work they want you to do. It would have been cool to work on fixing the problem together, but everything can't always work out the way you'd hoped.
 
-But we must persevere.
+But we persevere.
 
-Ruminating on my failure a bit, I thought of more realistic ways to keep the same user-friendliness, while also avoiding having to deal with people who like to ruin nice things, and without spending more money.
+Ruminating on my failure a bit, I thought of more realistic ways to keep the same user-friendliness, while also avoiding having to deal with people who like to ruin things, and without spending more money.
 
-The crux of the problem is that we want a way of automatically creating GitHub issues whenever we make a new blog post. For most people linking their blog posts to GitHub issues, they're probably hosting their blog on GitHub. For those people hosting their blog on GitHub, they're probably using [Jekyll](https://jekyllrb.com/) underneath--people like me, which is who I'm really doing this for anyways.
+The crux of the problem is that we want a way of automatically creating GitHub issues whenever we make a new blog post. For most people linking their blog posts to GitHub issues, they're probably hosting their blog on GitHub. For those people hosting their blog on GitHub, they're probably using [Jekyll](https://jekyllrb.com/)--people like me! (Which is who I'm really doing this for anyways.)
 
-From this, we can assume that any of our blog posts will reside in a folder (probably `_posts`), and having access to all the text within those files we can copy that to the GitHub issue if we want to, and we can do all of it using...
+From this, we can assume that any of our blog posts will reside in a folder (probably `_posts`), and if we have access to all the text within those files we can copy that to the GitHub issue if we want to, and if we want to we can do all of it using...
 
 ## GitHub Actions
 
@@ -256,9 +258,9 @@ Heard enough about these yet?
 > "GitHub Actions usage is free for public repositories and self-hosted runners" - [GitHub](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-billing-and-payments-on-github/about-billing-for-github-actions)
 
 
-If you're using GitHub issues for blogs, your GitHub repo is probably public anyways, so this route is free so long as you're not creating more than one PR every two seconds. Within GitHub Actions, you even have access to a secret that contains an access token which you can use to create issues using the GitHub API.
+If you're using GitHub issues for blogs, your GitHub repo is probably public anyways, so this route is free so long as you're not creating more than one blog every few seconds or so. Within GitHub Actions, you even have access to a secret that contains an access token which you can use to create issues through the GitHub API.
 
-I made [this GitHub Action which](https://github.com/marketplace/actions/social-action), when given a configuration file `.github/social.yml` containing something like the following, will automatically create new issues for you as necessary:
+I made [this GitHub Action](https://github.com/marketplace/actions/social-action) which, when given a configuration file `.github/social.yml` containing something like the following, will automatically create new issues for you as necessary:
 
 ```yml
 api_version: v1/social # versioned configuration API
