@@ -44,11 +44,11 @@ class Navbar {
 
     onScroll() {
         const currentY = window.pageYOffset
-
+        
         if (this.lastY > currentY) {
             this.showNavbar()
         }
-        else if (!this.isOpened) {
+        else if (!this.isOpened && document.body.scrollHeight > document.body.clientHeight) {
             this.hideNavbar()
         }
         this.lastY = currentY
