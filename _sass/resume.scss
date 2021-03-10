@@ -188,7 +188,7 @@ p {
 }
 
 .section-separator {
-    padding: 1em 0;
+    padding: 2em 0 1em 0;
     width: fit-content;
     width: -moz-fit-content;
 }
@@ -252,4 +252,11 @@ p {
 .education-section {
     display: flex;
     justify-content: flex-start;
+}
+
+.floating-block {
+    border: 4px solid #0a0a0a;
+    box-shadow: -1rem 1rem #171717;
+    background-color: #383838;
+    padding: 1em;
 }
