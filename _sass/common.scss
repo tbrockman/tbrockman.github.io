@@ -2,6 +2,7 @@ $color-primary: #fe5858;
 $color-hover: #d14b4b;
 $color-white: #fff;
 $breakpoint-navbar: 1400px;
+$breakpoint-mobile: 800px;
 
 @keyframes nav-slide-in-from-right {
     0% { left: 100vw; }
@@ -21,6 +22,13 @@ $breakpoint-navbar: 1400px;
 @keyframes slide-right-close-nav {
     0% { left: -70vw; position:absolute; }
     100% { left: 0}
+}
+
+@media(max-width: $breakpoint-mobile) {
+    
+    div.page-container {
+        font-size: 1rem;
+    }
 }
 
 @media(max-width: $breakpoint-navbar) {
@@ -47,13 +55,13 @@ li {
 }
 
 body {
-    font-family: Consolas, monospace, sans-serif;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     background-color: #252525;
     margin: 0;
     height: 100%;
     display: flex;
     flex-direction: column;
-    font-size: 18px;
+    font-size: 1vw;
     color: #fff;
 }
 

@@ -6,8 +6,7 @@ class Terminal {
         this.emutermLogo = `
 <div style="background-color: #383838;
 box-shadow: -1rem 1rem #171717;
-font-size: clamp(6px,2vw,18px);
-line-height: 1.15em;
+font-size: clamp(5px,1.6vw,1rem);
 padding: 1rem;
 text-align: center;
 border: 4px solid #0a0a0a;">
@@ -35,10 +34,6 @@ software developer, artist, goof
             this.emutermLogo,
             "\n",
             "\n",
-            "\n",
-            "<div>",
-            "\n",
-            "type \"help\" to see a list of available commands\n",
             "\n"
         ]
         this.cursor = 0
@@ -68,6 +63,7 @@ software developer, artist, goof
                 this.input = ""
                 this.cursor = 0
                 this.renderInput()
+                this.inputElement.scrollIntoView()
             }
             else {
                 this.inserTextAtPosition(e.key, this.cursor)
@@ -107,6 +103,19 @@ software developer, artist, goof
         element.replaceWith(root)
         this.root.focus()
         this.render()
+        this.appendFiller()
+        const lines = [
+            "type \"help\" to see a list of available commands\n",
+            "\n"
+        ]
+        this.writeLines(lines)
+    }
+
+    appendFiller() {
+        const filler = document.createElement("div")
+        filler.style.flexGrow = 1
+        console.log(filler)
+        this.root.insertBefore(filler, this.inputElement)
     }
 
     moveCursorRight() {
@@ -227,7 +236,6 @@ software developer, artist, goof
             element.innerHTML = line
             this.root.insertBefore(element, this.inputElement)
         })
-        this.inputElement.scrollIntoView()
     }
 
     clear() {
