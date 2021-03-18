@@ -129,7 +129,8 @@ p > strong > code {
 }
 
 .post-container p a .highlighter-rouge {
-    font-family: monospace;
+    font-family: $font-family-primary;
+    font-size: 1rem;
     display: block;
     margin-top: 4em;
     margin-bottom: 0;
@@ -198,7 +199,7 @@ p > strong > code {
     background: $hover-background-color !important;
     box-shadow: $hover-box-shadow;
     border: $hover-box-border;
-    font-family: $font-family-primary;
+    font-family: $font-family-primary !important;
 }
 
 img + em {
@@ -206,4 +207,10 @@ img + em {
     text-align: center;
     font-size: 1rem;
     display: block;
+}
+
+code[class*="language-"], 
+pre[class*="language-"] {
+    font-family: $font-family-primary;
+    font-size: 1rem;
 }
