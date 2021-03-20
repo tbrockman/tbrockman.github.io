@@ -103,19 +103,11 @@ software developer, artist, goof
         element.replaceWith(root)
         this.root.focus()
         this.render()
-        this.appendFiller()
         const lines = [
             "type \"help\" to see a list of available commands\n",
             "\n"
         ]
         this.writeLines(lines)
-    }
-
-    appendFiller() {
-        const filler = document.createElement("div")
-        filler.style.flexGrow = 1
-        console.log(filler)
-        this.root.insertBefore(filler, this.inputElement)
     }
 
     moveCursorRight() {
