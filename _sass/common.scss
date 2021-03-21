@@ -25,10 +25,7 @@ $breakpoint-mobile: 800px;
 }
 
 @media(max-width: $breakpoint-mobile) {
-    
-    div.page-container {
-        font-size: 1rem;
-    }
+
 }
 
 @media(max-width: $breakpoint-navbar) {
@@ -73,6 +70,7 @@ body {
     padding: 0em 12em 8em;
     z-index: 1;
     flex: 1;
+    font-size: 1rem;
 }
 
 a {
