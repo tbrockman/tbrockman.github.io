@@ -77,9 +77,18 @@ h1 {
 }
 
 h2 {
-    color: #fe5858;
+    color: $color-primary;
     margin-top: 1em;
     font-size: 3em;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    word-break: break-word;
+}
+
+h3 {
+    color: $color-primary;
+    margin-top: 1em;
+    font-size: 2rem;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     word-break: break-word;
