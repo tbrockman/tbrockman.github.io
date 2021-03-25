@@ -1,7 +1,7 @@
 ---
 layout: post
 title: using webpack and manifest v3 👨‍💻
-excerpt: An article to make up for some of the sparse documentation available on the internet.
+excerpt: A guide to make up for some of the sparse documentation available on the internet about using Webpack in v3 Chrome extensions.
 date: 2021-03-24 22:06:00 -0700
 author: Theodore Brockman
 categories: webpack,mv3,chrome
