@@ -4,7 +4,7 @@ title: using webpack and manifest v3 👨‍💻
 excerpt: A guide to make up for some of the sparse documentation available on the internet about using Webpack in v3 Chrome extensions.
 date: 2021-03-24 22:06:00 -0700
 author: Theodore Brockman
-categories: webpack,mv3,chrome
+categories: webpack mv3 chrome
 ---
 Working on my [*amazing, incredible, life-changing* Chrome extension](https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh), I noticed there wasn't much documentation available in terms of how to use [manifest v3](https://developer.chrome.com/docs/extensions/mv3/intro/) extensions in conjunction with [Webpack](https://webpack.js.org/) to modularize code. So here's a pretty quick guide.
 
