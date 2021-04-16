@@ -47,7 +47,7 @@ $breakpoint-combine-header: 640px;
 
 @media(max-width: $breakpoint-mobile) {
 
-    div.education-section {
+    div.education-section > .floating-block {
         div {
             display: flex;
             flex-wrap: wrap;
@@ -62,6 +62,7 @@ $breakpoint-combine-header: 640px;
 
 a {
     text-decoration: none;
+    word-break: break-word;
 }
 
 a.gold:hover {
@@ -103,7 +104,7 @@ body {
 
 .resume-container {
     max-width: 100%;
-    width: 75ch;
+    width: 40rem;
     display: block;
 }
 
