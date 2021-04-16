@@ -46,10 +46,10 @@ layout: resume
                     <span class="blue">Languages</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"Python", "C#", "Javascript", "Rust", "Ruby", "HTML & CSS"</span><span class="white">]</span>
                 </div>
                 <div class="skill">
-                    <span class="blue">Back-ends</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"FastAPI", "Node.js", ".NET", "Django", "Flask"</span><span class="white">]</span>
+                    <span class="blue">Backends</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"FastAPI", "Node.js", ".NET", "Django", "Flask"</span><span class="white">]</span>
                 </div>
                 <div class="skill">
-                    <span class="blue">Front-ends</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"React", "Android", "Angular"</span><span class="white">]</span>
+                    <span class="blue">Frontends</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"React", "Android", "Angular"</span><span class="white">]</span>
                 </div>
                 <div class="skill">
                     <span class="blue">Platforms</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"AWS", "GitHub", "Datadog"</span><span class="white">]</span>
@@ -72,7 +72,7 @@ layout: resume
                     <span><a class="gold" href="/">theo.lol</a></span>
                 </div>
                 <div class="projects-body">
-                    <p>My blog and showcase. Written in plain ol' Javascript, HTML, CSS, and hosted on GitHub pages. It loads quickly and costs me nothing (**other than the domain).
+                    <p>My blog and showcase. Written in plain ol' Javascript, HTML, CSS, and hosted on GitHub pages. It's small, loads quickly, and costs me nothing (**other than the domain).
                         </p>
                 </div>
                 <div class="inner-section-separator"></div>
@@ -83,7 +83,18 @@ layout: resume
                         <span><a class="gold" href="https://github.com/tbrockman/prune">github.com/tbrockman/prune</a></span>
                     </div>
                     <div class="projects-body">
-                        <p>A small Chrome extension to help you manage your garden of tabs. <a class="gold" href="https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh?hl=en-GB&authuser=0">You can download it here.</a></p>
+                        <p>A small Chrome extension to help you trim your garden of tabs. <a class="gold" href="https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh?hl=en-GB&authuser=0">You can download it here.</a></p>
+                    </div>
+                </div>
+                <div class="inner-section-separator"></div>
+                <div class="project">
+                    <div class="projects-header">
+                        <span class="green">auxb0x</span>
+                        <span class="white">:&nbsp</span>
+                        <span><a class="gold" href="https://auxb0x.com?api=ax8G2Du7z38r5InOvvu9661kj4XgyCfz8cZSBOHT">auxb0x.com</a></span>
+                    </div>
+                    <div class="projects-body">
+                        <p>Created a private website dedicated to playing my Soundcloud reposts and likes. Mainly built as an exercise in designing a frontend audio player and accompanying backend.</p>
                     </div>
                 </div>
                 <div class="inner-section-separator"></div>
@@ -99,18 +110,6 @@ layout: resume
                             between nearby clients (patrons) and servers (jukeboxes), allowing everyone to stop fighting over the aux and queue songs democratically. </p>
                     </div>
                 </div>
-                <div class="inner-section-separator"></div>
-                <div class="project">
-                    <div class="projects-header">
-                        <span class="green">auxb0x</span>
-                        <span class="white">:&nbsp</span>
-                        <span><a class="gold" href="https://auxb0x.com?api=ax8G2Du7z38r5InOvvu9661kj4XgyCfz8cZSBOHT">auxb0x.com</a></span>
-                    </div>
-                    <div class="projects-body">
-                        <p>A private website dedicated to playing my Soundcloud reposts and likes,
-                            created to address a bug in Soundcloud's shuffle functionality, which will only shuffle the first page of retrieved songs, instead of your whole catalog.</p>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="section-separator comment-grey"></div>
@@ -124,22 +123,18 @@ layout: resume
                     <div class="work-experience-header">
                         <span class="green">Software Engineer</span>
                         <span class="white">,&nbsp</span>
-                        <span class="gold">Earnin&nbsp</span>
+                        <span><a href="https://earnin.com/" class="gold">Earnin</a>&nbsp</span>
                         <span class="comment-grey">// March 2019 - Present</span>
                     </div>
                     <div class="work-experience-body">
-                        <p>Created a Python application for automated monitoring and deployment
-                            of our legacy C# applications, eliminating all user-facing impacts of
-                            rollouts, reducing application monitoring overhead, and improving
-                            our ability to respond to incidents and outages.</p>
+                        <p>Built a Slack application for co-workers to show each other their appreciation through coin emojis, dubbed "Earnin Coin", which went viral internally. Included a weekly leaderboard to celebrate high coin earners and is consistently touted as making employees feel better about giving and receiving help.</p>
+                        <p>Created an in-house Python tool for "short-term" improvements (still being used over a year later) to deployments and monitoring of our main monolith (as well as other legacy C# applications), while deploying and configuring a Spinnaker cluster, with the end goal of modernizing and consolidating our deployment pipelines. Audited and improved critical legacy testing, development, and production infrastructure and CI/CD pipelines.</p>
+                        <p>Worked on an internal tool for improving application development and management, features included cataloging of internal applications, automated credential provisioning for Docker build/execution, configured by easy-to-read YAML, CLI and API written in Python, integrated with GitHub, backed by a PostgreSQL database.</p>
+                        <p>Lead a project to refactor application referral process, after taking over service ownership and discovering current systems dependency on advertising IDs, and the impending deprecation of IDFA on iOS 14.5. Contributions included full backend system design and implementation.</p>
+                        <p>Built a custom <a href="https://dependabot.com/" class="gold">Dependabot</a> instance for keeping private internal packages up to date, also added the ability to group multiple dependency updates into single PRs (two features not yet supported natively by Github).</p>
                         <p>Reduced average login times of our main application by ~300ms.</p>
-                        <p>Developed an internal Slack application for co-workers to show each other
-                            gratitude through coin emojis backed by a fake economy, widely used in the organization and notably improved employee engagement and morale</p>
-                        <p>Built a custom application (leveraging <a class="gold" href="https://dependabot.com/">Dependabot</a>) to keep our private package dependencies up to date, 
-                            also added the ability to group multiple dependency updates into single PRs (two features not yet supported by GitHub's native Dependabot implementation).</p>
-                        <p>Discovered source of unnecessary 20ms (average) per request latency present
-                            in all our Kubernetes microservices, worked on a team benchmarking
-                            replacements for the responsible applications.</p>
+                        <p>Discovered source of ~20ms per request latency present in all backend microservices, and then worked on a team benchmarking replacements for the responsible components.</p>
+                        <p>Built a notification system which audited access logs for any reads to internal employee data.</p>
                     </div>                    
                 </div>
                 <div class="inner-section-separator comment-grey"></div>
@@ -147,7 +142,7 @@ layout: resume
                     <div class="work-experience-header">
                         <span class="green">Full-Stack Software Developer</span>
                         <span class="white">,&nbsp</span>
-                        <span class="gold">Brockman Consulting&nbsp</span>
+                        <span><a href="https://brockman-consulting.com/" class="gold">Brockman Consulting</a>&nbsp</span>
                         <span class="comment-grey">// Nov. 2018 – March 2019</span>
                     </div>
                     <div class="work-experience-body">
@@ -161,7 +156,7 @@ layout: resume
                     <div class="work-experience-header">
                         <span class="green">Junior Software Developer</span>
                         <span class="white">,&nbsp</span>
-                        <span class="gold">Microquest&nbsp</span>
+                        <span><a href="https://www.microquest.ca/" class="gold">Microquest</a>&nbsp</span>
                         <span class="comment-grey">// Jan. 2015 – Mar. 2016</span>
                     </div>
                     <div class="work-experience-body">
@@ -192,6 +187,19 @@ layout: resume
                         <p>
                             Forked and updated several components to eliminate a security issue.
 <span><a class="gold" href="https://theo.lol/security/github/oss/utterances/2020/11/02/hello-world.html">Read about it here.</a></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="inner-section-separator comment-grey"></div>
+                <div class="open-source-item">
+                    <div class="open-source-header">
+                        <span class="green">atom</span>
+                        <span class="white">:&nbsp</span>
+                        <span><a class="gold" href="https://atom.io">atom.io</a></span>
+                    </div>
+                    <div class="open-source-body">
+                        <p>
+                            Added <a class="gold" href="https://github.com/atom/find-and-replace/pull/932">"Open in New Tab"</a> context-menu functionality to the <a class="gold" href="https://github.com/atom/find-and-replace">find-and-replace package</a>.
                         </p>
                     </div>
                 </div>

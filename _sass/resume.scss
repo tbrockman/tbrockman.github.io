@@ -15,6 +15,7 @@ $breakpoint-combine-header: 640px;
     div.resume-header {
         flex-direction: column;
         justify-content: center;
+        margin-bottom: -1rem;
     }
 
     .contact-section {
@@ -45,38 +46,6 @@ $breakpoint-combine-header: 640px;
 }
 
 @media(max-width: $breakpoint-mobile) {
-    body {
-        padding: 2em !important;
-    }
-
-    div.resume-container {
-        max-width: 100%;
-        display: block;
-    }
-
-    div.section {
-        display:  flex;
-        flex-direction: column;
-        margin-top: 1rem;
-    }
-
-    div.section-separator {
-        margin: 2em 0 0 0;
-    }
-
-    div.section-icon-container {
-        margin-bottom: 1em;
-        margin-top: 1em;
-        align-items: flex-start;
-        flex-direction: column;
-        justify-content: flex-start;
-        font-size: 2rem;
-        min-width: unset;
-
-        div {
-            margin-top: 0.5em;
-        }
-    }
 
     div.education-section {
         div {
@@ -97,6 +66,10 @@ a {
 
 a.gold:hover {
     color: #ae8631;
+}
+
+body {
+    padding: 2em !important;
 }
 
 .first-name, .last-name {
@@ -126,6 +99,12 @@ a.gold:hover {
 
 .hide-header-not-combined {
     display: none;
+}
+
+.resume-container {
+    max-width: 100%;
+    width: 75ch;
+    display: block;
 }
 
 .section {
@@ -175,16 +154,16 @@ p {
     margin-bottom: 0;
 }
 
-.resume-container {
-    max-width: 50rem;
-    display: flex;
-    flex-direction: column;
-}
-
 .resume-header {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+div.section {
+    display:  flex;
+    flex-direction: column;
+    margin-top: 1rem;
 }
 
 .section-separator {
@@ -194,16 +173,19 @@ p {
 }
 
 .section-icon-container {
-    display: flex;
-    justify-content: center;
-    min-width: 14em;
-    flex-direction: column;
+    margin-bottom: 1em;
     align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-size: 2rem;
+    min-width: unset;
     min-height: 100%;
-}
+    display: flex;
 
-.section-icon-container div {
-    margin-top: 1em;
+    div {
+        margin-top: 0;
+        margin-left: 1rem;
+    }
 }
 
 .skills-section {
