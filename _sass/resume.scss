@@ -39,10 +39,6 @@ $breakpoint-combine-header: 640px;
             font-weight: bold;
         }
     }
-
-    div.skill {
-        padding-top: 1rem;
-    }
 }
 
 @media(max-width: $breakpoint-mobile) {
@@ -208,8 +204,12 @@ div.section {
 }
 
 .work-experience-header {
-    display: flex;
-    flex-wrap: wrap;
+    font-size: 0;
+}
+
+.work-experience-header > span {
+    font-size: 1rem;
+
 }
 
 .inner-section-separator {
@@ -221,7 +221,11 @@ div.section {
 }
 
 .projects-header {
-    display: flex;
+    font-size: 0;
+}
+
+.projects-header > span {
+    font-size: 1rem;
 }
 
 .open-source-section {

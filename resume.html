@@ -46,16 +46,69 @@ layout: resume
                     <span class="blue">Languages</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"Python", "C#", "Javascript", "Rust", "Ruby", "HTML & CSS"</span><span class="white">]</span>
                 </div>
                 <div class="skill">
-                    <span class="blue">Backends</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"FastAPI", "Node.js", ".NET", "Django", "Flask"</span><span class="white">]</span>
+                    <span class="comment-grey">// some tech and platforms I have experience with</span>
                 </div>
                 <div class="skill">
-                    <span class="blue">Frontends</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"React", "Android", "Angular"</span><span class="white">]</span>
+                    <span class="blue">Buzzwords</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"Angular", "Android", "AWS", "Cloudflare", "Datadog", "Django", "Docker", "FastAPI", "Flask", "Git", "GitHub", "Jenkins", "Kafka", "Kubernetes", "Linkerd", "MySQL", "Netlify", "Node.js", "PostgreSQL", "React", "Redis"</span><span class="white">]</span>
                 </div>
-                <div class="skill">
-                    <span class="blue">Platforms</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"AWS", "GitHub", "Datadog"</span><span class="white">]</span>
+            </div>
+        </div>
+        <div class="section-separator comment-grey"></div>
+        <div class="work-experience-section section">
+            <div class="section-icon-container pink">
+                <i class="fas fa-toolbox"></i>
+                <div>work experience</div>
+            </div>
+            <div class="work-experience-container floating-block">
+                <div class="work-experience-entry">
+                    <div class="work-experience-header">
+                        <span class="green">Software Engineer</span>
+                        <span class="white">,&nbsp;</span>
+                        <span><a href="https://earnin.com/" class="gold">Earnin</a>&nbsp</span>
+                        <span class="comment-grey">// March 2019 - Present</span>
+                    </div>
+                    <div class="work-experience-body">
+                        <p>Recently created the browser registration funnel for our main application, reducing cost of user acquisition and paving the way for future investment into a cross-platform target for application development.</p>
+                        <p>Built a Slack application for co-workers to show each other appreciation through coin emojis, dubbed "Earnin Coin", which went viral internally and regularly reaches 100s of weekly transactions. Included a real economy, a weekly leaderboard to celebrate high coin earners, and is consistently touted as making employees feel better about giving and receiving help.</p>
+                        <p>Reduced average login times of our main application by ~300ms.</p>
+                        <p>Created an in-house Python tool for "short-term" improvements (still being used over a year later) to deployments and monitoring of our main monolith (as well as other legacy C# applications), eliminating 100% of deployment system caused user-facing errors. Included writing extensive documentation and training 30+ developers on tools use, which allowed engineers to confidently and safely deploy legacy code without fear of user impact.</p>
+                        <p>Lead a project to refactor application referral process, after taking over service ownership and discovering current systems dependency on advertising IDs, and the impending deprecation of IDFA on iOS 14.5. Contributions included full backend system design and implementation, facilitating hundreds of successful referrals per day.</p>
+                        <p>Built a custom <a href="https://dependabot.com/" class="gold">Dependabot</a> instance for keeping private internal packages up to date, also added the ability to group multiple dependency updates into single PRs (two features not yet supported natively by GitHub).</p>
+                        <p>Discovered source of ~20ms per request latency present in <i>all</i> backend microservices, and then worked on a team benchmarking replacements for the responsible components.</p>
+                        <p>Built a notification system which audited access logs for any reads to internal employee data.</p>
+                        <p>...and more.</p>
+                    </div>                    
                 </div>
-                <div class="skill">
-                    <span class="blue">Tools</span><span class="white">:&nbsp</span><span class="white">[</span><span class="green">"Docker", "Kubernetes", "Jenkins"</span><span class="white">]</span>
+                <div class="inner-section-separator comment-grey"></div>
+                <div class="work-experience-entry">
+                    <div class="work-experience-header">
+                        <span class="green">Full-Stack Software Developer</span>
+                        <span class="white">,&nbsp;</span>
+                        <span><a href="https://brockman-consulting.com/" class="gold">Brockman Consulting</a>&nbsp</span>
+                        <span class="comment-grey">// Nov. 2018 – March 2019</span>
+                    </div>
+                    <div class="work-experience-body">
+                        <p>Contract software development work as an independent programmer.</p>
+                        <p>Built an automated job-dispatching application for an industrial and
+                            oil-field safety services company using Twilio and Node.js.</p>
+                    </div>
+                </div>
+                <div class="inner-section-separator comment-grey"></div>
+                <div class="work-experience-entry">
+                    <div class="work-experience-header">
+                        <span class="green">Junior Software Developer</span>
+                        <span class="white">,&nbsp;</span>
+                        <span><a href="https://www.microquest.ca/" class="gold">Microquest</a>&nbsp</span>
+                        <span class="comment-grey">// Jan. 2015 – Mar. 2016</span>
+                    </div>
+                    <div class="work-experience-body">
+                        <p>Worked on a team of software developers and QA personnel to create a health
+                            care-related chat application, with the aim of facilitating the secure
+                            sharing of patient information between both clinics and physicians
+                            within Canada.
+                            </p>
+                        <p>Built using Angular and Node.js (leveraging WebSockets).</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,7 +116,7 @@ layout: resume
         <div class="projects-section section">
             <div class="section-icon-container pink">
                 <i class="fas fa-folder-open"></i>
-                <div>side projects</div>
+                <div>projects</div>
             </div>
             <div class="projects-section-container floating-block">
                 <div class="projects-header">
@@ -80,10 +133,10 @@ layout: resume
                     <div class="projects-header">
                         <span class="green">prune</span>
                         <span class="white">:&nbsp</span>
-                        <span><a class="gold" href="https://github.com/tbrockman/prune">github.com/tbrockman/prune</a></span>
+                        <span><a class="gold" href="https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh">available on chrome store</a></span>
                     </div>
                     <div class="projects-body">
-                        <p>A small Chrome extension to help you trim your garden of tabs. <a class="gold" href="https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh?hl=en-GB&authuser=0">You can download it here.</a></p>
+                        <p>A small Chrome extension to help you trim your garden of tabs. <a class="gold" href="https://github.com/tbrockman/prune">You can check out the source code here.</a></p>
                     </div>
                 </div>
                 <div class="inner-section-separator"></div>
@@ -108,64 +161,6 @@ layout: resume
                         <p>A proximity-based jukebox application for Android. Integrates with
                             Spotify and uses the Android Connections API to establish connections
                             between nearby clients (patrons) and servers (jukeboxes), allowing everyone to stop fighting over the aux. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="section-separator comment-grey"></div>
-        <div class="work-experience-section section">
-            <div class="section-icon-container pink">
-                <i class="fas fa-toolbox"></i>
-                <div>work experience</div>
-            </div>
-            <div class="work-experience-container floating-block">
-                <div class="work-experience-entry">
-                    <div class="work-experience-header">
-                        <span class="green">Software Engineer</span>
-                        <span class="white">,&nbsp</span>
-                        <span><a href="https://earnin.com/" class="gold">Earnin</a>&nbsp</span>
-                        <span class="comment-grey">// March 2019 - Present</span>
-                    </div>
-                    <div class="work-experience-body">
-                        <p>Built a Slack application for co-workers to show each other appreciation through coin emojis, dubbed "Earnin Coin", which went viral internally. Included a real economy, a weekly leaderboard to celebrate high coin earners, and is consistently touted as making employees feel better about giving and receiving help.</p>
-                        <p>Created an in-house Python tool for "short-term" improvements (still being used over a year later) to deployments and monitoring of our main monolith (as well as other legacy C# applications). Included writing extensive documentation and training developers on tools use, which allowed anyone to confidently and safely deploy our legacy applications.</p>
-                        <p>Worked on an internal tool for improving application development and management, features included cataloging of internal applications, automated credential provisioning for Docker builds/executions, configured by easy-to-read YAML, CLI and API written in Python, integrated with GitHub, backed by a PostgreSQL database.</p>
-                        <p>Lead a project to refactor application referral process, after taking over service ownership and discovering current systems dependency on advertising IDs, and the impending deprecation of IDFA on iOS 14.5. Contributions included full backend system design and implementation.</p>
-                        <p>Built a custom <a href="https://dependabot.com/" class="gold">Dependabot</a> instance for keeping private internal packages up to date, also added the ability to group multiple dependency updates into single PRs (two features not yet supported natively by GitHub).</p>
-                        <p>Reduced average login times of our main application by ~300ms.</p>
-                        <p>Discovered source of ~20ms per request latency present in all backend microservices, and then worked on a team benchmarking replacements for the responsible components.</p>
-                        <p>Built a notification system which audited access logs for any reads to internal employee data.</p>
-                    </div>                    
-                </div>
-                <div class="inner-section-separator comment-grey"></div>
-                <div class="work-experience-entry">
-                    <div class="work-experience-header">
-                        <span class="green">Full-Stack Software Developer</span>
-                        <span class="white">,&nbsp</span>
-                        <span><a href="https://brockman-consulting.com/" class="gold">Brockman Consulting</a>&nbsp</span>
-                        <span class="comment-grey">// Nov. 2018 – March 2019</span>
-                    </div>
-                    <div class="work-experience-body">
-                        <p>Contract software development work as an independent programmer.</p>
-                        <p>Built an automated job-dispatching application for an industrial and
-                            oil-field safety services company using Twilio and Node.js.</p>
-                    </div>
-                </div>
-                <div class="inner-section-separator comment-grey"></div>
-                <div class="work-experience-entry">
-                    <div class="work-experience-header">
-                        <span class="green">Junior Software Developer</span>
-                        <span class="white">,&nbsp</span>
-                        <span><a href="https://www.microquest.ca/" class="gold">Microquest</a>&nbsp</span>
-                        <span class="comment-grey">// Jan. 2015 – Mar. 2016</span>
-                    </div>
-                    <div class="work-experience-body">
-                        <p>Worked on a team of software developers and QA personnel to create a health
-                            care-related chat application, with the aim of facilitating the secure
-                            sharing of patient information between both clinics and physicians
-                            within Canada.
-                            </p>
-                        <p>Built using Angular and Node.js (leveraging WebSockets).</p>
                     </div>
                 </div>
             </div>
