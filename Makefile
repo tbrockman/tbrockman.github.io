@@ -1,5 +1,9 @@
 current_dir = $(shell pwd)
 
+clean:
+	rm Gemfile.lock
+	rm _site
+
 build:
 	docker build -t theo-web .
 
