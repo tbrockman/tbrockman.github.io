@@ -1,27 +1,7 @@
 $breakpoint-mobile: 860px;
 $breakpoint-combine-header: 640px;
 
-@font-face {
-	font-family: 'Roboto';
-	src: url('../fonts/Roboto/Roboto-Regular.ttf');
-}
-
-@font-face {
-	font-family: 'RobotoMono';
-	src: url('../fonts/RobotoMono/RobotoMono-VariableFont_wght.ttf');
-}
-
 @media (max-width: $breakpoint-combine-header) {
-	div.resume-header {
-		flex-direction: column;
-		justify-content: center;
-		margin-bottom: -1rem;
-	}
-
-	.contact-section {
-		padding-top: 3rem;
-	}
-
 	div.hide-header-not-combined {
 		display: flex;
 		justify-content: space-between;
@@ -64,6 +44,11 @@ a.gold:hover {
 
 body {
 	padding: 2em !important;
+}
+
+pre {
+	font-family: inherit;
+	margin: 0;
 }
 
 .first-name,
@@ -122,7 +107,7 @@ body {
 }
 
 .metric {
-	color: #f7e0ae;
+	color: #f9d890;
 }
 
 .comment-grey {
@@ -138,7 +123,10 @@ div {
 }
 
 body {
-	font-family: RobotoMono;
+	font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
+		DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+		serif;
+	line-height: 24px;
 	background-color: #252525;
 	color: #eee;
 	margin: 0;
@@ -151,12 +139,15 @@ body {
 p {
 	margin-top: 1em;
 	margin-bottom: 0;
+
+	&.comment-grey {
+		margin-top: 0;
+	}
 }
 
 .resume-header {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
+	flex-direction: column;
 }
 
 div.section {
@@ -166,24 +157,27 @@ div.section {
 }
 
 .section-separator {
-	padding: 2em 0 1em 0;
 	width: fit-content;
 	width: -moz-fit-content;
 }
 
 .section-icon-container {
-	margin-bottom: 1em;
+	margin-bottom: 0.5rem;
 	align-items: center;
 	flex-direction: row;
 	justify-content: flex-start;
-	font-size: 2rem;
+	font-size: 1rem;
 	min-width: unset;
 	min-height: 100%;
 	display: flex;
 
 	div {
 		margin-top: 0;
-		margin-left: 1rem;
+	}
+
+	.fas,
+	.fab {
+		margin-left: 0.5rem;
 	}
 }
 
@@ -200,6 +194,10 @@ div.section {
 // .skill {
 //     display: flex;
 // }
+
+.links {
+	margin-bottom: 1rem;
+}
 
 .work-experience-section {
 	display: flex;
@@ -247,4 +245,9 @@ div.section {
 	box-shadow: -1rem 1rem #171717;
 	background-color: #383838;
 	padding: 1em;
+	margin-bottom: 2rem;
+}
+
+.resume-header > .floating-block {
+	width: 100%;
 }
