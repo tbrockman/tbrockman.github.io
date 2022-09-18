@@ -157,8 +157,12 @@ div.section {
 }
 
 .section-separator {
-	width: fit-content;
-	width: -moz-fit-content;
+	display: flex;
+
+	.section-separator-lines {
+		overflow: hidden;
+		white-space: nowrap;
+	}
 }
 
 .section-icon-container {
