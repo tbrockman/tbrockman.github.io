@@ -194,6 +194,7 @@ div.section {
 .links {
 	display: flex;
 	margin-bottom: 1rem;
+	flex-wrap: wrap;
 
 	& > a {
 		padding-right: 0.5rem;
