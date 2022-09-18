@@ -191,12 +191,17 @@ div.section {
 	flex-direction: column;
 }
 
-// .skill {
-//     display: flex;
-// }
-
 .links {
+	display: flex;
 	margin-bottom: 1rem;
+
+	& > a {
+		padding-right: 0.5rem;
+	}
+
+	& > a:last-child {
+		padding-right: 0;
+	}
 }
 
 .work-experience-section {
@@ -245,9 +250,16 @@ div.section {
 	box-shadow: -1rem 1rem #171717;
 	background-color: #383838;
 	padding: 1em;
+	margin-top: 1rem;
 	margin-bottom: 2rem;
 }
 
 .resume-header > .floating-block {
 	width: 100%;
+}
+
+.main-banner {
+	display: flex;
+	margin-top: 1rem;
+	flex-direction: column;
 }
