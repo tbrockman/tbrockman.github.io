@@ -21,6 +21,27 @@ $breakpoint-combine-header: 640px;
 }
 
 @media (max-width: $breakpoint-mobile) {
+	.column {
+		flex-basis: 100%;
+		margin-top: 2rem;
+	}
+
+	.column:first-child {
+		margin-top: 0rem;
+	}
+
+	.column-container {
+		grid-template-columns: 1fr !important;
+	}
+
+	.column-container > .column:first-child {
+		margin-right: 0 !important;
+	}
+
+	.column-container > .column:last-child {
+		margin-left: 0 !important;
+	}
+
 	.resume-header-body {
 		flex-wrap: wrap;
 	}
@@ -43,14 +64,6 @@ $breakpoint-combine-header: 640px;
 			}
 		}
 	}
-
-	.projects-section-container {
-		grid-template-columns: 1fr !important;
-	}
-
-	.open-source-section-container {
-		grid-template-columns: 1fr !important;
-	}
 }
 
 a {
@@ -70,6 +83,10 @@ body {
 pre {
 	font-family: inherit;
 	margin: 0;
+}
+
+.column {
+	flex-basis: 50%;
 }
 
 .first-name,
@@ -187,7 +204,7 @@ div.section {
 }
 
 .section-icon-container {
-	margin-bottom: 0.5rem;
+	margin-bottom: 1.5rem;
 	align-items: center;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -259,19 +276,31 @@ div.section {
 	padding: 1em 0;
 }
 
-.project.floating-block {
-	margin-bottom: 0;
-}
-
 .projects-section {
 	display: flex;
 }
 
-.projects-section-container {
+.column-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 2rem;
 	margin-bottom: 2rem;
+}
+
+.column-container > .column:first-child {
+	margin-right: 1rem;
+}
+
+.column-container > .column:last-child {
+	margin-left: 1rem;
+}
+
+.column > .floating-block:first-child {
+	margin-top: 0;
+}
+
+.column > .floating-block {
+	margin-top: 2rem;
+	margin-bottom: 0;
 }
 
 .projects-header {
@@ -289,7 +318,6 @@ div.section {
 .open-source-section-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 2rem;
 }
 
 .open-source-header {
@@ -306,7 +334,6 @@ div.section {
 	box-shadow: -1rem 1rem #171717;
 	background-color: #383838;
 	padding: 1em;
-	margin-top: 1rem;
 	margin-bottom: 2rem;
 	height: fit-content;
 }
@@ -315,17 +342,8 @@ div.section {
 	width: fit-content;
 }
 
-.open-source-item.floating-block {
-	margin-bottom: 0;
-}
-
-.open-source-item.floating-block:last-child {
-	margin-bottom: 2rem;
-}
-
 .main-banner {
 	display: flex;
-	margin-top: 1rem;
 	flex-direction: column;
 	width: fit-content;
 }
@@ -347,8 +365,7 @@ div.section {
 }
 
 .description {
-	margin-left: 1rem;
-	margin-top: 1rem;
+	margin-left: 2rem;
 }
 
 .description > .floating-block > p:first-child {
