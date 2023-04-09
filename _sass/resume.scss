@@ -43,6 +43,14 @@ $breakpoint-combine-header: 640px;
 			}
 		}
 	}
+
+	.projects-section-container {
+		grid-template-columns: 1fr !important;
+	}
+
+	.open-source-section-container {
+		grid-template-columns: 1fr !important;
+	}
 }
 
 a {
@@ -255,12 +263,15 @@ div.section {
 	margin-bottom: 0;
 }
 
-.project.floating-block:last-child {
-	margin-bottom: 2rem;
-}
-
 .projects-section {
 	display: flex;
+}
+
+.projects-section-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+	margin-bottom: 2rem;
 }
 
 .projects-header {
@@ -273,6 +284,12 @@ div.section {
 
 .open-source-section {
 	display: flex;
+}
+
+.open-source-section-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
 }
 
 .open-source-header {
@@ -291,6 +308,7 @@ div.section {
 	padding: 1em;
 	margin-top: 1rem;
 	margin-bottom: 2rem;
+	height: fit-content;
 }
 
 .resume-header > .floating-block {
