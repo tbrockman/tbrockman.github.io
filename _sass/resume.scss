@@ -374,3 +374,8 @@ div.section {
 .description > .floating-block > p:first-child {
 	margin-top: 0;
 }
+
+.contact-link-section {
+	display: flex;
+	flex-direction: column;
+}
