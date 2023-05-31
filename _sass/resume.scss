@@ -369,6 +369,12 @@ div.section {
 
 .description {
 	margin-left: 2rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.description > div {
+	flex-grow: 1;
 }
 
 .description > .floating-block > p:first-child {
