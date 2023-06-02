@@ -1,0 +1,1 @@
+module.exports=async({page:t})=>{await t.setViewport({width:1920,height:1080}),await t.goto("http://website:4000/resume"),await t.waitForTimeout(1e3);const a=await t.$("html"),i=`${(await a.boundingBox()).height}px`;return{data:await t.pdf({printBackground:!0,height:i}),type:"application/pdf"}};

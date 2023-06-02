@@ -1,0 +1,17 @@
+# Starts the website and browserless simultaneously
+
+version: '3.8'
+services:
+  website:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+
+  chrome:
+    image: browserless/chrome
+    ports:
+      - 3000:3000
+    links:
+      - website
