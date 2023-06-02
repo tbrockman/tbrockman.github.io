@@ -26,8 +26,8 @@ jobs:
         run: |
           code=$(cat scripts/download-pdf.js | sed 's/"/\\\"/g')
           echo "$code"
-          curl http://localhost:3000
-          curl browserless:3000
+          curl http://localhost:3000 -v || true
+          curl http://browserless:3000 -v || true
           curl -s -X POST -H "Content-Type: application/json" -d '{"code":"$code"}' browserless:3000/function -o resume.pdf
         # 1. Store the new resume in git history (hopefully triggers a new build of the GH page...)
       - name: Add PDF to git history

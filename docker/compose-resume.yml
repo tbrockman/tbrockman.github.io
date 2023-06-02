@@ -6,10 +6,14 @@ services:
     build:
       context: ../
       dockerfile: Dockerfile
+      cache_from:
+      - type=gha
+      cache_to:
+      - type=gha
     ports:
       - 4000:4000
 
-  chrome:
+  browserless:
     image: browserless/chrome
     ports:
       - 3000:3000
