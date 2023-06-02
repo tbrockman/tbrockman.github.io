@@ -24,10 +24,7 @@ jobs:
         # 1. Grab code to download PDf file, escaping double quotes
         # 2. Make a request to our browserless/chrome container, storing the resulting PDF
         run: |
-          ls -l
-          ls ${{ github.workspace }}
-          cat .github/scripts/download-pdf.js
-          code=$(cat ${{ github.workspace }}/.github/scripts/download-pdf.js | sed 's/"/\\\"/g')
+          code=$(cat scripts/download-pdf.js | sed 's/"/\\\"/g')
           echo "$code"
           curl -s -X POST -H "Content-Type: application/json" -d "{\"code\":\"$code\"}" http://localhost:3000/function -o resume.pdf
         # 1. Store the new resume in git history (hopefully triggers a new build of the GH page...)
