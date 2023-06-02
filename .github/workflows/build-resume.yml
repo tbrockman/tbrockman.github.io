@@ -17,7 +17,7 @@ jobs:
       - name: Build and cache images
         run: |
           docker buildx create --use --driver=docker-container
-          docker buildx bake -f docker/compose-resume.yml --set *.cache-to="type=gha,mode=max" --set *.cache-from="type=gha" --load
+          docker buildx bake -f docker/compose-resume.yml --set *.cache-to="type=gha,mode=max" --set *.cache-from="type=gha" --set *.context=. --load
       - name: Start containers
         run: docker-compose -f docker/compose-resume.yml up -d
       - name: Render and save PDF
