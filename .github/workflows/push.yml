@@ -3,7 +3,7 @@ on:
     branches:
       - master
     paths:
-      - _posts
+      - _posts/**
 
 jobs:
   create_issues:

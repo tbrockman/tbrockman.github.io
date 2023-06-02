@@ -1,29 +1,30 @@
 on:
-    push:
-        branches:
-            - master
-        paths:
-            - resume.html
+  push:
+    branches:
+      - master
+    paths:
+      - resume.html
 
 jobs:
-    build_resume:
-        runs-on: ubuntu-latest
-        name: build-resume
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
-            - name: Start necessary containers
-              run: docker compose -f docker/compose-resume.yml up -d 
-            - name: Render and save PDF
-              # 1. Grab code to download PDf file, escaping double quotes
-              # 2. Make a request to our browserless/chrome container, storing the resulting PDF
-              run: |
-                code=$(cat ./.github/scripts/download-pdf.js | sed 's/"/\\\"/g')
-                curl -s -X POST -H "Content-Type: application/json" -d "{\"code\":\"$code\"}" http://localhost:3000/function -o resume.pdf
-            - name: Add PDF to git history
-              run: |
-                git config user.name github-actions
-                git config user.email github-actions@github.com
-                git add resume.pdf
-                git commit -m "Automated commit to regenerate resume.pdf"
-                git push origin master
+  build_resume:
+    runs-on: ubuntu-latest
+    name: build-resume
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Start necessary containers
+        run: docker compose -f docker/compose-resume.yml up -d
+      - name: Render and save PDF
+        # 1. Grab code to download PDf file, escaping double quotes
+        # 2. Make a request to our browserless/chrome container, storing the resulting PDF
+        run: |
+          code=$(cat ./.github/scripts/download-pdf.js | sed 's/"/\\\"/g')
+          curl -s -X POST -H "Content-Type: application/json" -d "{\"code\":\"$code\"}" http://localhost:3000/function -o resume.pdf
+        # 1. Store the new resume in git history (hopefully triggers a new build of the GH page...)
+      - name: Add PDF to git history
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add resume.pdf
+          git commit -m "Automated commit to regenerate resume.pdf"
+          git push origin master
