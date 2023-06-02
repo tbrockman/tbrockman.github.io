@@ -22,7 +22,7 @@ jobs:
           load: true
           set: |
             *.cache-from="type=gha"
-            *.cache-to="type=gha,mode=max"
+            *.cache-to="type=gha"
             *.context=.
           files: docker/compose-resume.yml
       - name: Start containers
