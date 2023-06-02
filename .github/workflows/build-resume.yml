@@ -19,7 +19,7 @@ jobs:
           docker buildx create --use --driver=docker-container
           docker buildx bake -f docker/compose-resume.yml --set *.cache-to="type=gha,mode=max" --set *.cache-from="type=gha" --load
       - name: Start containers
-        run: docker compose -f docker/compose-resume.yml up -d
+        run: docker-compose -f docker/compose-resume.yml up -d
       - name: Render and save PDF
         # 1. Grab code to download PDf file, escaping double quotes
         # 2. Make a request to our browserless/chrome container, storing the resulting PDF
