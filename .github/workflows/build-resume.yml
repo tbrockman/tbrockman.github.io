@@ -12,19 +12,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Expose GitHub Runtime
-        uses: crazy-max/ghaction-github-runtime@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Build and cache images
-        uses: docker/bake-action@master
-        with:
-          load: true
-          set: |
-            *.cache-from="type=gha"
-            *.cache-to="type=gha"
-            *.context=.
-          files: docker/compose-resume.yml
+      # - name: Expose GitHub Runtime
+      #   uses: crazy-max/ghaction-github-runtime@v2
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v2
+      # - name: Build and cache images
+      #   uses: docker/bake-action@master
+      #   with:
+      #     load: true
+      #     set: |
+      #       *.cache-from="type=gha"
+      #       *.cache-to="type=gha"
+      #       *.context=.
+      #     files: docker/compose-resume.yml
       - name: Start containers
         run: docker-compose -f docker/compose-resume.yml up -d
       - name: Render and save PDF
@@ -33,7 +33,7 @@ jobs:
         run: |
           code=$(cat scripts/download-pdf.js | sed 's/"/\\\"/g')
           echo "$code"
-          docker run curlimages/curl -X POST -H "Content-Type: application/json" -d '{"code":"$code"}' browserless:3000/function > resume.pdf
+          docker run curlimages/curl -X POST -H "Content-Type: application/json" -d '{"code":"$code"}' 127.0.0.1:3000/function > resume.pdf
           ls -l
         # 1. Store the new resume in git history (hopefully triggers a new build of the GH page...)
       - name: Add PDF to git history
