@@ -4,6 +4,15 @@ version: '3.8'
 services:
   curl:
     image: curlimages/curl
+    # volumes:
+    #   - ../:/app
+    # depends_on:
+    #   - website
+    #   - browserless
+    # links:
+    #   - browserless
+    # command:
+    #   - ["curl", ""]
 
   website:
     build:
