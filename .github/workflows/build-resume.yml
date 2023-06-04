@@ -25,16 +25,8 @@ jobs:
       #       *.cache-to="type=gha"
       #       *.context=.
       #     files: docker/compose-resume.yml
-      - name: Start containers
+      - name: Render PDF using containers
         run: docker-compose -f docker/compose-resume.yml up -d
-      - name: Render and save PDF
-        # 1. Grab code to download PDf file, escaping double quotes
-        # 2. Make a request to our browserless/chrome container, storing the resulting PDF
-        run: |
-          code=$(cat scripts/download-pdf.js | sed 's/"/\\\"/g')
-          echo "$code"
-          docker run curlimages/curl -X POST -H "Content-Type: application/json" -d '{"code":"$code"}' 127.0.0.1:3000/function > resume.pdf
-          ls -l
         # 1. Store the new resume in git history (hopefully triggers a new build of the GH page...)
       - name: Add PDF to git history
         run: |
