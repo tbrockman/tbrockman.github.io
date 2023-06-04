@@ -28,6 +28,8 @@ jobs:
       - name: Render PDF using containers
         run: docker-compose -f docker/compose-resume.yml up -d
         # 1. Store the new resume in git history (hopefully triggers a new build of the GH page...)
+      - name: Test dir
+        run: ls -l
       - name: Add PDF to git history
         run: |
           git config user.name github-actions
