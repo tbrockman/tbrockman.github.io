@@ -18,7 +18,8 @@
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{luacode}
-\input{glyphtounicode}
+\usepackage{luapackageloader}
+% \input{glyphtounicode}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
@@ -44,23 +45,21 @@
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+% % Ensure that generate pdf is machine readable/ATS parsable
+% \pdfgentounicode=1
 
 %-------------------------
 % Custom commands
-\newcommand{\resumeItem}[2]{
-  \item\small{
-    \textbf{#1}{: #2 \vspace{-2pt}}
-  }
+\newcommand{\resumeItem}[2]{%
+  \item\small{%
+    \textbf{#1:} #2%
+  }%
 }
 
-% Just in case someone needs a heading that does not need to be in a list
-\newcommand{\resumeHeading}[4]{
-    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
+\newcommand{\resumeItemOneArg}[1]{%
+  \item\small{%
+    \textbf{#1}%
+  }%
 }
 
 \newcommand{\resumeSubheading}[4]{
@@ -68,12 +67,6 @@
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
     \end{tabular*}\vspace{-5pt}
 }
 
@@ -90,122 +83,206 @@
 % 
 % by Theodore Brockman<iam@theo.lol
 
+
 % load json file
 \begin{luacode}
+  print(package.path)
   local json = require("json")
-  local file = io.open("../_data/resume.json")
-  tab = json.parse(file:read("*all"))
+  local file = io.open("/data/resume.json")
+  data = json.decode(file:read("*all"))
   file:close()
 \end{luacode}
 
+\begin{luacode}
+  function escapeSpecialChars(text)
+    -- Define a table to map special characters to their escaped versions
+    local escapeTable = {
+      ["\\"] = "\\textbackslash{}",
+      ["{"] = "\\{",
+      ["}"] = "\\}",
+      ["$"] = "\\$",
+      ["&"] = "\\&",
+      ["^"] = "\\textasciicircum{}",
+      ["_"] = "\\_",
+      ["~"] = "\\textasciitilde{}",
+      ["%"] = "\\%",
+      ["#"] = "\\#",
+    }
+    -- Replace special characters with their escaped versions
+    text = text:gsub("[\\{}$&^_~%%#]", escapeTable)
+    return text
+  end
+\end{luacode}
+
+\begin{luacode}
+  function getTitle()
+    title = "\string\\textbf{\string\\href{" .. data.about.name .. "}{\string\\Large Theodore Brockman}} & want to see a more interesting looking resume? \\\\"
+    tex.sprint(title)
+  end
+\end{luacode}
+  
+\begin{luacode}
+  function getContacts()
+    for i, contact in pairs(data.about.contact) do
+      local str = "\string" .. contact.name .. ": \\href{" .. contact.url .. "}{" .. contact.text .. "}"
+
+      if i == 1 then
+        str = str .. "& \\href{" .. data.about.alternate_resume.url .. "}{" .. data.about.alternate_resume.text .. "}"
+      end
+      str = str .. "\\\\"
+      tex.sprint(str)
+    end
+  end
+\end{luacode}
+  
+\newcommand\luaGetTitle{\directlua{getTitle()}}
+\newcommand\luaGetContacts{\directlua{getContacts()}}
+
 %-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%% in AI output
 
 \begin{document}
 
 %----------HEADING-----------------
+
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{\href{https://theo.lol/}{\Large Theodore Brockman}} & want to see a more interesting looking resume? \\
-  Website: \href{https://theo.lol/}{theo.lol} & \href{https://theo.lol/resume}{theo.lol/resume} \\
-  Email: \href{mailto:iam@theo.lol}{iam@theo.lol} \\
-  LinkedIn: \href{https://linkedin.com/in/iamtheolol}{linkedin.com/in/iamtheolol} \\
-  GitHub: \href{https://github.com/tbrockman}{github.com/tbrockman} \\
+  \luaGetTitle
+  \luaGetContacts
 \end{tabular*}
 
+%--------SKILLS------------
 
-%-----------EXPERIENCE-----------------
-\section{Experience}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Google}{Mountain View, CA}
-      {Software Engineer}{Oct 2016 - Present}
-      \resumeItemListStart
-        \resumeItem{Tensorflow}
-          {TensorFlow is an open source software library for numerical computation using data flow graphs; primarily used for training deep learning models. Worked on APIs and performance for training models on Tensor Processing Units (TPU).}
-        \resumeItem{Apache Beam}
-          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines, as well as a set of language-specific SDKs for constructing pipelines and runners.}
-      \resumeItemListEnd
-      
-% --------Multiple Positions Heading------------
-%    \resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \resumeItemListStart
-%        \resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \resumeItemListEnd
-%    \resumeSubHeadingListEnd
-%-------------------------------------------
+\begin{luacode}
+  tex.sprint("\\section{Skills}")
+  tex.sprint("\\resumeSubHeadingListStart")
+  for i, skill in pairs(data.skills) do
+    tex.sprint("\\resumeItem")
+    tex.sprint("{"..skill.name.."}")
+    local escaped = escapeSpecialChars(table.concat(skill.values, ", "))
+    tex.sprint("{".. escaped .."}")
+  end
+  tex.sprint("\\resumeSubHeadingListEnd")
+\end{luacode}
 
-    \resumeSubheading
-      {Coursera}{Mountain View, CA}
-      {Senior Software Engineer}{Jan 2014 - Oct 2016}
-      \resumeItemListStart
-        \resumeItem{Notifications}
-          {Service for sending email, push and in-app notifications. Involved in features such as delivery time optimization, tracking, queuing and A/B testing. Built an internal app to run batch campaigns for marketing etc.}
-        \resumeItem{Nostos}
-          {Bulk data processing and injection service from Hadoop to Cassandra and provides a thin REST layer on top for serving offline computed data online.}
-        \resumeItem{Workflows}
-          {Dataduct an open source workflow framework to create and manage data pipelines leveraging reusables patterns to expedite developer productivity.}
-        \resumeItem{Data Collection}
-          {Designed the internal survey and crowd sourcing platform which allowed for creating various tasks for crowd sourcing or embedding surveys across the Coursera platform.}
-        \resumeItem{Dev Environment}
-          {Analytics environment based on docker and AWS, standardized the python and R dependencies. Wrote the core libraries that are shared by all data scientists.}
-        \resumeItem{Data Warehousing}
-          {Setup, schema design and management of Amazon Redshift. Built an internal app for access to the data using a web interface. Dataduct integration for daily ETL injection into Redshift.}
-        \resumeItem{Recommendations}
-          {Core service for all recommendation systems at Coursera, currently used on the homepage and throughout the content discovery process. Worked on both offline training and online serving.}
-        \resumeItem{Content Discovery}
-          {Improved content discovery by building a new onboarding experience on coursera. Using this to personalize the search and browse experience. Also worked on ranking and indexing improvements.}
-        \resumeItem{Course Dashboards}
-          {Instructor dashboards and learner surveying tools, which helped instructors run their class better by providing data on Assignments and Learner Activity.}
-      \resumeItemListEnd
+% -----------EXPERIENCE-----------------
 
-    \resumeSubheading
-      {Lucena Research}{Atlanta, GA}
-      {Data Scientist}{Summer 2012 and 2013}
-      \resumeItemListStart
-        \resumeItem{Portfolio Management}
-          {Created models for portfolio hedging,  portfolio optimization and price forecasting. Also creating a strategy backtesting engine used for simulating and backtesting strategies.}
-        \resumeItem{QuantDesk}
-          {Python backend for a web application used by hedge fund managers for portfolio management.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {Georgia Institute of Technology}{Atlanta, GA}
-      {Research and Teaching Assistant}{Jan 2012 - Dec 2013}
-      \resumeItemListStart
-        \resumeItem{Research Assistant - Machine Learning}
-          {Research on machine learning for portfolio hedging and replication algorithms. Modeling low-risk \& continuous-return strategies. Developed the python library QSTK.}
-        \resumeItem{Teaching Assistant - Computational Investing}
-          {The online course on Coursera, had more than 100,000 students enrolled. It was featured on the 11 Alive News and the Atlanta Journal Constitution. Involved in creating assignment, exams and conducting recitation sessions. Also taught the on-campus version of the course.}
-      \resumeItemListEnd
-
-  \resumeSubHeadingListEnd
-
+\begin{luacode}
+  tex.sprint("\\section{Experience}")
+  tex.sprint("\\resumeSubHeadingListStart")
+  for i,exp in ipairs(data.experience) do
+    tex.sprint("\\resumeSubheading")
+    tex.sprint("{" .. exp.company .. "}{" .. exp.location .. "}")
+    for j,pos in ipairs(exp.positions) do
+      tex.sprint("{" .. pos.title .. "}{" .. pos.timespan[1] .. " - " .. pos.timespan[2] .. "}")
+      tex.sprint("\\resumeItemListStart")
+      for k,imp in ipairs(pos.impact) do
+        tex.sprint("\\resumeItem{" .. imp.title .. "}")
+        local escaped = escapeSpecialChars(imp.description)
+        tex.sprint("{" .. escaped .. "}")
+      end
+      tex.sprint("\\resumeItemListEnd")
+    end
+  end
+  tex.sprint("\\resumeSubHeadingListEnd")
+\end{luacode}
 
 %-----------PROJECTS-----------------
-\section{Projects}
-  \resumeSubHeadingListStart
-    \resumeSubItem{QuantSoftware Toolkit}
-      {Open source python library for financial data analysis and machine learning for finance.}
-    \resumeSubItem{Github Visualization}
-      {Data Visualization of Git Log data using D3 to analyze project trends over time.}
-    \resumeSubItem{Recommendation System}
-      {Music and Movie recommender systems using collaborative filtering on public datasets.}
-    \resumeSubItem{Mac Setup}
-      {Book that gives step by step instructions on setting up developer environment on Mac OS.}
-  \resumeSubHeadingListEnd
 
-%-----------EDUCATION-----------------
-\section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Georgia Institute of Technology}{Atlanta, GA}
-      {Master of Science in Computer Science;  GPA: 4.00}{Aug. 2012 -- Dec. 2013}
-    \resumeSubheading
-      {Birla Institute of Technology and Science}{Pilani, India}
-      {Bachelor of Engineering in Electrical and Electronics;  GPA: 3.66 (9.15/10.0)}{Aug. 2008 -- July. 2012}
-  \resumeSubHeadingListEnd
+\begin{luacode}
+  tex.sprint("\\section{Projects}")
+  tex.sprint("\\resumeSubHeadingListStart")
+  for i,proj in ipairs(data.projects) do
+    tex.sprint("\\resumeSubItem")
+    tex.sprint("{\\href{" .. proj.url .. "}{" .. proj.name .. "}}")
+    local escaped = escapeSpecialChars(proj.description)
+    tex.sprint("{" .. escaped .. "}")
+  end
+  tex.sprint("\\resumeSubHeadingListEnd")
+\end{luacode}
+
+%-----------OPEN-SOURCE-----------------
+
+\begin{luacode}
+  tex.sprint("\\section{Open-source}")
+  tex.sprint("\\resumeSubHeadingListStart")
+  for i,proj in ipairs(data["open-source"]) do
+    tex.sprint("\\resumeSubItem")
+    tex.sprint("{\\href{" .. proj.url .. "}{" .. proj.name .. "}}")
+    local escaped = escapeSpecialChars(proj.description)
+    tex.sprint("{" .. escaped .. "}")
+
+    local count = 0
+    for _, __ in pairs(proj.links) do 
+      count = count + 1
+    end
+
+    if count > 0 then
+      tex.sprint("\\resumeItemListStart")
+      for j,link in ipairs(proj.links) do
+        tex.sprint("\\resumeItemOneArg{" .. link .. "}")
+      end
+      tex.sprint("\\resumeItemListEnd")
+    end
+  end
+  tex.sprint("\\resumeSubHeadingListEnd")
+\end{luacode}
+
+% -----------EDUCATION-----------------
+\begin{luacode}
+  tex.sprint("\\section{Education}")
+  tex.sprint("\\resumeSubHeadingListStart")
+  for i,edu in ipairs(data["education"]) do
+    tex.sprint("\\resumeSubheading")
+    tex.sprint("{" .. edu.institution .. "}{" .. edu.degree .. "}")
+    tex.sprint("{" .. edu.graduated .. "}{" .. edu.description .. "}")
+  end
+  tex.sprint("\\resumeSubHeadingListEnd")
+\end{luacode}
+
+% %-----------EDUCATION-----------------
+% \begin{luacode}
+%   tex.print("\\section{Education}")
+%   tex.print("\\resumeSubHeadingListStart")
+%   for i = 1, #data.education do
+%     local edu = data.education[i]
+%     tex.print("\\resumeSubheading")
+%     tex.print("{"..edu.university.."}")
+%     tex.print("{"..edu.graduated.."}")
+%     tex.print("{"..edu.degree.."}")
+%     tex.print("{"..edu.description.."}")
+%   end
+%   tex.print("\\resumeSubHeadingListEnd")
+% \end{luacode}
+
+% %--------PROGRAMMING SKILLS------------
+% \begin{luacode}
+%   tex.print("\\section{Skills}")
+%   tex.print("\\resumeSubHeadingListStart")
+%   for i = 1, #data.skills do
+%     local skill = data.skills[i]
+%     tex.print("\\resumeItem")
+%     tex.print("{"..skill.category.."}")
+%     tex.print("{"..skill.items.."}")
+%   end
+%   tex.print("\\resumeSubHeadingListEnd")
+% \end{luacode}
+
+% %-----------EXPERIENCE-----------------
+% \begin{luacode}
+%   tex.print("\\section{Experience}")
+%   tex.print("\\resumeSubHeadingListStart")
+%   for i = 1, #data.experience do
+%     local job = data.experience[i]
+%     tex.print("\\resumeSubheading")
+%     tex.print("{"..job.company.."}")
+%     tex.print("{"..job.period.."}")
+%     tex.print("{"..job.position.."}")
+%     tex.print("{"..job.description.."}")
+%   end
+%   tex.print("\\resumeSubHeadingListEnd")
+% \end{luacode}
+
+%-------------------------------------------
 
 %
 %--------PROGRAMMING SKILLS------------

@@ -1,0 +1,269 @@
+{
+  "about": {
+    "name": "Theodore Brockman",
+    "alternate_resume": {
+      "text": "theo.lol/resume",
+      "url": "https://theo.lol/resume"
+    },
+    "contact": [
+      {
+        "name": "Website",
+        "text": "theo.lol",
+        "url": "https://theo.lol"
+      },
+      {
+        "name": "Email",
+        "text": "iam@theo.lol",
+        "url": "mailto:iam@theo.lol"
+      },
+      {
+        "name": "GitHub",
+        "text": "tbrockman",
+        "url": "https://github.com/tbrockman"
+      },
+      {
+        "name": "LinkedIn",
+        "text": "iamtheolol",
+        "url": "https://linkedin.com/in/iamtheolol"
+      }
+    ],
+    "mission": {
+      "header": "What does he want to do?",
+      "text": "Make life better\n\nAlso hike 🥾, surf 🏄, climb 🧗, eat🍕, and pet good dogs 🐶"
+    },
+    "description": {
+      "header": "Who is Theo?",
+      "text": "A Swiss Army knife with over 6 years of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒"
+    }
+  },
+  "skills": [
+    {
+      "comment": "Can reverse a linked list in any of the following",
+      "name": "Languages",
+      "values": [
+        "Python",
+        "C#",
+        "TypeScript",
+        "Java",
+        "Rust",
+        "Go",
+        "Ruby",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "comment": "Tech I have experience with",
+      "name": "Keywords",
+      "values": [
+        "Angular",
+        "Android",
+        "AWS",
+        "Azure",
+        "ChatGPT",
+        "Cloudflare",
+        "Datadog",
+        "Distributed Systems",
+        "Django",
+        "Docker",
+        "Electron",
+        "FastAPI",
+        "Figma",
+        "Flask",
+        "Git",
+        "GitHub",
+        "Jenkins",
+        "Kafka",
+        "Kubernetes",
+        "LaTex",
+        "Linkerd",
+        "MySQL",
+        "Netlify",
+        "Next.js",
+        "Node.js",
+        "OpenTelemetry",
+        "PostgreSQL",
+        "React",
+        "Redis",
+        "Remix",
+        "SQLite"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "LinkedIn",
+      "url": "https://linkedin.com",
+      "positions": [
+        {
+          "title": "Site Reliability Engineer",
+          "timespan": ["Nov 2021", "Present"],
+          "impact": [
+            {
+              "title": "Cuts costs",
+              "description": "Independently researched and executed projects saving over $1.2 million per year in infrastructure costs by reducing resource use of high-throughput applications, done in the time span of 2 months."
+            },
+            {
+              "title": "Improves reliability",
+              "description": "Built functionality to incrementally deploy experiments to our hosts, reducing likelihood of incidents related to insufficiently validated A/B tests."
+            },
+            {
+              "title": "Increases developer velocity",
+              "description": "Wrote a custom GitHub Action to allow internal teams to manage their alerting and monitoring through code."
+            },
+            {
+              "title": "Handles massive scale",
+              "description": "Supports applications which service more than 4 million requests per second."
+            },
+            {
+              "title": "Stress tests",
+              "description": "Lead a project to assess readiness of a service slated to be used by our entire fleet. Developed and executed load tests to proactively identify severe scale limitations, preventing the issues from occurring in production, saving millions of dollars in potential outages."
+            },
+            {
+              "title": "Highly available",
+              "description": "Maintains 99.9% availability of all online applications comprising LinkedIn's targeting, ramping, and experimentation platform (T-REX)."
+            }
+          ]
+        }
+      ],
+      "location": "Sunnyvale, CA"
+    },
+    {
+      "company": "Earnin",
+      "url": "https://earnin.com",
+      "positions": [
+        {
+          "title": "Software Engineer",
+          "timespan": ["Mar 2019", "Aug 2021"],
+          "impact": [
+            {
+              "title": "Builds web apps",
+              "description": "Created a browser registration funnel for our previously mobile-only application, reducing cost of user acquisition by 50% and paving the way for future investment into a cross-platform target for application development."
+            },
+            {
+              "title": "Creative",
+              "description": "Built an internal Slack application for co-workers to show each other appreciation through coin emojis, dubbed \"Earnin Coin\", which went viral internally. Regularly reached 100s of weekly transactions. Included a real economy, a weekly leaderboard to celebrate high coin earners, and was consistently touted as making employees feel better about giving and receiving help."
+            },
+            {
+              "title": "Innovates",
+              "description": "Developed a tool for improving application development and management (similar to Backstage.io), features included cataloging of internal applications, automated credential provisioning (ex. AWS, private package registries, etc.) for Docker builds and executions, configured by YAML, a CLI and API written in Python, integrated with GitHub, backed by a PostgreSQL database."
+            },
+            {
+              "title": "Automates the hard stuff",
+              "description": "Created a Python tool to automate deployments our main monolith as well as other legacy C# applications, eliminating all deployment related issues. Included writing thorough documentation and training 30+ developers on tools use, which allowed engineers to confidently and safely deploy legacy code without fear of user impact."
+            },
+            {
+              "title": "Improves performance",
+              "description": "Reduced average login times of our main application by ~300ms (25%)."
+            },
+            {
+              "title": "Security conscious",
+              "description": "Built a notification system which audited access logs for any reads on internal employee data."
+            }
+          ]
+        }
+      ],
+      "location": "Palo Alto, CA"
+    },
+    {
+      "company": "Brockman Consulting",
+      "url": "https://brockman-consulting.com/",
+      "positions": [
+        {
+          "title": "Fullstack Software Developer",
+          "timespan": ["Nov 2018", "Mar 2019"],
+          "impact": [
+            {
+              "title": "Independent",
+              "description": "Worked as a solo programmer delivering projects end-to-end."
+            },
+            {
+              "title": "Works with real customers",
+              "description": "Built an automated job-dispatching application for an industrial and oil-field safety services company using Twilio and Node.js."
+            }
+          ]
+        }
+      ],
+      "location": "Calgary, AB"
+    },
+    {
+      "company": "Microquest",
+      "url": "https://www.microquest.ca/",
+      "positions": [
+        {
+          "title": "Junior Software Developer",
+          "timespan": ["Jan 2015", "Mar 2016"],
+          "impact": [
+            {
+              "title": "Experience in multiple industries",
+              "description": "Worked on a team to create a health care-based chat application, with the goal of facilitating the secure sharing of patient information between clinics and physicians within Canada."
+            },
+            {
+              "title": "Full-stack",
+              "description": "Developed the majority of the backend, as well as made significant contributions to the frontend (notifactions and chat functionality). Built using Angular and Node.js (leveraging WebSockets)."
+            }
+          ]
+        }
+      ],
+      "location": "Edmonton, AB"
+    }
+  ],
+  "projects": [
+    {
+      "name": "prune",
+      "url": "https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh",
+      "description": "A small Chrome extension to help you trim your garden of tabs."
+    },
+    {
+      "name": "theo.lol",
+      "url": "https://theo.lol",
+      "description": "My blog and showcase. Hosted on GitHub Pages and written in plain ol' JavaScript, HTML, and CSS. It's small, it loads quickly, and it costs me $0.00."
+    },
+    {
+      "name": "auxb0x",
+      "url": "https://auxb0x.com/?api=ax8G2Du7z38r5InOvvu9661kj4XgyCfz8cZSBOHT",
+      "description": "A private website dedicated to playing my SoundCloud reposts and likes. Mainly built as an exercise in designing a frontend audio player and accompanying backend."
+    }
+  ],
+  "open-source": [
+    {
+      "name": "Atom",
+      "url": "https://github.com/atom/atom",
+      "description": "Added \"Open in new tab\" context-menu functionality to the find-and-replace package.",
+      "links": [
+        "https://github.com/atom/find-and-replace/pull/932"
+      ]
+    },
+    {
+      "name": "Review Board",
+      "url": "https://reviewboard.org/",
+      "description": "Re-designed the Git diff viewer for mobile devices and implemented a minor bug fix as part of a UCOSP student project.",
+      "links": []
+    },
+    {
+      "name": "Linkerd",
+      "url": "https://linkerd.io/",
+      "description": "\"What! Really? He's a Linkerd contributor?!\" ... I made some CSS changes to the website and fixed some incorrect documentation.",
+      "links": [
+        "https://github.com/linkerd/website/pull/752",
+        "https://github.com/linkerd/website/pull/783"
+      ]
+    },
+    {
+      "name": "Utterances",
+      "url": "https://utteranc.es/",
+      "description": "Forked and updated several components to eliminate a security vulnerability.",
+      "links": [
+        "https://theo.lol/security/github/oss/utterances/2020/11/02/hello-world.html"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Alberta",
+      "degree": "Bachelor of Science",
+      "description": "w/ Specialization in Computing Science",
+      "graduated": "Nov 2018"
+    }
+  ]
+}

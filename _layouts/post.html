@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
-    <title>
-        theodore brockman - {{ page.title }}
-    </title>
-    {% seo %}
-  </head>
-  <body>
-    {% include navbar.html %}
-    <div class="page-container post-container">
-        <div class="post-header">
-            <h1>{{page.title}}</h1>
-        </div>
-        {{ content }}
-        <script src="https://theo.lol/client.js"
-        repo="tbrockman/tbrockman.github.io"
-        issue-term="{{page.title}}"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-    </script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/post.css">
+  <title>
+    theodore brockman - {{ page.title }}
+  </title>
+  {% seo %}
+</head>
+
+<body>
+  {% include navbar.html %}
+  <div class="page-container post-container">
+    <div class="post-header">
+      <h1>{{page.title}}</h1>
     </div>
-    <script src="/assets/js/post.js"></script>
-    <script src="/assets/js/prism.js"></script>
+    {{ content }}
+    <script src="https://theo.lol/client.js" repo="tbrockman/tbrockman.github.io" issue-term="{{page.title}}"
+      theme="github-dark" crossorigin="anonymous" async>
+      </script>
+  </div>
+  <script src="/assets/js/post.js"></script>
+  <script src="/assets/js/prism.js"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "5be6f51b79624ee984b67f5bd09f6f30"}'></script><!-- End Cloudflare Web Analytics -->
+
   <body>
 </html>
