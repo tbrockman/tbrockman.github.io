@@ -6,4 +6,4 @@ COPY Gemfile Gemfile
 RUN bundle install
 COPY . .
 RUN bundle exec jekyll build
-ENTRYPOINT [ "bundle", "exec", "jekyll", "serve", "--force_polling", "-P", "4000", "--drafts"]
+ENTRYPOINT [ "bundle", "exec", "jekyll", "serve", "--force_polling", "--host", "0.0.0.0", "-P", "4000", "--drafts"]
