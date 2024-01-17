@@ -33,7 +33,7 @@ $breakpoint-mobile: 768px;
         .blog-list {
             padding-top: 2rem;
 
-            a { 
+            a {
                 div {
                     display: flex;
                     flex-direction: column;
@@ -48,7 +48,7 @@ $breakpoint-mobile: 768px;
         }
     }
 
-    
+
     .blog-post-excerpt {
         font-size: 18px;
     }
@@ -78,15 +78,15 @@ body {
     column-gap: 2rem;
 }
 
-.blog-list >  a {
-    display: block;
+.blog-list>a {
+    display: inline-block;
     box-shadow: 0 0 12px 0px #25252530;
     border-radius: 3px;
     margin-bottom: 2rem;
     transition: all 0.2s ease-in-out;
 }
 
-.blog-list > a:hover {
+.blog-list>a:hover {
     box-shadow: 0px 3px 20px 11px #00000026, 0 0 12px 0px #00000030;
     transform: translate3d(0px, -3px, 0px);
     background-color: #2f2f2f;
