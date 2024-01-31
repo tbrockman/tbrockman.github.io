@@ -7,7 +7,7 @@ $hover-box-border: 4px solid #0a0a0a;
 
 $breakpoint-navbar: 1400px;
 $breakpoint-padding: 1200px;
-$breakpoint-mobile: 800px;
+$breakpoint-mobile: 768px;
 
 @media(max-width: $breakpoint-mobile) {
     div.blog-list-container {
@@ -16,18 +16,24 @@ $breakpoint-mobile: 800px;
     }
 }
 
+/* tablet breakpoint */
+@media (max-width: $breakpoint-mobile) {
+    .blog-list-container {
+        div.blog-list {
+            columns: 1;
+            padding: 2rem;
+        }
+    }
+}
+
 @media(max-width: $breakpoint-navbar) {
     .blog-list-container {
         margin-top: 146px !important;
 
-        div.blog-list {
-
+        .blog-list {
             padding-top: 2rem;
 
             a {
-                margin-left: 1rem;
-                margin-right: 1rem;
-                
                 div {
                     display: flex;
                     flex-direction: column;
@@ -42,7 +48,7 @@ $breakpoint-mobile: 800px;
         }
     }
 
-    
+
     .blog-post-excerpt {
         font-size: 18px;
     }
@@ -68,21 +74,19 @@ body {
 }
 
 .blog-list {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    columns: 2;
+    column-gap: 2rem;
 }
 
-.blog-list >  a {
+.blog-list>a {
+    display: inline-block;
     box-shadow: 0 0 12px 0px #25252530;
     border-radius: 3px;
     margin-bottom: 2rem;
     transition: all 0.2s ease-in-out;
 }
 
-.blog-list > a:hover {
+.blog-list>a:hover {
     box-shadow: 0px 3px 20px 11px #00000026, 0 0 12px 0px #00000030;
     transform: translate3d(0px, -3px, 0px);
     background-color: #2f2f2f;
@@ -92,9 +96,6 @@ body {
     font-size: 2em;
     font-family: Arial;
     overflow-y: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
     overflow: hidden;
     word-break: break-word;
     color: $color-primary;
@@ -138,4 +139,13 @@ body {
 
 .blog-list li div p {
     font-size: 24px;
+}
+
+code {
+    border-radius: 0 !important;
+    background-color: #0000004d;
+    border: 4px solid #0a0a0a;
+    color: #ffffff;
+    padding: 0px 5px;
+    display: inline-block;
 }

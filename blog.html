@@ -10,7 +10,7 @@ title: latest
       <a href="{{ post.url }}">
         <div>
           <div class='blog-post-preview'>
-            <div class='blog-post-title'>{{ post.title }}</div>
+            <div class='blog-post-title'>{{post.title | markdownify | remove: '<p>' | remove: '</p>'}}</div>
             <div class='blog-post-excerpt'>{{ post.excerpt }}</div>
           </div>
         </div>

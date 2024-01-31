@@ -16,7 +16,7 @@
   {% include navbar.html %}
   <div class="page-container post-container">
     <div class="post-header">
-      <h1>{{page.title}}</h1>
+      <h1>{{page.title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
     </div>
     {{ content }}
     <script src="https://theo.lol/client.js" repo="tbrockman/tbrockman.github.io" issue-term="{{page.title}}"
@@ -30,4 +30,5 @@
     data-cf-beacon='{"token": "5be6f51b79624ee984b67f5bd09f6f30"}'></script><!-- End Cloudflare Web Analytics -->
 
   <body>
+
 </html>
