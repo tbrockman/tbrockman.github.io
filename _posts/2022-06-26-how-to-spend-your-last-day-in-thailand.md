@@ -4,7 +4,7 @@ title: 'how to spend your last day in Thailand 🌴'
 date: 2022-06-15 19:19:00 +0000
 author: Theodore Brockman
 categories: how-to travel
-excerpt: a guide on how to appreciate the time you have left in a beautiful remote beach town
+excerpt: A guide on how to appreciate the time you have left in a beautiful remote beach town
 ---
 
 Wake up late, shower off the usual night time sweat, go get your already prepared breakfast (containing some of the tastiest and juiciest fruit you’ve ever had), think about what you have to do for the day, quietly contemplate your life, and then briefly sit in absent thought.
@@ -20,13 +20,13 @@ Give her a real hug back.
 
 Get your Covid test, be shocked at how reasonably priced it is (only $6), and when you don’t have enough Thai Baht feel incredibly grateful that they tell you it’s okay to come back and pay them the rest later.
 
-Go to the bar that one friendly-seeming guy hanging out on the street has constantly told you to visit (paying back the money to the clinic beforehand). Sit down and get a weed filled shake.
+Go to the bar that one friendly-seeming guy hanging out on the street has constantly told you to visit (paying back the money to the clinic beforehand). Sit down and get a weed infused shake.
 
 Look around and spot the kayaking guide who was endlessly enthusiastic about singing, fishing, life, and bioluminescent plankton; who took you on a midnight kayak ride with absolutely no one else, where you both shouted excitedly about the glowing plankton together.
 
 Drink your shake, unsure of whether you’ll enjoy it given that you usually have an aversion to edibles. Be pleasantly surprised when it doesn't even come close to tasting bad (nothing does here).
 
-When a pretty waitress offers you a joint, take a hit and immediately descend into a fit of frantic coughing. Wonder to yourself why you bothered smoking weed when you were younger if you couldn't even be cool in moments like these. Feel at ease when everyone nearby just chuckles and moves on.
+When a pretty waitress offers you a joint, take a hit and immediately descend into a fit of frantic coughing. Wonder to yourself why you bothered smoking so much weed when you were younger if you couldn't even be cool in moments like these. Feel at ease when everyone nearby just chuckles and moves on.
 
 When the waitress gives you the rest of the joint to finish later, take it.
 

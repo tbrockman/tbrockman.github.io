@@ -76,7 +76,7 @@ h1 {
 	font-size: 5rem;
 }
 
-h2 {
+>h2 {
 	color: $color-primary;
 	margin-top: 1em;
 	font-size: 3em;
@@ -114,14 +114,24 @@ blockquote {
 	overflow-x: auto;
 }
 
-p > code {
+li>code,
+p>code,
+a>code {
 	padding: 5px !important;
-	margin: 4px;
 	border-radius: 0 !important;
 	color: #fff !important;
+	display: inline-block;
 }
 
-p > strong > code {
+a:not(pre)>code.highlighter-rouge {
+	background-color: $color-primary;
+}
+
+a:not(pre):hover>code.highlighter-rouge {
+	background-color: $color-hover;
+}
+
+p>strong>code {
 	background-color: #eee;
 	padding: 3px;
 	margin: 2px;
@@ -137,20 +147,11 @@ p > strong > code {
 	margin: 2rem 0;
 }
 
-.post-container p a .highlighter-rouge {
-	font-family: $font-family-primary;
-	font-size: 1rem;
-	display: block;
-	margin-top: 4em;
-	margin-bottom: 0;
-	border-radius: 0 !important;
-	padding: 0.25em 0.5em;
-	background-color: #fe5858;
-	color: #ffffff;
-	box-shadow: $hover-box-shadow;
-	border: $hover-box-border;
-	border-bottom: 0;
-	word-break: break-all;
+.post-container>p>a>code.highlighter-rouge {
+	// display: block;
+	// box-shadow: $hover-box-shadow;
+	// border-bottom: 0;
+	// word-break: break-all;
 }
 
 .post-header {
@@ -158,10 +159,6 @@ p > strong > code {
 	justify-content: center;
 	flex-direction: column;
 	margin: 4em 0 0;
-}
-
-.highlighter-rouge {
-	margin-bottom: 4em;
 }
 
 .post-header h1 {
@@ -211,15 +208,36 @@ p > strong > code {
 	font-family: $font-family-primary !important;
 }
 
-img + em {
+img+em {
 	margin-top: -2rem;
 	text-align: center;
 	font-size: 1rem;
 	display: block;
 }
 
+h1>code[class*=language-plaintext].highlighter-rouge,
+h1>a>code[class*=language-plaintext].highlighter-rouge {
+	border-width: 8px;
+}
+
+:not(pre)>code[class*=language-plaintext] {
+	display: inline-block;
+	line-height: normal;
+	color: inherit;
+	border-radius: 0 !important;
+	// padding: 0.25em 0.5em;
+	// background-color: #fe5858;
+	background-color: $hover-background-color;
+	border: $hover-box-border;
+	color: #ffffff;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
 	font-family: $font-family-primary;
-	font-size: 1rem;
+	font-size: inherit;
+}
+
+pre[class*='language-'] {
+	margin-bottom: 4rem;
 }

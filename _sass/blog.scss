@@ -96,9 +96,6 @@ body {
     font-size: 2em;
     font-family: Arial;
     overflow-y: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
     overflow: hidden;
     word-break: break-word;
     color: $color-primary;
