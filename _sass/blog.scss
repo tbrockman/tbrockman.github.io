@@ -32,13 +32,6 @@ $breakpoint-mobile: 768px;
 
         .blog-list {
             padding-top: 2rem;
-
-            a {
-                div {
-                    display: flex;
-                    flex-direction: column;
-                }
-            }
         }
     }
 
@@ -115,11 +108,6 @@ body {
 
 .blog-post-excerpt {
     padding-top: 1em;
-    overflow-y: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
     color: #fff;
 }
 
@@ -144,7 +132,6 @@ body {
 code {
     border-radius: 0 !important;
     background-color: #0000004d;
-    border: 4px solid #0a0a0a;
     color: #ffffff;
     padding: 0px 5px;
     display: inline-block;

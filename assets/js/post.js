@@ -1,22 +1,15 @@
 const init = () => {
     const elements = document.querySelectorAll("p > a > code.language-plaintext.highlighter-rouge");
     elements.forEach(element => {
+        // TODO: just apply CSS classes here instead of inline styles
+
         const grandparent = element.parentNode.parentNode;
 
-
-
-        const styleLink = `display: flex;
-        flex: 1;
-        border-bottom: none;
-        padding: 8px 16px !important;
-        font-size: 1rem;`
-        const styleLinkGrandparent = `margin-bottom: 0;`
-        const styleLinkGrandSiblingPre = `border-top: none;`
-
         if (grandparent.nextElementSibling && grandparent.nextElementSibling.className.includes('language-')) {
-            element.style.borderBottom = 'none';
             element.style.fontSize = '1rem';
             element.style.display = 'flex';
+            element.style.border = '4px solid #0a0a0a';
+            element.style.borderBottom = 'none';
             element.style.setProperty('padding', '8px 16px', 'important')
 
             grandparent.style.marginBottom = '0';
