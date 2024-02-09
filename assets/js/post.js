@@ -15,13 +15,7 @@ const init = () => {
             grandparent.style.marginBottom = '0';
 
             const pre = grandparent.nextElementSibling.querySelector('pre')
-            console.log(pre)
-
             pre.style.borderTop = 'none';
-            // grandparent.setAttribute('style', 'margin:0;')
-            // const grandSibling = grandparent.nextSibling.nextElementSibling;
-            // const adjacentCodeBlock = grandSibling.firstChild.firstChild;
-            // adjacentCodeBlock.setAttribute('style', 'border-top:0;')
         }
     })
 }
