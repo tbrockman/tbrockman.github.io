@@ -1,24 +1,12 @@
 ---
 layout: post
-title: messaging passing and `MAIN` world content scripts ✉️
+title: message passing and `MAIN` world content scripts ✉️
 date: 2024-01-29 09:32:00 -0400
 author: Theodore Brockman
 categories: chrome extensions content-scripts message-passing
 excerpt: Making up for a lack of browser extension documentation... again.
 thumbnail: /assets/img/hello_world_thumbnail.png
 ---
-
-One of the more interesting things you can do with browser extensions is modify the content and behavior of webpages you don't own.
-
-Y'know, kinda like, _extending_ your _browser_. 
-
-I tried to do this recently when working on my [opentelemetry-browser-extension](https://github.com/tbrockman/opentelemetry-browser-extension), which facilitates automatic [OpenTelemetry](https://opentelemetry.io/) instrumentation by injecting a script into every page load, which then sends telemetry to a collector of your choosing.
-
-As it usually seems to happen when I work on browser extensions, there wasn't a ton of helpful documentation available when I actually wanted to build something interesting. Specifically, I wanted to know how I could communicate with my injected content script *after* it had been injected into the [`MAIN`](https://developer.chrome.com/docs/extensions/reference/api/scripting#type-ExecutionWorld) world, so that I could dynamically alter its behavior if necessary. It turns out that while it's possible, it's a bit more nuanced than it would seem, and most just recommend you just avoid it (I didn't!)
-
-Here's a little example to go over some of the different concepts involved (you can find the full code [here](https://github.com/tbrockman/examples/tree/main/main-world-content-script-message-passing)):
-
-# the scenario
 
 Let's say that maybe you're a little bit of an anarchist, and you want to write Javascript that runs on [reddit.com](https://reddit.com) to mangle the tracking data their client sends while you're browsing (but not block it completely). 
 

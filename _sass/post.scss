@@ -22,6 +22,10 @@ $breakpoint-mobile: 800px;
 		padding: 1em 3em !important;
 	}
 
+	h1 {
+		font-size: 4em !important;
+	}
+
 	h2 {
 		font-size: 2em !important;
 	}
@@ -76,7 +80,7 @@ h1 {
 	font-size: 5rem;
 }
 
->h2 {
+h2 {
 	color: $color-primary;
 	margin-top: 1em;
 	font-size: 3em;
