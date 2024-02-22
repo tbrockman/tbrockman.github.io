@@ -112,7 +112,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
 And then marvel at your work:
 
-![console log of reddit tracking data mangler in action](/assets/img/main-world-content-scripts-with-message-passing/mangled-request-console-log.png)
+[![console log of reddit tracking data mangler in action](/assets/img/main-world-content-scripts-with-message-passing/mangled-request-console-log.png)](/assets/img/main-world-content-scripts-with-message-passing/mangled-request-console-log.png)
 
 Pretty neat, right? But what if we were feeling bad and wanted to extend our little application so that we could turn it on and off when we didn't care about being tracked? We could add a button to the popup that would toggle the content script, but how would we communicate to the content script in the first place?
 
@@ -193,7 +193,7 @@ And add our new popup to our manifest:
 
 Then we load up our extension and...
 
-![Uncaught TypeError: Cannot read property 'addListener' of undefined](/assets/img/main-world-content-scripts-with-message-passing/chrome-runtime-onmesasage-undefined.png)
+[![Uncaught TypeError: Cannot read property 'addListener' of undefined](/assets/img/main-world-content-scripts-with-message-passing/chrome-runtime-onmesasage-undefined.png)](/assets/img/main-world-content-scripts-with-message-passing/chrome-runtime-onmesasage-undefined.png)
 _oh poop._
 
 This is because the content script only has access to a limited subset of the `chrome.runtime` API as a result of being injected into the `MAIN` world. While at first frustrating, if you stop to think about it, it makes sense: Content scripts injected into the `MAIN` world are now running in the same context as the webpage, and the webpage (or other content scripts) can't be trusted. Naturally the browser requires a few more precautions to help make sure you understand [the full implications of what you're doing](https://developer.chrome.com/docs/extensions/develop/concepts/messaging#content-scripts-are-less-trustworthy).
@@ -255,14 +255,14 @@ chrome.runtime.onMessage.addListener(
 
 And now we can toggle our content script from our popup!
 
-![console log of reddit tracking data mangler in action](/assets/img/main-world-content-scripts-with-message-passing/toggled-message-console-log.png)
+[![console log of reddit tracking data mangler in action](/assets/img/main-world-content-scripts-with-message-passing/toggled-message-console-log.png)](/assets/img/main-world-content-scripts-with-message-passing/toggled-message-console-log.png)
 _it's toggled_
 
 Note that after making your extension externally connectable, you should be *very* careful about how you process information you receive, and what information you send, to untrusted external connections--even *if* the recipient is trusted, there's no guarantee other code won't be spying.
 
 # bonus: using [`func`](https://developer.chrome.com/docs/extensions/reference/api/scripting#method-ScriptInjection-func)
 
-You may have noticed earlier that we had to hardcode our extension ID in our content script, which isn't very portable (it'll be different each time someone develops locally *and* when it's published in production) and will need to be manually updated. You may also find other reasons that you also want to provide other initial information to your content script from your background script. 
+You may have noticed earlier that we had to hardcode our extension ID in our content script, which isn't very portable (it'll be different each time someone develops locally *and* when it's published in production) and will need to be manually updated. You may find other reasons that you want to provide context directly to your content script from your background script.
 
 It turns out that this can be accomplished using the [`func`](https://developer.chrome.com/docs/extensions/reference/api/scripting#method-ScriptInjection-func) and [`args`](https://developer.chrome.com/docs/extensions/reference/api/scripting#property-ScriptInjection-args) parameters of [`chrome.scripting.executeScript`](https://developer.chrome.com/docs/extensions/reference/api/scripting#method-executeScript).
 
@@ -334,7 +334,7 @@ And finally, update the manifest too (since we're importing our content script u
 
 Then, reload our extension, refresh `reddit.com` and...
 
-![console log of reddit tracking data mangler in action](/assets/img/main-world-content-scripts-with-message-passing/injected-script-id-console-message.png)
+[![console log of reddit tracking data mangler in action](/assets/img/main-world-content-scripts-with-message-passing/injected-script-id-console-message.png)](/assets/img/main-world-content-scripts-with-message-passing/injected-script-id-console-message.png)
 _it works!_
 
 
