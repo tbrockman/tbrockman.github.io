@@ -205,6 +205,7 @@ p>strong>code {
 	font-family: $font-family-primary !important;
 }
 
+a:has(img)+em,
 img+em {
 	margin-top: -2rem;
 	text-align: center;
