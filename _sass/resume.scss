@@ -141,7 +141,7 @@ pre {
 	color: #25bbff;
 }
 
-.metric {
+.light-gold {
 	color: #f9d890;
 }
 
@@ -154,7 +154,7 @@ pre {
 }
 
 div {
-	line-break: auto;
+	line-break: normal;
 }
 
 body {
@@ -196,6 +196,9 @@ div.section {
 
 	.section-separator-lines {
 		overflow: hidden;
+	}
+
+	>span {
 		white-space: nowrap;
 	}
 }
@@ -284,7 +287,7 @@ div.section {
 	column-gap: 2rem;
 }
 
-.column > .floating-block {
+.column>.floating-block {
 	margin-bottom: 2rem;
 	display: inline-block;
 }
@@ -308,7 +311,12 @@ div.section {
 }
 
 .open-source-header {
-	display: flex;
+	font-size: 0;
+}
+
+.open-source-header>span {
+	font-size: 1rem;
+	word-break: break-word;
 }
 
 .education-section {
@@ -335,7 +343,7 @@ div.section {
 	width: fit-content;
 }
 
-.main-banner > img {
+.main-banner>img {
 	width: 100%;
 	border: 4px solid black;
 	margin-bottom: 0.5rem;
@@ -359,4 +367,12 @@ div.section {
 .contact-link-section {
 	display: flex;
 	flex-direction: column;
+}
+
+.projects-body>p:first-of-type {
+	margin-top: 0;
+}
+
+.open-source-body>p:first-of-type {
+	margin-top: 0;
 }
