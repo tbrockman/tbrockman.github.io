@@ -29,7 +29,7 @@
     ],
     "mission": {
       "header": "What does he want to do?",
-      "text": "Make life better\n\nAlso hike 🥾, surf 🏄, climb 🧗, eat🍕, and pet good dogs 🐶"
+      "text": "Make life easier\n\nAlso hike 🥾, surf 🏄, climb 🧗, eat🍕, and play with good dogs 🐶"
     },
     "description": {
       "header": "Who is Theo?",
@@ -97,7 +97,10 @@
       "positions": [
         {
           "title": "Site Reliability Engineer",
-          "timespan": ["Nov 2021", "Present"],
+          "timespan": [
+            "Nov 2021",
+            "Present"
+          ],
           "impact": [
             {
               "title": "Cuts costs",
@@ -134,7 +137,10 @@
       "positions": [
         {
           "title": "Software Engineer",
-          "timespan": ["Mar 2019", "Aug 2021"],
+          "timespan": [
+            "Mar 2019",
+            "Aug 2021"
+          ],
           "impact": [
             {
               "title": "Builds web apps",
@@ -171,7 +177,10 @@
       "positions": [
         {
           "title": "Fullstack Software Developer",
-          "timespan": ["Nov 2018", "Mar 2019"],
+          "timespan": [
+            "Nov 2018",
+            "Mar 2019"
+          ],
           "impact": [
             {
               "title": "Independent",
@@ -192,7 +201,10 @@
       "positions": [
         {
           "title": "Junior Software Developer",
-          "timespan": ["Jan 2015", "Mar 2016"],
+          "timespan": [
+            "Jan 2015",
+            "Mar 2016"
+          ],
           "impact": [
             {
               "title": "Experience in multiple industries",
