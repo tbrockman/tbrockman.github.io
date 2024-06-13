@@ -1,281 +1,615 @@
 {
-  "about": {
-    "name": "Theodore Brockman",
-    "alternate_resume": {
-      "text": "theo.lol/resume",
-      "url": "https://theo.lol/resume"
-    },
-    "contact": [
+  "resume": {
+    "alternative_formats": [
       {
-        "name": "Website",
-        "text": "theo.lol",
-        "url": "https://theo.lol"
+        "text": "pdf",
+        "url": "/resume.pdf",
+        "icon": "📄"
       },
       {
-        "name": "Email",
-        "text": "iam@theo.lol",
-        "url": "mailto:iam@theo.lol"
+        "text": "something less stylish",
+        "url": "/sad-resume.pdf",
+        "icon": "🕺->💼😞"
       },
       {
-        "name": "GitHub",
-        "text": "tbrockman",
-        "url": "https://github.com/tbrockman"
+        "text": "json",
+        "url": "/resume.json",
+        "icon": "<span class=\"blue\">{}</span>"
       },
       {
-        "name": "LinkedIn",
-        "text": "iamtheolol",
-        "url": "https://linkedin.com/in/iamtheolol"
+        "text": "(maybe) narrated by ai christopher walken",
+        "url": "/christopher-walken-resume.mp3",
+        "icon": "🤖"
       }
     ],
-    "mission": {
-      "header": "What does he want to do?",
-      "text": "Make life easier\n\nAlso hike 🥾, surf 🏄, climb 🧗, eat🍕, and play with good dogs 🐶"
+    "about": {
+      "picture": "/assets/img/resume/theo-face.jpeg",
+      "name": "theodore brockman",
+      "description": "dev 💻 artist 🎨 leaf 🍁",
+      "location": "New York, NY",
+      "contacts": [
+        {
+          "label": "email",
+          "text": "iam@theo.lol",
+          "url": "mailto:iam@theo.lol",
+          "icon": "📬"
+        },
+        {
+          "label": "website",
+          "text": "theo.lol",
+          "url": "https://theo.lol",
+          "icon": "🏠"
+        },
+        {
+          "label": "github",
+          "text": "tbrockman",
+          "url": "https://github.com/tbrockman",
+          "icon": "🖥️"
+        },
+        {
+          "label": "linkedin",
+          "text": "iamtheolol",
+          "url": "https://www.linkedin.com/in/iamtheolol/",
+          "icon": "💼"
+        }
+      ],
+      "whois": "a swiss army knife with **over 6 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
+      "mission": "make life **better**, however he can. also hike 🥾, surf 🏄‍♂️, climb 🧗, eat 🍜, and play with good dogs 🐶"
     },
-    "description": {
-      "header": "Who is Theo?",
-      "text": "A Swiss Army knife with over 6 years of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒"
-    }
-  },
-  "skills": [
-    {
-      "comment": "Can reverse a linked list in any of the following",
-      "name": "Languages",
-      "values": [
+    "skills": {
+      "languages": [
         "Python",
-        "C#",
-        "TypeScript",
-        "Java",
-        "Rust",
         "Go",
+        "Typescript",
+        "Rust",
+        "C#",
+        "Java",
         "Ruby",
+        "Bash",
+        "Powershell",
         "HTML",
         "CSS"
-      ]
-    },
-    {
-      "comment": "Tech I have experience with",
-      "name": "Keywords",
-      "values": [
+      ],
+      "keywords": [
         "Angular",
         "Android",
         "AWS",
         "Azure",
+        "Browser Extensions",
         "ChatGPT",
+        "Chrome",
         "Cloudflare",
         "Datadog",
         "Distributed Systems",
         "Django",
         "Docker",
         "Electron",
+        "etcd",
         "FastAPI",
         "Figma",
         "Flask",
+        "Flutter",
         "Git",
         "GitHub",
+        "Grafana",
+        "grpc",
         "Jenkins",
         "Kafka",
         "Kubernetes",
-        "LaTex",
         "Linkerd",
+        "Mantine",
+        "MUI",
         "MySQL",
         "Netlify",
         "Next.js",
         "Node.js",
         "OpenTelemetry",
+        "Parcel",
         "PostgreSQL",
         "React",
         "Redis",
         "Remix",
-        "SQLite"
-      ]
-    }
-  ],
-  "experience": [
-    {
-      "company": "LinkedIn",
-      "url": "https://linkedin.com",
-      "positions": [
-        {
-          "title": "Site Reliability Engineer",
-          "timespan": [
-            "Nov 2021",
-            "Present"
-          ],
-          "impact": [
-            {
-              "title": "Cuts costs",
-              "description": "Independently researched and executed projects saving over $1.2 million per year in infrastructure costs by reducing resource use of high-throughput applications, done in the time span of 2 months."
-            },
-            {
-              "title": "Improves reliability",
-              "description": "Built functionality to incrementally deploy experiments to our hosts, reducing likelihood of incidents related to insufficiently validated A/B tests."
-            },
-            {
-              "title": "Increases developer velocity",
-              "description": "Wrote a custom GitHub Action to allow internal teams to manage their alerting and monitoring through code."
-            },
-            {
-              "title": "Handles massive scale",
-              "description": "Supports applications which service more than 4 million requests per second."
-            },
-            {
-              "title": "Stress tests",
-              "description": "Lead a project to assess readiness of a service slated to be used by our entire fleet. Developed and executed load tests to proactively identify severe scale limitations, preventing the issues from occurring in production, saving millions of dollars in potential outages."
-            },
-            {
-              "title": "Highly available",
-              "description": "Maintains 99.9% availability of all online applications comprising LinkedIn's targeting, ramping, and experimentation platform (T-REX)."
-            }
-          ]
-        }
-      ],
-      "location": "Sunnyvale, CA"
-    },
-    {
-      "company": "Earnin",
-      "url": "https://earnin.com",
-      "positions": [
-        {
-          "title": "Software Engineer",
-          "timespan": [
-            "Mar 2019",
-            "Aug 2021"
-          ],
-          "impact": [
-            {
-              "title": "Builds web apps",
-              "description": "Created a browser registration funnel for our previously mobile-only application, reducing cost of user acquisition by 50% and paving the way for future investment into a cross-platform target for application development."
-            },
-            {
-              "title": "Creative",
-              "description": "Built an internal Slack application for co-workers to show each other appreciation through coin emojis, dubbed \"Earnin Coin\", which went viral internally. Regularly reached 100s of weekly transactions. Included a real economy, a weekly leaderboard to celebrate high coin earners, and was consistently touted as making employees feel better about giving and receiving help."
-            },
-            {
-              "title": "Innovates",
-              "description": "Developed a tool for improving application development and management (similar to Backstage.io), features included cataloging of internal applications, automated credential provisioning (ex. AWS, private package registries, etc.) for Docker builds and executions, configured by YAML, a CLI and API written in Python, integrated with GitHub, backed by a PostgreSQL database."
-            },
-            {
-              "title": "Automates the hard stuff",
-              "description": "Created a Python tool to automate deployments our main monolith as well as other legacy C# applications, eliminating all deployment related issues. Included writing thorough documentation and training 30+ developers on tools use, which allowed engineers to confidently and safely deploy legacy code without fear of user impact."
-            },
-            {
-              "title": "Improves performance",
-              "description": "Reduced average login times of our main application by ~300ms (25%)."
-            },
-            {
-              "title": "Security conscious",
-              "description": "Built a notification system which audited access logs for any reads on internal employee data."
-            }
-          ]
-        }
-      ],
-      "location": "Palo Alto, CA"
-    },
-    {
-      "company": "Brockman Consulting",
-      "url": "https://brockman-consulting.com/",
-      "positions": [
-        {
-          "title": "Fullstack Software Developer",
-          "timespan": [
-            "Nov 2018",
-            "Mar 2019"
-          ],
-          "impact": [
-            {
-              "title": "Independent",
-              "description": "Worked as a solo programmer delivering projects end-to-end."
-            },
-            {
-              "title": "Works with real customers",
-              "description": "Built an automated job-dispatching application for an industrial and oil-field safety services company using Twilio and Node.js."
-            }
-          ]
-        }
-      ],
-      "location": "Calgary, AB"
-    },
-    {
-      "company": "Microquest",
-      "url": "https://www.microquest.ca/",
-      "positions": [
-        {
-          "title": "Junior Software Developer",
-          "timespan": [
-            "Jan 2015",
-            "Mar 2016"
-          ],
-          "impact": [
-            {
-              "title": "Experience in multiple industries",
-              "description": "Worked on a team to create a health care-based chat application, with the goal of facilitating the secure sharing of patient information between clinics and physicians within Canada."
-            },
-            {
-              "title": "Full-stack",
-              "description": "Developed the majority of the backend, as well as made significant contributions to the frontend (notifactions and chat functionality). Built using Angular and Node.js (leveraging WebSockets)."
-            }
-          ]
-        }
-      ],
-      "location": "Edmonton, AB"
-    }
-  ],
-  "projects": [
-    {
-      "name": "prune",
-      "url": "https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh",
-      "description": "A small Chrome extension to help you trim your garden of tabs."
-    },
-    {
-      "name": "theo.lol",
-      "url": "https://theo.lol",
-      "description": "My blog and showcase. Hosted on GitHub Pages and written in plain ol' JavaScript, HTML, and CSS. It's small, it loads quickly, and it costs me $0.00."
-    },
-    {
-      "name": "auxb0x",
-      "url": "https://auxb0x.com/?api=ax8G2Du7z38r5InOvvu9661kj4XgyCfz8cZSBOHT",
-      "description": "A private website dedicated to playing my SoundCloud reposts and likes. Mainly built as an exercise in designing a frontend audio player and accompanying backend."
-    }
-  ],
-  "open-source": [
-    {
-      "name": "Atom",
-      "url": "https://github.com/atom/atom",
-      "description": "Added \"Open in new tab\" context-menu functionality to the find-and-replace package.",
-      "links": [
-        "https://github.com/atom/find-and-replace/pull/932"
+        "Tailscale",
+        "Tauri",
+        "WASM",
+        "webrtc"
       ]
     },
-    {
-      "name": "Review Board",
-      "url": "https://reviewboard.org/",
-      "description": "Re-designed the Git diff viewer for mobile devices and implemented a minor bug fix as part of a UCOSP student project.",
-      "links": []
-    },
-    {
-      "name": "Linkerd",
-      "url": "https://linkerd.io/",
-      "description": "\"What! Really? He's a Linkerd contributor?!\" ... I made some CSS changes to the website and fixed some incorrect documentation.",
-      "links": [
-        "https://github.com/linkerd/website/pull/752",
-        "https://github.com/linkerd/website/pull/783"
-      ]
-    },
-    {
-      "name": "Utterances",
-      "url": "https://utteranc.es/",
-      "description": "Forked and updated several components to eliminate a security vulnerability.",
-      "links": [
-        "https://theo.lol/security/github/oss/utterances/2020/11/02/hello-world.html"
-      ]
-    }
-  ],
-  "education": [
-    {
-      "institution": "University of Alberta",
-      "degree": "Bachelor of Science",
-      "description": "w/ Specialization in Computing Science",
-      "graduated": "Nov 2018"
-    }
-  ]
+    "projects": [
+      {
+        "name": "prune",
+        "icon": "🍇",
+        "tags": [
+          "browser extension",
+          "productivity",
+          "typescript",
+          "plasmo"
+        ],
+        "description": [
+          "A simple browser extension to help you **trim your garden of tabs**.",
+          "Beloved by its few users, currently rated **4.9 ⭐**"
+        ],
+        "links": [
+          {
+            "icon": "🌈",
+            "text": "chrome",
+            "url": "https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh"
+          },
+          {
+            "icon": "🌊",
+            "text": "edge",
+            "url": "https://microsoftedge.microsoft.com/addons/detail/prune/ideengngoaeoamicacnpipkdmpledphd"
+          },
+          {
+            "icon": "🔶",
+            "text": "firefox",
+            "url": "https://addons.mozilla.org/en-US/firefox/addon/prune-tabs/"
+          },
+          {
+            "icon": "🧭",
+            "text": "safari",
+            "url": "https://apps.apple.com/us/app/prune-your-tabs/id6503263467"
+          },
+          {
+            "icon": "🎭",
+            "text": "opera",
+            "url": "https://addons.opera.com/en/extensions/details/prune/"
+          },
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/tbrockman/prune"
+          }
+        ]
+      },
+      {
+        "name": "theo.lol",
+        "icon": "🏠",
+        "tags": [
+          "website",
+          "html",
+          "css",
+          "js",
+          "github pages",
+          "jekyll"
+        ],
+        "description": [
+          "My homepage. Hosted on GitHub pages and written in plain ol' Javascript, HTML, and CSS. It's small, it loads quickly, and it costs me **$0.00**."
+        ],
+        "links": [
+          {
+            "icon": "🌐",
+            "text": "theo.lol",
+            "url": "https://theo.lol"
+          },
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/tbrockman/tbrockman.github.io"
+          }
+        ]
+      },
+      {
+        "name": "turnip",
+        "icon": "🌱",
+        "tags": [
+          "android",
+          "nearby connections",
+          "spotify",
+          "java",
+          "p2p",
+          "oauth"
+        ],
+        "description": [
+          "A **proximity-based jukebox**. Built as a personal project in university to stop friends fighting over the aux cable.",
+          "Allowed anyone within 100ft to search and queue Spotify songs on the host phone (without needing any authentication or sign-up)."
+        ],
+        "links": [
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/tbrockman/turnip"
+          }
+        ]
+      },
+      {
+        "name": "opentelemetry-browser-extension",
+        "icon": "🔭",
+        "tags": [
+          "typescript",
+          "browser extension",
+          "dev tools",
+          "analytics",
+          "opentelemetry"
+        ],
+        "description": [
+          "A browser extension to automatically instrument all webpages with user and performance analytics, using OpenTelemetry."
+        ],
+        "links": [
+          {
+            "icon": "🌈",
+            "text": "chrome",
+            "url": "https://chromewebstore.google.com/detail/opentelemetry-browser-ext/bgjeoaohfhbfabbfhbafjihbobjgniag"
+          },
+          {
+            "icon": "🌊",
+            "text": "edge",
+            "url": "https://microsoftedge.microsoft.com/addons/detail/opentelemetry-browser-ext/agbimhpapcebokbphphbfcimebibcoga"
+          },
+          {
+            "icon": "🔶",
+            "text": "firefox",
+            "url": "https://addons.mozilla.org/en-US/firefox/addon/opentelemetry-browserextension/"
+          },
+          {
+            "icon": "🧭",
+            "text": "safari",
+            "url": "https://apps.apple.com/us/app/opentelemetry-browser-ext/id6503631744"
+          },
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/tbrockman/opentelemetry-browser-extension"
+          }
+        ]
+      },
+      {
+        "name": "parcel-resolver-inlinefunc",
+        "icon": "🏗️",
+        "tags": [
+          "parcel",
+          "typescript",
+          "bundler"
+        ],
+        "description": [
+          "A Parcel plugin to allow embedding an imported Javascript function as a serializable and self-contained bundle (useful in browser extensions/sandboxes)."
+        ],
+        "links": [
+          {
+            "icon": "💾",
+            "text": "npm",
+            "url": "https://www.npmjs.com/package/parcel-resolver-inlinefunc"
+          },
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/tbrockman/parcel-resolver-inlinefunc"
+          }
+        ]
+      },
+      {
+        "name": "auxb0x",
+        "icon": "🎵",
+        "tags": [
+          "soundcloud",
+          "aws",
+          "cloudfront",
+          "cdn",
+          "angular"
+        ],
+        "description": [
+          "A website dedicated to playing my Soundcloud reposts and likes.",
+          "Built as an exercise to learn more about frontend design, as well as distributing content with a CDN.",
+        ],
+        "links": [
+          {
+            "icon": "🌐",
+            "text": "website",
+            "url": "https://auxb0x.com?api=ax8G2Du7z38r5InOvvu9661kj4XgyCfz8cZSBOHT"
+          },
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/tbrockman/auxbox-web-client"
+          }
+        ]
+      },
+      {
+        "name": "schizophoner",
+        "icon": "🎙️",
+        "tags": [
+          "android",
+          "audio",
+          "art",
+          "java",
+          "university of sydney"
+        ],
+        "description": [
+          "An Android application built as a university art project.",
+          "Simultaneously recorded and played audio, buffering 'interesting' noises, then later randomly swapping them for something previously buffered."
+        ],
+        "links": [
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/tbrockman/schizophoner"
+          }
+        ]
+      }
+    ],
+    "work": [
+      {
+        "position": "Software Engineer",
+        "organization": "LinkedIn",
+        "url": "https://linkedin.com",
+        "start": "2023-07-01",
+        "highlights": [
+          {
+            "label": "Maintains site reliability platforms",
+            "icon": "🚨",
+            "text": "Currently develops and maintains LinkedIn's internal **alerting**, **notification**, **oncall management**, and **automated remediation platforms**."
+          },
+          {
+            "label": "Cuts costs",
+            "icon": "💰",
+            "text": "Independently scoped and executed projects saving over **$1.2 million _per year_** in infrastructure costs by reducing the resource use of two large-scale applications, done in the time span of **2 months**."
+          },
+          {
+            "label": "Verifies high-stakes migrations",
+            "icon": "🧑‍🔬",
+            "text": "Built tooling to **evaluate the performance and correctness** of LinkedIn's new metrics platform, allowing the team to **debug** and **fix underlying issues before migration**, as well as measure progress to platform parity."
+          },
+          {
+            "label": "Leverages open-source technology",
+            "icon": "📊",
+            "text": "Created an internal fork of [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) to support ingesting distributed trace data (in a proprietary LinkedIn schema), allowing the **use existing open-source technology** built on OpenTelemetry."
+          }
+        ],
+        "tags": [
+          "golang",
+          "python",
+          "javascript",
+          "react",
+          "flask",
+          "opentelemetry",
+          "grafana",
+          "kafka",
+          "mysql",
+          "couchbase",
+          "percona"
+        ],
+      },
+      {
+        "position": "Site Reliability Engineer",
+        "organization": "LinkedIn",
+        "url": "https://linkedin.com",
+        "start": "2021-11-01",
+        "end": "2023-07-01",
+        "tags": [],
+        "highlights": [
+          {
+            "label": "Handles massive scale",
+            "icon": "🚀",
+            "text": "Supported backend applications servicing more than **4 million requests per second**."
+          },
+          {
+            "label": "Highly available",
+            "icon": "💯",
+            "text": "Maintained **99.9% availability** of all online applications comprising LinkedIn's targeting, ramping, and experimentation platform ([T-REX](https://engineering.linkedin.com/teams/data/analytics-platform-apps/data-applications/t-rex)."
+          },
+          {
+            "label": "Improves site reliability",
+            "icon": "🤖",
+            "text": "Built automation to incrementally deploy experiments while monitoring and reacting to their impact on application health signals, **reducing likelihood of incidents** from insufficiently validated A/B test treatments."
+          },
+          {
+            "label": "Improves alerting practices and velocity",
+            "icon": "📋",
+            "text": "Created a GitHub Action to allow teams to manage their dashboards and alerts as code, facilitating **better alerting practices through code-review** as well as providing discoverable examples to be leveraged by others, improving oncall quality-of-life."
+          },
+          {
+            "label": "Prevents widespread outages",
+            "icon": "🔍",
+            "text": "Evaluated production readiness of a service slated to be used by almost our entire fleet. Developed and executed load tests to proactively **identify severe scale limitations**, preventing the issue from occurring in production."
+          }
+        ]
+      },
+      {
+        "position": "Software Engineer",
+        "organization": "Earnin",
+        "url": "https://earnin.com",
+        "start": "2019-03-01",
+        "end": "2021-08-01",
+        "tags": [],
+        "highlights": [
+          {
+            "label": "Lowers user-acquisition costs",
+            "icon": "💰",
+            "text": "Created a browser registration funnel for our previously mobile-only application, **reducing cost of user acquisition by 50%** and paving the way for future investment into a cross-platform target for application development."
+          },
+          {
+            "label": "Automates the hard stuff",
+            "icon": "🔧",
+            "text": "Created a Python tool to automate safe deployments of our legacy C# applications (including our main monolith), **eliminating all deployment-related site-reliability issues**. Included writing thorough documentation and training 30+ developers on tools use, which allowed engineers to confidently and safely deploy new code without fear of user impact."
+          },
+          {
+            "label": "Creative",
+            "icon": "🪙",
+            "text": "Built an internal Slack application for co-workers to show each other appreciation through coin emojis, dubbed 'Earnin Coin', which went viral internally. Regularly reached *100s of weekly transactions*. Included a real economy, a weekly leaderboard to celebrate high coin earners, and was consistently touted as making employees feel better about giving and receiving help."
+          }
+        ]
+      },
+      {
+        "position": "Fullstack Software Developer",
+        "organization": "Brockman Consulting",
+        "url": "https://brockmanconsulting.com",
+        "start": "2018-11-01",
+        "end": "2019-03-01",
+        "tags": [],
+        "highlights": [
+          {
+            "label": "Builds job-dispatching application",
+            "icon": "📲",
+            "text": "Worked as an independent consultant, building an SMS-based job-dispatching application for an industrial and oil-field safety services company using Node.js and Twilio. allowed the company to automate notifying (and provisioning) qualified employees for available jobs."
+          }
+        ]
+      },
+      {
+        "position": "Junior Software Developer",
+        "organization": "Microquest",
+        "url": "https://microquest.ca",
+        "start": "2015-01-01",
+        "end": "2016-03-01",
+        "tags": [],
+        "highlights": [
+          {
+            "label": "Creates fullstack chat applications",
+            "icon": "💬",
+            "text": "Worked as a fullstack developer to create a chat application for health-care professionals, facilitating the secure sharing of patient information between clinics and physicians within Canada. Built using Angular and Node.js, leveraging WebSockets for real-time communication and notifications."
+          }
+        ]
+      }
+    ],
+    "volunteer": [
+      {
+        "name": "quickjs-emscripten",
+        "icon": "🛡️",
+        "tags": [
+          "oss",
+          "security"
+        ],
+        "description": [
+          "Updated project to incorporate upstream changes to fix [a CVE in QuickJS](https://github.com/bellard/quickjs/issues/178)."
+        ],
+        "links": [
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/justjake/quickjs-emscripten"
+          },
+          {
+            "icon": "📝",
+            "text": "pull request",
+            "url": "https://github.com/justjake/quickjs-emscripten/pull/125"
+          }
+        ]
+      },
+      {
+        "name": "oasgen",
+        "icon": "🚀",
+        "tags": [
+          "oss",
+          "rust"
+        ],
+        "description": [
+          "Fixed swagger UI support for actix-web, as well as updated documentation and added tests."
+        ],
+        "links": [
+          {
+            "icon": "🖥️",
+            "text": "github",
+            "url": "https://github.com/kurtbuilds/oasgen"
+          },
+          {
+            "icon": "📝",
+            "text": "pull request",
+            "url": "https://github.com/kurtbuilds/oasgen/pull/12"
+          }
+        ]
+      },
+      {
+        "name": "atom",
+        "icon": "⚛️",
+        "tags": [
+          "oss",
+          "js"
+        ],
+        "description": [
+          "Added [\"Open in New Tab\"](https://github.com/atom/find-and-replace/pull/932) context-menu functionality to the [find-and-replace package](https://github.com/atom/find-and-replace)."
+        ],
+        "links": [
+          {
+            "icon": "🌐",
+            "text": "atom.io",
+            "url": "https://atom.io/"
+          },
+          {
+            "icon": "📝",
+            "text": "pull request",
+            "url": "https://github.com/atom/find-and-replace/pull/932"
+          }
+        ]
+      },
+      {
+        "name": "linkerd",
+        "icon": "🕸️",
+        "tags": [
+          "oss",
+          "html",
+          "css"
+        ],
+        "description": [
+          "\"What! He's a Linkerd contributor?!\" ... I made some CSS changes to the website and fixed some incorrect documentation. "
+        ],
+        "links": [
+          {
+            "icon": "🌐",
+            "text": "linkerd.io",
+            "url": "https://linkerd.io/"
+          },
+          {
+            "icon": "📝",
+            "text": "pull request",
+            "url": "https://github.com/linkerd/website/pull/752"
+          },
+          {
+            "icon": "📝",
+            "text": "pull request #2",
+            "url": "https://github.com/linkerd/website/pull/783"
+          }
+        ]
+      },
+      {
+        "name": "Review Board",
+        "icon": "📌",
+        "tags": [
+          "oss",
+          "python",
+          "mobile",
+          "html",
+          "css"
+        ],
+        "description": [
+          "Re-designed the Git diff viewer for mobile devices and implemented a minor bug fix as part of a university student project in UCOSP."
+        ],
+        "links": [
+          {
+            "icon": "🌐",
+            "text": "reviewboard.org",
+            "url": "https://reviewboard.org/"
+          },
+          {
+            "icon": "▶️",
+            "text": "youtube demo",
+            "url": "https://www.youtube.com/watch?v=_h0fPAEK2A8&list=PL-4cOKCxg2Mr7nqWqa9PwyDgwmRNaiQ9K&index=1"
+          }
+        ]
+      },
+      {
+        "name": "utterances",
+        "icon": "🗨️",
+        "tags": [
+          "oss",
+          "security",
+          "cloudflare",
+          "gha"
+        ],
+        "description": [
+          "Forked and updated several components to eliminate a security vulnerability."
+        ],
+        "links": [
+          {
+            "icon": "🌐",
+            "text": "utteranc.es",
+            "url": "https://utteranc.es/"
+          },
+          {
+            "icon": "▶️",
+            "text": "blog post",
+            "url": "/security/github/oss/utterances/2020/11/02/hello-world.html"
+          }
+        ]
+      }
+    ]
+  }
 }
