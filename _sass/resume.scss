@@ -72,6 +72,14 @@ a.gold:hover {
 	color: #ae8631;
 }
 
+a>span.gold:hover {
+	color: #ae8631;
+}
+
+a>span.green:hover {
+	color: #668f36;
+}
+
 body {
 	padding: 2em !important;
 	text-transform: lowercase;
@@ -139,6 +147,11 @@ pre {
 
 .blue {
 	color: #25bbff;
+}
+
+strong {
+	font-weight: normal;
+	color: #f9d890;
 }
 
 .light-gold {
@@ -224,6 +237,12 @@ div.section {
 	}
 }
 
+.resume-alternatives {
+	ul {
+		margin-top: 0;
+	}
+}
+
 .skills-section {
 	display: flex;
 	flex-direction: row;
@@ -232,6 +251,10 @@ div.section {
 .skills {
 	display: flex;
 	flex-direction: column;
+}
+
+.skills>p {
+	margin-top: 0;
 }
 
 .about-body {
@@ -266,11 +289,19 @@ div.section {
 }
 
 .work-experience-entry.floating-block {
-	margin-bottom: 0;
+	// margin-bottom: 0;
 }
 
 .work-experience-entry:last-child.floating-block {
 	margin-bottom: 2rem;
+}
+
+.work-experience-body>p>a {
+	color: #e0ab3b;
+}
+
+.work-experience-body>p>a:hover {
+	color: #ae8631;
 }
 
 .inner-section-separator {
@@ -316,6 +347,14 @@ div.section {
 .open-source-header>span {
 	font-size: 1rem;
 	word-break: break-word;
+}
+
+.open-source-body>p>a {
+	color: #e0ab3b;
+}
+
+.open-source-body>p>a:hover {
+	color: #ae8631;
 }
 
 .education-section {

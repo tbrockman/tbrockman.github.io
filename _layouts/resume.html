@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/resume.css">
-        <title>theodore brockman - resume</title>
-        {% seo %}
-    </head>
-    {{content}}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </meta>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/resume.css">
+    <title>theodore brockman - resume</title>
+    {% seo %}
+</head>
+
+<body>
+    <div class="resume-container">
+        {% for hash in site.data.resume %}
+        {% assign key = hash[0] %}
+        {% unless key == "data" %}
+        <div class="{{key}} section">
+            <div class="section-icon-container ">
+                <div class="pink">theo:~/resume$&nbsp;</div>
+                <div>./{{ site.data.resume.data.section-title-map[key] }}</div>
+            </div>
+            {% if key == "alternative_formats" %}
+            <div class="resume-alternatives">
+                <ul>
+                    {% for format in site.data.resume.alternative_formats %}
+                    <li>
+                        <a class="gold" href="{{format.url}}">{{ format.icon }} {{ format.text }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% elsif key == "about" %}
+            <div class="resume-header-body">
+                <div>
+                    <div class='main-banner floating-block'>
+                        <img class='banner-image' src="{{ site.data.resume.about.picture }}"></img>
+                        <div class='about-body'>
+                            <pre class="blue">{{ site.data.resume.about.name }}</pre>
+                            <pre style="overflow: auto;">{{ site.data.resume.about.description }}</pre>
+                        </div>
+                        <div class="contact-link-section">
+                            {% for contact in site.data.resume.about.contacts %}
+                            <div>
+                                <a class="contact-section-link" title="{{ contact.label }}"
+                                    href="{{ contact.url }}"><span class='green'>{{
+                                        contact.label }}</span> <span class="gold">{{
+                                        contact.icon }} {{ contact.text }}</span></a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div style='margin-top:0;' class="floating-block">
+                        <p>
+                            <span class="green">who is theo?</span>
+                        </p>
+                        {{ site.data.resume.about.whois | markdownify }}
+                    </div>
+                    <div class="floating-block">
+                        <p>
+                            <span class="green">what does he want to do?</span>
+                        </p>
+                        {{ site.data.resume.about.mission | markdownify }}
+                    </div>
+                </div>
+            </div>
+            {% elsif key == "skills" %}
+            <div class="skills floating-block">
+                {% for skill in site.data.resume[key] %}
+                {% assign name = skill[0] %}
+                {% assign values = skill[1] %}
+                <p class="comment-grey">// {{ site.data.resume.data.comments[key][name] }}</p>
+                <p>
+                    <span class="blue">{{ name }}</span><span class="white">&nbsp=&nbsp</span><span
+                        class="white">[</span>
+                    {%- for value in values -%}
+                    <span class="green">"{{ value }}"{% unless forloop.last %}<span class='white'>,</span> {%
+                        endunless %}</span>
+                    {%- endfor -%}
+                    <span class="white">]</span>
+                </p>
+                {% unless forloop.last %}<p>&nbsp;</p>{% endunless %}
+                {% endfor %}
+            </div>
+            {% elsif key == "projects" %}
+            <div class="column-container">
+                <div class="column">
+                    {% for project in site.data.resume[key] %}
+                    <div class="project floating-block">
+                        <div class="projects-header">
+                            <span class="green">{{ project.name }} {{ project.icon }}</span>
+                        </div>
+                        <div class="projects-body">
+                            {% for line in project.description %}
+                            {{ line | markdownify }}
+                            {% endfor %}
+                            <p>
+                                {% for link in project.links %}
+                                <span><a class="gold" href="{{ link.url }}">{{ link.icon }} {{ link.text }}</a></span>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% elsif key == "work" %}
+            <div class="work-experience-container">
+                {% for job in site.data.resume[key] %}
+                <div class="work-experience-entry floating-block">
+                    <div class="work-experience-header">
+                        <span class="green">{{ job.position }}</span>
+                        <span class="white">,&nbsp;</span>
+                        <span><a href="{{ job.url }}" class="gold">{{ job.organization }}</a>&nbsp</span>
+                        <span class="comment-grey">// {{ job.start | date: "%b %Y" }} - {% if job.end %} {{ job.end |
+                            date: "%b, %Y" }} {% else %} present {% endif %}</span>
+                    </div>
+                    <div class="work-experience-body">
+                        {% for highlight in job.highlights %}
+                        <p class="gold">{{ highlight.icon | append: " " | append: highlight.label }}</p>
+                        {{ highlight.text | markdownify }}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% elsif key == "volunteer" %}
+            <div class="column-container">
+                <div class="column">
+                    {% for contribution in site.data.resume[key] %}
+                    <div class="open-source-item floating-block">
+                        <div class="open-source-header">
+                            <span class="green">{{ contribution.name }} {{ contribution.icon }}</span>
+                        </div>
+                        <div class="open-source-body">
+                            {% for line in contribution.description %}
+                            {{ line | markdownify }}
+                            {% endfor %}
+                            <p>
+                                {% for link in contribution.links %}
+                                <span><a class="gold" href="{{ link.url }}">{{ link.icon }} {{ link.text }}</a></span>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="section-separator comment-grey">
+                <span>/*&nbsp;</span>
+                <span
+                    class="section-separator-lines">-------------------------------------------------------------------------------</span>
+                <span>&nbsp;*/</span>
+            </div>
+            {% endunless %}
+            {% endfor %}
+        </div>
+
+        <!-- Cloudflare Web Analytics -->
+        <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+            data-cf-beacon='{"token": "5be6f51b79624ee984b67f5bd09f6f30"}'></script>
+        <!-- End Cloudflare Web Analytics -->
+</body>
+
 </html>
