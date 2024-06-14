@@ -354,9 +354,9 @@
           "text": "Independently (as a side-project) scoped and executed infrastructure changes saving over **$1.2 million _per year_** in hardware costs by reducing the resource use of two large-scale applications, done in the time span of **2 months**."
         },
         {
-          "label": "Tests high-stakes migrations",
+          "label": "Tests high-stakes changes",
           "icon": "🧑‍🔬",
-          "text": "Built tooling to **evaluate the performance and correctness** of LinkedIn's new metrics platform, allowing the team to **debug** and **fix underlying issues before migration**, as well as measure progress to platform parity."
+          "text": "Built tooling to **evaluate the performance and correctness** of LinkedIn's new metrics platform, allowing the team to **debug** and **fix underlying issues** *before* the migration, as well as measure progress to platform parity."
         },
         {
           "label": "Leverages open-source technology",
@@ -462,7 +462,7 @@
       "tags": [],
       "highlights": [
         {
-          "label": "Creates fullstack chat applications",
+          "label": "Creates secure chat application",
           "icon": "💬",
           "text": "Worked as a fullstack developer to create a chat application for health-care professionals, facilitating the secure sharing of patient information between clinics and physicians within Canada. Built using Angular and Node.js, leveraging WebSockets for real-time communication and notifications."
         }

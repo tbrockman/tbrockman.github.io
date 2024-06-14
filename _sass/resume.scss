@@ -304,6 +304,17 @@ div.section {
 	color: #ae8631;
 }
 
+.inset-box-shadow {
+	border: 2px solid #545454;
+	padding: 1rem;
+	margin-top: 1rem;
+	box-shadow: inset 0px 0px 14px #0a0a0a;
+}
+
+.work-experience-highlight>p:first-child {
+	margin-top: 0;
+}
+
 .inner-section-separator {
 	padding: 1em 0;
 }
