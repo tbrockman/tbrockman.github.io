@@ -110,23 +110,23 @@
             </div>
             {% elsif key == "work" %}
             <div class="work-experience-container">
-                {% for job in site.data.resume[key] %}
+                {%- for job in site.data.resume[key] -%}
                 <div class="work-experience-entry floating-block">
                     <div class="work-experience-header">
-                        <span class="green">{{ job.position }}</span>
-                        <span class="white">,&nbsp;</span>
-                        <span><a href="{{ job.url }}" class="gold">{{ job.organization }}</a>&nbsp</span>
-                        <span class="comment-grey">// {{ job.start | date: "%b %Y" }} - {% if job.end %} {{ job.end |
+                        <span class="green">{{- job.position -}}</span><span class="white">,&nbsp;</span><span><a
+                                href="{{ job.url }}" class="gold">{{- job.organization -}}</a>&nbsp;</span><span
+                            class="comment-grey">// {{ job.start | date: "%b %Y" }} - {% if job.end %} {{ job.end
+                            |
                             date: "%b, %Y" }} {% else %} present {% endif %}</span>
                     </div>
                     <div class="work-experience-body">
-                        {% for highlight in job.highlights %}
+                        {%- for highlight in job.highlights -%}
                         <p class="gold">{{ highlight.icon | append: " " | append: highlight.label }}</p>
                         {{ highlight.text | markdownify }}
-                        {% endfor %}
+                        {%- endfor -%}
                     </div>
                 </div>
-                {% endfor %}
+                {%- endfor -%}
             </div>
             {% elsif key == "volunteer" %}
             <div class="column-container">

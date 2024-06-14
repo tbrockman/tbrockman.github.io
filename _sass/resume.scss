@@ -1,4 +1,4 @@
-$breakpoint-mobile: 74ch;
+$breakpoint-mobile: 640px;
 $breakpoint-combine-header: 640px;
 
 @media (max-width: $breakpoint-combine-header) {
@@ -125,7 +125,7 @@ pre {
 
 .resume-container {
 	max-width: 100%;
-	width: 74ch;
+	width: 640px;
 	display: block;
 }
 
@@ -280,9 +280,7 @@ div.section {
 	display: flex;
 }
 
-.work-experience-header {
-	font-size: 0;
-}
+.work-experience-header {}
 
 .work-experience-header>span {
 	font-size: 1rem;
@@ -294,6 +292,10 @@ div.section {
 
 .work-experience-entry:last-child.floating-block {
 	margin-bottom: 2rem;
+}
+
+.work-experience-body>p:nth-child(2n+1) {
+	margin-top: 2rem;
 }
 
 .work-experience-body>p>a {
@@ -334,11 +336,10 @@ div.section {
 }
 
 .projects-header {
-	font-size: 0;
+	margin-bottom: 1rem;
 }
 
 .projects-header>span {
-	font-size: 1rem;
 	word-break: break-word;
 }
 
@@ -352,11 +353,10 @@ div.section {
 }
 
 .open-source-header {
-	font-size: 0;
+	margin-bottom: 1rem;
 }
 
 .open-source-header>span {
-	font-size: 1rem;
 	word-break: break-word;
 }
 
