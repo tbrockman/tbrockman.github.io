@@ -26,7 +26,7 @@
                 <ul>
                     {% for format in site.data.resume.alternative_formats %}
                     <li>
-                        <a class="gold" href="{{format.url}}">{{ format.icon }} {{ format.text }}</a>
+                        <a class="gold" href="{{site.url}}{{format.url}}">{{ format.icon }} {{ format.text }}</a>
                     </li>
                     {% endfor %}
                 </ul>
