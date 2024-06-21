@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/scripts/resume/go-docx/main.go",
+            "program": "${workspaceFolder}/scripts/resume/go-print-docx/main.go",
             "args": [
                 "render",
                 "../../../_data/resume.json",

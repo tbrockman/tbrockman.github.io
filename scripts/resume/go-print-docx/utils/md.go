@@ -39,27 +39,35 @@ func (r *DocxRenderer) renderText(w util.BufWriter, source []byte, node ast.Node
 		run.Properties().SetSize(r.options.Size)
 		run.Properties().SetFontFamily(r.options.Font)
 	} else if kind == ast.KindLink {
-		node := parent.(*ast.Link)
+		parent := parent.(*ast.Link)
 
 		link := r.paragraph.AddHyperLink()
-		link.SetTarget(string(node.Destination))
-		link.SetToolTip(string(node.Title))
+		link.SetTarget(string(parent.Destination))
+		link.SetToolTip(string(parent.Title))
 		run := link.AddRun()
 		run.AddText(string(node.Text(source)))
 		run.Properties().SetSize(r.options.Size)
 		run.Properties().SetFontFamily(r.options.Font)
 	} else if kind == ast.KindEmphasis {
-		node := parent.(*ast.Emphasis)
-		level := node.Level
+		parent := parent.(*ast.Emphasis)
+		level := parent.Level
+		grandParent := parent.Parent()
+		grandParentLevel := 0
+
+		if grandParent.Kind() == ast.KindEmphasis {
+			grandParentLevel = grandParent.(*ast.Emphasis).Level
+		}
 
 		run := r.paragraph.AddRun()
 		run.AddText(string(node.Text(source)))
 		run.Properties().SetSize(r.options.Size)
 		run.Properties().SetFontFamily(r.options.Font)
 
-		if level == 2 {
+		if level == 2 || grandParentLevel == 2 {
 			run.Properties().SetBold(true)
-		} else if level == 1 {
+		}
+
+		if level == 1 {
 			run.Properties().SetItalic(true)
 		}
 	} else {
