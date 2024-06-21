@@ -1,0 +1,23 @@
+services:
+  web:
+    build: .
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/app
+  browserless:
+    image: ghcr.io/browserless/chromium
+    ports:
+      - 3000:3000
+    restart: always
+    environment:
+      - MAX_CONCURRENT_SESSIONS=10
+      - MAX_QUEUE_LENGTH=10
+      - PREBOOT_CHROME=true
+      - CHROME_REFRESH_TIME=60000
+      - TIMEOUT=60000
+      - TOKEN=who-cares-token
+      - PORT=3000
+      - ALLOW_GET=true
+      - WORKSPACE_DELETE_EXPIRED=true
+      - DOWNLOAD_DIR=/downloads

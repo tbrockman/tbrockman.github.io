@@ -1,4 +1,4 @@
-$breakpoint-mobile: 74ch;
+$breakpoint-mobile: 640px;
 $breakpoint-combine-header: 640px;
 
 @media (max-width: $breakpoint-combine-header) {
@@ -72,6 +72,14 @@ a.gold:hover {
 	color: #ae8631;
 }
 
+a>span.gold:hover {
+	color: #ae8631;
+}
+
+a>span.green:hover {
+	color: #668f36;
+}
+
 body {
 	padding: 2em !important;
 	text-transform: lowercase;
@@ -117,7 +125,7 @@ pre {
 
 .resume-container {
 	max-width: 100%;
-	width: 74ch;
+	width: 640px;
 	display: block;
 }
 
@@ -139,6 +147,11 @@ pre {
 
 .blue {
 	color: #25bbff;
+}
+
+strong {
+	font-weight: normal;
+	color: #f9d890;
 }
 
 .light-gold {
@@ -224,6 +237,12 @@ div.section {
 	}
 }
 
+.resume-alternatives {
+	ul {
+		margin-top: 0;
+	}
+}
+
 .skills-section {
 	display: flex;
 	flex-direction: row;
@@ -232,6 +251,10 @@ div.section {
 .skills {
 	display: flex;
 	flex-direction: column;
+}
+
+.skills>p {
+	margin-top: 0;
 }
 
 .about-body {
@@ -257,20 +280,41 @@ div.section {
 	display: flex;
 }
 
-.work-experience-header {
-	font-size: 0;
-}
+.work-experience-header {}
 
 .work-experience-header>span {
 	font-size: 1rem;
 }
 
 .work-experience-entry.floating-block {
-	margin-bottom: 0;
+	// margin-bottom: 0;
 }
 
 .work-experience-entry:last-child.floating-block {
 	margin-bottom: 2rem;
+}
+
+.work-experience-body>p:nth-child(2n+1) {
+	margin-top: 2rem;
+}
+
+.work-experience-body>p>a {
+	color: #e0ab3b;
+}
+
+.work-experience-body>p>a:hover {
+	color: #ae8631;
+}
+
+.inset-box-shadow {
+	border: 2px solid #545454;
+	padding: 1rem;
+	margin-top: 1rem;
+	box-shadow: inset 0px 0px 14px #0a0a0a;
+}
+
+.work-experience-highlight>p:first-child {
+	margin-top: 0;
 }
 
 .inner-section-separator {
@@ -292,11 +336,10 @@ div.section {
 }
 
 .projects-header {
-	font-size: 0;
+	margin-bottom: 1rem;
 }
 
 .projects-header>span {
-	font-size: 1rem;
 	word-break: break-word;
 }
 
@@ -310,12 +353,19 @@ div.section {
 }
 
 .open-source-header {
-	font-size: 0;
+	margin-bottom: 1rem;
 }
 
 .open-source-header>span {
-	font-size: 1rem;
 	word-break: break-word;
+}
+
+.open-source-body>p>a {
+	color: #e0ab3b;
+}
+
+.open-source-body>p>a:hover {
+	color: #ae8631;
 }
 
 .education-section {
