@@ -2,22 +2,22 @@
   "alternative_formats": [
     {
       "text": "resume.html",
-      "url": "/resume.html",
+      "url": "https://theo.lol/resume.html",
       "icon": "🔗"
     },
     {
       "text": "resume.pdf",
-      "url": "/resume.pdf",
+      "url": "https://theo.lol/resume.pdf",
       "icon": "📄"
     },
     {
       "text": "something-less-stylish.docx",
-      "url": "/resume.docx",
+      "url": "https://theo.lol/resume.docx",
       "icon": "🕺->🥺💼"
     },
     {
       "text": "resume.json",
-      "url": "/resume.json",
+      "url": "https://theo.lol/resume.json",
       "icon": "<span class=\"green\">{}</span>"
     }
   ],
