@@ -18,14 +18,17 @@
         {% unless key == "data" %}
         <div class="{{key}} section">
             <div class="section-icon-container ">
-                <div class="pink">theo:~/resume$&nbsp;</div>
-                <div>./{{ site.data.resume.data.section-title-map[key] }}</div>
+                <span class="pink">theo</span>
+                <span class="pink">:</span>
+                <span class="pink">~/resume</span>
+                <span class="pink">$&nbsp;</span>
+                <span class="white">{{ site.data.resume.data.section-title-map["web"][key] }}</span>
             </div>
             {% if key == "alternative_formats" %}
             <div class="resume-alternatives">
                 <ul>
                     {% for format in site.data.resume.alternative_formats %}
-                    <li>
+                    <li id="{{format.text}}">
                         <a class="gold" href="{{site.url}}{{format.url}}">{{ format.icon }} {{ format.text }}</a>
                     </li>
                     {% endfor %}
@@ -92,7 +95,7 @@
                     {% for project in site.data.resume[key] %}
                     <div class="project floating-block">
                         <div class="projects-header">
-                            <span class="green">{{ project.name }} {{ project.icon }}</span>
+                            <span class="green">{{ project.icon }} {{ project.name }}</span>
                         </div>
                         <div class="projects-body">
                             {% for line in project.description %}
@@ -134,7 +137,7 @@
                     {% for contribution in site.data.resume[key] %}
                     <div class="open-source-item floating-block">
                         <div class="open-source-header">
-                            <span class="green">{{ contribution.name }} {{ contribution.icon }}</span>
+                            <span class="green">{{ contribution.icon }} {{ contribution.name }}</span>
                         </div>
                         <div class="open-source-body">
                             {% for line in contribution.description %}
@@ -165,6 +168,27 @@
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
         data-cf-beacon='{"token": "5be6f51b79624ee984b67f5bd09f6f30"}'></script>
     <!-- End Cloudflare Web Analytics -->
+
+    <script>
+
+        function removeCurrentViewFormat() {
+
+            var query = window.location.search;
+            let format = "resume.html"
+
+            if (query) {
+                const params = new URLSearchParams(query);
+                format = params.get('format');
+            }
+
+            var element = document.getElementById(format);
+            if (element) {
+                element.remove();
+            }
+        }
+
+        window.addEventListener('load', removeCurrentViewFormat);
+    </script>
 </body>
 
 </html>

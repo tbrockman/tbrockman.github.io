@@ -1,75 +1,76 @@
 {
   "alternative_formats": [
     {
-      "text": "pdf",
+      "text": "resume.html",
+      "url": "/resume.html",
+      "icon": "🔗"
+    },
+    {
+      "text": "resume.pdf",
       "url": "/resume.pdf",
       "icon": "📄"
     },
     {
-      "text": "something less stylish",
+      "text": "something-less-stylish.docx",
       "url": "/resume.docx",
-      "icon": "🕺->💼"
+      "icon": "🕺->🥺💼"
     },
     {
-      "text": "json",
+      "text": "resume.json",
       "url": "/resume.json",
-      "icon": "<span class=\"blue\">{}</span>"
-    },
-    {
-      "text": "narrated by ai christopher walken",
-      "url": "/assets/audio/christopher-walken-resume.mp3",
-      "icon": "🤖"
+      "icon": "<span class=\"green\">{}</span>"
     }
   ],
   "about": {
     "picture": "/assets/img/resume/theo-face.jpeg",
-    "name": "theodore brockman",
-    "description": "dev 💻 artist 🎨 leaf 🍁",
+    "name": "Theodore Brockman",
+    "description": "dev 💻 artist 🎨 goof 🤡",
     "location": "New York, NY",
     "languages": [
       {
-        "name": "english",
-        "proficiency": "native"
+        "name": "English",
+        "proficiency": "Native"
       },
       {
-        "name": "french",
-        "proficiency": "fluent"
+        "name": "French",
+        "proficiency": "Fluent"
       }
     ],
     "contacts": [
       {
-        "label": "email",
+        "label": "Email",
         "text": "iam@theo.lol",
         "url": "mailto:iam@theo.lol",
         "icon": "📬"
       },
       {
-        "label": "website",
+        "label": "Website",
         "text": "theo.lol",
         "url": "https://theo.lol",
         "icon": "🏠"
       },
       {
-        "label": "github",
+        "label": "Github",
         "text": "tbrockman",
         "url": "https://github.com/tbrockman",
         "icon": "🖥️"
       },
       {
-        "label": "linkedin",
-        "text": "iamtheolol",
+        "label": "LinkedIn",
+        "text": "in/iamtheolol",
         "url": "https://www.linkedin.com/in/iamtheolol/",
         "icon": "💼"
       }
     ],
-    "whois": "a swiss army knife with **over 6 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
-    "mission": "make life **better**, however he can.\n\n also hike 🥾, surf 🏄‍♂️, climb 🧗, eat 🍜, and play with good dogs 🐶"
+    "whois": "A swiss army knife with **over 6 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
+    "mission": "Make life **better**, however he can.\n\nAlso hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, eat 🍜, and play with good dogs 🐶"
   },
   "skills": {
     "languages": [
       "Python",
       "Go",
       "Typescript",
+      "Javascript",
       "Rust",
       "C#",
       "Java",
@@ -121,7 +122,7 @@
       "Tailscale",
       "Tauri",
       "WASM",
-      "webrtc"
+      "WebRTC"
     ]
   },
   "projects": [
@@ -183,7 +184,7 @@
         "jekyll"
       ],
       "description": [
-        "My homepage. Hosted on GitHub pages and written in plain ol' Javascript, HTML, and CSS. It's small, it loads quickly, and it costs me **$0.00**."
+        "My homepage and blog. Hosted on GitHub pages and written in plain ol' Javascript, HTML, and CSS. It's small, it loads quickly, and it costs me **$0.00**."
       ],
       "links": [
         {
@@ -207,6 +208,7 @@
         "spotify",
         "java",
         "p2p",
+        "lambda",
         "oauth"
       ],
       "description": [
@@ -222,7 +224,32 @@
       ]
     },
     {
-      "name": "opentelemetry-browser-extension",
+      "name": "parcel-resolver-inlinefunc",
+      "icon": "🏗️",
+      "tags": [
+        "parcel",
+        "plugin",
+        "typescript",
+        "bundler"
+      ],
+      "description": [
+        "A Parcel plugin to allow embedding an imported Javascript function as a serializable and self-contained bundle (useful in browser extensions/sandboxes)."
+      ],
+      "links": [
+        {
+          "icon": "💾",
+          "text": "npm",
+          "url": "https://www.npmjs.com/package/parcel-resolver-inlinefunc"
+        },
+        {
+          "icon": "🖥️",
+          "text": "github",
+          "url": "https://github.com/tbrockman/parcel-resolver-inlinefunc"
+        }
+      ]
+    },
+    {
+      "name": "Browser Extension for OpenTelemetry",
       "icon": "🔭",
       "tags": [
         "typescript",
@@ -258,31 +285,7 @@
         {
           "icon": "🖥️",
           "text": "github",
-          "url": "https://github.com/tbrockman/opentelemetry-browser-extension"
-        }
-      ]
-    },
-    {
-      "name": "parcel-resolver-inlinefunc",
-      "icon": "🏗️",
-      "tags": [
-        "parcel",
-        "typescript",
-        "bundler"
-      ],
-      "description": [
-        "A Parcel plugin to allow embedding an imported Javascript function as a serializable and self-contained bundle (useful in browser extensions/sandboxes)."
-      ],
-      "links": [
-        {
-          "icon": "💾",
-          "text": "npm",
-          "url": "https://www.npmjs.com/package/parcel-resolver-inlinefunc"
-        },
-        {
-          "icon": "🖥️",
-          "text": "github",
-          "url": "https://github.com/tbrockman/parcel-resolver-inlinefunc"
+          "url": "https://github.com/tbrockman/browser-extension-for-opentelemetry"
         }
       ]
     },
@@ -355,9 +358,9 @@
           "text": "Independently (as a side-project) scoped and executed infrastructure changes saving over **$1.2 million _per year_** in hardware costs by reducing the resource use of two large-scale applications, done in the time span of **2 months**."
         },
         {
-          "label": "Tests high-stakes changes",
+          "label": "Helps test high-stakes changes",
           "icon": "🧑‍🔬",
-          "text": "Built tooling to **evaluate the performance and correctness** of LinkedIn's new metrics platform, allowing the team to **debug** and **fix underlying issues** *before* the migration, as well as measure progress to platform parity."
+          "text": "Built request replay tooling to **evaluate the performance and correctness** of LinkedIn's new metrics platform (leveraging distributed traces), allowing the team to **debug** and **fix underlying issues** *before* the migration, as well as measure progress to platform parity. Included building a pretty rad + intuitive Grafana dashboard."
         },
         {
           "label": "Leverages open-source technology",
@@ -404,7 +407,7 @@
           "text": "Built automation to incrementally deploy experiments while monitoring and reacting to their impact on application health signals, **reducing likelihood of incidents** from insufficiently validated A/B test treatments."
         },
         {
-          "label": "Implements alerts & monitoring as code",
+          "label": "Builds alerts & dashboards-as-code plugin",
           "icon": "📋",
           "text": "Created (as a side-project) a GitHub Action to allow teams to manage their dashboards and alerts as code, facilitating **better alerting practices through code-review** as well as providing discoverable examples to be leveraged by others, improving oncall quality-of-life."
         },
@@ -476,6 +479,29 @@
   ],
   "volunteer": [
     {
+      "name": "atom",
+      "icon": "⚛️",
+      "tags": [
+        "oss",
+        "js"
+      ],
+      "description": [
+        "Added [\"Open in New Tab\"](https://github.com/atom/find-and-replace/pull/932) context-menu functionality to the [find-and-replace package](https://github.com/atom/find-and-replace)."
+      ],
+      "links": [
+        {
+          "icon": "🔗",
+          "text": "atom.io",
+          "url": "https://atom.io/"
+        },
+        {
+          "icon": "📝",
+          "text": "pull request",
+          "url": "https://github.com/atom/find-and-replace/pull/932"
+        }
+      ]
+    },
+    {
       "name": "quickjs-emscripten",
       "icon": "🛡️",
       "tags": [
@@ -499,6 +525,57 @@
       ]
     },
     {
+      "name": "utterances",
+      "icon": "🗨️",
+      "tags": [
+        "oss",
+        "security",
+        "cloudflare",
+        "gha"
+      ],
+      "description": [
+        "Forked and updated several components to eliminate a security vulnerability."
+      ],
+      "links": [
+        {
+          "icon": "🔗",
+          "text": "utteranc.es",
+          "url": "https://utteranc.es/"
+        },
+        {
+          "icon": "📰",
+          "text": "blog post",
+          "url": "/security/github/oss/utterances/2020/11/02/hello-world.html"
+        }
+      ]
+    },
+    {
+      "name": "Review Board",
+      "icon": "📌",
+      "tags": [
+        "oss",
+        "python",
+        "mobile",
+        "html",
+        "css"
+      ],
+      "description": [
+        "Re-designed the Git diff viewer for mobile devices and implemented a minor bug fix as part of a university student project in UCOSP."
+      ],
+      "links": [
+        {
+          "icon": "🔗",
+          "text": "reviewboard.org",
+          "url": "https://reviewboard.org/"
+        },
+        {
+          "icon": "▶️",
+          "text": "youtube demo",
+          "url": "https://www.youtube.com/watch?v=_h0fPAEK2A8&list=PL-4cOKCxg2Mr7nqWqa9PwyDgwmRNaiQ9K&index=1"
+        }
+      ]
+    },
+    {
       "name": "oasgen",
       "icon": "🚀",
       "tags": [
@@ -518,29 +595,6 @@
           "icon": "📝",
           "text": "pull request",
           "url": "https://github.com/kurtbuilds/oasgen/pull/12"
-        }
-      ]
-    },
-    {
-      "name": "atom",
-      "icon": "⚛️",
-      "tags": [
-        "oss",
-        "js"
-      ],
-      "description": [
-        "Added [\"Open in New Tab\"](https://github.com/atom/find-and-replace/pull/932) context-menu functionality to the [find-and-replace package](https://github.com/atom/find-and-replace)."
-      ],
-      "links": [
-        {
-          "icon": "🔗",
-          "text": "atom.io",
-          "url": "https://atom.io/"
-        },
-        {
-          "icon": "📝",
-          "text": "pull request",
-          "url": "https://github.com/atom/find-and-replace/pull/932"
         }
       ]
     },
@@ -572,67 +626,45 @@
           "url": "https://github.com/linkerd/website/pull/783"
         }
       ]
-    },
-    {
-      "name": "Review Board",
-      "icon": "📌",
-      "tags": [
-        "oss",
-        "python",
-        "mobile",
-        "html",
-        "css"
-      ],
-      "description": [
-        "Re-designed the Git diff viewer for mobile devices and implemented a minor bug fix as part of a university student project in UCOSP."
-      ],
-      "links": [
-        {
-          "icon": "🔗",
-          "text": "reviewboard.org",
-          "url": "https://reviewboard.org/"
-        },
-        {
-          "icon": "▶️",
-          "text": "youtube demo",
-          "url": "https://www.youtube.com/watch?v=_h0fPAEK2A8&list=PL-4cOKCxg2Mr7nqWqa9PwyDgwmRNaiQ9K&index=1"
-        }
-      ]
-    },
-    {
-      "name": "utterances",
-      "icon": "🗨️",
-      "tags": [
-        "oss",
-        "security",
-        "cloudflare",
-        "gha"
-      ],
-      "description": [
-        "Forked and updated several components to eliminate a security vulnerability."
-      ],
-      "links": [
-        {
-          "icon": "🔗",
-          "text": "utteranc.es",
-          "url": "https://utteranc.es/"
-        },
-        {
-          "icon": "📰",
-          "text": "blog post",
-          "url": "/security/github/oss/utterances/2020/11/02/hello-world.html"
-        }
-      ]
     }
   ],
   "data": {
     "section-title-map": {
-      "alternative_formats": "other-formats 📥",
-      "about": "about ℹ️",
-      "skills": "skills 🛠️",
-      "projects": "projects 🛠️",
-      "work": "work-experience 👷",
-      "volunteer": "open-source-contributions 🌎"
+      "web": {
+        "alternative_formats": "./downloads 📥",
+        "about": "./about ℹ️",
+        "skills": "./skills 🛠️",
+        "projects": "./projects 📁",
+        "work": "./work-experience 👷",
+        "volunteer": "./open-source-contributions 🌎"
+      },
+      "docx": {
+        "skills": "Skills",
+        "work": "Experience",
+        "projects": "Projects",
+        "volunteer": "Open-Source Contributions"
+      }
+    },
+    "section-item-ordering": {
+      "docx": {
+        "projects": [
+          "prune",
+          "Browser Extension for OpenTelemetry",
+          "theo.lol",
+          "turnip",
+          "parcel-resolver-inlinefunc",
+          "auxb0x",
+          "schizophoner"
+        ],
+        "volunteer": [
+          "atom",
+          "Review Board",
+          "utterances",
+          "linkerd",
+          "quickjs-emscripten",
+          "oasgen"
+        ]
+      }
     },
     "comments": {
       "skills": {
