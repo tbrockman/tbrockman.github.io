@@ -1,15 +1,21 @@
 # theo.lol
 
-my blog and website
+my blog and website (it's just standard Jekyll)
 
-## the resume builder
+## running the website
 
+```bash
+make build # builds a dockerfile with an ancient version of ruby
+make run # run the image, mounting the current directory for hot-reloading
+```
+
+## using the resume builder
 
 ### making changes
 ```bash
 # make changes to _data/resume.json
-code _data/resume.json 
 # NOTE: don't forget to update section-item-ordering if adding new project/volunteer items
+code _data/resume.json 
 
 # license key from https://cloud.unidoc.io/api-keys
 # used for generating .docx files
