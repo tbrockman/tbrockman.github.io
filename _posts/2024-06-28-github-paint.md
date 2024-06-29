@@ -32,7 +32,7 @@ The whole thing is a Python [Typer-CLI](https://typer.tiangolo.com/) that primar
 1. Then, we map each pixel in the window to its corresponding date. 
 1. Then, retrieving the users existing contribution activity for each date, we determine (given [some secret sauce](https://stackoverflow.com/a/78686095/23271846) on how commit activity correlates to pixel color) how many additional commits we need on that day. 
     * If we actually need *fewer*, we can handle this by adding more commits to *other* days\-\-assuming our target isn't zero commits.
-1. Then, after initializing a fresh `git` repository, for each day (in the appropriate order\-\-though this doesn't seem to matter to GitHub), we forge the necessary number of commits on each date (since `git` allows setting arbitrary commit dates).
+1. Then, after initializing a fresh `git` repository, for each day (in the appropriate order\-\-though this doesn't seem to matter to GitHub), we forge the necessary number of commits on each date (since `git` allows setting arbitrary commit timestamps).
 1. Finally, push the new repository and history (deleting the old one if it exists), and wait a bit for GitHub to render our shiny new contribution graph.
 
 So far, it seems to work pretty well, but it's not *super* well-tested, so if you run into issues feel free to create a pull request: [https://github.com/tbrockman/github-paint](https://github.com/tbrockman/github-paint).
