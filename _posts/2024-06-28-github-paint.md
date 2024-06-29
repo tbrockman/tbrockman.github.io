@@ -16,7 +16,7 @@ Since my contribution graph usually looks like this:
 ![a picture of a pretty empty contribution graph](/assets/img/github-paint/theos-usual-contribution-graph.png)
 _&lt; tumbleweed emoji &gt;_
 
-\.\.\.I've always had it in the back of my mind as something I'd like to take a stab at. Primarily for the sake of solving an interesting problem, but also to fuck with recruiters who believe contribution activity strongly correlates with programming ability (*said with chip on shoulder as someone required to use a separate GitHub account for work*).
+\.\.\.I've always had it in the back of my mind as something I'd like to take a stab at. Primarily for the sake of solving an interesting problem, but also to mess with recruiters who seem to believe contribution activity strongly correlates with programming ability (*said with chip on shoulder as someone required to use a separate GitHub account for work*).
 
 Since taking a burnout-induced leave-of-absence, I've had some time to explore the problem, which has led to the creation of\.\.\.
 
@@ -40,6 +40,6 @@ The whole thing is a Python [Typer-CLI](https://typer.tiangolo.com/) that primar
 1. Then, after initializing a fresh `git` repository, for each day (in the appropriate chronological order\-\-though this doesn't seem to matter much to GitHub), we forge the necessary number of commits on each date (since `git` allows setting arbitrary commit timestamps).
 1. Finally, push the new repository and history (deleting the old one if it exists), and wait a bit for GitHub to render our shiny new contribution graph.
 
-So far, it seems to work pretty well, but it's not *super* battle-tested. if you run into issues feel free to create a pull request: [https://github.com/tbrockman/github-paint](https://github.com/tbrockman/github-paint).
+So far, it seems to work pretty well, but it's not *super* battle-tested. if you run into issues feel free to create a pull request in the repository: [https://github.com/tbrockman/github-paint](https://github.com/tbrockman/github-paint).
 
-hope you like it!
+✌️
