@@ -11,7 +11,7 @@ title: latest
         <div>
           <div class='blog-post-preview'>
             <div class='blog-post-title'>{{post.title | markdownify | remove: '<p>' | remove: '</p>'}}</div>
-            <div class='blog-post-excerpt'>{{ post.excerpt }}</div>
+            <div class='blog-post-excerpt'>{{ post.excerpt | markdownify }}</div>
           </div>
         </div>
       </a>

@@ -84,8 +84,6 @@ h2 {
 	color: $color-primary;
 	margin-top: 1em;
 	font-size: 3em;
-	font-weight: normal;
-	font-family: 'Montserrat', sans-serif;
 	word-break: break-word;
 }
 
@@ -93,13 +91,11 @@ h3 {
 	color: $color-primary;
 	margin-top: 1em;
 	font-size: 2rem;
-	font-weight: normal;
-	font-family: 'Montserrat', sans-serif;
 	word-break: break-word;
 }
 
 img {
-	margin: 0 auto 4em;
+	margin: 0 auto 2em;
 	display: flex;
 	max-width: -webkit-fill-available;
 	max-width: -moz-available;
@@ -109,8 +105,8 @@ img {
 }
 
 blockquote {
-	margin: 4em 0;
-	padding: 2em 4em;
+	margin: 2em 0 3em;
+	padding: 0 4em;
 	color: #fff;
 	background: $hover-background-color;
 	box-shadow: $hover-box-shadow;
@@ -159,15 +155,12 @@ p>strong>code {
 }
 
 .post-header h1 {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: normal;
 	margin: 0;
 	margin-bottom: 0.25em;
 	word-break: break-word;
 }
 
 .post-header h4 {
-	font-weight: normal;
 	margin: 0;
 	color: #252525;
 	font-size: 1.25em;
@@ -207,7 +200,6 @@ p>strong>code {
 
 a:has(img)+em,
 img+em {
-	margin-top: -2rem;
 	text-align: center;
 	font-size: 1rem;
 	display: block;

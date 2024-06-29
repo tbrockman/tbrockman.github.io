@@ -4,7 +4,7 @@ title: message passing and `MAIN` world content scripts ✉️
 date: 2024-01-29 09:32:00 -0400
 author: Theodore Brockman
 categories: chrome extensions content-scripts message-passing
-excerpt: Making up for a lack of browser extension documentation... again.
+excerpt: Making up for a lack of browser extension documentation (again!).
 thumbnail: /assets/img/hello_world_thumbnail.png
 ---
 
@@ -14,7 +14,7 @@ You would need the ability to intercept the request before it happens, modify th
 
 There's a few ways you could go about doing this, but one of the more straight-forward ones is by using a [content script](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts).
 
-# content scripts
+## content scripts
 
 Depending on the browser (Firefox is a bit [more security conscious](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Sharing_objects_with_page_scripts)), content scripts can directly interact with existing webpage Javascript objects (with the converse being true as well), and modify them as desired.
 
@@ -118,7 +118,7 @@ Pretty neat, right? But what if we were feeling bad and wanted to extend our lit
 
 This is where [message passing](https://developer.chrome.com/docs/extensions/develop/concepts/messaging) comes in.
 
-# message passing
+## message passing
 
 If you've worked in browser extensions before, you're likely already familiar with sending messages between the background script and the popup, maybe even communicating with content scripts injected into the default [`ISOLATED`](https://developer.chrome.com/docs/extensions/reference/api/scripting#type-ExecutionWorld) world, but it turns out that once your code exists in the same realm as other webpage Javascript, you can't send messages as easily. 
 
@@ -198,7 +198,7 @@ _oh poop._
 
 This is because the content script only has access to a limited subset of the `chrome.runtime` API as a result of being injected into the `MAIN` world. While at first frustrating, if you stop to think about it, it makes sense: Content scripts injected into the `MAIN` world are now running in the same context as the webpage, and the webpage (or other content scripts) can't be trusted. Naturally the browser requires a few more precautions to help make sure you understand [the full implications of what you're doing](https://developer.chrome.com/docs/extensions/develop/concepts/messaging#content-scripts-are-less-trustworthy).
 
-# externally connectable
+## externally connectable
 
 Instead, we need to treat our own content script as an [*external webpage*](https://developer.chrome.com/docs/extensions/develop/concepts/messaging#external-webpage), since it can no longer be considered a trusted part of the extension. This means that we need to allow connections from external webpages in our `manifest.json`:
 
@@ -260,7 +260,7 @@ _it's toggled_
 
 Note that after making your extension externally connectable, you should be *very* careful about how you process information you receive, and what information you send, to untrusted external connections--even *if* the recipient is trusted, there's no guarantee other code won't be spying.
 
-# bonus: using [`func`](https://developer.chrome.com/docs/extensions/reference/api/scripting#method-ScriptInjection-func)
+## bonus: using [`func`](https://developer.chrome.com/docs/extensions/reference/api/scripting#method-ScriptInjection-func)
 
 You may have noticed earlier that we had to hardcode our extension ID in our content script, which isn't very portable (it'll be different each time someone develops locally *and* when it's published in production) and will need to be manually updated. You may find other reasons that you want to provide context directly to your content script from your background script.
 

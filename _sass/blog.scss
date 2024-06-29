@@ -87,7 +87,7 @@ body {
 
 .blog-post-title {
     font-size: 2em;
-    font-family: Arial;
+    font-weight: bold;
     overflow-y: hidden;
     overflow: hidden;
     word-break: break-word;
@@ -109,6 +109,10 @@ body {
 .blog-post-excerpt {
     padding-top: 1em;
     color: #fff;
+}
+
+.blog-post-excerpt>p {
+    margin: 0;
 }
 
 .blog-list li h2 {

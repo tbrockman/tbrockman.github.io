@@ -5,28 +5,47 @@ $breakpoint-navbar: 1400px;
 $breakpoint-mobile: 800px;
 
 @keyframes nav-slide-in-from-right {
-    0% { left: 100vw; }
-    100% { left: 30vw; }
+    0% {
+        left: 100vw;
+    }
+
+    100% {
+        left: 30vw;
+    }
 }
 
 @keyframes nav-slide-out-from-left {
-    0% { left: 30vw; }
-    100% { left: 100vw; }
+    0% {
+        left: 30vw;
+    }
+
+    100% {
+        left: 100vw;
+    }
 }
 
 @keyframes slide-left-make-way-for-nav {
-    0% { left: 0; }
-    100% { left: -70vw; }
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -70vw;
+    }
 }
 
 @keyframes slide-right-close-nav {
-    0% { left: -70vw; position:absolute; }
-    100% { left: 0}
+    0% {
+        left: -70vw;
+        position: absolute;
+    }
+
+    100% {
+        left: 0
+    }
 }
 
-@media(max-width: $breakpoint-mobile) {
-
-}
+@media(max-width: $breakpoint-mobile) {}
 
 @media(max-width: $breakpoint-navbar) {
 
@@ -58,19 +77,22 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    font-size: 1vw;
     color: #fff;
+    text-transform: lowercase;
+}
+
+code {
+    text-transform: none;
 }
 
 .page-container {
     box-sizing: border-box;
     width: 100%;
-    max-width: 124ch;
+    max-width: 120ch;
     margin: 0 auto;
     padding: 0em 12em 8em;
     z-index: 1;
     flex: 1;
-    font-size: 1rem;
 }
 
 a {
@@ -95,8 +117,6 @@ a.fa:hover {
 }
 
 h1 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: normal;
     color: #fe5858;
     font-size: 6em;
 }
