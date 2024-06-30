@@ -290,6 +290,24 @@
       ]
     },
     {
+      "name": "github-paint",
+      "icon": "🎨",
+      "tags": [
+        "python",
+        "github action"
+      ],
+      "description": [
+        "A GitHub Action to draw text in your GitHub profile's contributions graph."
+      ],
+      "links": [
+        {
+          "icon": "🖥️",
+          "text": "github",
+          "url": "https://github.com/tbrockman/github-paint"
+        }
+      ]
+    },
+    {
       "name": "auxb0x",
       "icon": "🎵",
       "tags": [
