@@ -29,6 +29,16 @@ $breakpoint-mobile: 800px;
 	h2 {
 		font-size: 2em !important;
 	}
+
+	p:has(> img) {
+		overflow: auto;
+	}
+
+	p:has(> img)>img {
+		overflow: auto;
+		object-fit: none;
+		max-width: unset;
+	}
 }
 
 @media (max-width: $breakpoint-navbar) {
