@@ -11,6 +11,7 @@ import (
 
 	"os"
 
+	"github.com/unidoc/unioffice/color"
 	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/document"
 	"github.com/unidoc/unioffice/measurement"
@@ -62,7 +63,16 @@ func (r *Render) addHeading(doc *document.Document, text string, level int) docu
 	} else {
 		para.SetStyle("Title")
 	}
-	r.addRun(para, text, r.levelToSize(level))
+	run := r.addRun(para, text, r.levelToSize(level))
+
+	if level == 1 {
+		run.Properties().SetUnderline(wml.ST_UnderlineSingle, color.Auto)
+	}
+
+	if level == 2 {
+		run.Properties().SetBold(true)
+	}
+
 	return para
 }
 
