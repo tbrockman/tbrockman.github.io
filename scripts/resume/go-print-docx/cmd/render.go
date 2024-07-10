@@ -198,8 +198,6 @@ func (r *Render) Run(ctx *Context) error {
 	run := r.addRun(para, resume.About.Description, r.Subtitle)
 	run.Properties().SetItalic(false)
 
-	doc.AddParagraph() // Empty space
-
 	// Create each section
 
 	// About
@@ -215,13 +213,10 @@ func (r *Render) Run(ctx *Context) error {
 		}
 	}
 	doc.AddParagraph() // Empty space
-	doc.AddParagraph() // Empty space
 
 	// Skills
 
 	r.addHeading(doc, resume.Data.SectionTitleMap.Docx.Skills, 1)
-
-	doc.AddParagraph() // Empty space
 	doc.AddParagraph() // Empty space
 
 	para = doc.AddParagraph()
@@ -238,12 +233,10 @@ func (r *Render) Run(ctx *Context) error {
 	r.addRun(para, "**Technology**: ", r.Normal)
 	text = " " + strings.Join(resume.Skills.Keywords, ", ")
 	r.addRun(para, text, r.Normal)
-
 	doc.AddParagraph() // Empty space
 
 	// Projects
 
-	doc.AddParagraph() // Empty space
 	r.addHeading(doc, resume.Data.SectionTitleMap.Docx.Projects, 1)
 	doc.AddParagraph() // Empty space
 
@@ -259,7 +252,6 @@ func (r *Render) Run(ctx *Context) error {
 				break
 			}
 		}
-		doc.AddParagraph() // Empty space
 		r.addHeading(doc, fmt.Sprintf("%s %s", project.Icon, project.Name), 2)
 
 		doc.AddParagraph() // Empty space
@@ -292,13 +284,10 @@ func (r *Render) Run(ctx *Context) error {
 	}
 
 	// Work
-
-	doc.AddParagraph() // Empty space
 	r.addHeading(doc, resume.Data.SectionTitleMap.Docx.Work, 1)
 	doc.AddParagraph() // Empty space
 
 	for _, work := range resume.Work {
-		doc.AddParagraph() // Empty space
 		para = r.addHeading(doc, work.Position+", ", 2)
 		r.addHyperLink(para, work.Organization, work.Organization, work.URL, r.levelToSize(3))
 		r.addRun(para, fmt.Sprintf(" | *%s*", work.Location), r.levelToSize(4))
@@ -332,16 +321,12 @@ func (r *Render) Run(ctx *Context) error {
 	}
 
 	// Volunteer
-
-	doc.AddParagraph() // Empty space
 	r.addHeading(doc, resume.Data.SectionTitleMap.Docx.Volunteer, 1)
 	doc.AddParagraph() // Empty space
 
 	order = resume.Data.SectionItemOrdering.Docx.Volunteer
 
 	for _, item := range order {
-		doc.AddParagraph() // Empty space
-
 		var volunteer models.VolunteerExperience
 
 		for _, v := range resume.Volunteer {
