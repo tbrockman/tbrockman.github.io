@@ -19,7 +19,7 @@ code _data/resume.json
 
 # license key from https://cloud.unidoc.io/api-keys
 # used for generating .docx files
-LICENSE_KEY="<unicloud-api-key>" make -s print-resume
+LICENSE_KEY="<unicloud-api-key>" make -s print-resume # make sure executing with correct go version
 ```
 
 ### how it works

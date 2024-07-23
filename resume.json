@@ -63,7 +63,7 @@
       }
     ],
     "whois": "A swiss army knife with **over 6 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
-    "mission": "Make life **better**, however he can.\n\nAlso hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, eat 🍜, and play with good dogs 🐶"
+    "mission": "Make life **better**, however he can\n\nAlso hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, eat 🍜, make friends 🫂, and play with good dogs 🐶"
   },
   "skills": {
     "languages": [
@@ -496,6 +496,25 @@
     }
   ],
   "volunteer": [
+    {
+      "name": "opentelemetry-rust",
+      "icon": "🦀",
+      "tags": [
+        "oss",
+        "rust",
+        "opentelemetry"
+      ],
+      "description": [
+        "Wrote template for OpenTelemetry Rust metric semantic conventions and fixed some pre-existing code generation issues."
+      ],
+      "links": [
+        {
+          "icon": "📝",
+          "text": "pull request`",
+          "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/1918"
+        }
+      ]
+    },
     {
       "name": "atom",
       "icon": "⚛️",
