@@ -50,8 +50,8 @@ $breakpoint-mobile: 800px;
             flex-direction: column;
             width: 100%;
             // animation: nav-slide-out-from-left 0.2s ease-in-out;
-        
-            a { 
+
+            a {
                 color: #252525;
             }
 
@@ -69,7 +69,7 @@ $breakpoint-mobile: 800px;
                 font-weight: 450;
             }
 
-            * > .fa {
+            *>.fa {
                 padding-right: 1rem;
                 font-size: 3rem;
                 font-weight: 450;
@@ -124,7 +124,6 @@ $breakpoint-mobile: 800px;
         width: 100%;
         justify-content: space-evenly;
         padding: 3rem 0;
-        max-width: $breakpoint-main;
         font-size: 1rem;
 
         div a:hover {
@@ -136,7 +135,7 @@ $breakpoint-mobile: 800px;
             display: none;
         }
     }
-    
+
     .navbar-drawer {
         display: none;
     }
