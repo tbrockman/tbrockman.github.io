@@ -13,7 +13,7 @@
     {
       "text": "something-less-stylish.docx",
       "url": "https://theo.lol/resume.docx",
-      "icon": "🕺->🥺💼"
+      "icon": "🕺->💼"
     },
     {
       "text": "resume.json",
@@ -63,7 +63,7 @@
       }
     ],
     "whois": "A swiss army knife with **over 6 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
-    "mission": "Make life **better**, however he can\n\nAlso hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, eat 🍜, make friends 🫂, and play with good dogs 🐶"
+    "mission": "Make life **better**, however he can\n\n...Also hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, eat 🍜, make friends 🫂, and play with good dogs 🐶"
   },
   "skills": {
     "languages": [
@@ -509,8 +509,13 @@
       ],
       "links": [
         {
+          "icon": "🖥️",
+          "text": "github",
+          "url": "https://github.com/open-telemetry/opentelemetry-rust/"
+        },
+        {
           "icon": "📝",
-          "text": "pull request`",
+          "text": "pull request",
           "url": "https://github.com/open-telemetry/opentelemetry-rust/pull/1918"
         }
       ]
@@ -636,6 +641,31 @@
       ]
     },
     {
+      "name": "plasmo",
+      "icon": "🧬",
+      "tags": [
+        "oss",
+        "typescript",
+        "framework",
+        "browser extension"
+      ],
+      "description": [
+        "Added option to specify custom serializer/deserializer for browser extension storage (to facilitate storing and retrieving complex Javascript objects)."
+      ],
+      "links": [
+        {
+          "icon": "🔗",
+          "text": "plasmo.com",
+          "url": "https://www.plasmo.com/"
+        },
+        {
+          "icon": "📝",
+          "text": "pull request",
+          "url": "https://github.com/PlasmoHQ/storage/pull/57/files"
+        }
+      ]
+    },
+    {
       "name": "linkerd",
       "icon": "🕸️",
       "tags": [
@@ -695,11 +725,13 @@
         ],
         "volunteer": [
           "atom",
+          "opentelemetry-rust",
           "Review Board",
           "utterances",
           "linkerd",
           "quickjs-emscripten",
-          "oasgen"
+          "oasgen",
+          "plasmo"
         ]
       }
     },
