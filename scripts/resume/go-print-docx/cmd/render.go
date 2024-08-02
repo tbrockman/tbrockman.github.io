@@ -212,8 +212,9 @@ func (r *Render) Run(ctx *Context) error {
 
 	for i, contact := range resume.About.Contacts {
 
-		name := fmt.Sprintf("%s %s: ", contact.Icon, contact.Text)
-		r.addRun(para, name, r.Small)
+		name := fmt.Sprintf("%s %s:", contact.Icon, contact.Text)
+		run := r.addRun(para, name, r.Small)
+		run.AddText(" ")
 		r.addHyperLink(para, contact.URL, contact.URL, contact.URL, r.Small)
 
 		if i < len(resume.About.Contacts)-1 && len(resume.About.Contacts) > 1 {
