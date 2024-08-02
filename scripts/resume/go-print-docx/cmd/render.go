@@ -212,7 +212,7 @@ func (r *Render) Run(ctx *Context) error {
 
 	for i, contact := range resume.About.Contacts {
 
-		name := fmt.Sprintf("%s %s:", contact.Icon, contact.Text)
+		name := fmt.Sprintf("%s %s:", contact.Icon, contact.Label)
 		run := r.addRun(para, name, r.Small)
 		run.AddText(" ")
 		r.addHyperLink(para, contact.URL, contact.URL, contact.URL, r.Small)
