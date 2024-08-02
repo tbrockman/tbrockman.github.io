@@ -11,7 +11,6 @@ import (
 
 	"os"
 
-	"github.com/unidoc/unioffice/color"
 	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/document"
 	"github.com/unidoc/unioffice/measurement"
@@ -35,7 +34,7 @@ type Render struct {
 	// Font
 	Font string `help:"Font to use." default:"Consolas"`
 	// Title size
-	Title measurement.Distance `help:"Title size." default:"48"`
+	Title measurement.Distance `help:"Title size." default:"26"`
 	// Subtitle size
 	Subtitle measurement.Distance `help:"Subtitle size." default:"14"`
 	// H1 size
@@ -64,10 +63,6 @@ func (r *Render) addHeading(doc *document.Document, text string, level int) docu
 		para.SetStyle("Title")
 	}
 	run := r.addRun(para, text, r.levelToSize(level))
-
-	if level == 1 {
-		run.Properties().SetUnderline(wml.ST_UnderlineSingle, color.Auto)
-	}
 
 	if level == 2 {
 		run.Properties().SetBold(true)
@@ -209,13 +204,17 @@ func (r *Render) Run(ctx *Context) error {
 	run.Properties().SetItalic(false)
 
 	// Create each section
+	doc.AddParagraph() // Empty space
 
 	// About
 	para = doc.AddParagraph()
 	para.SetStyle("Small")
 
 	for i, contact := range resume.About.Contacts {
-		r.addHyperLink(para, fmt.Sprintf("%s %s", contact.Icon, contact.Text), fmt.Sprintf("%s %s", contact.Icon, contact.Label), contact.URL, r.Small)
+
+		name := fmt.Sprintf("%s %s: ", contact.Icon, contact.Text)
+		r.addRun(para, name, r.Small)
+		r.addHyperLink(para, contact.URL, contact.URL, contact.URL, r.Small)
 
 		if i < len(resume.About.Contacts)-1 && len(resume.About.Contacts) > 1 {
 			space := para.AddRun()
@@ -262,9 +261,14 @@ func (r *Render) Run(ctx *Context) error {
 				break
 			}
 		}
+		// Project heading
 		r.addHeading(doc, fmt.Sprintf("%s %s", project.Icon, project.Name), 2)
 
-		doc.AddParagraph() // Empty space
+		// doc.AddParagraph() // Empty space
+		para = doc.AddParagraph()
+
+		// Render first project link
+		r.addRun(para, project.Links[0].URL, r.Normal)
 
 		for i, line := range project.Description {
 			para = doc.AddParagraph()
@@ -275,22 +279,6 @@ func (r *Render) Run(ctx *Context) error {
 		}
 
 		doc.AddParagraph() // Empty space
-
-		para = doc.AddParagraph()
-
-		for i, link := range project.Links {
-			r.addHyperLink(para, fmt.Sprintf("%s %s", link.Icon, link.Text), link.Text, link.URL, r.Normal)
-			if i < len(project.Links)-1 {
-				space := para.AddRun()
-				space.AddText(" | ")
-			}
-		}
-
-		doc.AddParagraph() // Empty space
-
-		para = doc.AddParagraph()
-		r.addRun(para, "**tags**: *"+strings.Join(project.Tags, ", ")+"*", r.Normal)
-		doc.AddParagraph()
 	}
 
 	// Work
@@ -336,6 +324,10 @@ func (r *Render) Run(ctx *Context) error {
 
 	order = resume.Data.SectionItemOrdering.Docx.Volunteer
 
+	preamble := "Projects I’ve contributed to in the past (usually fixing fairly small issues I encounter while using a given tool):"
+
+	items := []string{}
+
 	for _, item := range order {
 		var volunteer models.VolunteerExperience
 
@@ -346,32 +338,15 @@ func (r *Render) Run(ctx *Context) error {
 			}
 		}
 
-		project := fmt.Sprintf("%s %s", volunteer.Icon, volunteer.Name)
-		r.addHeading(doc, project, 2)
-
-		doc.AddParagraph() // Empty space
-
-		for i, line := range volunteer.Description {
-			para = doc.AddParagraph()
-			r.addRun(para, line, r.Normal)
-			if i < len(volunteer.Description)-1 {
-				doc.AddParagraph() // Empty space
-			}
-		}
-
-		doc.AddParagraph() // Empty space
-
-		para = doc.AddParagraph()
-
-		for i, link := range volunteer.Links {
-			r.addHyperLink(para, fmt.Sprintf("%s %s", link.Icon, link.Text), link.Text, link.URL, r.Normal)
-			if i < len(volunteer.Links)-1 {
-				space := para.AddRun()
-				space.AddText(" | ")
-			}
-		}
-		doc.AddParagraph() // Empty space
+		// Render single link
+		link := volunteer.Links[0]
+		text := fmt.Sprintf("%s (%s)", link.Text, link.URL)
+		items = append(items, text)
 	}
+	joined := strings.Join(items, ", ")
+	content := fmt.Sprintf("%s %s", preamble, joined)
+	para = doc.AddParagraph()
+	r.addRun(para, content, r.Normal)
 
 	// Save the document
 	fmt.Printf("Saving resume to: %s\n", r.Output)

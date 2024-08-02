@@ -38,27 +38,27 @@
     ],
     "contacts": [
       {
-        "label": "Email",
+        "label": "email",
         "text": "iam@theo.lol",
         "url": "mailto:iam@theo.lol",
         "icon": "📬"
       },
       {
-        "label": "Website",
+        "label": "website",
         "text": "theo.lol",
         "url": "https://theo.lol",
         "icon": "🏠"
       },
       {
-        "label": "Github",
+        "label": "github",
         "text": "tbrockman",
         "url": "https://github.com/tbrockman",
         "icon": "🖥️"
       },
       {
-        "label": "LinkedIn",
+        "label": "linkedin",
         "text": "in/iamtheolol",
-        "url": "https://www.linkedin.com/in/iamtheolol/",
+        "url": "https://linkedin.com/in/iamtheolol/",
         "icon": "💼"
       }
     ],
@@ -97,6 +97,7 @@
       "etcd",
       "FastAPI",
       "Figma",
+      "Firefox",
       "Flask",
       "Flutter",
       "Git",
@@ -119,6 +120,7 @@
       "React",
       "Redis",
       "Remix",
+      "Safari",
       "Tailscale",
       "Tauri",
       "WASM",
@@ -140,6 +142,16 @@
         "Beloved by its few users, currently rated **4.9 ⭐**"
       ],
       "links": [
+        {
+          "icon": "🪴",
+          "text": "prune",
+          "url": "https://prune.lol"
+        },
+        {
+          "icon": "📥",
+          "text": "download",
+          "url": "https://download.prune.lol"
+        },
         {
           "icon": "🌈",
           "text": "chrome",
@@ -237,14 +249,14 @@
       ],
       "links": [
         {
-          "icon": "💾",
-          "text": "npm",
-          "url": "https://www.npmjs.com/package/parcel-resolver-inlinefunc"
-        },
-        {
           "icon": "🖥️",
           "text": "github",
           "url": "https://github.com/tbrockman/parcel-resolver-inlinefunc"
+        },
+        {
+          "icon": "💾",
+          "text": "npm",
+          "url": "https://www.npmjs.com/package/parcel-resolver-inlinefunc"
         }
       ]
     },
@@ -262,6 +274,11 @@
         "A browser extension to automatically instrument all webpages with user and performance analytics, using OpenTelemetry."
       ],
       "links": [
+        {
+          "icon": "🖥️",
+          "text": "github",
+          "url": "https://github.com/tbrockman/browser-extension-for-opentelemetry"
+        },
         {
           "icon": "🌈",
           "text": "chrome",
@@ -281,11 +298,6 @@
           "icon": "🧭",
           "text": "safari",
           "url": "https://apps.apple.com/us/app/opentelemetry-browser-ext/id6503631744"
-        },
-        {
-          "icon": "🖥️",
-          "text": "github",
-          "url": "https://github.com/tbrockman/browser-extension-for-opentelemetry"
         }
       ]
     },
@@ -427,12 +439,12 @@
         {
           "label": "Builds alerts & dashboards-as-code plugin",
           "icon": "📋",
-          "text": "Created (as a side-project) a GitHub Action to allow teams to manage their dashboards and alerts as code, facilitating **better alerting practices through code-review** as well as providing discoverable examples to be leveraged by others, improving oncall quality-of-life."
+          "text": "Created (as a side-project) a widely used (by 300+ internal projects) GitHub Action to allow teams to manage their dashboards and alerts as code, encouraging **better alerting practices through code-review** as well as providing discoverable examples to be leveraged by others (improving oncall quality-of-life and site availability)."
         },
         {
           "label": "Prevents widespread outages",
           "icon": "🔍",
-          "text": "Evaluated production readiness of a service slated to be used by almost our entire fleet. Developed and executed load tests to proactively **identify severe scale limitations**, preventing the issue from occurring in production."
+          "text": "Uncovered issue in a service slated to be used by the majority of our fleet. Developed and executed load tests to proactively **identify severe scale limitations**, preventing the bottleneck from occurring in production."
         }
       ]
     },
