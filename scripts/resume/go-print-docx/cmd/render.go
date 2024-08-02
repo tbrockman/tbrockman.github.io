@@ -268,7 +268,8 @@ func (r *Render) Run(ctx *Context) error {
 		para = doc.AddParagraph()
 
 		// Render first project link
-		r.addRun(para, project.Links[0].URL, r.Normal)
+		r.addRun(para, "↳ "+project.Links[0].URL, r.Normal)
+		doc.AddParagraph() // Empty space
 
 		for i, line := range project.Description {
 			para = doc.AddParagraph()
@@ -340,13 +341,15 @@ func (r *Render) Run(ctx *Context) error {
 
 		// Render single link
 		link := volunteer.Links[0]
-		text := fmt.Sprintf("%s (%s)", link.Text, link.URL)
+		text := fmt.Sprintf("%s %s (%s)", volunteer.Icon, volunteer.Name, link.URL)
 		items = append(items, text)
 	}
 	joined := strings.Join(items, ", ")
-	content := fmt.Sprintf("%s %s", preamble, joined)
 	para = doc.AddParagraph()
-	r.addRun(para, content, r.Normal)
+	r.addRun(para, preamble, r.Normal)
+	doc.AddParagraph() // Empty space
+	para = doc.AddParagraph()
+	r.addRun(para, joined, r.Normal)
 
 	// Save the document
 	fmt.Printf("Saving resume to: %s\n", r.Output)

@@ -391,11 +391,6 @@
           "label": "Helps test high-stakes changes",
           "icon": "🧑‍🔬",
           "text": "Built request replay tooling to **evaluate the performance and correctness** of LinkedIn's new metrics platform (leveraging distributed traces), allowing the team to **debug** and **fix underlying issues** *before* the migration, as well as measure progress to platform parity. Included building a pretty rad + intuitive Grafana dashboard."
-        },
-        {
-          "label": "Leverages open-source technology",
-          "icon": "📊",
-          "text": "Created an internal fork of [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) to support ingesting distributed trace data (in a proprietary LinkedIn schema), allowing the **use existing open-source technology** built on OpenTelemetry."
         }
       ],
       "tags": [
@@ -439,12 +434,12 @@
         {
           "label": "Builds alerts & dashboards-as-code plugin",
           "icon": "📋",
-          "text": "Created (as a side-project) a widely used (by 300+ internal projects) GitHub Action to allow teams to manage their dashboards and alerts as code, encouraging **better alerting practices through code-review** as well as providing discoverable examples to be leveraged by others (improving oncall quality-of-life and site availability)."
+          "text": "Created (as a side-project) a widely used (by 300+ internal projects) GitHub Action to allow teams to manage their dashboards and alerts as code, encouraging **better alerting practices through code-review** as well as providing discoverable examples for others (improving oncall quality-of-life and site availability)."
         },
         {
           "label": "Prevents widespread outages",
           "icon": "🔍",
-          "text": "Uncovered issue in a service slated to be used by the majority of our fleet. Developed and executed load tests to proactively **identify severe scale limitations**, preventing the bottleneck from occurring in production."
+          "text": "Uncovered issue in a service slated to be used by most of our fleet. Developed and executed load tests to proactively **identify severe scale limitations**, preventing the bottleneck from occurring in production."
         }
       ]
     },
@@ -719,9 +714,9 @@
       },
       "docx": {
         "skills": "Skills",
-        "work": "Experience",
+        "work": "Work Experience",
         "projects": "Projects",
-        "volunteer": "Open-Source Contributions"
+        "volunteer": "Open-Source"
       }
     },
     "section-item-ordering": {
