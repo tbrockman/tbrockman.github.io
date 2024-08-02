@@ -326,7 +326,7 @@ func (r *Render) Run(ctx *Context) error {
 
 	order = resume.Data.SectionItemOrdering.Docx.Volunteer
 
-	preamble := "Projects I’ve contributed to in the past (usually fixing fairly small issues I encounter while using a given tool):"
+	preamble := "Projects I’ve contributed to in the past (usually by fixing fairly small issues I encounter while trying things out):"
 
 	items := []string{}
 

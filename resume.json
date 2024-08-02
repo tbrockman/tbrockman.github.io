@@ -419,12 +419,7 @@
         {
           "label": "Handles massive scale",
           "icon": "🚀",
-          "text": "Supported backend applications servicing more than **4 million requests per second**."
-        },
-        {
-          "label": "Maintains high availability",
-          "icon": "💯",
-          "text": "Maintained **99.9% availability** of all online applications comprising LinkedIn's targeting, ramping, and experimentation platform ([T-REX](https://engineering.linkedin.com/teams/data/analytics-platform-apps/data-applications/t-rex))."
+          "text": "Supported backend applications servicing more than **4 million requests per second**. Maintained **99.9% availability** of all online applications comprising LinkedIn's targeting, ramping, and experimentation platform ([T-REX](https://engineering.linkedin.com/teams/data/analytics-platform-apps/data-applications/t-rex))."
         },
         {
           "label": "Improves site reliability",
@@ -439,7 +434,7 @@
         {
           "label": "Prevents widespread outages",
           "icon": "🔍",
-          "text": "Uncovered issue in a service slated to be used by most of our fleet. Developed and executed load tests to proactively **identify severe scale limitations**, preventing the bottleneck from occurring in production."
+          "text": "Uncovered issue in an external teams service slated to be used by most of our fleet. Developed and executed load tests to proactively **identify severe scale limitations**, preventing the bottleneck from occurring in production."
         }
       ]
     },
@@ -726,15 +721,12 @@
           "Browser Extension for OpenTelemetry",
           "theo.lol",
           "turnip",
-          "parcel-resolver-inlinefunc",
-          "auxb0x",
-          "schizophoner"
+          "auxb0x"
         ],
         "volunteer": [
           "atom",
           "opentelemetry-rust",
           "Review Board",
-          "utterances",
           "linkerd",
           "quickjs-emscripten",
           "oasgen",
