@@ -38,9 +38,9 @@ type Render struct {
 	// Subtitle size
 	Subtitle measurement.Distance `help:"Subtitle size." default:"14"`
 	// H1 size
-	H1 measurement.Distance `help:"H1 size." default:"24"`
+	H1 measurement.Distance `help:"H1 size." default:"18"`
 	// H2 size
-	H2 measurement.Distance `help:"H2 size." default:"18"`
+	H2 measurement.Distance `help:"H2 size." default:"16"`
 	// H3 size
 	H3 measurement.Distance `help:"H3 size." default:"14"`
 	// H4 size
@@ -212,8 +212,7 @@ func (r *Render) Run(ctx *Context) error {
 
 	for i, contact := range resume.About.Contacts {
 
-		name := fmt.Sprintf("%s %s:", contact.Icon, contact.Label)
-		run := r.addRun(para, name, r.Small)
+		run := r.addRun(para, contact.Icon, r.Small)
 		run.AddText(" ")
 		r.addHyperLink(para, contact.URL, contact.URL, contact.URL, r.Small)
 
@@ -244,6 +243,43 @@ func (r *Render) Run(ctx *Context) error {
 	text = " " + strings.Join(resume.Skills.Keywords, ", ")
 	r.addRun(para, text, r.Normal)
 	doc.AddParagraph() // Empty space
+
+	// Work
+	r.addHeading(doc, resume.Data.SectionTitleMap.Docx.Work, 1)
+	doc.AddParagraph() // Empty space
+
+	for _, work := range resume.Work {
+		para = r.addHeading(doc, work.Position+", ", 2)
+		r.addHyperLink(para, work.Organization, work.Organization, work.URL, r.levelToSize(3))
+		r.addRun(para, fmt.Sprintf(" | *%s*", work.Location), r.levelToSize(4))
+
+		para = doc.AddParagraph()
+		para.SetStyle("Normal")
+
+		start := textDateToShortDate(work.Start)
+		end := "Present"
+
+		if work.End != "" {
+			end = textDateToShortDate(work.End)
+		}
+
+		r.addRun(para, fmt.Sprintf("%s - %s", start, end), r.Normal)
+
+		for _, highlight := range work.Highlights {
+			doc.AddParagraph() // Empty space
+
+			highlightHeading := fmt.Sprintf("%s %s", highlight.Icon, highlight.Label)
+			r.addHeading(doc, highlightHeading, 3)
+
+			doc.AddParagraph() // Empty space
+
+			para = doc.AddParagraph()
+			para.SetStyle("Normal")
+			r.addRun(para, highlight.Text, r.Normal)
+		}
+
+		doc.AddParagraph() // Empty space
+	}
 
 	// Projects
 
@@ -283,52 +319,16 @@ func (r *Render) Run(ctx *Context) error {
 		doc.AddParagraph() // Empty space
 	}
 
-	// Work
-	r.addHeading(doc, resume.Data.SectionTitleMap.Docx.Work, 1)
-	doc.AddParagraph() // Empty space
-
-	for _, work := range resume.Work {
-		para = r.addHeading(doc, work.Position+", ", 2)
-		r.addHyperLink(para, work.Organization, work.Organization, work.URL, r.levelToSize(3))
-		r.addRun(para, fmt.Sprintf(" | *%s*", work.Location), r.levelToSize(4))
-
-		para = doc.AddParagraph()
-		para.SetStyle("Normal")
-
-		start := textDateToShortDate(work.Start)
-		end := "Present"
-
-		if work.End != "" {
-			end = textDateToShortDate(work.End)
-		}
-
-		r.addRun(para, fmt.Sprintf("%s - %s", start, end), r.Normal)
-
-		for _, highlight := range work.Highlights {
-			doc.AddParagraph() // Empty space
-
-			highlightHeading := fmt.Sprintf("%s %s", highlight.Icon, highlight.Label)
-			r.addHeading(doc, highlightHeading, 3)
-
-			doc.AddParagraph() // Empty space
-
-			para = doc.AddParagraph()
-			para.SetStyle("Normal")
-			r.addRun(para, highlight.Text, r.Normal)
-		}
-
-		doc.AddParagraph() // Empty space
-	}
-
 	// Volunteer
 	r.addHeading(doc, resume.Data.SectionTitleMap.Docx.Volunteer, 1)
 	doc.AddParagraph() // Empty space
 
 	order = resume.Data.SectionItemOrdering.Docx.Volunteer
 
-	preamble := "Projects I’ve contributed to in the past (usually by fixing fairly small issues I encounter while trying things out):"
-
-	items := []string{}
+	preamble := "Projects I’ve contributed to in the past (usually by fixing fairly small issues I encounter while trying them out):"
+	para = doc.AddParagraph()
+	r.addRun(para, preamble, r.Normal)
+	doc.AddParagraph() // Empty space
 
 	for _, item := range order {
 		var volunteer models.VolunteerExperience
@@ -342,15 +342,10 @@ func (r *Render) Run(ctx *Context) error {
 
 		// Render single link
 		link := volunteer.Links[0]
-		text := fmt.Sprintf("%s %s (%s)", volunteer.Icon, volunteer.Name, link.URL)
-		items = append(items, text)
+		text := fmt.Sprintf("%s %s - %s", volunteer.Icon, volunteer.Name, link.URL)
+		para = doc.AddParagraph()
+		r.addRun(para, text, r.Normal)
 	}
-	joined := strings.Join(items, ", ")
-	para = doc.AddParagraph()
-	r.addRun(para, preamble, r.Normal)
-	doc.AddParagraph() // Empty space
-	para = doc.AddParagraph()
-	r.addRun(para, joined, r.Normal)
 
 	// Save the document
 	fmt.Printf("Saving resume to: %s\n", r.Output)
