@@ -62,8 +62,8 @@
         "icon": "💼"
       }
     ],
-    "whois": "A swiss army knife with **over 6 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
-    "mission": "Make life **better**, however he can\n\n...Also hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, eat 🍜, make friends 🫂, and play with good dogs 🐶"
+    "whois": "A swiss army knife with **over 7 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
+    "mission": "Make life incrementally **better**, however he can\n\n...Also hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, listen 🎵, eat 🍜, build community 🫂, and play with good dogs 🐶"
   },
   "skills": {
     "languages": [
@@ -144,38 +144,13 @@
       "links": [
         {
           "icon": "🪴",
-          "text": "prune",
+          "text": "website",
           "url": "https://prune.lol"
         },
         {
           "icon": "📥",
           "text": "download",
           "url": "https://download.prune.lol"
-        },
-        {
-          "icon": "🌈",
-          "text": "chrome",
-          "url": "https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh"
-        },
-        {
-          "icon": "🌊",
-          "text": "edge",
-          "url": "https://microsoftedge.microsoft.com/addons/detail/prune/ideengngoaeoamicacnpipkdmpledphd"
-        },
-        {
-          "icon": "🔶",
-          "text": "firefox",
-          "url": "https://addons.mozilla.org/en-US/firefox/addon/prune-tabs/"
-        },
-        {
-          "icon": "🧭",
-          "text": "safari",
-          "url": "https://apps.apple.com/us/app/prune-your-tabs/id6503263467"
-        },
-        {
-          "icon": "🎭",
-          "text": "opera",
-          "url": "https://addons.opera.com/en/extensions/details/prune/"
         },
         {
           "icon": "🖥️",

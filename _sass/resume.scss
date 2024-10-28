@@ -422,6 +422,40 @@ div.section {
 	margin-top: 0;
 }
 
+.projects-body > p {
+	display: flex;
+  	flex-direction: row;
+  	flex-wrap: wrap;
+}
+
+.projects-body > ul, .volunteer-container > ul {
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 0;
+	list-style: none;
+	margin-left: -32px;
+	clip-path: inset(0 0 0 2ch);
+	margin-top: 2rem;
+	margin-bottom: 0;
+}
+
+.projects-body > ul > li, .volunteer-container > ul > li {
+	display: flex;
+	padding-left: 1ch;
+}
+
+.projects-body > ul > li::before, .volunteer-container > ul > li::before {
+	content: "| ";
+	display: inline-block;
+	width: 1ch;
+	text-align: center;
+	padding-right: 1ch;
+}
+
+.volunteer-container > ul {
+	margin-top: 0;
+}
+
 .open-source-body>p:first-of-type {
 	margin-top: 0;
 }

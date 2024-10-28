@@ -62,8 +62,8 @@
         "icon": "💼"
       }
     ],
-    "whois": "A swiss army knife with **over 6 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
-    "mission": "Make life **better**, however he can\n\n...Also hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, eat 🍜, make friends 🫂, and play with good dogs 🐶"
+    "whois": "A swiss army knife with **over 7 years** of experience working in social media 👥, fintech 💵, big data 📊, efficiency engineering 🚀, monitoring 📉, and site reliability 🚒",
+    "mission": "Make life **incrementally better**, however he can\n\n...Also hike 🥾, climb 🧗, surf 🏄‍♂️, create 🎨, listen 🎵, eat 🍜, build community 🫂, and play with good dogs 🐶"
   },
   "skills": {
     "languages": [
@@ -138,49 +138,24 @@
         "plasmo"
       ],
       "description": [
-        "A simple browser extension to help you **trim your garden of tabs**.",
+        "A simple browser extension to help you **trim your garden of tabs.**",
         "Beloved by its few users, currently rated **4.9 ⭐**"
       ],
       "links": [
         {
           "icon": "🪴",
-          "text": "prune",
+          "text": "website",
           "url": "https://prune.lol"
-        },
-        {
-          "icon": "📥",
-          "text": "download",
-          "url": "https://download.prune.lol"
-        },
-        {
-          "icon": "🌈",
-          "text": "chrome",
-          "url": "https://chrome.google.com/webstore/detail/prune/gblddboefgbljpngfhgekbpoigikbenh"
-        },
-        {
-          "icon": "🌊",
-          "text": "edge",
-          "url": "https://microsoftedge.microsoft.com/addons/detail/prune/ideengngoaeoamicacnpipkdmpledphd"
-        },
-        {
-          "icon": "🔶",
-          "text": "firefox",
-          "url": "https://addons.mozilla.org/en-US/firefox/addon/prune-tabs/"
-        },
-        {
-          "icon": "🧭",
-          "text": "safari",
-          "url": "https://apps.apple.com/us/app/prune-your-tabs/id6503263467"
-        },
-        {
-          "icon": "🎭",
-          "text": "opera",
-          "url": "https://addons.opera.com/en/extensions/details/prune/"
         },
         {
           "icon": "🖥️",
           "text": "github",
           "url": "https://github.com/tbrockman/prune"
+        },
+        {
+          "icon": "📥",
+          "text": "download",
+          "url": "https://download.prune.lol"
         }
       ]
     },
@@ -201,7 +176,7 @@
       "links": [
         {
           "icon": "🔗",
-          "text": "theo.lol",
+          "text": "website",
           "url": "https://theo.lol"
         },
         {
@@ -224,7 +199,7 @@
         "oauth"
       ],
       "description": [
-        "A **proximity-based jukebox**. Built as a personal project in university to stop friends fighting over the aux cable.",
+        "A&nbsp;**proximity-based jukebox.** Built as a personal project in undergrad to stop friends fighting over the aux cable.",
         "Allowed anyone within 100ft to search and queue Spotify songs on the host phone (without needing any authentication or sign-up)."
       ],
       "links": [
@@ -245,7 +220,7 @@
         "bundler"
       ],
       "description": [
-        "A Parcel plugin to allow embedding an imported Javascript function as a serializable and self-contained bundle (useful in browser extensions/sandboxes)."
+        "A Parcel plugin to compile imported Javascript functions as serializable and self-contained bundles (useful in browser extensions/sandboxes)."
       ],
       "links": [
         {
@@ -278,26 +253,6 @@
           "icon": "🖥️",
           "text": "github",
           "url": "https://github.com/tbrockman/browser-extension-for-opentelemetry"
-        },
-        {
-          "icon": "🌈",
-          "text": "chrome",
-          "url": "https://chromewebstore.google.com/detail/opentelemetry-browser-ext/bgjeoaohfhbfabbfhbafjihbobjgniag"
-        },
-        {
-          "icon": "🌊",
-          "text": "edge",
-          "url": "https://microsoftedge.microsoft.com/addons/detail/opentelemetry-browser-ext/agbimhpapcebokbphphbfcimebibcoga"
-        },
-        {
-          "icon": "🔶",
-          "text": "firefox",
-          "url": "https://addons.mozilla.org/en-US/firefox/addon/opentelemetry-browserextension/"
-        },
-        {
-          "icon": "🧭",
-          "text": "safari",
-          "url": "https://apps.apple.com/us/app/opentelemetry-browser-ext/id6503631744"
         }
       ]
     },
@@ -336,7 +291,7 @@
       "links": [
         {
           "icon": "🔗",
-          "text": "auxb0x.com",
+          "text": "website",
           "url": "https://auxb0x.com?api=ax8G2Du7z38r5InOvvu9661kj4XgyCfz8cZSBOHT"
         },
         {
@@ -378,9 +333,9 @@
       "start": "2023-07-01",
       "highlights": [
         {
-          "label": "Maintains critical site reliability platforms",
+          "label": "Maintained critical site reliability platforms",
           "icon": "🚨",
-          "text": "Currently develops and maintains LinkedIn's internal **alerting**, **notification**, **oncall management**, and **automated remediation platforms**."
+          "text": "Developed and maintained LinkedIn's internal **alerting**, **notification**, **oncall management**, and **automated remediation platforms**."
         },
         {
           "label": "Cuts costs",
@@ -695,6 +650,31 @@
           "url": "https://github.com/linkerd/website/pull/783"
         }
       ]
+    },
+    {
+      "name": "jsr",
+      "icon": "📦",
+      "tags": [
+        "oss",
+        "js",
+        "ts",
+        "packaging"
+      ],
+      "description": [
+        "Fixed a broken link in the documentation."
+      ],
+      "links": [
+        {
+          "icon": "🔗",
+          "text": "jsr.io",
+          "url": "https://jsr.io/"
+        },
+        {
+          "icon": "🖥️",
+          "text": "github",
+          "url": "https://github.com/jsr-io/jsr"
+        }
+      ]
     }
   ],
   "data": {
@@ -715,6 +695,15 @@
       }
     },
     "section-item-ordering": {
+      "web": {
+        "projects": [
+          "Browser Extension for OpenTelemetry",
+          "github-paint",
+          "parcel-resolver-inlinefunc",
+          "prune",
+          "theo.lol"
+        ]
+      },
       "docx": {
         "projects": [
           "prune",
@@ -722,7 +711,7 @@
           "theo.lol",
           "github-paint",
           "turnip",
-          "auxb0x"
+          "parcel-resolver-inlinefunc"
         ],
         "volunteer": [
           "atom",

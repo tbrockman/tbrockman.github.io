@@ -92,7 +92,9 @@
             {% elsif key == "projects" %}
             <div class="column-container">
                 <div class="column">
-                    {% for project in site.data.resume[key] %}
+                    {% for project_name in site.data.resume.data.section-item-ordering.web.projects %}
+                        {% for project in site.data.resume[key] %}
+                            {% if project.name == project_name %}
                     <div class="project floating-block">
                         <div class="projects-header">
                             <span class="green">{{ project.icon }} {{ project.name }}</span>
@@ -101,13 +103,15 @@
                             {% for line in project.description %}
                             {{ line | markdownify }}
                             {% endfor %}
-                            <p>
+                            <ul>
                                 {% for link in project.links %}
-                                <span><a class="gold" href="{{ link.url }}">{{ link.icon }} {{ link.text }}</a></span>
+                                <li><a class="gold" href="{{ link.url }}">{{ link.icon }} {{ link.text }}</a></li>
                                 {% endfor %}
-                            </p>
+                            </ul>
                         </div>
                     </div>
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
                 </div>
             </div>
@@ -132,7 +136,15 @@
                 {%- endfor -%}
             </div>
             {% elsif key == "volunteer" %}
-            <div class="column-container">
+            <div class="volunteer-container floating-block">
+                <span class="comment-grey">// usually contributing fixes to small issues I encounter</span>
+                <ul>
+                    {%- for contribution in site.data.resume[key] -%}
+                    <li><a class="gold" href="{{ contribution.links[0].url }}">{{ contribution.icon }} {{ contribution.name }}</a></li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+            <!-- <div class="column-container">
                 <div class="column">
                     {% for contribution in site.data.resume[key] %}
                     <div class="open-source-item floating-block">
@@ -152,7 +164,7 @@
                     </div>
                     {% endfor %}
                 </div>
-            </div>
+            </div> -->
             {% endif %}
             <div class="section-separator comment-grey">
                 <span>/*&nbsp;</span>
@@ -171,7 +183,7 @@
 
     <script>
 
-        function removeCurrentViewFormat() {
+        function handleURLSearchParams() {
 
             var query = window.location.search;
             let format = "resume.html"
@@ -187,7 +199,7 @@
             }
         }
 
-        window.addEventListener('load', removeCurrentViewFormat);
+        window.addEventListener('load', handleURLSearchParams);
     </script>
 </body>
 
