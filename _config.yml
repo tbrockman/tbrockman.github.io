@@ -18,7 +18,6 @@ email: iam@theo.lol
 description: >- # this means to ignore newlines until "baseurl:"
   blog and website of a Canadian software engineer living in the US
 # baseurl: https://tbrockman.github.io/
-  
 # Build settings
 markdown: kramdown
 theme: minima
@@ -40,6 +39,5 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - assets/vendored/htdocs/node_modules
   - scripts
   - tmp

@@ -17,14 +17,3 @@ up:
 
 down:
 	docker compose down
-
-print-resume: up print-resume-pdf print-resume-json print-resume-docx down
-
-print-resume-pdf:
-	sh scripts/resume/print-pdf.sh resume.pdf
-
-print-resume-docx:
-	cd scripts/resume/go-print-docx && go run main.go render ../../../_data/resume.json ../../../resume.docx --license-key=${LICENSE_KEY}
-
-print-resume-json:
-	cp _data/resume.json resume.json
