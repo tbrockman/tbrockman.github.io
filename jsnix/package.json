@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "build:script": "tsc"
+  },
+  "dependencies": {
+    "@jsnix/react": "^0.0.10",
+    "@webcontainer/api": "^1.5.1",
+    "monaco-editor": "^0.52.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@jsnix/utils": "^0.0.20",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "esbuild": "^0.24.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -18,8 +18,6 @@ class Kernel {
 		window.environment = environment;
 		const bin = new Folder('bin');
 
-		// TODO: get javascript executable (as string)
-		// and unsafe eval (no way this could go wrong!)
 		const echo = new Executable('echo', Echo);
 		const help = new Executable('help', Help);
 		const ls = new Executable('ls', Ls);
