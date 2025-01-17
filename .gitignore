@@ -5,3 +5,4 @@ Gemfile.lock
 node_modules
 env
 __pycache__
+meta.json

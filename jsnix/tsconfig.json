@@ -2,12 +2,18 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
-        "moduleResolution": "bundler",
-        "outDir": "dist",
+        "strict": true,
         "esModuleInterop": true,
-        "strict": true
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "bundler",
+        "jsx": "react-jsx"
     },
     "include": [
-        "plugin.ts"
+        "**/*.ts",
+        "**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }
