@@ -5,42 +5,42 @@ import { WrappedJsnixExports, loadJsnixExports } from '@jsnix/utils/osc'
 import chalk from 'chalk'
 chalk.level = 3
 
-// import JSONWorker from 'monaco-editor/esm/vs/language/json/json.worker';
-// import CSSWorker from 'monaco-editor/esm/vs/language/css/css.worker';
-// import HTMLWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
-// import TSWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
-// import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import JSONWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
+import CSSWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
+import HTMLWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
+import TSWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 
-// export type WorkerName = string;
-// const workers = {} as Record<WorkerName, Worker>;
-// const getWorker = (label: string) => {
-//     switch (label) {
-//         case 'json': return new JSONWorker();
-//         case 'scss':
-//         case 'less':
-//         case 'css': return new CSSWorker();
-//         case 'html':
-//         case 'handlebars':
-//         case 'razor': return new HTMLWorker()
-//         case 'typescript':
-//         case 'javascript': return new TSWorker()
-//         default: return new EditorWorker()
-//     }
-// };
+export type WorkerName = string;
+const workers = {} as Record<WorkerName, Worker>;
+const getWorker = (label: string) => {
+    switch (label) {
+        case 'json': return new JSONWorker();
+        case 'scss':
+        case 'less':
+        case 'css': return new CSSWorker();
+        case 'html':
+        case 'handlebars':
+        case 'razor': return new HTMLWorker()
+        case 'typescript':
+        case 'javascript': return new TSWorker()
+        default: return new EditorWorker()
+    }
+};
 
-// self.MonacoEnvironment = {
-//     getWorker: function (_, label) {
-//         if (label in workers) {
-//             return workers[label];
-//         }
-//         const worker = getWorker(label);
-//         workers[label] = worker;
-//         return worker;
-//     },
-// };
+self.MonacoEnvironment = {
+    getWorker: function (_, label) {
+        if (label in workers) {
+            return workers[label];
+        }
+        const worker = getWorker(label);
+        workers[label] = worker;
+        return worker;
+    },
+};
 
 export default function App() {
-    const [jsnixExports, setJsnixExports] = useState<WrappedJsnixExports[]>([])
+    const [jsnixExports, setJsnixExports] = useState<WrappedJsnixExports[] | undefined>(undefined)
     const options: JsnixOptions = {
         env: {
             PATH: '/home/workspace/bin:/bin:/usr/bin:/usr/local/bin',
@@ -68,35 +68,56 @@ export default function App() {
             },
         ],
         entrypoint: ['jsnix'],
-        terminalOptions: {
-            reflowCursorLine: false,
-        },
         jsnixExports
     }
 
     const loadSnapshot = async () => {
-        // @ts-ignore
-        const module = await import('virtual:@jsnix/snapshot')
-        return module.default
-    }
+        const module = await import('virtual:@jsnix/snapshot');
+        return {
+            'jsnix': {
+                directory: module.default,
+            },
+            'bin': {
+                directory: {},
+            },
+            'HELLO.md': {
+                file: {
+                    contents: `Howdy, stranger! Feel free to poke around.
+
+## Useful commands
+
+\`\`\`sh
+jsnix --help
+\`\`\`
+
+\`\`\`sh
+ls /bin /usr/bin /usr/local/bin
+\`\`\`
+
+\`\`\`sh
+cat ~/.jshrc
+\`\`\`
+
+\`\`\`sh
+cd ~/workspace/jsnix/ && npm i && npm run dev
+\`\`\`
+`,
+                },
+            },
+        };
+    };
 
     const loadExports = async () => {
-        const modules: Record<string, () => Promise<unknown>> = {
-            code: function code() { return import("./node_modules/@jsnix/cli/dist/cli/commands/code/_app/jsnix") },
-            html: function html() { return import("./node_modules/@jsnix/cli/dist/cli/commands/html/_app/jsnix") },
-            listen: function listen() { return import("./node_modules/@jsnix/cli/dist/cli/commands/listen/_app/jsnix") },
-            recruit: function recruit() { return import("./node_modules/@jsnix/cli/dist/cli/commands/recruit/_app/jsnix") }
-        }
-
-        const mods = await loadJsnixExports(modules)
-        setJsnixExports(mods.filter((module) => module !== null))
-    }
+        const modules = import.meta.glob('./node_modules/@jsnix/cli/commands/**/_app/jsnix.{js,jsx,ts,tsx}');
+        const exported = await loadJsnixExports(modules);
+        setJsnixExports(exported.filter((module) => module !== null));
+    };
 
     useEffect(() => {
-        loadExports()
-    }, [])
+        loadExports();
+    }, []);
 
-    if (!jsnixExports) {
+    if (jsnixExports === undefined) {
         return null;
     }
 
@@ -105,5 +126,5 @@ export default function App() {
             fs={loadSnapshot}
             options={options}
         />
-    )
+    );
 }

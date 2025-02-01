@@ -1,0 +1,1 @@
+const p=9191,r=["code"],w=async({port:n,fetch:o,editor:a,initEditor:e})=>{if(n!==9191)return;let t=await o({method:"GET"});const{path:i,cwd:c}=await(t==null?void 0:t.json())||{};a||(a=(await e()).editor),i&&await a.open(i,c),t=await o({method:"POST",path:"/exit"})};export{r as bin,w as onServerReady,p as port};
