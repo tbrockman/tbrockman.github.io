@@ -3,7 +3,6 @@ $color-secondary: #252525;
 $color-mouseover: #fff;
 $breakpoint-main: 1400px;
 $breakpoint-mobile: 800px;
-$navbar-height: 157.5px;
 
 @media(max-width: $breakpoint-mobile) {
     .navbar {
@@ -18,7 +17,7 @@ $navbar-height: 157.5px;
     }
 
     div.page-container {
-        margin-top: $navbar-height !important;
+        margin-top: 114px !important;
     }
 }
 
@@ -28,7 +27,6 @@ $navbar-height: 157.5px;
         z-index: 10;
         flex-direction: column;
         transition: all 0.2s ease-in;
-        height: 157.5px;
         // animation: slide-right-close-nav 0.2s ease-in-out;
 
         .container {
@@ -106,10 +104,11 @@ $navbar-height: 157.5px;
     a.fa {
         font-size: 3rem !important;
         color: #252525;
+        margin-top: 10px !important;
     }
 
     div.page-container {
-        margin-top: $navbar-height;
+        margin-top: 146px;
     }
 }
 
