@@ -16,7 +16,7 @@
 title: theo, softserve developer
 email: iam@theo.lol
 description: >- # this means to ignore newlines until "baseurl:"
-  blog and website of a Canadian software engineer living in the US
+  a Canadian software engineer living in the US
 # baseurl: https://tbrockman.github.io/
 # Build settings
 markdown: kramdown
@@ -28,6 +28,11 @@ plugins:
 feed:
   tags: true
 url: https://theo.lol
+webrick:
+  headers:
+    Cross-Origin-Embedder-Policy: "credentialless"
+    Cross-Origin-Opener-Policy: "same-origin"
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
@@ -41,3 +46,4 @@ exclude:
   - vendor/ruby/
   - scripts
   - tmp
+  - jsnix
