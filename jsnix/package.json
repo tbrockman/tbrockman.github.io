@@ -8,14 +8,14 @@
     "react-dom": "^18.3.1"
   },
   "dependencies": {
-    "@jsnix/cli": "file:../../jnix/packages/cli",
-    "@jsnix/react": "file:../../jnix/packages/react",
+    "@jsnix/cli": "*",
+    "@jsnix/react": "*",
     "@webcontainer/api": "^1.5.1",
     "chalk": "^5.4.1",
     "monaco-editor": "^0.52.2"
   },
   "devDependencies": {
-    "@jsnix/utils": "file:../../jnix/packages/utils",
+    "@jsnix/utils": "*",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",

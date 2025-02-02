@@ -26,7 +26,8 @@ export default defineConfig({
     },
     plugins: [
         snapshot({
-            root: '../../jnix', transform: async (tree) => {
+            root: '../',
+            transform: async (tree) => {
                 const locations = [
                     ['@jsnix/utils', 'file:../utils'],
                     ['@jsnix/cli', 'file:../cli'],
