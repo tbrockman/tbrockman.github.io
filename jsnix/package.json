@@ -10,12 +10,12 @@
     "react-dom": "^18.3.1"
   },
   "dependencies": {
-    "@jsnix/cli": "file:../../jnix/packages/cli",
-    "@jsnix/react": "file:../../jnix/packages/react",
+    "@jsnix/cli": "0.0.55",
+    "@jsnix/react": "0.0.51",
     "chalk": "^5.4.1"
   },
   "devDependencies": {
-    "@jsnix/utils": "file:../../jnix/packages/utils",
+    "@jsnix/utils": "0.0.58",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",

@@ -32,7 +32,8 @@ $font-family-primary: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, 
     display: flex;
     justify-content: center;
     overflow: hidden;
-    max-height: calc(100% - 157.5px);
+    max-height: calc(100% - var(--navbar-height))
+    // max-height: calc(100% - 157.5px);
 }
 
 #jsnix {
