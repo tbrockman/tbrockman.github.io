@@ -4,7 +4,15 @@ $color-mouseover: #fff;
 $breakpoint-main: 1400px;
 $breakpoint-mobile: 800px;
 
+:root {
+    --navbar-height: 157.5px;
+}
+
 @media(max-width: $breakpoint-mobile) {
+    :root {
+        --navbar-height: 114px;
+    }
+
     .navbar {
 
         .navbar-drawer.open {
@@ -15,15 +23,15 @@ $breakpoint-mobile: 800px;
             padding: 1rem 0 !important;
         }
     }
-
-    div.page-container {
-        margin-top: 114px !important;
-    }
 }
 
 @media(max-width: $breakpoint-main) {
+
+    :root {
+        --navbar-height: 136px;
+    }
+
     .navbar {
-        position: fixed;
         z-index: 10;
         flex-direction: column;
         transition: all 0.2s ease-in;
@@ -104,12 +112,11 @@ $breakpoint-mobile: 800px;
     a.fa {
         font-size: 3rem !important;
         color: #252525;
-        margin-top: 10px !important;
     }
+}
 
-    div.page-container {
-        margin-top: 146px;
-    }
+div.page-container {
+    margin-top: var(--navbar-height);
 }
 
 .navbar {
@@ -118,6 +125,9 @@ $breakpoint-mobile: 800px;
     background-color: $color-primary;
     align-items: center;
     justify-content: center;
+    height: var(--navbar-height);
+    z-index: 10;
+    position: fixed;
 
     .container {
         display: flex;

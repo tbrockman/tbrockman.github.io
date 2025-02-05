@@ -7,3 +7,5 @@ RUN bundle install
 COPY . .
 RUN bundle exec jekyll build
 ENTRYPOINT [ "bundle", "exec", "jekyll", "serve", "--force_polling", "--host", "0.0.0.0", "-P", "4000", "--drafts"]
+# https:
+# ENTRYPOINT [ "bundle", "exec", "jekyll", "serve", "--force_polling", "--host", "0.0.0.0", "-P", "4000", "--drafts", "--ssl-cert", "./cert.pem", "--ssl-key", "./key.pem"]

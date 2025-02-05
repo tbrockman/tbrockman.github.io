@@ -31,25 +31,20 @@ $font-family-primary: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, 
     padding: initial !important;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    max-height: calc(100% - var(--navbar-height))
+    // max-height: calc(100% - 157.5px);
 }
 
-.terminal-input {
-    display: flex;
-    flex-direction: column;
-    border: none;
-    background: #252525;
-    color: #fff;
-    outline: none;
-    caret-color: transparent;
-    flex-grow: 1;
-    padding: 2rem 2rem;
-    font-weight: normal;
-    font-family: $font-family-primary;
-    white-space: pre-wrap;
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-width: 80ch;
-    font-size: 1rem;
+#jsnix {
+    width: 100%;
+    text-transform: initial;
+    font-size: 15px;
+
+    > .jsnix-container {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 #terminal > .input-row {

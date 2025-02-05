@@ -28,6 +28,7 @@ plugins:
 feed:
   tags: true
 url: https://theo.lol
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
@@ -41,3 +42,4 @@ exclude:
   - vendor/ruby/
   - scripts
   - tmp
+  - jsnix
