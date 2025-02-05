@@ -16,7 +16,7 @@
 title: theo, softserve developer
 email: iam@theo.lol
 description: >- # this means to ignore newlines until "baseurl:"
-  a Canadian software engineer living in the US
+  blog and website of a Canadian software engineer living in the US
 # baseurl: https://tbrockman.github.io/
 # Build settings
 markdown: kramdown
@@ -42,4 +42,3 @@ exclude:
   - vendor/ruby/
   - scripts
   - tmp
-  - jsnix
