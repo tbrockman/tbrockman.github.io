@@ -10,8 +10,7 @@ export default defineConfig({
     cacheDir: './node_modules/.vite',
     build: {
         outDir: '../assets/jsnix',
-        emptyOutDir: true,
-        minify: 'esbuild'
+        emptyOutDir: true
     },
     esbuild: {
         supported: {
@@ -26,7 +25,7 @@ export default defineConfig({
     },
     plugins: [
         snapshot({
-            root: '../',
+            root: '../../jnix',
             transform: async (tree) => {
                 const locations = [
                     ['@jsnix/utils', 'file:../utils'],

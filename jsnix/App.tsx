@@ -68,7 +68,8 @@ export default function App() {
             },
         ],
         entrypoint: ['jsnix'],
-        jsnixExports
+        terminalOptions: { logLevel: 'warn' },
+        jsnixExports,
     }
 
     const loadSnapshot = async () => {
@@ -108,7 +109,7 @@ cd ~/workspace/jsnix/ && npm i && npm run dev
     };
 
     const loadExports = async () => {
-        const modules = import.meta.glob('./node_modules/@jsnix/cli/commands/**/_app/jsnix.{js,jsx,ts,tsx}');
+        const modules = import.meta.glob('./node_modules/@jsnix/cli/dist/cli/commands/**/_app/jsnix.{js,jsx,ts,tsx}');
         const exported = await loadJsnixExports(modules);
         setJsnixExports(exported.filter((module) => module !== null));
     };

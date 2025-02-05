@@ -1,0 +1,1 @@
+const l=9191,p=["code"],s=async({port:c,fetch:a,editor:o,initEditor:r})=>{if(c!==9191)return;let t=await a({method:"GET"});const{path:e,cwd:i}=await(t==null?void 0:t.json())||{};o||(o=(await r()).editor),e&&await o.open(e,i);try{t=await a({method:"POST",path:"/exit"})}catch(n){console.error("failed to forcefully close",n)}};export{p as bin,s as onServerReady,l as port};
