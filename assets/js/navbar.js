@@ -53,7 +53,6 @@ class Navbar {
 
 
         if ((-jerkY) > threshold && velocityY < 0) {
-            console.log({ accelerationY, velocityY, y, threshold, jerkY })
             this.showNavbar()
         }
         else if (!this.isOpened && document.body.scrollHeight > document.body.clientHeight && velocityY > 0 && y > 0) {
