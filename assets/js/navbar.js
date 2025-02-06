@@ -6,7 +6,9 @@ class Navbar {
         this.navbarHeader = document.getElementById("navbar-header")
         this.pageContainer = document.getElementsByClassName("page-container")[0]
         this.navbar = document.getElementById("navbar")
-        this.lastY = window.pageYOffset;
+        this.y = window.scrollY;
+        this.velocityY = 0;
+        this.accelerationY = 0;
 
         window.addEventListener("scroll", () => {
             this.onScroll()
@@ -15,7 +17,7 @@ class Navbar {
         document.addEventListener("click", (e) => {
 
             if (this.navbarHeader.contains(e.target)) {
-                
+
                 if (this.isOpened) {
                     this.closeDrawer()
                 }
@@ -34,24 +36,28 @@ class Navbar {
 
     showNavbar() {
         this.navbar.classList.remove("hide")
-        this.navbarShown = !!! this.navbarShown
+        this.navbarShown = !!!this.navbarShown
     }
 
     hideNavbar() {
         this.navbar.classList.add("hide")
-        this.navbarShown = !!! this.navbarShown
+        this.navbarShown = !!!this.navbarShown
     }
 
-    onScroll() {
-        const currentY = window.pageYOffset
-        
-        if (this.lastY > currentY) {
+    onScroll(threshold = 1) {
+        const currentY = window.scrollY
+        const velocityY = currentY - this.y
+        const accelerationY = velocityY - this.velocityY
+
+        if (this.accelerationY > threshold) {
             this.showNavbar()
         }
         else if (!this.isOpened && document.body.scrollHeight > document.body.clientHeight) {
             this.hideNavbar()
         }
-        this.lastY = currentY
+        this.y = currentY
+        this.velocityY = velocityY
+        this.accelerationY = accelerationY
     }
 
     openDrawer() {
@@ -59,7 +65,7 @@ class Navbar {
         this.navbar.classList.add("open")
         this.navbarDrawer.classList.add("open")
         this.navbarHeader.classList.add("opened")
-        this.isOpened = !!! this.isOpened
+        this.isOpened = !!!this.isOpened
     }
 
     closeDrawer() {
@@ -67,15 +73,11 @@ class Navbar {
         this.navbar.classList.remove("open")
         this.navbarDrawer.classList.remove("open")
         this.navbarHeader.classList.remove("opened")
-        this.isOpened = !!! this.isOpened
+        this.isOpened = !!!this.isOpened
     }
 }
 
 let navbar;
-
-const test = (e) => {
-    e.preventDefault()
-}
 
 window.addEventListener("load", () => {
     navbar = new Navbar()
