@@ -9,6 +9,7 @@ class Navbar {
         this.y = window.scrollY;
         this.velocityY = 0;
         this.accelerationY = 0;
+        this.jerkY = 0;
 
         window.addEventListener("scroll", () => {
             this.onScroll()
@@ -44,20 +45,24 @@ class Navbar {
         this.navbarShown = !!!this.navbarShown
     }
 
-    onScroll(threshold = 1) {
-        const currentY = window.scrollY
-        const velocityY = currentY - this.y
+    onScroll(threshold = 30) {
+        const y = window.scrollY
+        const velocityY = y - this.y
         const accelerationY = velocityY - this.velocityY
+        const jerkY = accelerationY - this.accelerationY
 
-        if ((-accelerationY) > threshold && velocityY < 0) {
+
+        if ((-jerkY) > threshold && velocityY < 0) {
+            console.log({ accelerationY, velocityY, y, threshold, jerkY })
             this.showNavbar()
         }
-        else if (!this.isOpened && document.body.scrollHeight > document.body.clientHeight && velocityY > 0 && currentY > 0) {
+        else if (!this.isOpened && document.body.scrollHeight > document.body.clientHeight && velocityY > 0 && y > 0) {
             this.hideNavbar()
         }
-        this.y = currentY
+        this.y = y
         this.velocityY = velocityY
         this.accelerationY = accelerationY
+        this.jerkY = jerkY
     }
 
     openDrawer() {
