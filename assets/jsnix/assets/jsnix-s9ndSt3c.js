@@ -1,0 +1,1 @@
+const s=["html"],i={id:80085,handler:async({data:c,terminal:e,document:o})=>{const n=e.registerMarker();if(n){const{html:a}=c,r=o.createElement("template");r.innerHTML=a;const t=r.content.firstElementChild;t&&t instanceof HTMLElement&&await e.attachElementToMarker(t,n)}return!0}};export{s as bin,i as osc};

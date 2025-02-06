@@ -314,7 +314,7 @@ export default function Scroller({ height, onExit, children }: ScrollerProps) {
   ]
 }`}},"package.json":{file:{contents:`{
   "name": "@jsnix/cli",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "description": "jsnix cli",
   "scripts": {
     "dev": "tsc",
@@ -372,6 +372,14 @@ const { waitUntilExit } = await app.run();
 await waitUntilExit();
 process.exit(); // Seems to be necessary for terminating if opened with "container.spawn" 🤷‍♂️
 `}},"CHANGELOG.md":{file:{contents:`# @jsnix/cli
+
+## 0.0.56
+
+### Patch Changes
+
+- Fixes
+- Updated dependencies
+  - @jsnix/utils@0.0.59
 
 ## 0.0.55
 
@@ -879,7 +887,7 @@ const startServer = async ({ args }: StartServerProps): Promise<void> => {
 				reject(e);
 			}
 			return null;
-		}, 10000);
+		}, 5 * 60 * 1000); // wait at most 5m for the server to start
 
 	} catch (e) {
 		console.error(e);
@@ -1108,7 +1116,6 @@ export default function Listen({ options: { reposts, likes, tracks, playlists, l
 `}}}},recruit:{directory:{_app:{directory:{"jsnix.ts":{file:{contents:`import { OscData } from '@jsnix/utils/types';
 
 export const bin = ['recruit'];
-
 export const osc: OscData = {
 	id: 80088,
 	handler: async () => {
@@ -1129,7 +1136,7 @@ export default function Recruit() {
 
 	return null;
 }
-`}}}},about:{directory:{"index.tsx":{file:{contents:`import React from 'react';
+`}}}},about:{directory:{_app:{directory:{"index.ts":{file:{contents:"export const bin = ['about']"}}}},"index.tsx":{file:{contents:`import React from 'react';
 import { Box, useApp } from 'ink';
 import BigText from 'ink-big-text';
 import Scroller from '@jsnix/cli/components/Scroller';
@@ -1198,7 +1205,7 @@ export default function About() {
 		</Scroller>
 	);
 }
-`}}}},hi:{directory:{"index.tsx":{file:{contents:`import { useEffect } from 'react';
+`}}}},hi:{directory:{_app:{directory:{"jsnix.ts":{file:{contents:"export const bin = ['hi']"}}}},"index.tsx":{file:{contents:`import { useEffect } from 'react';
 import { useApp, useStdout } from 'ink';
 import zod from 'zod';
 
@@ -1225,6 +1232,7 @@ export default function Hi({ args }: Props) {
 }
 `}}}},html:{directory:{_app:{directory:{"jsnix.ts":{file:{contents:`import { OscData } from '@jsnix/utils/types';
 
+export const bin = ['html']
 export const osc: OscData = {
 	id: 80085,
 	handler: async ({ data, terminal, document }) => {
@@ -1268,6 +1276,7 @@ const banner = \`<div style="width: 100%;
 				padding: 1rem;
 				padding-bottom: 2rem;
 				white-space: pre-wrap;
+				font-size: clamp(6px, calc(100vw / 34), 16px);
 				font-family: monospace;
 				color: white;
 				border: 4px solid #0a0a0a;
@@ -1300,7 +1309,7 @@ export default function Html({ args }: DivProps) {
 
 	return null;
 }
-`}}}},home:{directory:{"index.tsx":{file:{contents:`import React, { useEffect, useState } from 'react';
+`}}}},home:{directory:{_app:{directory:{"jsnix.ts":{file:{contents:"export const bin = ['home']"}}}},"index.tsx":{file:{contents:`import React, { useEffect, useState } from 'react';
 import { Box, Text } from 'ink';
 import Link from 'ink-link';
 import BigText from 'ink-big-text';
@@ -1656,6 +1665,10 @@ export class Spinner {
 		// write siblings
 		this.sibling && await this.sibling.write(this.sibling.lastFrame, writer);
 	}
+
+	get isRunning() {
+		return this.timer !== null;
+	}
 }
 
 export const earth = {
@@ -2006,7 +2019,7 @@ export const snapshot = (props: SnapshotProps<Esbuild> = {}) => {
 };
 `}},"package.json":{file:{contents:`{
   "name": "@jsnix/utils",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "description": "jsnix shared utils",
   "type": "module",
   "scripts": {
@@ -2784,21 +2797,21 @@ export class JsnixWebContainer extends WebContainer {
 	// 	});
 	// }
 
-	override async mount(snapshotOrTree: Fs | (() => Promise<FsOrFsFunction>), { autoSave = true, ...options }: JsnixMountOptions) {
+	override async mount(snapshot: Fs, { autoSave = true, ...options }: JsnixMountOptions) {
 		// let mountPoint = options.mountPoint || '/';
-		let snapshot: Fs | null = autoSave ? await this.loadSnapshot() : null;
+		// let snapshot: Fs | null = autoSave ? await this.loadSnapshot() : null;
 		// let wasNull = snapshot === null;
 
-		if (!snapshot) {
-			snapshot = ((typeof snapshotOrTree === 'function') ? await snapshotOrTree() : snapshotOrTree) as Fs;
-		}
+		// if (!snapshot) {
+		// 	snapshot = ((typeof snapshotOrTree === 'function') ? await snapshotOrTree() : snapshotOrTree) as Fs;
+		// }
 
 		// TODO:
 		// if (autoSave) {
 		// 	wasNull && await this.opfs.writeTree(snapshot as FileSystemTree)
 		// 	this.watchAndSave(mountPoint);
 		// }
-		return super.mount(snapshot || {}, options);
+		return super.mount(snapshot, options);
 	}
 }
 
@@ -3171,6 +3184,12 @@ export const readJSONChunks = async function* (reader: ReadableStreamDefaultRead
 	}
 };
 `}},"CHANGELOG.md":{file:{contents:`# @jsnix/utils
+
+## 0.0.59
+
+### Patch Changes
+
+- Fixes
 
 ## 0.0.58
 
@@ -31900,6 +31919,7 @@ import type * as monaco from 'monaco-editor';
 import '@jsnix/xterm/css/xterm.css';
 import './Jsnix.css';
 import { FsOrFsFunction } from '@jsnix/utils/container';
+import { promiseWithTimeout } from '@jsnix/utils/promises';
 
 export type JsnixOptions = {
 	/**
@@ -31961,14 +31981,6 @@ export type JsnixOptions = {
 	 */
 	onTeardown?: () => void;
 	/**
-	 * Called each time the component runs provided bootstrap commands
-	 *
-	 * @param container the ready webcontainer
-	 * @param terminal the connected xterm.js terminal
-	 * @param next a promise that resolves when the bootstrap commands are done
-	*/
-	onBootstrap?: (container: WebContainer, terminal: JsnixTerminal, next: () => Promise<void>) => void;
-	/**
 	 * Called whenever a process in the WebContainer opens a port
 	 */
 	onPort?: (port: number) => Promise<void> | void;
@@ -32027,6 +32039,7 @@ let sharedWriter: WritableStreamDefaultWriter;
 let sharedReader: ReadableStreamDefaultReader;
 const mutex = new Mutex();
 
+// TODO: probably replace most initialization with fs mounts?
 export default function Jsnix({ fs, options }: JsnixProps) {
 	const { entrypoint, prompt, banner, bootstrap, jsnixExports, globalInstallDir, mountPoint, workdirName, env, terminalOptions, editorOptions, onSetup, onTeardown } = { ...defaultOptions, ...options };
 	const { init: initContainer, container } = useWebContainer({ fs, mountPoint, bootOptions: { workdirName }, onTeardown });
@@ -32250,42 +32263,56 @@ export default function Jsnix({ fs, options }: JsnixProps) {
 			...dots,
 		});
 		spinner.start();
-		const container = await initContainer(spinner);
 
-		if (bootstrap) {
-			const child = spinner.addChild({
-				text: 'bootstraping webcontainer',
-				...dots,
-			});
-			child.start();
+		await promiseWithTimeout<void>(async (resolve, reject) => {
+			try {
+				const container = await initContainer(spinner);
 
-			for (const { cmd, options } of bootstrap) {
-				if (cmd && cmd.length > 0) {
-					const [command, ...args] = cmd;
-					const { detached, ...spawnOptions } = options || {};
-					const process = await container.spawn(command!, args, spawnOptions);
-					// if output isn't suppressed, pipe it to terminal
-					// TODO: make this compatible with the spinners
-					const dispose = !spawnOptions?.output ? null : await pipeToTerminal(process, terminal);
-					!detached && await process.exit;
-					await dispose?.();
+				if (bootstrap) {
+					const child = spinner.addChild({
+						text: 'bootstrapping webcontainer',
+						...dots,
+					});
+					child.start();
+
+					for (const { cmd, options } of bootstrap) {
+						if (cmd && cmd.length > 0) {
+							const [command, ...args] = cmd;
+							const { detached, ...spawnOptions } = options || {};
+							const process = await container.spawn(command!, args, spawnOptions);
+							// if output isn't suppressed, pipe it to terminal
+							// TODO: make this compatible with the spinners
+							const dispose = !spawnOptions?.output ? null : await pipeToTerminal(process, terminal);
+							!detached && await process.exit;
+							await dispose?.();
+						}
+					}
+					await child.stop(\`\${chalk.green('✔')} bootstrap complete\`);
 				}
+				await spinner.stop(\`\${chalk.green('✔')} webcontainer started\`);
+				await stream.close();
+
+				terminal.write('\\x1bc'); // terminal clear sequence
+				banner && terminal.writeln(banner);
+
+				if (entrypoint) {
+					const entryProcess = await start(entrypoint, container, terminal);
+					const dispose = await pipeToTerminal(entryProcess, terminal);
+					entryProcess && setCurrentProcess(entryProcess);
+					entryProcess?.exit.then(async () => await dispose?.());
+				}
+				onSetup && onSetup(container, terminal);
+				resolve();
+			} catch (err) {
+				reject(err)
 			}
-			await child.stop(\`\${chalk.green('✔')} bootstrap complete\`);
-		}
-		await spinner.stop(\`\${chalk.green('✔')} webcontainer started\`);
-		await stream.close();
-
-		terminal.write('\\x1bc'); // terminal clear sequence
-		banner && terminal.writeln(banner);
-
-		if (entrypoint) {
-			const entryProcess = await start(entrypoint, container, terminal);
-			const dispose = await pipeToTerminal(entryProcess, terminal);
-			entryProcess && setCurrentProcess(entryProcess);
-			entryProcess?.exit.then(async () => await dispose?.());
-		}
-		onSetup && onSetup(container, terminal);
+		}, 5 * 60 * 1000).catch(async (err) => {
+			// TODO: better exception/timeout handling
+			if (spinner.isRunning) {
+				await spinner.stop(\`\${chalk.red('✖')} webcontainer start failed\`);
+			}
+			terminal.writeln(err.toString())
+		})
 	};
 
 	const start = async (entrypoint: string[], container: WebContainer, term: JsnixTerminal) => {
@@ -32306,7 +32333,9 @@ export default function Jsnix({ fs, options }: JsnixProps) {
 			console.debug({ msg: 'entry process exited', cmd, args, exitCode, entryProcess });
 
 			if (entrypoint.pop() !== 'jsh') {
-				// Spawn the \`jsh\` shell as the next process by default
+				// write the previous command to the histfile
+				await container.spawn('jsh', ['-c', \`echo "\${cmd}\${args.length > 0 ? ' ' + args.join(' ') : ''}" >> /home/.jsh_history\`])
+				// spawn the \`jsh\` shell as the next process by default
 				const proc = await container.spawn('jsh', [], {
 					terminal: {
 						cols: term.cols,
@@ -32607,7 +32636,7 @@ export default function useEditor({ ref, parentRef, container, options }: UseEdi
 }
 `}},"useWebContainer.ts":{file:{contents:`import { useEffect, useState } from 'react';
 import { BootOptions } from '@webcontainer/api';
-import { JsnixWebContainer, type FsOrFsFunction } from '@jsnix/utils/container';
+import { Fs, JsnixWebContainer, type FsOrFsFunction } from '@jsnix/utils/container';
 import { dots, Spinner } from '@jsnix/utils/spinner';
 import chalk from 'chalk';
 chalk.level = 3;
@@ -32640,6 +32669,14 @@ export default function useWebContainer({
 			child?.start();
 			singleton = await JsnixWebContainer.boot(bootOptions);
 			await child?.stop(chalk.green('✔') + ' webcontainer booted');
+
+			child = spinner?.addChild({
+				text: 'retrieving filesystem',
+				...dots,
+			});
+			child?.start();
+			fs = ((typeof fs === 'function') ? await fs() : fs) as Fs
+			await child?.stop(chalk.green('✔') + ' filesystem retrieved');
 
 			child = spinner?.addChild({
 				text: 'mounting filesystem',
@@ -32964,7 +33001,7 @@ function App() {
 			NODE_OPTIONS: '--no-warnings --experimental-global-webcrypto',
 		},
 		prompt: [
-			\`\\x1b]80085;data;1d655ba9-0832-46f6-9fc8-6c2cdd3c3af5;eyJodG1sIjoiPGRpdiBzdHlsZT1cIndpZHRoOiAxMDAlO1xuXHRkaXNwbGF5OiBmbGV4O1xuXHRib3gtc2l6aW5nOiBib3JkZXItYm94O1xuXHRqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcblx0cGFkZGluZzogMXJlbTtcIj5cblx0PGRpdiBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICMzODM4Mzg7XG5cdFx0XHRcdGJveC1zaGFkb3c6IC0xcmVtIDFyZW0gIzE3MTcxNztcblx0XHRcdFx0cGFkZGluZzogMXJlbTtcblx0XHRcdFx0cGFkZGluZy1ib3R0b206IDJyZW07XG5cdFx0XHRcdHdoaXRlLXNwYWNlOiBwcmUtd3JhcDtcblx0XHRcdFx0Zm9udC1mYW1pbHk6IG1vbm9zcGFjZTtcblx0XHRcdFx0Y29sb3I6IHdoaXRlO1xuXHRcdFx0XHRib3JkZXI6IDRweCBzb2xpZCAjMGEwYTBhO1xuXHRcdFx0XHR3aWR0aDogMTAwJTtcblx0XHRcdFx0ZGlzcGxheTogZmxleDtcblx0XHRcdFx0Ym94LXNpemluZzogYm9yZGVyLWJveDtcblx0XHRcdFx0anVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG5cdFx0XHRcdGFsaWduLWl0ZW1zOiBmbGV4LXN0YXJ0O1xuXHRcdFx0XHRsaW5lLWhlaWdodDogaW5pdGlhbDtcIj5cbuKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKVl+KWiOKWiOKVlyAg4paI4paI4pWX4paI4paI4paI4paI4paI4paI4paI4pWXIOKWiOKWiOKWiOKWiOKWiOKWiOKVlyBcbuKVmuKVkOKVkOKWiOKWiOKVlOKVkOKVkOKVneKWiOKWiOKVkSAg4paI4paI4pWR4paI4paI4pWU4pWQ4pWQ4pWQ4pWQ4pWd4paI4paI4pWU4pWQ4pWQ4pWQ4paI4paI4pWXXG4gICDilojilojilZEgICDilojilojilojilojilojilojilojilZHilojilojilojilojilojilZcgIOKWiOKWiOKVkSAgIOKWiOKWiOKVkVxuICAg4paI4paI4pWRICAg4paI4paI4pWU4pWQ4pWQ4paI4paI4pWR4paI4paI4pWU4pWQ4pWQ4pWdICDilojilojilZEgICDilojilojilZFcbiAgIOKWiOKWiOKVkSAgIOKWiOKWiOKVkSAg4paI4paI4pWR4paI4paI4paI4paI4paI4paI4paI4pWX4pWa4paI4paI4paI4paI4paI4paI4pWU4pWdXG4gICDilZrilZDilZ0gICDilZrilZDilZ0gIOKVmuKVkOKVneKVmuKVkOKVkOKVkOKVkOKVkOKVkOKVnSDilZrilZDilZDilZDilZDilZDilZ1cblxuXG4gICAgIGRldiDwn5K7IGFydGlzdCDwn46oIGdvb2Yg8J+koVxuPC9kaXY+PC9kaXY+In0=\\x07\`,
+			\`\\x1b]80085;data;152c8668-1bb3-4fa9-9639-6bce2a57a798;eyJodG1sIjoiPGRpdiBzdHlsZT1cIndpZHRoOiAxMDAlO1xuXHRkaXNwbGF5OiBmbGV4O1xuXHRib3gtc2l6aW5nOiBib3JkZXItYm94O1xuXHRqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcblx0cGFkZGluZzogMXJlbTtcIj5cblx0PGRpdiBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICMzODM4Mzg7XG5cdFx0XHRcdGJveC1zaGFkb3c6IC0xcmVtIDFyZW0gIzE3MTcxNztcblx0XHRcdFx0cGFkZGluZzogMXJlbTtcblx0XHRcdFx0cGFkZGluZy1ib3R0b206IDJyZW07XG5cdFx0XHRcdHdoaXRlLXNwYWNlOiBwcmUtd3JhcDtcblx0XHRcdFx0Zm9udC1zaXplOiBjbGFtcCg2cHgsIGNhbGMoMTAwdncgLyAzNCksIDE2cHgpO1xuXHRcdFx0XHRmb250LWZhbWlseTogbW9ub3NwYWNlO1xuXHRcdFx0XHRjb2xvcjogd2hpdGU7XG5cdFx0XHRcdGJvcmRlcjogNHB4IHNvbGlkICMwYTBhMGE7XG5cdFx0XHRcdHdpZHRoOiAxMDAlO1xuXHRcdFx0XHRkaXNwbGF5OiBmbGV4O1xuXHRcdFx0XHRib3gtc2l6aW5nOiBib3JkZXItYm94O1xuXHRcdFx0XHRqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcblx0XHRcdFx0YWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG5cdFx0XHRcdGxpbmUtaGVpZ2h0OiBpbml0aWFsO1wiPlxu4paI4paI4paI4paI4paI4paI4paI4paI4pWX4paI4paI4pWXICDilojilojilZfilojilojilojilojilojilojilojilZcg4paI4paI4paI4paI4paI4paI4pWXIFxu4pWa4pWQ4pWQ4paI4paI4pWU4pWQ4pWQ4pWd4paI4paI4pWRICDilojilojilZHilojilojilZTilZDilZDilZDilZDilZ3ilojilojilZTilZDilZDilZDilojilojilZdcbiAgIOKWiOKWiOKVkSAgIOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKVkeKWiOKWiOKWiOKWiOKWiOKVlyAg4paI4paI4pWRICAg4paI4paI4pWRXG4gICDilojilojilZEgICDilojilojilZTilZDilZDilojilojilZHilojilojilZTilZDilZDilZ0gIOKWiOKWiOKVkSAgIOKWiOKWiOKVkVxuICAg4paI4paI4pWRICAg4paI4paI4pWRICDilojilojilZHilojilojilojilojilojilojilojilZfilZrilojilojilojilojilojilojilZTilZ1cbiAgIOKVmuKVkOKVnSAgIOKVmuKVkOKVnSAg4pWa4pWQ4pWd4pWa4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWdIOKVmuKVkOKVkOKVkOKVkOKVkOKVnVxuXG5cbiAgICAgZGV2IPCfkrsgYXJ0aXN0IPCfjqggZ29vZiDwn6ShXG48L2Rpdj48L2Rpdj4ifQ==\\x07\`,
 			'',
 			\`press any key to \${chalk.greenBright('start')}\`,
 		],
@@ -33105,7 +33142,7 @@ declare module 'virtual:@jsnix/snapshot' {
 </html>
 `}},"package.json":{file:{contents:`{
   "name": "@jsnix/react",
-  "version": "0.0.51",
+  "version": "0.0.52",
   "description": "jsnix react components and hooks",
   "main": "dist/index.js",
   "type": "module",
@@ -33161,6 +33198,14 @@ declare module 'virtual:@jsnix/snapshot' {
 `}},public:{directory:{"vite.svg":{file:{contents:'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>'}},"sw.min.js":{file:{contents:`/*! coi-serviceworker v0.1.6 - Guido Zuidhof, licensed under MIT */
 'undefined' == typeof window ? (self.addEventListener('install', () => self.skipWaiting()), self.addEventListener('activate', e => e.waitUntil(self.clients.claim())), self.addEventListener('message', (e) => { e.data && 'deregister' === e.data.type && self.registration.unregister().then(() => self.clients.matchAll()).then((e) => { e.forEach(e => e.navigate(e.url)) }) }), self.addEventListener('fetch', function (e) { 'only-if-cached' === e.request.cache && 'same-origin' !== e.request.mode || e.respondWith(fetch(e.request).then((e) => { if (0 === e.status) return e; const r = new Headers(e.headers); return r.set('Cross-Origin-Embedder-Policy', 'require-corp'), r.set('Cross-Origin-Opener-Policy', 'same-origin'), new Response(e.body, { status: e.status, statusText: e.statusText, headers: r }) }).catch(e => console.error(e))) })) : (() => { const e = { shouldRegister: () => !0, shouldDeregister: () => !1, doReload: () => window.location.reload(), quiet: !1, ...window.coi }, r = navigator; e.shouldDeregister() && r.serviceWorker && r.serviceWorker.controller && r.serviceWorker.controller.postMessage({ type: 'deregister' }), !1 === window.crossOriginIsolated && e.shouldRegister() && (window.isSecureContext ? r.serviceWorker && r.serviceWorker.register(window.document.currentScript.src).then((t) => { !e.quiet && console.log('COOP/COEP Service Worker registered', t.scope), t.addEventListener('updatefound', () => { !e.quiet && console.log('Reloading page to make use of updated COOP/COEP Service Worker.'), e.doReload() }), t.active && !r.serviceWorker.controller && (!e.quiet && console.log('Reloading page to make use of COOP/COEP Service Worker.'), e.doReload()) }, (r) => { !e.quiet && console.error('COOP/COEP Service Worker failed to register:', r) }) : !e.quiet && console.log('COOP/COEP Service Worker not registered, a secure context is required.')) })()
 `}}}},"CHANGELOG.md":{file:{contents:`# @jsnix/react
+
+## 0.0.52
+
+### Patch Changes
+
+- Fixes
+- Updated dependencies
+  - @jsnix/utils@0.0.59
 
 ## 0.0.51
 
