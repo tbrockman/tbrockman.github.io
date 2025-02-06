@@ -49,10 +49,10 @@ class Navbar {
         const velocityY = currentY - this.y
         const accelerationY = velocityY - this.velocityY
 
-        if (this.accelerationY > threshold) {
+        if ((-accelerationY) > threshold && velocityY < 0) {
             this.showNavbar()
         }
-        else if (!this.isOpened && document.body.scrollHeight > document.body.clientHeight) {
+        else if (!this.isOpened && document.body.scrollHeight > document.body.clientHeight && velocityY > 0 && currentY > 0) {
             this.hideNavbar()
         }
         this.y = currentY
