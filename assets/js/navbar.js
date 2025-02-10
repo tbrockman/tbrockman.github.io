@@ -35,7 +35,7 @@ class Navbar {
             const currentY = window.scrollY;
             const velocityY = currentY - this.lastScrollY;
 
-            if (velocityY < -20 || currentY === 0) {
+            if (velocityY < -20 || currentY <= 0) {
                 this.showNavbar();
             } else if (!this.isOpened && velocityY > 0) {
                 this.hideNavbar();
