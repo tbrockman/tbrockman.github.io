@@ -1,88 +1,90 @@
 class Navbar {
-
     constructor() {
-        this.navbarHamburger = document.getElementById("hamburger")
-        this.navbarDrawer = document.getElementById("navbar-drawer")
-        this.navbarHeader = document.getElementById("navbar-header")
-        this.pageContainer = document.getElementsByClassName("page-container")[0]
-        this.navbar = document.getElementById("navbar")
-        this.y = window.scrollY;
-        this.velocityY = 0;
-        this.accelerationY = 0;
-        this.jerkY = 0;
+        this.navbar = document.getElementById("navbar");
+        this.navbarHamburger = document.getElementById("hamburger");
+        this.navbarDrawer = document.getElementById("navbar-drawer");
+        this.navbarHeader = document.getElementById("navbar-header");
+        this.pageContainer = document.querySelector(".page-container");
 
-        window.addEventListener("scroll", () => {
-            this.onScroll()
-        })
+        this.lastScrollY = window.scrollY;
+        this.lastInnerHeight = window.innerHeight;
+        this.navbarVisible = true;
+        this.isOpened = false;
+        this.isScrolling = false;
 
-        document.addEventListener("click", (e) => {
+        window.addEventListener("scroll", () => this.onScroll());
+        document.addEventListener("click", (e) => this.onClick(e));
 
-            if (this.navbarHeader.contains(e.target)) {
+        this.observeViewportResize();
+    }
 
-                if (this.isOpened) {
-                    this.closeDrawer()
-                }
-                else {
-                    this.openDrawer()
-                }
+    observeViewportResize() {
+        window.addEventListener("resize", () => {
+            if (window.innerHeight > this.lastInnerHeight) {
+                this.showNavbar();
+            }
+            this.lastInnerHeight = window.innerHeight;
+        });
+    }
+
+    onScroll() {
+        if (this.isScrolling) return;
+
+        this.isScrolling = true;
+        requestAnimationFrame(() => {
+            const currentY = window.scrollY;
+            const velocityY = currentY - this.lastScrollY;
+
+            if (velocityY < -20 || currentY === 0) {
+                this.showNavbar();
+            } else if (!this.isOpened && velocityY > 0) {
+                this.hideNavbar();
             }
 
-            else if (!this.navbarDrawer.contains(e.target)) {
-                if (this.isOpened) {
-                    this.closeDrawer()
-                }
-            }
-        })
+            this.lastScrollY = currentY;
+            this.isScrolling = false;
+        });
+    }
+
+    onClick(e) {
+        if (this.navbarHeader.contains(e.target)) {
+            this.isOpened ? this.closeDrawer() : this.openDrawer();
+        } else if (!this.navbarDrawer.contains(e.target) && this.isOpened) {
+            this.closeDrawer();
+        }
     }
 
     showNavbar() {
-        this.navbar.classList.remove("hide")
-        this.navbarShown = !!!this.navbarShown
+        if (!this.navbarVisible) {
+            this.navbar.classList.remove("hide");
+            this.navbarVisible = true;
+        }
     }
 
     hideNavbar() {
-        this.navbar.classList.add("hide")
-        this.navbarShown = !!!this.navbarShown
-    }
-
-    onScroll(threshold = 30) {
-        const y = window.scrollY
-        const velocityY = y - this.y
-        const accelerationY = velocityY - this.velocityY
-        const jerkY = accelerationY - this.accelerationY
-
-
-        if (((-jerkY) > threshold && velocityY < 0) || y === 0) {
-            this.showNavbar()
+        if (this.navbarVisible) {
+            this.navbar.classList.add("hide");
+            this.navbarVisible = false;
         }
-        else if (!this.isOpened && document.body.scrollHeight > document.body.clientHeight && velocityY > 0 && y > 0) {
-            this.hideNavbar()
-        }
-        this.y = y
-        this.velocityY = velocityY
-        this.accelerationY = accelerationY
-        this.jerkY = jerkY
     }
 
     openDrawer() {
-        this.pageContainer.classList.add("navbar-open")
-        this.navbar.classList.add("open")
-        this.navbarDrawer.classList.add("open")
-        this.navbarHeader.classList.add("opened")
-        this.isOpened = !!!this.isOpened
+        this.pageContainer.classList.add("navbar-open");
+        this.navbar.classList.add("open");
+        this.navbarDrawer.classList.add("open");
+        this.navbarHeader.classList.add("opened");
+        this.isOpened = true;
     }
 
     closeDrawer() {
-        this.pageContainer.classList.remove("navbar-open")
-        this.navbar.classList.remove("open")
-        this.navbarDrawer.classList.remove("open")
-        this.navbarHeader.classList.remove("opened")
-        this.isOpened = !!!this.isOpened
+        this.pageContainer.classList.remove("navbar-open");
+        this.navbar.classList.remove("open");
+        this.navbarDrawer.classList.remove("open");
+        this.navbarHeader.classList.remove("opened");
+        this.isOpened = false;
     }
 }
 
-let navbar;
-
 window.addEventListener("load", () => {
-    navbar = new Navbar()
-})
+    new Navbar();
+});
