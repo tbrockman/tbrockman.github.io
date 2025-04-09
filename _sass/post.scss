@@ -87,7 +87,7 @@ a:hover {
 
 h1 {
 	color: $color-primary;
-	font-size: 5rem;
+	font-size: 4rem;
 }
 
 h2 {
@@ -134,12 +134,19 @@ a>code {
 	display: inline-block;
 }
 
-a:not(pre)>code.highlighter-rouge {
-	background-color: $color-primary;
-}
+a:not(pre) {
 
-a:not(pre):hover>code.highlighter-rouge {
-	background-color: $color-hover;
+	& > code.highlighter-rouge {
+		background-color: $color-primary;
+		box-shadow: -1rem 1rem #1717179e;
+		margin: 4px 0;
+	}
+
+	&:hover> code.highlighter-rouge, &:focus> code.highlighter-rouge {
+		background-color: $color-hover;
+		transform: translate3d(0px, -3px, 0px);
+		transition: all 0.2s ease-in-out;
+	}
 }
 
 p>strong>code {
@@ -152,10 +159,27 @@ p>strong>code {
 	margin-bottom: 4em;
 }
 
-.post-container p {
-	font-size: 18px;
-	line-height: 2rem;
-	margin: 2rem 0;
+.post-container {
+
+	& h1, & h2, & h3, & h4, & h5, & h6 {
+		isolation: isolate;
+	}
+
+	& p, & li {
+		isolation: isolate;
+	}
+
+	& p {
+		font-size: 18px;
+		line-height: 2rem;
+		margin: 2rem 0;
+		isolation: isolate;
+	}
+}
+
+.post-container a {
+	position: relative;
+	z-index: -1;
 }
 
 .post-header {
@@ -169,6 +193,7 @@ p>strong>code {
 	margin: 0;
 	margin-bottom: 0.25em;
 	word-break: break-word;
+	isolation: isolate;
 }
 
 .post-header h4 {
