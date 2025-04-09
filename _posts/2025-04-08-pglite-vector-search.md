@@ -4,7 +4,7 @@ title: Vector similarity in the browser using `pglite`, `codemirror`, and `react
 date: 2025-04-08
 author: Theodore Brockman
 categories: example dev pglite vector mantine react
-excerpt: A GitHub Action to help your GitHub profile *really* stand out.
+excerpt: an example of using pgvector in the browser
 ---
 
 [`tbrockman/pglite-vector-search`](https://github.com/tbrockman/pglite-vector-search)
