@@ -140,6 +140,8 @@ a:not(pre) {
 		background-color: $color-primary;
 		box-shadow: -1rem 1rem #1717179e;
 		margin: 4px 0;
+		position: relative;
+		z-index: -1;
 	}
 
 	&:hover> code.highlighter-rouge, &:focus> code.highlighter-rouge {
@@ -161,6 +163,10 @@ p>strong>code {
 
 .post-container {
 
+	& a {
+		position: relative;
+	}
+
 	& h1, & h2, & h3, & h4, & h5, & h6 {
 		isolation: isolate;
 	}
@@ -175,11 +181,6 @@ p>strong>code {
 		margin: 2rem 0;
 		isolation: isolate;
 	}
-}
-
-.post-container a {
-	position: relative;
-	z-index: -1;
 }
 
 .post-header {
