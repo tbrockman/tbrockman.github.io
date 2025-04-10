@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Vector similarity in the browser using `pglite`, `codemirror`, and `react`
+title: Vector similarity in the browser using `pglite`,&nbsp;`codemirror`, and `react`
 date: 2025-04-08
 author: Theodore Brockman
 categories: example dev pglite vector mantine react

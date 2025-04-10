@@ -1,0 +1,25 @@
+:root {
+    --font-family-primary: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    --color-primary: #fe5858;
+    --color-primary-hover: #fb6e6e;
+    --color-background: #252525;
+    --color-background-dark: #171717;
+}
+
+@media (max-width: 799px) {
+    :root {
+        --navbar-height: 104px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1199px) {
+    :root {
+        --navbar-height: 136px;
+    }
+}
+
+@media (min-width: 1200px) {
+    :root {
+        --navbar-height: 0px;
+    }
+}

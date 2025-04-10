@@ -1,19 +1,16 @@
-$color-primary: #fe5858;
-$color-secondary: #252525;
 $color-mouseover: #fff;
-$breakpoint-main: 1400px;
 $breakpoint-mobile: 800px;
-
-:root {
-    --navbar-height: 157.5px;
-}
+$breakpoint-main: 1200px;
 
 @media(max-width: $breakpoint-mobile) {
-    :root {
-        --navbar-height: 114px;
+
+    div.page-container {
+        margin-top: var(--navbar-height);
     }
 
     .navbar {
+        background: linear-gradient(180deg, var(--color-background), transparent);
+        height: var(--navbar-height);
 
         .navbar-drawer.open {
             padding: 1rem 0 !important;
@@ -27,20 +24,22 @@ $breakpoint-mobile: 800px;
 
 @media(max-width: $breakpoint-main) {
 
-    :root {
-        --navbar-height: 136px;
-    }
-
-    .navbar {
+    div.navbar {
         z-index: 10;
         flex-direction: column;
         transition: all 0.2s ease-in;
+        width: 100%;
+        height: var(--navbar-height);
         // animation: slide-right-close-nav 0.2s ease-in-out;
 
         .container {
             padding: 2rem 0 !important;
             max-width: 100%;
+            align-items: flex-end;
             justify-content: flex-end !important;
+            flex-direction: column;
+            background-color: transparent;
+            background: linear-gradient(180deg, #252525, transparent);
 
             div:not(.hamburger) {
                 display: none !important;
@@ -60,7 +59,7 @@ $breakpoint-mobile: 800px;
             // animation: nav-slide-out-from-left 0.2s ease-in-out;
 
             a {
-                color: #252525;
+                color: var(--color-primary);
             }
 
             a:hover {
@@ -88,7 +87,7 @@ $breakpoint-mobile: 800px;
             position: fixed;
             display: flex;
             flex-direction: column;
-            background-color: #fe5858;
+            background-color: var(--color-background-dark);
             width: 70vw;
             top: 0vw;
             padding: 2rem 0;
@@ -111,30 +110,29 @@ $breakpoint-mobile: 800px;
 
     a.fa {
         font-size: 3rem !important;
-        color: #252525;
     }
-}
-
-div.page-container {
-    margin-top: var(--navbar-height);
 }
 
 .navbar {
     display: flex;
-    width: 100%;
-    background-color: $color-primary;
-    align-items: center;
-    justify-content: center;
-    height: var(--navbar-height);
+    height: 100%;
+    // width: 100%;
+    // background-color: $color-primary;
+    justify-content: flex-start;
     z-index: 10;
     position: fixed;
 
     .container {
         display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
         width: 100%;
-        justify-content: space-evenly;
-        padding: 3rem 0;
+        flex-direction: column;
+        padding: 1rem 4px;
         font-size: 1rem;
+        background-color: #171717;
+        border-right: 4px solid black;
 
         div a:hover {
             cursor: pointer;
@@ -148,5 +146,9 @@ div.page-container {
 
     .navbar-drawer {
         display: none;
+    }
+
+    & a.fa {
+        color: var(--color-primary);
     }
 }

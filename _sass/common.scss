@@ -4,6 +4,8 @@ $color-white: #fff;
 $breakpoint-navbar: 1400px;
 $breakpoint-mobile: 800px;
 
+@import "variables.css";
+
 @keyframes nav-slide-in-from-right {
     0% {
         left: 100vw;
@@ -76,7 +78,7 @@ body {
     margin: 0;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     color: #fff;
     text-transform: lowercase;
 }
@@ -93,6 +95,7 @@ code {
     padding: 0em 12em 8em;
     z-index: 1;
     flex: 1;
+    margin-top: var(--navbar-height);
 }
 
 a {
