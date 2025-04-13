@@ -30,27 +30,11 @@ title: latest
       const elem = document.querySelector('.grid');
       console.log('have elem')
       msnry = new Masonry(elem, {
-        // columnWidth: 400,
         columnWidth: '.grid-sizer',
         gutter: 32,
-        itemSelector: '.grid-item',
+        fitWidth: true,
+        itemSelector: '.grid-item'
       });
     };
-
-    function stretchColumns() {
-      const grid = document.querySelector('.grid');
-      const sizer = grid.querySelector('.grid-sizer');
-      const gutter = 32;
-
-      const containerWidth = grid.clientWidth;
-      const columns = Math.floor(containerWidth / (400 + gutter)) || 1;
-      const adjustedWidth = (containerWidth - gutter * (columns - 1)) / columns;
-
-      sizer.style.width = `${adjustedWidth}px`;
-      msnry.layout();
-    }
-
-    window.addEventListener('resize', stretchColumns);
-    window.addEventListener('load', stretchColumns);
   </script>
 </body>

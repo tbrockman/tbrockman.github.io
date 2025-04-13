@@ -46,7 +46,8 @@ body {
 .grid {
     margin: 0 auto;
 
-    .grid-sizer {
+    .grid-sizer,
+    .grid-item {
         width: 400px;
         margin-bottom: 32px;
     }
