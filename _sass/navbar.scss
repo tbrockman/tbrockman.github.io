@@ -38,8 +38,7 @@ $breakpoint-main: 1200px;
             align-items: flex-end;
             justify-content: flex-end !important;
             flex-direction: column;
-            background-color: transparent;
-            background: linear-gradient(180deg, #252525, transparent);
+            background-color: var(--color-primary);
 
             div:not(.hamburger) {
                 display: none !important;
@@ -48,6 +47,21 @@ $breakpoint-main: 1200px;
             .hamburger {
                 display: block !important;
                 padding-right: 2em;
+
+                .fa {
+                    color: var(--color-background);
+                }
+
+                .fa:hover,
+                .fa:focus {
+                    color: white;
+                }
+            }
+        }
+
+        .container.opened {
+            .fa {
+                color: white;
             }
         }
 
@@ -59,7 +73,7 @@ $breakpoint-main: 1200px;
             // animation: nav-slide-out-from-left 0.2s ease-in-out;
 
             a {
-                color: var(--color-primary);
+                color: var(--color-background);
             }
 
             a:hover {
@@ -87,7 +101,7 @@ $breakpoint-main: 1200px;
             position: fixed;
             display: flex;
             flex-direction: column;
-            background-color: var(--color-background-dark);
+            background-color: var(--color-primary);
             width: 70vw;
             top: 0vw;
             padding: 2rem 0;

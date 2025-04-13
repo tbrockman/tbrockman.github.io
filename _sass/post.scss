@@ -8,10 +8,6 @@ $breakpoint-padding: 1200px;
 $breakpoint-mobile: 800px;
 
 @media (max-width: $breakpoint-mobile) {
-	div.post-container {
-		margin-top: 114px !important;
-	}
-
 	div.page-container {
 		padding: 0 2rem !important;
 	}
@@ -21,7 +17,7 @@ $breakpoint-mobile: 800px;
 	}
 
 	h1 {
-		font-size: 4em !important;
+		font-size: 3em !important;
 	}
 
 	h2 {
@@ -41,17 +37,10 @@ $breakpoint-mobile: 800px;
 
 @media (max-width: $breakpoint-navbar) {
 	.post-container {
-		margin-top: 146px !important;
 
 		a {
 			line-break: auto;
 		}
-
-		// div {
-		// 	h1 {
-		// 		font-size: 3rem;
-		// 	}
-		// }
 
 		p {
 			line-height: 2rem !important;
@@ -134,7 +123,7 @@ a>code {
 
 a:not(pre) {
 
-	& > code.highlighter-rouge {
+	&>code.highlighter-rouge {
 		background-color: $color-primary;
 		box-shadow: -1rem 1rem #1717179e;
 		margin: 4px 0;
@@ -142,8 +131,8 @@ a:not(pre) {
 		z-index: -1;
 		transition: all 0.2s ease-in-out;
 	}
-	
-	& > code.highlighter-rouge {
+
+	&>code.highlighter-rouge {
 		background-color: $color-primary;
 		box-shadow: -1rem 1rem #1717179e;
 		margin: 4px 0;
@@ -154,7 +143,8 @@ a:not(pre) {
 		will-change: transform, box-shadow, background-color;
 	}
 
-	&:hover> code.highlighter-rouge, &:focus> code.highlighter-rouge {
+	&:hover>code.highlighter-rouge,
+	&:focus>code.highlighter-rouge {
 		background-color: #fb6e6e;
 		transform: translateY(-3px);
 		box-shadow: calc(-1rem) calc(1rem + 3px) 3px 1px #1717179e;
@@ -177,11 +167,17 @@ p>strong>code {
 		position: relative;
 	}
 
-	& h1, & h2, & h3, & h4, & h5, & h6 {
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5,
+	& h6 {
 		isolation: isolate;
 	}
 
-	& p, & li {
+	& p,
+	& li {
 		isolation: isolate;
 	}
 
