@@ -1,14 +1,91 @@
 <script src="/assets/js/navbar.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('navbar');
+        const selector = container.querySelector('.selector');
+        const icons = Array.from(container.querySelectorAll('.nav-icon'));
+
+        let activeIcon = container.querySelector('.nav-icon.active') || icons[0];
+        let currentTarget = activeIcon;
+
+        function moveSelectorTo(el) {
+            if (!el) return;
+
+            const iconRect = el.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+
+            const width = 100;
+            const height = 100;
+
+            const iconCenterX = iconRect.left + iconRect.width / 2;
+            const iconCenterY = iconRect.top + iconRect.height / 2;
+
+            const left = 20
+            const top = iconCenterY - containerRect.top - height / 2;
+
+            selector.style.transform = `translate(${left}px, ${top}px)`;
+            selector.style.width = `${width}px`;
+            selector.style.height = `${height}px`;
+        }
+
+
+        function resetToActive() {
+            moveSelectorTo(activeIcon);
+            currentTarget = activeIcon;
+        }
+
+        icons.forEach((icon) => {
+            icon.addEventListener('mouseenter', () => {
+                moveSelectorTo(icon);
+                currentTarget = icon;
+            });
+
+            icon.addEventListener('mouseleave', () => {
+                if (!container.querySelector(':focus')) {
+                    resetToActive();
+                }
+            });
+
+            icon.addEventListener('focusin', () => {
+                moveSelectorTo(icon);
+                currentTarget = icon;
+            });
+
+            icon.addEventListener('focusout', () => {
+                // Defer to allow tabbing
+                setTimeout(() => {
+                    if (!container.querySelector(':focus')) {
+                        resetToActive();
+                    }
+                }, 0);
+            });
+
+            icon.addEventListener('click', () => {
+                activeIcon.classList.remove('active');
+                icon.classList.add('active');
+                activeIcon = icon;
+            });
+        });
+
+        resetToActive();
+    });
+</script>
 <div id="navbar" class="navbar">
+    <div class="selector"></div>
+
     <div id="navbar-header" class="container">
         <!-- <li><a href="/" class="fa fa-home" aria-hidden="true" title="home"></a></li> -->
-        <div><a href="/" class="fa fa-home" aria-hidden="true" title="home"></a></div>
-        <div><a href="/blog" class="fa fa-pencil" aria-hidden="true" title="blog"></a></div>
-        <div><a href="https://github.com/tbrockman" class="fa fa-github" aria-hidden="true" title="github"></a></div>
-        <div><a href="https://www.linkedin.com/in/iamtheolol/" class="fa fa-linkedin-square" aria-hidden="true"
-                title="linkedin"></a></div>
-        <div><a href="/resume" class="fa fa-address-card-o" aria-hidden="true" title="resume"></a></div>
-        <div><a href="/feed.xml" class="fa fa-rss" aria-hidden="true" title="rss"></a></div>
+        <div class="nav-icon {% if page.url=='/' %}active{% endif %}"><a href="/" class="fa fa-home" aria-hidden="true"
+                title="home"></a></div>
+        <div class="nav-icon {% if page.url=='/blog.html' %}active{% endif %}"><a href="/blog" class="fa fa-pencil"
+                aria-hidden="true" title="blog"></a></div>
+        <div class="nav-icon"><a href="https://github.com/tbrockman" class="fa fa-github" aria-hidden="true"
+                title="github"></a></div>
+        <div class="nav-icon"><a href="https://www.linkedin.com/in/iamtheolol/" class="fa fa-linkedin-square"
+                aria-hidden="true" title="linkedin"></a></div>
+        <div class="nav-icon"><a href="/resume" class="fa fa-address-card-o" aria-hidden="true" title="resume"></a>
+        </div>
+        <div class="nav-icon"><a href="/feed.xml" class="fa fa-rss" aria-hidden="true" title="rss"></a></div>
         <div id="hamburger" class="hamburger"><a class="fa fa-bars" aria-hidden="true" title="links"></a></div>
     </div>
     <div id="navbar-drawer" class="navbar-drawer">

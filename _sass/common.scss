@@ -118,3 +118,45 @@ a.fa:hover {
     font-weight: normal;
     color: #cccccc;
 }
+
+// ...
+
+.filetree {
+    list-style: none;
+    padding-left: 0;
+    font-family: monospace;
+}
+
+.filetree-node {
+    padding-left: calc(var(--level) * 1em);
+}
+
+.filetree details summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.filetree a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.filetree .icon {
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+}
+
+.icon.open {
+    display: none;
+}
+
+details[open]>summary .icon.closed {
+    display: none;
+}
+
+details[open]>summary .icon.open {
+    display: inline;
+}
