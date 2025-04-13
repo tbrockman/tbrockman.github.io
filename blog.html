@@ -4,10 +4,11 @@ title: latest
 ---
 
 <body>
-  <div class="page-container blog-list-container">
-    <div class="blog-list">
+  <div class="blog-list-container">
+    <div class="grid">
+      <div class="grid-sizer"></div>
       {% for post in site.posts %}
-      <a href="{{ post.url }}">
+      <a class="grid-item" href="{{ post.url }}">
         <div>
           <div class='blog-post-preview'>
             <div class='blog-post-title'>{{post.title | markdownify | remove: '<p>' | remove: '</p>'}}</div>
@@ -19,6 +20,37 @@ title: latest
     </div>
   </div>
   <!-- Cloudflare Web Analytics -->
+  <script src="/assets/masonry/index.min.js"></script>
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
     data-cf-beacon='{"token": "5be6f51b79624ee984b67f5bd09f6f30"}'></script><!-- End Cloudflare Web Analytics -->
+  <script>
+    let msnry = null;
+
+    window.onload = function () {
+      const elem = document.querySelector('.grid');
+      console.log('have elem')
+      msnry = new Masonry(elem, {
+        // columnWidth: 400,
+        columnWidth: '.grid-sizer',
+        gutter: 32,
+        itemSelector: '.grid-item',
+      });
+    };
+
+    function stretchColumns() {
+      const grid = document.querySelector('.grid');
+      const sizer = grid.querySelector('.grid-sizer');
+      const gutter = 32;
+
+      const containerWidth = grid.clientWidth;
+      const columns = Math.floor(containerWidth / (400 + gutter)) || 1;
+      const adjustedWidth = (containerWidth - gutter * (columns - 1)) / columns;
+
+      sizer.style.width = `${adjustedWidth}px`;
+      msnry.layout();
+    }
+
+    window.addEventListener('resize', stretchColumns);
+    window.addEventListener('load', stretchColumns);
+  </script>
 </body>

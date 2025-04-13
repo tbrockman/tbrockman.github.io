@@ -15,29 +15,14 @@ $breakpoint-mobile: 768px;
     }
 }
 
-/* tablet breakpoint */
-@media (max-width: $breakpoint-mobile) {
-    .blog-list-container {
-        div.blog-list {
-            columns: 1;
-            padding: 2rem;
-        }
-    }
-}
 
 @media(max-width: $breakpoint-navbar) {
-    .blog-list-container {
-        .blog-list {
-            padding-top: 2rem;
-        }
-    }
 
     .blog-post-preview {
         .blog-post-title {
             font-size: 2rem;
         }
     }
-
 
     .blog-post-excerpt {
         font-size: 18px;
@@ -58,14 +43,21 @@ body {
     margin: 0;
 }
 
-.blog-list-container {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+.grid {
+    margin: 0 auto;
+
+    .grid-sizer {
+        width: 400px;
+        margin-bottom: 32px;
+    }
 }
 
-.blog-list {
-    columns: 2;
-    column-gap: 2rem;
+.blog-list-container {
+    // display: flex;
+    // flex: 0;
+    // margin: 0 auto;
+    width: 100%;
+    padding-left: 32px;
 }
 
 .blog-list>a {
