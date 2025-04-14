@@ -125,15 +125,10 @@ a:not(pre) {
 
 	&>code.highlighter-rouge {
 		background-color: $color-primary;
-		box-shadow: -1rem 1rem #1717179e;
-		margin: 4px 0;
-		position: relative;
-		z-index: -1;
-		transition: all 0.2s ease-in-out;
+
 	}
 
-	&>code.highlighter-rouge {
-		background-color: $color-primary;
+	&>code.highlighter-rouge:not(.filename) {
 		box-shadow: -1rem 1rem #1717179e;
 		margin: 4px 0;
 		position: relative;
@@ -145,9 +140,12 @@ a:not(pre) {
 
 	&:hover>code.highlighter-rouge,
 	&:focus>code.highlighter-rouge {
-		background-color: #fb6e6e;
-		transform: translateY(-3px);
-		box-shadow: calc(-1rem) calc(1rem + 3px) 3px 1px #1717179e;
+		background-color: $color-hover;
+
+		&:not(.filename) {
+			transform: translateY(-3px);
+			box-shadow: calc(-1rem) calc(1rem + 3px) 3px 1px #1717179e;
+		}
 	}
 }
 

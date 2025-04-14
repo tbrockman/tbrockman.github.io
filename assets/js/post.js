@@ -16,6 +16,7 @@ const init = () => {
 
             const pre = grandparent.nextElementSibling.querySelector('pre')
             pre.style.borderTop = 'none';
+            element.classList.add('filename');
         }
     })
 }
