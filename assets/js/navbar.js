@@ -47,6 +47,8 @@ class Navbar {
     }
 
     onClick(e) {
+        if (this.navbarDrawer.computedStyleMap().get("display") === "none") return
+
         if (this.navbarHeader.contains(e.target)) {
             this.isOpened ? this.closeDrawer() : this.openDrawer();
         } else if (!this.navbarDrawer.contains(e.target) && this.isOpened) {
