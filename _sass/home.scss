@@ -26,10 +26,7 @@
 
 .page-container {
     background-color:#252525 !important;
-    max-width: initial !important;
-    padding: initial !important;
     display: flex;
-    justify-content: center;
     overflow: hidden;
     max-height: calc(100% - var(--navbar-height, 0))
     // max-height: calc(100% - 157.5px);
@@ -39,10 +36,15 @@
     width: 100%;
     text-transform: initial;
     font-size: 15px;
+    flex: 1;
 
     > .jsnix-container {
         display: flex;
         justify-content: center;
+
+        > .jsnix-window {
+            max-width: 50%;
+        }
     }
 }
 

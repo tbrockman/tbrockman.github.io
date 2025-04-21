@@ -90,9 +90,10 @@ code {
 .page-container {
     box-sizing: border-box;
     width: 100%;
-    max-width: 120ch;
-    margin: 0 auto;
-    padding: 0em 12em 8em;
+    padding-left: var(--navbar-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 1;
     flex: 1;
     margin-top: var(--navbar-height);

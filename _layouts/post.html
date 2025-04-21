@@ -14,14 +14,16 @@
 
 <body>
   {% include navbar.html %}
-  <div class="page-container post-container">
-    <div class="post-header">
-      <h1>{{page.title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
+  <div class="page-container">
+    <div class="post-container">
+      <div class="post-header">
+        <h1>{{page.title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
+      </div>
+      {{ content }}
+      <script src="https://theo.lol/client.js" repo="tbrockman/tbrockman.github.io" issue-term="{{page.title}}"
+        theme="github-dark" crossorigin="anonymous" async>
+        </script>
     </div>
-    {{ content }}
-    <script src="https://theo.lol/client.js" repo="tbrockman/tbrockman.github.io" issue-term="{{page.title}}"
-      theme="github-dark" crossorigin="anonymous" async>
-      </script>
   </div>
   <script src="/assets/js/post.js"></script>
   <script src="/assets/js/prism.js"></script>

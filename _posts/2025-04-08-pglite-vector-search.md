@@ -7,7 +7,7 @@ categories: example dev pglite vector mantine react
 excerpt: an example of using pgvector in the browser
 ---
 
-[`tbrockman/pglite-vector-search`](https://github.com/tbrockman/pglite-vector-search)
+github repo --> [`tbrockman/pglite-vector-search`](https://github.com/tbrockman/pglite-vector-search)
 
 An interactive example of ingesting CSV data into [`pglite`](https://pglite.dev/) to be filtered using [`pgvector`](https://github.com/pgvector/pgvector), in your browser.
 
