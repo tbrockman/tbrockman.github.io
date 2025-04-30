@@ -28,7 +28,7 @@ $breakpoint-main: 1200px;
         z-index: 10;
         flex-direction: column;
         transition: all 0.2s ease-in;
-        width: 100%;
+        width: 100vw;
         height: var(--navbar-height);
         // animation: slide-right-close-nav 0.2s ease-in-out;
 
@@ -146,7 +146,6 @@ $breakpoint-main: 1200px;
         padding: 1rem;
         font-size: 1rem;
         background-color: #171717;
-        border-right: 4px solid black;
 
         div a:hover {
             cursor: pointer;
