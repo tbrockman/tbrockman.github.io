@@ -40,6 +40,13 @@
     max-height: calc(100% - var(--navbar-height, 0)) // max-height: calc(100% - 157.5px);
 }
 
+@media screen and (max-width: 800px) {
+    div#jsnix {
+        padding-left: 0;
+    }
+
+}
+
 #jsnix {
     width: 100%;
     text-transform: initial;

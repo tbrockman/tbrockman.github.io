@@ -16,9 +16,9 @@ $hover-color: $color-mouseover;
         bottom: 1rem;
         box-sizing: border-box;
         width: 115vw;
-        margin-left: 85vw;
+        margin-left: calc(100% - 5rem);
 
-        d .navbar-drawer.open {
+        .navbar-drawer.open {
             margin-left: 5rem;
             padding: 1rem 0 !important;
         }
@@ -181,7 +181,6 @@ $hover-color: $color-mouseover;
 
         div {
 
-            &>a:focus,
             &>a:hover,
             &>.selected {
 
