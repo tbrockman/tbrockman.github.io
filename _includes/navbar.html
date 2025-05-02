@@ -1,15 +1,55 @@
 <script src="/assets/js/navbar.js"></script>
-<div id="navbar" class="navbar">
+<nav id="navbar" class="navbar">
     <div id="navbar-header" class="container">
-        <!-- <li><a href="/" class="fa fa-home" aria-hidden="true" title="home"></a></li> -->
-        <div><a href="/" class="fa fa-home" aria-hidden="true" title="home"></a></div>
-        <div><a href="/blog" class="fa fa-pencil" aria-hidden="true" title="blog"></a></div>
-        <div><a href="https://github.com/tbrockman" class="fa fa-github" aria-hidden="true" title="github"></a></div>
-        <div><a href="https://www.linkedin.com/in/iamtheolol/" class="fa fa-linkedin-square" aria-hidden="true"
-                title="linkedin"></a></div>
-        <div><a href="/resume" class="fa fa-address-card-o" aria-hidden="true" title="resume"></a></div>
-        <div><a href="/feed.xml" class="fa fa-rss" aria-hidden="true" title="rss"></a></div>
-        <div id="hamburger" class="hamburger"><a class="fa fa-bars" aria-hidden="true" title="links"></a></div>
+        <div>
+            <a href="/" title="home" class="{% if page.url == '/' %}selected{% endif %}">
+                <span class="icon">🏠</span>
+                <span class="label">home</span>
+            </a>
+        </div>
+        <div>
+            <a href="/blog" title="blog"
+                class="{% if page.url contains '/blog' or page.url.size > 0 and page.url != '/' %}selected{% endif %}">
+                <span class="icon">✏️</span>
+                <span class="label">blog</span>
+            </a>
+        </div>
+        <!-- <div>
+            <a href="/projects" title="projects">
+                <span class="icon">📁</span>
+                <span class="label">projects</span>
+            </a>
+        </div> -->
+        <div>
+            <a href="https://github.com/tbrockman" title="github">
+                <span class="icon">💻</span>
+                <span class="label">github</span>
+            </a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/iamtheolol/" title="linkedin">
+                <span class="icon">🤝</span>
+                <span class="label">linkedin</span>
+            </a>
+        </div>
+        <div>
+            <a href="/resume" title="resume">
+                <span class="icon">🧑‍💼</span>
+                <span class="label">resume</span>
+            </a>
+        </div>
+        <div>
+            <a href="/feed.xml" title="rss">
+                <span class="icon">📻</span>
+                <span class="label">rss</span>
+            </a>
+        </div>
+        <!-- <div id="hamburger" class="hamburger nav-item">
+            <a href="#" title="links">
+                <span class="icon">☰</span>
+                <span class="label">menu</span>
+            </a>
+        </div> -->
     </div>
     <div id="navbar-drawer" class="navbar-drawer">
         <a href="/">
@@ -49,4 +89,4 @@
             </div>
         </a>
     </div>
-</div>
+</nav>

@@ -5,6 +5,7 @@
     --color-background: #252525;
     --color-background-dark: #171717;
     --hover-background-color: #383838;
+    --inline-code-mask: #0000004d;
     --hover-box-shadow: -1rem 1rem #171717;
     --hover-box-border: 4px solid #0a0a0a;
     --hover-box-shadow-hover: -1rem 1rem #171717, 0px 3px 20px 11px #00000026, 0 0 12px 0px #00000030;

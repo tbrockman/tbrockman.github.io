@@ -76,11 +76,12 @@ body {
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     background-color: #252525;
     margin: 0;
-    height: 100%;
     display: flex;
     flex-direction: row;
     color: #fff;
     text-transform: lowercase;
+    overflow: auto;
+    min-height: 100%;
 }
 
 code {
@@ -90,7 +91,7 @@ code {
 .page-container {
     box-sizing: border-box;
     width: 100%;
-    padding-left: var(--navbar-width);
+    // padding-left: var(--navbar-width);
     display: flex;
     flex-direction: column;
     align-items: center;
