@@ -73,11 +73,7 @@ $breakpoint-mobile: 800px;
 	}
 }
 
-@media (max-width: $breakpoint-padding) {
-	div.page-container {
-		padding: 0 4rem;
-	}
-}
+@media (max-width: $breakpoint-padding) {}
 
 a:hover {
 	color: $color-hover;
@@ -178,7 +174,6 @@ p>strong>code {
 	flex-direction: column;
 	flex: 1;
 	max-width: 80ch;
-	width: 100%;
 	margin: 4rem;
 	border: var(--hover-box-border);
 	box-shadow: -2rem 2rem var(--color-background-dark);

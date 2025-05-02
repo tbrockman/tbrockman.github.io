@@ -44,11 +44,7 @@ $breakpoint-mobile: 768px;
     }
 }
 
-@media(max-width: $breakpoint-padding) {
-    .page-container {
-        padding: 0 6em;
-    }
-}
+@media(max-width: $breakpoint-padding) {}
 
 body {
     margin: 0;
