@@ -1,17 +1,26 @@
-
 @-webkit-keyframes blink-caret {
-    from, to {
+
+    from,
+    to {
         border-color: transparent;
     }
-    50% {border-right: 0.05em solid;}
+
+    50% {
+        border-right: 0.05em solid;
+    }
 }
 
 @keyframes blink-caret {
-    from, to {
+
+    from,
+    to {
         border-color: transparent;
     }
-    50% {border-right: 0.05em solid;
-        margin-right: -0.05em;}
+
+    50% {
+        border-right: 0.05em solid;
+        margin-right: -0.05em;
+    }
 }
 
 @font-face {
@@ -25,11 +34,10 @@
 }
 
 .page-container {
-    background-color:#252525 !important;
+    background-color: #252525 !important;
     display: flex;
     overflow: hidden;
-    max-height: calc(100% - var(--navbar-height, 0))
-    // max-height: calc(100% - 157.5px);
+    max-height: calc(100% - var(--navbar-height, 0)) // max-height: calc(100% - 157.5px);
 }
 
 #jsnix {
@@ -38,17 +46,16 @@
     font-size: 15px;
     flex: 1;
 
-    > .jsnix-container {
+    >.jsnix-container {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
 
-        > .jsnix-window {
-            max-width: 50%;
+        >.jsnix-window {
+            max-width: min(80ch, 50%);
         }
     }
 }
 
-#terminal > .input-row {
+#terminal>.input-row {
     display: flex;
 }
-

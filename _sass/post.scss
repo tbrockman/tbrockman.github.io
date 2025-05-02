@@ -17,6 +17,12 @@ $breakpoint-mobile: 800px;
 		}
 	}
 
+	.post-header {
+		.back {
+			display: none;
+		}
+	}
+
 	blockquote {
 		padding: 1em 3em !important;
 	}
