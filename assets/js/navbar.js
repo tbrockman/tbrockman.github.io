@@ -1,8 +1,6 @@
 class Navbar {
     constructor() {
         this.navbar = document.getElementById("navbar");
-        this.navbarHamburger = document.getElementById("hamburger");
-        this.navbarDrawer = document.getElementById("navbar-drawer");
         this.navbarHeader = document.getElementById("navbar-header");
         this.pageContainer = document.querySelector(".page-container");
 
@@ -48,8 +46,6 @@ class Navbar {
     }
 
     onClick(e) {
-        // if (!this.navbarDrawer || !this.navbarDrawer?.computedStyleMap?.().get("display") || this.navbarDrawer?.computedStyleMap?.().get("display") === "none") return
-
         if (window.innerWidth >= 800) return;
 
         const clickedInsideNavbar = this.navbarHeader.contains(e.target);
@@ -84,7 +80,6 @@ class Navbar {
     openDrawer() {
         this.pageContainer.classList.add("navbar-open");
         this.navbar.classList.add("open");
-        // this.navbarDrawer.classList.add("open");
         this.navbarHeader.classList.add("opened");
         this.isOpened = true;
     }
@@ -92,7 +87,6 @@ class Navbar {
     closeDrawer() {
         this.pageContainer.classList.remove("navbar-open");
         this.navbar.classList.remove("open");
-        // this.navbarDrawer.classList.remove("open");
         this.navbarHeader.classList.remove("opened");
         this.isOpened = false;
     }

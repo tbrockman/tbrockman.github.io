@@ -1,15 +1,14 @@
 <script src="/assets/js/navbar.js"></script>
 <nav id="navbar" class="navbar">
     <div id="navbar-header" class="container">
-        <div>
-            <a href="/" title="home" class="{% if page.url == '/' %}selected{% endif %}">
+        <div class="{% if page.url == '/' %}selected{% endif %}">
+            <a href="/" title="home">
                 <span class="icon">💻</span>
                 <span class="label">home</span>
             </a>
         </div>
-        <div>
-            <a href="/blog" title="blog"
-                class="{% if page.url contains '/blog' or page.url.size > 0 and page.url != '/' %}selected{% endif %}">
+        <div class="{% if page.url contains '/blog' or page.url.size > 0 and page.url != '/' %}selected{% endif %}">
+            <a href="/blog" title="blog">
                 <span class="icon">✏️</span>
                 <span class="label">blog</span>
             </a>
@@ -44,49 +43,5 @@
                 <span class="label">rss</span>
             </a>
         </div>
-        <!-- <div id="hamburger" class="hamburger nav-item">
-            <a href="#" title="links">
-                <span class="icon">☰</span>
-                <span class="label">menu</span>
-            </a>
-        </div> -->
-    </div>
-    <div id="navbar-drawer" class="navbar-drawer">
-        <a href="/">
-            <div>
-                <div>home</div>
-                <i class="fa fa-home" aria-hidden="true"></i>
-            </div>
-        </a>
-        <a href="/blog">
-            <div>
-                <div>blog</div>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-            </div>
-        </a>
-        <a href="https://github.com/tbrockman">
-            <div>
-                <div>github</div>
-                <i class="fa fa-github" aria-hidden="true"></i>
-            </div>
-        </a>
-        <a href="https://www.linkedin.com/in/theodore-brockman-1a276b116/">
-            <div>
-                <div>linkedin</div>
-                <i class="fa fa-linkedin-square" aria-hidden="true" title="linkedin"></i>
-            </div>
-        </a>
-        <a href="/resume">
-            <div>
-                <div>resume</div>
-                <i class="fa fa-address-card-o" aria-hidden="true" title="email"></i>
-            </div>
-        </a>
-        <a href="/feed.xml">
-            <div>
-                <div>rss</div>
-                <i class="fa fa-rss" aria-hidden="true" title="rss"></i>
-            </div>
-        </a>
     </div>
 </nav>
