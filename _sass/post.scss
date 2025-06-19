@@ -125,7 +125,10 @@ a>code {
 	padding: 5px !important;
 	border-radius: 0 !important;
 	color: #fff !important;
-	display: inline-block;
+	display: inline;
+	/* Changed from inline-block */
+	white-space: nowrap;
+	/* Prevent breaking inside code */
 }
 
 a:not(pre) {
@@ -224,9 +227,10 @@ p>strong>code {
 .post-header h1 {
 	margin: 0;
 	margin-bottom: 0.25em;
+	overflow-wrap: normal;
 	word-break: break-word;
-	overflow-wrap: break-word;
-	hyphens: auto;
+	hyphens: none;
+	white-space: pre-wrap;
 	isolation: isolate;
 }
 
@@ -282,14 +286,14 @@ h1>a>code[class*=language-plaintext].highlighter-rouge {
 }
 
 :not(pre)>code[class*=language-plaintext] {
-	display: inline-block;
+	display: inline;
+	/* Changed from inline-block */
 	line-height: normal;
 	color: inherit;
 	border-radius: 0 !important;
-	// padding: 0.25em 0.5em;
-	// background-color: #fe5858;
 	background-color: var(--inline-code-mask);
 	color: #ffffff;
+	white-space: nowrap;
 }
 
 code[class*='language-'],
