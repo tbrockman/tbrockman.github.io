@@ -37,14 +37,21 @@
     background-color: #252525 !important;
     display: flex;
     overflow: hidden;
-    max-height: calc(100% - var(--navbar-height, 0)) // max-height: calc(100% - 157.5px);
+    // max-height: calc(100% - var(--navbar-height, 0)) // max-height: calc(100% - 157.5px);
 }
 
 @media screen and (max-width: 800px) {
     div#jsnix {
         padding-left: 0;
-    }
 
+        >.jsnix-container {
+            >.jsnix-window {
+                >.terminal {
+                    padding: 14px 0 0 14px;
+                }
+            }
+        }
+    }
 }
 
 #jsnix {
@@ -52,7 +59,9 @@
     text-transform: initial;
     font-size: 15px;
     flex: 1;
-    padding-left: 2rem;
+    padding-top: 1rem;
+    min-height: 100vh;
+    // padding-left: 2rem;
 
     >.jsnix-container {
         display: flex;
@@ -60,6 +69,10 @@
 
         >.jsnix-window {
             max-width: min(80ch, 50%);
+
+            >.terminal {
+                padding: 0;
+            }
         }
     }
 }

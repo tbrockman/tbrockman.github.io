@@ -24,7 +24,7 @@ $breakpoint-mobile: 768px;
 @media(max-width: $breakpoint-navbar) {
     .blog-list-container {
         .blog-list {
-            padding: 4rem;
+            padding: 4rem 1rem;
         }
     }
 
@@ -54,7 +54,7 @@ body {
     columns: 2;
     column-gap: 2rem;
     max-width: 80ch;
-    padding: 4rem;
+    padding: 4rem 1rem;
 }
 
 .blog-list>a {

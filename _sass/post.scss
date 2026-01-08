@@ -17,12 +17,6 @@ $breakpoint-mobile: 800px;
 		}
 	}
 
-	.post-header {
-		.back {
-			display: none;
-		}
-	}
-
 	blockquote {
 		padding: 1em 3em !important;
 	}
@@ -177,9 +171,9 @@ p>strong>code {
 	flex-direction: column;
 	flex: 1;
 	max-width: 80ch;
-	margin: 4rem;
+	margin: 4rem 1rem;
 	border: var(--hover-box-border);
-	box-shadow: -2rem 2rem var(--color-background-dark);
+	box-shadow: -1rem 1rem var(--color-background-dark);
 }
 
 .post-container {
@@ -215,13 +209,6 @@ p>strong>code {
 	justify-content: center;
 	flex-direction: column;
 	position: relative;
-
-	.back {
-		position: absolute;
-		font-size: 4rem;
-		top: 0;
-		left: -7rem;
-	}
 }
 
 .post-header h1 {
