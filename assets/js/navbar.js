@@ -22,9 +22,10 @@ class MobileNavbar {
         // State
         this.isExpanded = false;
         this.isDragging = false;
+        this.expandedDragEnabled = false; // Requires long-press to enable drag when expanded
         this.dragStartTime = 0;
         this.holdThreshold = 2500; // 2.5 seconds for free positioning
-        this.longPressThreshold = 500; // 500ms for collapse
+        this.longPressThreshold = 500; // 500ms for collapse or enabling drag when expanded
         this.snapEnabled = true;
         this.currentPosition = { x: 0, y: 0 };
         this.currentExpandDirection = 'left'; // 'left' or 'right'
@@ -55,8 +56,8 @@ class MobileNavbar {
         window.addEventListener('resize', () => this.onResize());
         document.addEventListener('click', (e) => this.onDocumentClick(e));
 
-        // Long press detection for collapse
-        this.setupLongPressDetection();
+        // Long press detection for enabling drag when expanded
+        this.setupExpandedDragDetection();
         
         // Setup nav item click handlers for collapse on navigation
         this.setupNavItemClickHandlers();
@@ -300,6 +301,13 @@ class MobileNavbar {
     }
 
     onDragStart(event) {
+        // When expanded, only allow drag if long-press was detected first
+        // This allows normal scrolling/swiping inside the expanded navbar
+        if (this.isExpanded && !this.expandedDragEnabled) {
+            event.interaction.stop();
+            return;
+        }
+
         this.isDragging = true;
         this.dragStartTime = Date.now();
         this.snapEnabled = true;
@@ -331,6 +339,10 @@ class MobileNavbar {
     onDragEnd(event) {
         clearInterval(this.holdTimer);
         this.container.classList.remove('dragging', 'free-position');
+
+        // Reset expanded drag enabled state
+        this.expandedDragEnabled = false;
+        this.container.classList.remove('drag-enabled');
 
         const dragDuration = Date.now() - this.dragStartTime;
         
@@ -569,36 +581,76 @@ class MobileNavbar {
         }, 250);
     }
 
-    setupLongPressDetection() {
-        let pressTimer;
-        let isPressing = false;
+    setupExpandedDragDetection() {
+        let pressTimer = null;
+        let startX = 0;
+        let startY = 0;
+        const moveThreshold = 10; // pixels of movement to cancel long-press
 
         const startPress = (e) => {
-            // Only trigger on navbar items area when expanded
+            // Only require long-press for drag when expanded
+            // When collapsed, drag works immediately (handled by interact.js)
             if (!this.isExpanded) return;
-            if (this.fab.contains(e.target)) return; // FAB click handled separately
-            
-            isPressing = true;
+
+            // Get start position
+            if (e.touches) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            } else {
+                startX = e.clientX;
+                startY = e.clientY;
+            }
+
+            // Start long-press timer to enable dragging
             pressTimer = setTimeout(() => {
-                if (isPressing && this.isExpanded) {
-                    this.collapse();
-                }
+                this.expandedDragEnabled = true;
+                this.container.classList.add('drag-enabled');
             }, this.longPressThreshold);
         };
 
-        const endPress = () => {
-            isPressing = false;
-            clearTimeout(pressTimer);
+        const movePress = (e) => {
+            // If user moves finger/mouse before long-press completes, cancel it
+            // This allows normal scrolling to work
+            if (!pressTimer) return;
+
+            let currentX, currentY;
+            if (e.touches) {
+                currentX = e.touches[0].clientX;
+                currentY = e.touches[0].clientY;
+            } else {
+                currentX = e.clientX;
+                currentY = e.clientY;
+            }
+
+            const distance = Math.sqrt(
+                Math.pow(currentX - startX, 2) +
+                Math.pow(currentY - startY, 2)
+            );
+
+            if (distance > moveThreshold) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
         };
 
-        if (this.navItems) {
-            this.navItems.addEventListener('mousedown', startPress);
-            this.navItems.addEventListener('touchstart', startPress, { passive: true });
-            this.navItems.addEventListener('mouseup', endPress);
-            this.navItems.addEventListener('mouseleave', endPress);
-            this.navItems.addEventListener('touchend', endPress);
-            this.navItems.addEventListener('touchcancel', endPress);
-        }
+        const endPress = () => {
+            clearTimeout(pressTimer);
+            pressTimer = null;
+            // Only reset if not currently dragging (drag handles its own cleanup in onDragEnd)
+            if (!this.isDragging) {
+                this.expandedDragEnabled = false;
+                this.container.classList.remove('drag-enabled');
+            }
+        };
+
+        this.container.addEventListener('mousedown', startPress);
+        this.container.addEventListener('touchstart', startPress, { passive: true });
+        this.container.addEventListener('mousemove', movePress);
+        this.container.addEventListener('touchmove', movePress, { passive: true });
+        this.container.addEventListener('mouseup', endPress);
+        this.container.addEventListener('mouseleave', endPress);
+        this.container.addEventListener('touchend', endPress);
+        this.container.addEventListener('touchcancel', endPress);
     }
 
     onDocumentClick(e) {
