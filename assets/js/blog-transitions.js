@@ -192,22 +192,27 @@
   });
 
   // pageshow fires when the page is shown, including when restored from bfcache.
-  // This handles browsers like Firefox that don't fully support view transitions -
-  // when pages are restored from bfcache, the styles set during click persist,
-  // and we need to clean them up to restore normal styling.
+  // When restored from bfcache, pagereveal does NOT fire, so we handle cleanup here.
+  // Note: View transitions don't work with bfcache restoration - the page appears instantly.
   window.addEventListener('pageshow', (e) => {
-    // Only act if the page was restored from bfcache (persisted)
-    // and we're not in an active view transition
-    if (e.persisted && !activeViewTransition) {
-      const isBlogListPage = document.querySelector('.blog-list') !== null;
-      
+    const isBlogListPage = document.querySelector('.blog-list') !== null;
+    
+    if (e.persisted) {
+      // Page was restored from bfcache (no view transition occurred)
+      // Clean up any lingering view-transition-name styles from previous navigation
       if (isBlogListPage) {
-        // Clean up any lingering view-transition-name styles
         cleanupTransitionNames();
-        // Clear stored state since we're not doing an animated transition
-        sessionStorage.removeItem(STORAGE_KEY_URL);
-        sessionStorage.removeItem(STORAGE_KEY_INDEX);
       }
+      // Reset state since bfcache restoration doesn't trigger view transitions
+      activeViewTransition = false;
+      // Keep sessionStorage intact for future back/forward navigation
+      // (only clear it after a successful view transition in pagereveal)
     }
   });
+  
+  // Handle initial page load (not from bfcache)
+  // Clean up any stale transition names that might exist from a previous session
+  if (document.querySelector('.blog-list')) {
+    cleanupTransitionNames();
+  }
 })();

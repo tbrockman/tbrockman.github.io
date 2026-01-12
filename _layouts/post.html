@@ -11,6 +11,8 @@
     theodore brockman - {{ page.title }}
   </title>
   {% seo %}
+  <!-- Load early to catch pagereveal event for forward navigation -->
+  <script src="/assets/js/post-transitions.js"></script>
 </head>
 
 <body>
@@ -26,7 +28,6 @@
         </script>
     </div>
   </div>
-  <script src="/assets/js/post-transitions.js"></script>
   <script src="/assets/js/post.js"></script>
   <script src="/assets/js/prism.js"></script>
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js'

@@ -12,13 +12,12 @@
 // These must be set in CSS (not JS) for cross-document transitions
 // =====================================================
 
-// Navbar - keep stable during all transitions (no movement)
-// Only ONE element can have a view-transition-name at a time
-// Use media queries to assign based on which navbar is visible
+// Navbar - excluded from view transitions on desktop to prevent flicker
+// Mobile FAB participates in transitions since it's positioned differently
 
 // Mobile breakpoint matches navbar.scss ($breakpoint-mobile: 800px)
 @media (max-width: 800px) {
-  // Mobile: FAB container is visible, desktop navbar is hidden
+  // Mobile: FAB container participates in view transitions with instant swap
   .navbar-fab-container {
     view-transition-name: navbar;
   }
@@ -28,9 +27,10 @@
 }
 
 @media (min-width: 801px) {
-  // Desktop: regular navbar is visible, FAB is hidden
+  // Desktop: navbar is excluded entirely from view transitions
+  // This prevents flicker - the navbar stays as a live DOM element
   .navbar {
-    view-transition-name: navbar;
+    view-transition-name: none;
   }
   .navbar-fab-container {
     view-transition-name: none;
@@ -58,49 +58,41 @@ $vt-easing-out: cubic-bezier(0.0, 0, 0.2, 1);
 $vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
 // =====================================================
-// Default View Transition Behavior (entire page)
-// These handle pages without specific named elements
+// Root Transition - Disabled to prevent navbar flicker
+// Elements without view-transition-name are part of root.
+// By not animating root, the navbar stays static on desktop.
 // =====================================================
-::view-transition-old(root) {
-  animation: $vt-duration $vt-easing both vt-fade-out;
-}
-
+::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: $vt-duration $vt-easing both vt-fade-in;
-  animation-delay: 0.15s;
+  animation: none;
 }
 
 // =====================================================
-// Navbar - Keep Stable During Transitions
-// The navbar should remain completely static during page transitions
-// No morphing, no fading, no movement - just stay in place
+// Mobile Navbar - Instant swap (no animation/flicker)
 // =====================================================
+@keyframes navbar-instant-hide {
+  from, to { opacity: 0; }
+}
+
+@keyframes navbar-instant-show {
+  from, to { opacity: 1; }
+}
+
 ::view-transition-group(navbar) {
   z-index: 9999;
-  // Prevent the group from animating size/position changes
   animation: none !important;
-  // Ensure consistent dimensions - don't interpolate between different sizes
-  animation-duration: 0s !important;
 }
 
 ::view-transition-old(navbar) {
-  // Hide old image immediately - don't fade it out
-  animation: none !important;
-  opacity: 0 !important;
+  animation: navbar-instant-hide 0s linear both !important;
 }
 
 ::view-transition-new(navbar) {
-  // Show new image immediately at full opacity
-  animation: none !important;
-  opacity: 1 !important;
-  // Mix blend to prevent double opacity during transition
-  mix-blend-mode: normal;
+  animation: navbar-instant-show 0s linear both !important;
 }
 
 ::view-transition-image-pair(navbar) {
-  // Isolate to prevent blending with page content
   isolation: isolate;
-  // No crossfade animation
   animation: none !important;
 }
 
@@ -109,7 +101,7 @@ $vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 // Handles both forward (descends) and backward (ascends)
 // =====================================================
 ::view-transition-group(active-blog-card) {
-  z-index: 10;
+  z-index: 100;
 }
 
 ::view-transition-old(active-blog-card) {
@@ -124,14 +116,39 @@ $vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 // =====================================================
+// Other Blog Items - Slide Away/Return
+// Each item gets a unique name: blog-away-0, blog-away-1, etc.
+// Z-index 50 keeps them above post content during backward navigation
+// =====================================================
+@for $i from 0 through 15 {
+  ::view-transition-group(blog-away-#{$i}) {
+    z-index: 50;
+  }
+  
+  // Forward: cards slide down when navigating to a post
+  ::view-transition-old(blog-away-#{$i}) {
+    animation: slide-down-away 0.3s $vt-easing forwards;
+    animation-delay: #{$i * 0.03s};
+  }
+  
+  // Backward: cards slide up when returning to blog list
+  // More pronounced animation with visible stagger
+  ::view-transition-new(blog-away-#{$i}) {
+    animation: slide-up-return 0.4s $vt-easing-out both;
+    animation-delay: #{0.1s + ($i * 0.05s)};
+  }
+}
+
+// =====================================================
 // Post Hero Container
 // =====================================================
 ::view-transition-group(post-hero) {
-  z-index: 5;
+  z-index: 1;
 }
 
 ::view-transition-old(post-hero) {
-  animation: post-shrink $vt-duration $vt-easing forwards;
+  // Slide UP and out of view when going back - moves away from blog cards
+  animation: post-exit-up 0.3s $vt-easing forwards;
 }
 
 ::view-transition-new(post-hero) {
@@ -143,12 +160,13 @@ $vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 // Post Title - morphs between blog title and post title
 // =====================================================
 ::view-transition-group(post-title) {
+  z-index: 2;
   animation-duration: $vt-duration;
   animation-timing-function: $vt-easing;
 }
 
 ::view-transition-old(post-title) {
-  animation: title-fade-out 0.25s $vt-easing forwards;
+  animation: title-fade-out 0.2s $vt-easing forwards;
 }
 
 ::view-transition-new(post-title) {
@@ -157,42 +175,8 @@ $vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 // =====================================================
-// Other Blog Items - Slide Away/Return
-// Each item gets a unique name: blog-away-0, blog-away-1, etc.
-// =====================================================
-@for $i from 0 through 15 {
-  ::view-transition-old(blog-away-#{$i}) {
-    animation: slide-down-away #{$vt-duration * 0.8} $vt-easing forwards;
-    animation-delay: #{$i * $vt-stagger};
-  }
-  
-  ::view-transition-new(blog-away-#{$i}) {
-    animation: slide-up-return #{$vt-duration * 0.8} $vt-easing-out backwards;
-    animation-delay: #{0.15s + ($i * $vt-stagger)};
-  }
-}
-
-// =====================================================
 // Keyframe Animations
 // =====================================================
-
-@keyframes vt-fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes vt-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 // Forward: Card descends into the page (lowers z-height)
 // Shadow shrinks as card moves toward where shadow was.
@@ -253,21 +237,16 @@ $vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 }
 
-// Backward: Post shrinks away
-@keyframes post-shrink {
+// Backward: Post slides UP and out of view when navigating back to blog list
+// This moves it away from where blog cards will appear below
+@keyframes post-exit-up {
   0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    clip-path: inset(0 0 0 0);
-  }
-  50% {
-    opacity: 1;
-    clip-path: inset(0 2% 30% 2%);
+    transform: translateY(0);
   }
   100% {
     opacity: 0;
-    transform: translateY(-10px) scale(0.97);
-    clip-path: inset(0 5% 70% 5%);
+    transform: translateY(-80px);
   }
 }
 
@@ -301,15 +280,15 @@ $vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 }
 
-// Backward: Other items slide up and return
+// Backward: Other items slide up and return (more pronounced for visibility)
 @keyframes slide-up-return {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(80px) scale(0.95);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -346,10 +325,7 @@ $vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
     navigation: auto;
   }
   
-  ::view-transition-old(root),
-  ::view-transition-new(root),
-  ::view-transition-old(navbar),
-  ::view-transition-new(navbar),
+  // Disable all view transition animations
   ::view-transition-old(active-blog-card),
   ::view-transition-new(active-blog-card),
   ::view-transition-old(post-hero),
