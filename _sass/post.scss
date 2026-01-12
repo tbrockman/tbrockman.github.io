@@ -1,6 +1,6 @@
 $color-primary: #fe5858;
 $color-hover: #fb6e6e;
-$hover-background-color: #383838;
+$hover-background-color: #2f2f2f;
 $hover-box-shadow: -1rem 1rem #171717;
 $hover-box-border: 4px solid #0a0a0a;
 $breakpoint-navbar: 1400px;
@@ -164,16 +164,16 @@ p>strong>code {
 }
 
 .post-container {
-	background-color: var(--hover-background-color);
+	// background-color: var(--hover-background-color);
 	box-sizing: border-box;
-	padding: 2em 4em;
+	padding: 0 2rem;
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 	max-width: 80ch;
-	margin: 4rem 1rem;
-	border: var(--hover-box-border);
-	box-shadow: -1rem 1rem var(--color-background-dark);
+	margin: 4rem 0rem 2rem 0rem;
+	// border: var(--hover-box-border);
+	// box-shadow: -1rem 1rem var(--color-background-dark);
 }
 
 .post-container {
@@ -219,6 +219,12 @@ p>strong>code {
 	hyphens: none;
 	white-space: pre-wrap;
 	isolation: isolate;
+	text-wrap: pretty; /* Helps avoid orphan punctuation in modern browsers */
+
+	/* Attach punctuation to preceding code elements by adding an invisible word joiner */
+	code::after {
+		content: "\2060"; /* Word joiner character - prevents line break after code */
+	}
 }
 
 .post-header h4 {
@@ -280,7 +286,7 @@ h1>a>code[class*=language-plaintext].highlighter-rouge {
 	border-radius: 0 !important;
 	background-color: var(--inline-code-mask);
 	color: #ffffff;
-	white-space: nowrap;
+	// white-space: nowrap;
 }
 
 code[class*='language-'],

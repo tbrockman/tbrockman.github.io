@@ -62,7 +62,23 @@ body {
     box-shadow: 0 0 12px 0px #25252530;
     border-radius: 3px;
     margin-bottom: 2rem;
-    transition: all 0.2s ease-in-out;
+    transition:
+        transform 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out,
+        background-color 0.3s ease-in-out,
+        opacity 0.3s ease-in-out;
+}
+
+// When the card is the active transition target (clicked item), hide all shadows
+// so the view-transition animation's drop-shadow filter is the only shadow.
+// Using attribute selector ensures this applies immediately when the style is set.
+// Only applies to "active-blog-card", not to other items with blog-away-* names.
+.blog-list>a[style*="active-blog-card"] {
+    box-shadow: none !important;
+    
+    .blog-post-preview {
+        box-shadow: none !important;
+    }
 }
 
 .blog-list>a:hover {
@@ -72,6 +88,40 @@ body {
 
     &>div>.blog-post-preview {
         border-color: var(--color-primary-hover);
+    }
+}
+
+// =====================================================
+// Blog Item Transition States (JS-enhanced)
+// =====================================================
+
+// Descending state - clicked item
+.blog-list>a.descending {
+    transform: translateY(10px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    background-color: var(--color-background-dark, #1a1a1a);
+    z-index: 10;
+    
+    .blog-post-preview {
+        box-shadow: none;
+        border-color: transparent;
+    }
+}
+
+// Sliding away state - other items
+.blog-list>a.sliding-away {
+    animation: slide-away 0.4s ease-in-out forwards;
+    animation-delay: var(--slide-delay, 0ms);
+}
+
+@keyframes slide-away {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(80px);
     }
 }
 

@@ -1,4 +1,52 @@
+<script>
+    // Load interact.js only on mobile devices
+    if (window.innerWidth <= 800) {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js';
+        script.onload = function() {
+            // interact.js loaded, navbar.js will use it
+            window.interactLoaded = true;
+            window.dispatchEvent(new Event('interactLoaded'));
+        };
+        document.head.appendChild(script);
+    }
+</script>
 <script src="/assets/js/navbar.js"></script>
+
+<!-- Mobile floating action button with expandable nav items -->
+<div id="navbar-fab-container" class="navbar-fab-container">
+    <button id="navbar-fab" class="navbar-fab" aria-label="Open navigation menu">
+        <span class="hamburger-icon">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </span>
+    </button>
+    <div id="navbar-items" class="navbar-items">
+        <!-- Spacer creates room for FAB - items scroll underneath FAB, spacer prevents initial occlusion -->
+        <div class="nav-spacer" aria-hidden="true"></div>
+        <a href="/" title="home" class="nav-item {% if page.url == '/' %}selected{% endif %}">
+            <span class="icon">💻</span>
+        </a>
+        <a href="/blog" title="blog" class="nav-item {% if page.url contains '/blog' or page.url.size > 0 and page.url != '/' %}selected{% endif %}">
+            <span class="icon">✏️</span>
+        </a>
+        <a href="https://github.com/tbrockman" title="github" class="nav-item">
+            <span class="icon">🐙</span>
+        </a>
+        <a href="https://www.linkedin.com/in/iamtheolol/" title="linkedin" class="nav-item">
+            <span class="icon">🤝</span>
+        </a>
+        <a href="/resume" title="resume" class="nav-item">
+            <span class="icon">🧑‍💼</span>
+        </a>
+        <a href="/feed.xml" title="rss" class="nav-item">
+            <span class="icon">📻</span>
+        </a>
+    </div>
+</div>
+
+<!-- Desktop navbar (unchanged) -->
 <nav id="navbar" class="navbar">
     <div id="navbar-header" class="container">
         <div class="{% if page.url == '/' %}selected{% endif %}">

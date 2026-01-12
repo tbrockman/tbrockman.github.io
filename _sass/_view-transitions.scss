@@ -1,0 +1,358 @@
+// =====================================================
+// View Transitions for Blog List ↔ Post Animation
+// =====================================================
+
+// Enable view transitions for same-origin navigation
+@view-transition {
+  navigation: auto;
+}
+
+// =====================================================
+// Static View Transition Names
+// These must be set in CSS (not JS) for cross-document transitions
+// =====================================================
+
+// Navbar - keep stable during all transitions (no movement)
+// Only ONE element can have a view-transition-name at a time
+// Use media queries to assign based on which navbar is visible
+
+// Mobile breakpoint matches navbar.scss ($breakpoint-mobile: 800px)
+@media (max-width: 800px) {
+  // Mobile: FAB container is visible, desktop navbar is hidden
+  .navbar-fab-container {
+    view-transition-name: navbar;
+  }
+  .navbar {
+    view-transition-name: none;
+  }
+}
+
+@media (min-width: 801px) {
+  // Desktop: regular navbar is visible, FAB is hidden
+  .navbar {
+    view-transition-name: navbar;
+  }
+  .navbar-fab-container {
+    view-transition-name: none;
+  }
+}
+
+// Post page elements - for morphing from blog card
+.post-container {
+  view-transition-name: post-hero;
+}
+
+.post-header h1 {
+  view-transition-name: post-title;
+}
+
+// =====================================================
+// Transition Timing & Easing
+// =====================================================
+$vt-duration: 0.4s;
+$vt-duration-long: 0.55s;
+$vt-stagger: 0.03s;
+
+$vt-easing: cubic-bezier(0.4, 0, 0.2, 1);
+$vt-easing-out: cubic-bezier(0.0, 0, 0.2, 1);
+$vt-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// =====================================================
+// Default View Transition Behavior (entire page)
+// These handle pages without specific named elements
+// =====================================================
+::view-transition-old(root) {
+  animation: $vt-duration $vt-easing both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: $vt-duration $vt-easing both vt-fade-in;
+  animation-delay: 0.15s;
+}
+
+// =====================================================
+// Navbar - Keep Stable During Transitions
+// =====================================================
+::view-transition-group(navbar) {
+  z-index: 9999;
+}
+
+::view-transition-old(navbar),
+::view-transition-new(navbar) {
+  animation: none;
+  // Mix blend to prevent double opacity during transition
+  mix-blend-mode: normal;
+}
+
+::view-transition-image-pair(navbar) {
+  // Isolate to prevent blending with page content
+  isolation: isolate;
+}
+
+// =====================================================
+// Active Blog Card - the clicked item
+// Handles both forward (descends) and backward (ascends)
+// =====================================================
+::view-transition-group(active-blog-card) {
+  z-index: 10;
+}
+
+::view-transition-old(active-blog-card) {
+  // Fast ease-in for snappy falling effect
+  animation: blog-card-descend 0.2s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+::view-transition-new(active-blog-card) {
+  // Fast ease-out for snappy rising effect
+  animation: blog-card-ascend 0.2s $vt-easing-out both;
+  animation-delay: 0.08s;
+}
+
+// =====================================================
+// Post Hero Container
+// =====================================================
+::view-transition-group(post-hero) {
+  z-index: 5;
+}
+
+::view-transition-old(post-hero) {
+  animation: post-shrink $vt-duration $vt-easing forwards;
+}
+
+::view-transition-new(post-hero) {
+  animation: post-expand $vt-duration-long $vt-easing-bounce backwards;
+  animation-delay: 0.2s;
+}
+
+// =====================================================
+// Post Title - morphs between blog title and post title
+// =====================================================
+::view-transition-group(post-title) {
+  animation-duration: $vt-duration;
+  animation-timing-function: $vt-easing;
+}
+
+::view-transition-old(post-title) {
+  animation: title-fade-out 0.25s $vt-easing forwards;
+}
+
+::view-transition-new(post-title) {
+  animation: title-fade-in 0.3s $vt-easing backwards;
+  animation-delay: 0.15s;
+}
+
+// =====================================================
+// Other Blog Items - Slide Away/Return
+// Each item gets a unique name: blog-away-0, blog-away-1, etc.
+// =====================================================
+@for $i from 0 through 15 {
+  ::view-transition-old(blog-away-#{$i}) {
+    animation: slide-down-away #{$vt-duration * 0.8} $vt-easing forwards;
+    animation-delay: #{$i * $vt-stagger};
+  }
+  
+  ::view-transition-new(blog-away-#{$i}) {
+    animation: slide-up-return #{$vt-duration * 0.8} $vt-easing-out backwards;
+    animation-delay: #{0.15s + ($i * $vt-stagger)};
+  }
+}
+
+// =====================================================
+// Keyframe Animations
+// =====================================================
+
+@keyframes vt-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Forward: Card descends into the page (lowers z-height)
+// Shadow shrinks as card moves toward where shadow was.
+// Simple 3-keyframe animation for snappy feel.
+@keyframes blog-card-descend {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    filter: drop-shadow(-16px 16px 0 #171717);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(-8px, 8px) scale(0.97);
+    filter: drop-shadow(-8px 8px 0 #171717);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-14px, 14px) scale(0.94);
+    filter: drop-shadow(-2px 2px 0 #171717);
+  }
+}
+
+// Backward: Card ascends from the page (rises in z-height)
+// Shadow grows as card lifts away from surface.
+@keyframes blog-card-ascend {
+  0% {
+    opacity: 0;
+    transform: translate(-14px, 14px) scale(0.94);
+    filter: drop-shadow(-2px 2px 0 #171717);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(-8px, 8px) scale(0.97);
+    filter: drop-shadow(-8px 8px 0 #171717);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    filter: drop-shadow(-16px 16px 0 #171717);
+  }
+}
+
+// Forward: Post expands into view
+@keyframes post-expand {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+    clip-path: inset(0 5% 70% 5%);
+  }
+  50% {
+    opacity: 1;
+    clip-path: inset(0 2% 30% 2%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+// Backward: Post shrinks away
+@keyframes post-shrink {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    clip-path: inset(0 0 0 0);
+  }
+  50% {
+    opacity: 1;
+    clip-path: inset(0 2% 30% 2%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+    clip-path: inset(0 5% 70% 5%);
+  }
+}
+
+@keyframes title-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes title-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Forward: Other items slide down and away
+@keyframes slide-down-away {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+// Backward: Other items slide up and return
+@keyframes slide-up-return {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// =====================================================
+// Article Content - Staggered Reveal on Page Load
+// =====================================================
+@keyframes content-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Apply only when coming from view transition (forward navigation)
+.vt-reveal .post-container > * {
+  animation: content-reveal 0.4s $vt-easing backwards;
+}
+
+@for $i from 1 through 20 {
+  .vt-reveal .post-container > :nth-child(#{$i}) {
+    animation-delay: #{0.4s + ($i * 0.04s)};
+  }
+}
+
+// =====================================================
+// Reduced Motion Support
+// =====================================================
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: auto;
+  }
+  
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(navbar),
+  ::view-transition-new(navbar),
+  ::view-transition-old(active-blog-card),
+  ::view-transition-new(active-blog-card),
+  ::view-transition-old(post-hero),
+  ::view-transition-new(post-hero),
+  ::view-transition-old(post-title),
+  ::view-transition-new(post-title) {
+    animation: none !important;
+  }
+  
+  // Disable animations for all blog-away items
+  @for $i from 0 through 15 {
+    ::view-transition-old(blog-away-#{$i}),
+    ::view-transition-new(blog-away-#{$i}) {
+      animation: none !important;
+    }
+  }
+  
+  .vt-reveal .post-container > * {
+    animation: none !important;
+  }
+}

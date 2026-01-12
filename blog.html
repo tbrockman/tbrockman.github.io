@@ -3,22 +3,21 @@ layout: blog
 title: latest
 ---
 
-<body>
-  <div class="page-container blog-list-container">
-    <div class="blog-list">
-      {% for post in site.posts %}
-      <a href="{{ post.url }}">
-        <div>
-          <div class='blog-post-preview'>
-            <div class='blog-post-title'>{{post.title | markdownify | remove: '<p>' | remove: '</p>'}}</div>
-            <div class='blog-post-excerpt'>{{ post.excerpt | markdownify }}</div>
-          </div>
+<div class="page-container blog-list-container">
+  <div class="blog-list">
+    {% for post in site.posts %}
+    <a href="{{ post.url }}" class="blog-post-link">
+      <div>
+        <div class='blog-post-preview'>
+          <div class='blog-post-title'>{{post.title | markdownify | remove: '<p>' | remove: '</p>'}}</div>
+          <div class='blog-post-excerpt'>{{ post.excerpt | markdownify }}</div>
         </div>
-      </a>
-      {% endfor %}
-    </div>
+      </div>
+    </a>
+    {% endfor %}
   </div>
-  <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-    data-cf-beacon='{"token": "5be6f51b79624ee984b67f5bd09f6f30"}'></script><!-- End Cloudflare Web Analytics -->
-</body>
+</div>
+<script src="/assets/js/blog-transitions.js"></script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+  data-cf-beacon='{"token": "5be6f51b79624ee984b67f5bd09f6f30"}'></script><!-- End Cloudflare Web Analytics -->
