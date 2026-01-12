@@ -248,6 +248,8 @@ html.navbar-position-saved {
             &.scrollable {
                 scroll-snap-type: x mandatory;
                 scroll-behavior: smooth;
+                // Override parent's touch-action: none to allow horizontal scrolling
+                touch-action: pan-x;
             }
 
             // Spacer element that creates room for the FAB
@@ -275,15 +277,28 @@ html.navbar-position-saved {
                 transform: scale(0.5);
                 flex-shrink: 0; // Prevent items from shrinking
                 scroll-snap-align: center; // Snap to center of each item
+                // Allow horizontal panning/swiping through items without triggering active state
+                touch-action: pan-x;
+                // Disable tap highlight on touch devices
+                -webkit-tap-highlight-color: transparent;
                 transition:
                     transform 0.25s $bouncy-easing,
                     opacity 0.2s ease,
                     background-color 0.2s ease,
                     border-color 0.2s ease;
 
-                &:hover, &.selected {
+                // Selected state (always visible)
+                &.selected {
                     background-color: #8c5151;
                     border-color: var(--color-primary-hover);
+                }
+                
+                // Hover only on devices that support hover (not touch-only)
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-color: #8c5151;
+                        border-color: var(--color-primary-hover);
+                    }
                 }
             }
         }
