@@ -15,9 +15,10 @@
                     // Add position class so CSS can position immediately
                     if (position.snapPointPosition) {
                         document.documentElement.classList.add('navbar-pos-' + position.snapPointPosition);
-                    }
-                    if (position.expandDirection) {
-                        document.documentElement.classList.add('navbar-dir-' + position.expandDirection);
+                        // Derive expand direction from snap point position (don't use saved direction)
+                        // Left-side positions expand right, right-side positions expand left
+                        const expandDir = position.snapPointPosition.includes('left') ? 'right' : 'left';
+                        document.documentElement.classList.add('navbar-dir-' + expandDir);
                     }
                 }
             } catch (e) {

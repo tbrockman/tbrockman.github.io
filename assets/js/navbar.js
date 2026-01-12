@@ -199,6 +199,8 @@ class MobileNavbar {
             this.setDefaultPosition(vw, vh, containerSize);
         }
 
+        // Remove any existing expand direction classes before adding the correct one
+        this.container.classList.remove('expand-left', 'expand-right');
         this.container.classList.add(`expand-${this.currentExpandDirection}`);
         this.updateContainerPosition();
         
@@ -231,9 +233,9 @@ class MobileNavbar {
     savePositionToStorage() {
         try {
             if (this.currentSnapPoint) {
+                // Only save snap point position - expand direction is derived from position
                 localStorage.setItem(this.storageKey, JSON.stringify({
-                    snapPointPosition: this.currentSnapPoint.position,
-                    expandDirection: this.currentExpandDirection
+                    snapPointPosition: this.currentSnapPoint.position
                 }));
             }
         } catch (e) {
@@ -367,6 +369,9 @@ class MobileNavbar {
         // This ensures the animation uses the correct anchor point
         if (nearest.expandDirection !== this.currentExpandDirection) {
             this.setExpandDirectionWithoutPosition(nearest.expandDirection);
+            // Also update the html element classes that the inline script sets
+            // These need to stay in sync to avoid CSS conflicts
+            this.updateHtmlDirectionClasses(nearest.expandDirection);
         }
         
         this.animateToPosition(nearest.x, nearest.y, () => {
@@ -436,8 +441,18 @@ class MobileNavbar {
         this.currentExpandDirection = direction;
         this.container.classList.add(`expand-${direction}`);
         
+        // Also update the html element classes that the inline script sets
+        this.updateHtmlDirectionClasses(direction);
+        
         // Re-apply position with new anchor point
         this.updateContainerPosition();
+    }
+    
+    updateHtmlDirectionClasses(direction) {
+        // Update the navbar-dir-* classes on <html> element to stay in sync
+        // These are set by the inline script for instant positioning before JS loads
+        document.documentElement.classList.remove('navbar-dir-left', 'navbar-dir-right');
+        document.documentElement.classList.add(`navbar-dir-${direction}`);
     }
 
     setExpandDirectionWithoutPosition(direction) {
