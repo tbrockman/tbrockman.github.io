@@ -1,15 +1,39 @@
 <script>
-    // Load interact.js only on mobile devices
-    if (window.innerWidth <= 800) {
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js';
-        script.onload = function() {
-            // interact.js loaded, navbar.js will use it
-            window.interactLoaded = true;
-            window.dispatchEvent(new Event('interactLoaded'));
-        };
-        document.head.appendChild(script);
-    }
+    // Pre-initialize navbar position from localStorage to prevent flicker
+    // This runs synchronously before the navbar HTML is parsed
+    // Stores position info globally for the navbar container to read
+    window.__navbarSavedPosition = null;
+    (function() {
+        if (window.innerWidth <= 800) {
+            try {
+                const saved = localStorage.getItem('navbar-fab-position');
+                if (saved) {
+                    const position = JSON.parse(saved);
+                    window.__navbarSavedPosition = position;
+                    // Mark document so CSS knows we have a saved position
+                    document.documentElement.classList.add('navbar-position-saved');
+                    // Add position class so CSS can position immediately
+                    if (position.snapPointPosition) {
+                        document.documentElement.classList.add('navbar-pos-' + position.snapPointPosition);
+                    }
+                    if (position.expandDirection) {
+                        document.documentElement.classList.add('navbar-dir-' + position.expandDirection);
+                    }
+                }
+            } catch (e) {
+                // Ignore errors, will use default position
+            }
+            
+            // Load interact.js for dragging
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js';
+            script.onload = function() {
+                window.interactLoaded = true;
+                window.dispatchEvent(new Event('interactLoaded'));
+            };
+            document.head.appendChild(script);
+        }
+    })();
 </script>
 <script src="/assets/js/navbar.js"></script>
 

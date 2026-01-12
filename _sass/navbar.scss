@@ -15,6 +15,12 @@ $fab-padding: 16px;
 $nav-item-size: 44px;
 $nav-item-gap: 4px;
 
+// Container size calculations (must match JS)
+$container-padding: 4px;
+$container-size: $fab-size + ($container-padding * 2);
+$pad-y-top: $fab-padding;
+$pad-y-bottom: $fab-padding + 8px; // Extra for box shadow
+
 // Base styles - hidden on desktop and until initialized
 .navbar-fab-container {
     display: none;
@@ -26,6 +32,99 @@ $nav-item-gap: 4px;
         visibility: visible;
         opacity: 1;
         transition: opacity 0.2s ease;
+    }
+}
+
+// When we have a saved position from localStorage, show immediately (no fade-in)
+// This prevents flicker during page navigation when navbar position is already known
+html.navbar-position-saved {
+    .navbar-fab-container.initialized {
+        transition: none;
+    }
+}
+
+// =====================================================
+// Pre-positioned navbar via CSS (before JS initializes)
+// These rules apply immediately based on classes set by inline script
+// This prevents flicker by showing navbar in correct position instantly
+// All positions use `top` to match JS positioning (JS always sets `top`, never `bottom`)
+// =====================================================
+@media (max-width: $breakpoint-mobile) {
+    // When we have a saved position, show navbar immediately in correct position
+    html.navbar-position-saved {
+        // Make navbar visible immediately (before initialized class is added)
+        .navbar-fab-container {
+            visibility: visible;
+            opacity: 1;
+            // Reset bottom to auto so it doesn't conflict with JS setting top
+            bottom: auto;
+        }
+        
+        // Position presets matching snap points in JS
+        // All use `top` positioning to match JS (which always uses top, never bottom)
+        
+        // Bottom-right: top = 100vh - containerSize - padYBottom
+        &.navbar-pos-bottom-right .navbar-fab-container {
+            right: $fab-padding;
+            top: calc(100vh - #{$container-size} - #{$pad-y-bottom});
+            left: auto;
+        }
+        
+        // Bottom-left: top = 100vh - containerSize - padYBottom
+        &.navbar-pos-bottom-left .navbar-fab-container {
+            left: $fab-padding;
+            top: calc(100vh - #{$container-size} - #{$pad-y-bottom});
+            right: auto;
+        }
+        
+        // Top-right: top = padYTop
+        &.navbar-pos-top-right .navbar-fab-container {
+            right: $fab-padding;
+            top: $pad-y-top;
+            left: auto;
+        }
+        
+        // Top-left: top = padYTop
+        &.navbar-pos-top-left .navbar-fab-container {
+            left: $fab-padding;
+            top: $pad-y-top;
+            right: auto;
+        }
+        
+        // Right-center: top = (100vh - containerSize) / 2
+        &.navbar-pos-right-center .navbar-fab-container {
+            right: $fab-padding;
+            top: calc((100vh - #{$container-size}) / 2);
+            left: auto;
+        }
+        
+        // Left-center: top = (100vh - containerSize) / 2
+        &.navbar-pos-left-center .navbar-fab-container {
+            left: $fab-padding;
+            top: calc((100vh - #{$container-size}) / 2);
+            right: auto;
+        }
+        
+        // Expand direction presets
+        &.navbar-dir-left .navbar-fab-container {
+            .navbar-fab {
+                left: auto;
+                right: 4px;
+            }
+            .navbar-items {
+                flex-direction: row-reverse;
+            }
+        }
+        
+        &.navbar-dir-right .navbar-fab-container {
+            .navbar-fab {
+                left: 4px;
+                right: auto;
+            }
+            .navbar-items {
+                flex-direction: row;
+            }
+        }
     }
 }
 

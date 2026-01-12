@@ -57,6 +57,18 @@ class MobileNavbar {
 
         // Long press detection for collapse
         this.setupLongPressDetection();
+        
+        // Setup nav item click handlers for collapse on navigation
+        this.setupNavItemClickHandlers();
+        
+        // Handle back/forward navigation (bfcache) - re-apply position from localStorage
+        // Use replaceState to prevent bfcache from restoring stale position
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                // Page was restored from bfcache, re-apply position from localStorage
+                this.reapplyPositionFromStorage();
+            }
+        });
     }
 
     calculateSnapPoints() {
@@ -611,6 +623,66 @@ class MobileNavbar {
 
         // Re-snap to valid position
         this.snapToNearestValidPoint();
+    }
+    
+    setupNavItemClickHandlers() {
+        if (!this.navItems) return;
+        
+        const navItemLinks = this.navItems.querySelectorAll('.nav-item');
+        
+        navItemLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Only handle if expanded - otherwise let normal click behavior work
+                if (!this.isExpanded) return;
+                
+                const href = link.getAttribute('href');
+                const isExternalLink = href && (href.startsWith('http://') || href.startsWith('https://'));
+                const isCurrentPage = !isExternalLink && href === window.location.pathname;
+                
+                // Always collapse the navbar when clicking a nav item
+                this.collapse();
+                
+                // For same-page links, just collapse (no navigation needed)
+                if (isCurrentPage) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                // For internal links, let the navigation proceed after collapse starts
+                // The collapse animation will be interrupted by page navigation which is fine
+            });
+        });
+    }
+    
+    reapplyPositionFromStorage() {
+        // Re-calculate snap points for current viewport
+        this.calculateSnapPoints();
+        
+        // Load position from localStorage
+        const savedPosition = this.loadPositionFromStorage();
+        
+        if (savedPosition && this.isValidPosition(savedPosition)) {
+            // Find the snap point matching the saved position
+            this.currentSnapPoint = this.snapPoints.find(p => p.position === savedPosition.snapPointPosition);
+            
+            if (this.currentSnapPoint) {
+                // Update current position to match the snap point
+                this.currentPosition = { x: this.currentSnapPoint.x, y: this.currentSnapPoint.y };
+                this.currentExpandDirection = this.currentSnapPoint.expandDirection;
+                
+                // Update the expand direction class
+                this.container.classList.remove('expand-left', 'expand-right');
+                this.container.classList.add(`expand-${this.currentExpandDirection}`);
+                
+                // Apply the position to the DOM
+                this.updateContainerPosition();
+            }
+        }
+        
+        // Also ensure navbar is collapsed on bfcache restore
+        if (this.isExpanded) {
+            this.collapse();
+        }
     }
 }
 

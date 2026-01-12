@@ -3,9 +3,13 @@
  *
  * Sets view-transition-names on click for reliable cross-document view transitions.
  * The clicked card gets 'active-blog-card' and other items get 'blog-away-N' names.
- * 
+ *
  * CSS handles both forward and backward animations automatically - the old/new
  * pseudo-elements naturally apply to whichever direction the navigation goes.
+ *
+ * For browsers without full View Transition API support (e.g., Firefox with
+ * reduced motion), cleanup is handled via pageshow to ensure styles don't persist
+ * when pages are restored from bfcache.
  */
 
 (function() {
@@ -18,6 +22,9 @@
   // Current page state
   let clickedLink = null;
   let clickedIndex = -1;
+  
+  // Track whether we're in an active view transition
+  let activeViewTransition = false;
 
   /**
    * Set up view-transition-names on blog elements.
@@ -127,9 +134,21 @@
 
   // pagereveal fires when this page is revealed after a cross-document navigation
   window.addEventListener('pagereveal', (e) => {
-    if (!e.viewTransition) return;
-    
     const isBlogListPage = document.querySelector('.blog-list') !== null;
+    
+    // If view transitions aren't supported (e.g., Firefox with reduced motion),
+    // clean up immediately and clear storage to prevent stale styles
+    if (!e.viewTransition) {
+      if (isBlogListPage) {
+        cleanupTransitionNames();
+        sessionStorage.removeItem(STORAGE_KEY_URL);
+        sessionStorage.removeItem(STORAGE_KEY_INDEX);
+      }
+      return;
+    }
+    
+    // Mark that we have an active view transition
+    activeViewTransition = true;
     
     if (isBlogListPage) {
       // We're on the blog list - this could be:
@@ -146,18 +165,49 @@
       
       // Clean up after transition completes
       e.viewTransition.finished.then(() => {
+        activeViewTransition = false;
         cleanupTransitionNames();
         // Clear stored state
         sessionStorage.removeItem(STORAGE_KEY_URL);
         sessionStorage.removeItem(STORAGE_KEY_INDEX);
       }).catch(() => {
         // Transition was skipped or failed, still clean up
+        activeViewTransition = false;
         cleanupTransitionNames();
+        sessionStorage.removeItem(STORAGE_KEY_URL);
+        sessionStorage.removeItem(STORAGE_KEY_INDEX);
+      });
+    } else {
+      // Not on blog list, clear the active flag when transition finishes
+      e.viewTransition.finished.then(() => {
+        activeViewTransition = false;
+      }).catch(() => {
+        activeViewTransition = false;
       });
     }
     
     // Reset local state
     clickedLink = null;
     clickedIndex = -1;
+  });
+
+  // pageshow fires when the page is shown, including when restored from bfcache.
+  // This handles browsers like Firefox that don't fully support view transitions -
+  // when pages are restored from bfcache, the styles set during click persist,
+  // and we need to clean them up to restore normal styling.
+  window.addEventListener('pageshow', (e) => {
+    // Only act if the page was restored from bfcache (persisted)
+    // and we're not in an active view transition
+    if (e.persisted && !activeViewTransition) {
+      const isBlogListPage = document.querySelector('.blog-list') !== null;
+      
+      if (isBlogListPage) {
+        // Clean up any lingering view-transition-name styles
+        cleanupTransitionNames();
+        // Clear stored state since we're not doing an animated transition
+        sessionStorage.removeItem(STORAGE_KEY_URL);
+        sessionStorage.removeItem(STORAGE_KEY_INDEX);
+      }
+    }
   });
 })();
