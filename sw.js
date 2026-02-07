@@ -27,6 +27,17 @@ if (typeof window === 'undefined') {
             return;
         }
 
+        // Only add COEP/COOP headers on same-origin homepage navigations (needed for jsnix).
+        // Skip cross-origin requests entirely, and skip non-homepage navigations
+        // so posts can embed cross-origin iframes (utterances) without COEP blocking them.
+        const url = new URL(r.url);
+        if (url.origin !== self.location.origin) {
+            return;
+        }
+        if (r.mode === "navigate" && url.pathname !== "/" && url.pathname !== "/index.html") {
+            return;
+        }
+
         const request = (coepCredentialless && r.mode === "no-cors")
             ? new Request(r, {
                 credentials: "omit",
