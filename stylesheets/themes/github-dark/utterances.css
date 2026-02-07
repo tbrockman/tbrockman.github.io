@@ -38,7 +38,7 @@ a:hover { color: #fb6e6e; text-decoration: none; }
 
 /* comment containers */
 .timeline-comment .comment {
-  background-color: #1e1e1e;
+  background-color: #2f2f2f;
   border: 4px solid #0a0a0a;
   border-radius: 0;
   box-shadow: -1rem 1rem rgba(30, 30, 30, 0.7);
@@ -52,15 +52,15 @@ a:hover { color: #fb6e6e; text-decoration: none; }
 }
 
 .timeline-comment .comment:has(.new-comment-footer) .new-comment-header {
-  border: 4px solid #0a0a0a;
-  border-bottom: none;
+  border: none;
+  background: transparent;
+  padding: 0;
 }
 
 .timeline-comment .comment:has(.new-comment-footer) .comment-body {
   border: 4px solid #0a0a0a;
-  border-top: none;
   box-shadow: -1rem 1rem rgba(23, 23, 23, 0.7);
-  background-color: #1e1e1e;
+  background-color: #2f2f2f;
 }
 
 /* comment header - accent color like code block filename labels, no bottom border */
@@ -75,7 +75,7 @@ a:hover { color: #fb6e6e; text-decoration: none; }
 }
 
 .timeline-comment .comment-header .comment-meta a:hover {
-  color: #1e1e1e;
+  color: #2f2f2f;
 }
 
 .timeline-comment.current-user .comment-header {
@@ -84,7 +84,7 @@ a:hover { color: #fb6e6e; text-decoration: none; }
 
 /* new comment form header (Write/Preview tabs) */
 .timeline-comment .new-comment-header {
-  background-color: #fe5858;
+  background-color: transparent;
   border-bottom: none;
 }
 
@@ -102,6 +102,11 @@ a:hover { color: #fb6e6e; text-decoration: none; }
     border-width: 4px;
     border-right-color: #fe5858;
   }
+  /* hide triangle on new comment form (header is transparent with standalone tabs) */
+  .timeline-comment .comment:has(.new-comment-footer):before,
+  .timeline-comment .comment:has(.new-comment-footer):after {
+    display: none;
+  }
 }
 
 /* textarea and markdown preview - no inner border, use background contrast */
@@ -109,7 +114,7 @@ a:hover { color: #fb6e6e; text-decoration: none; }
 .timeline-comment .comment-body textarea {
   border: none;
   border-radius: 0;
-  background-color: #1e1e1e;
+  background-color: #2f2f2f;
   color: #fff;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
 }
@@ -120,7 +125,7 @@ a:hover { color: #fb6e6e; text-decoration: none; }
 }
 
 .timeline-comment .comment-body textarea:disabled {
-  background-color: #1e1e1e;
+  background-color: #252525;
 }
 
 /* comment footer - no top border, always visible height */
@@ -223,27 +228,59 @@ a.btn-primary:focus {
   margin-bottom: 0;
 }
 
+.tabnav-tabs {
+  display: flex;
+  margin-bottom: -4px;
+  position: relative;
+  z-index: 1;
+}
+
 .tabnav-tab {
+  position: relative;
   color: #fff;
-  border: none;
+  border: 4px solid #0a0a0a;
+  border-bottom: none;
   border-radius: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #1e1e1e;
   opacity: 0.7;
   padding: 6px 16px;
+}
+
+/* Collapse doubled border between adjacent tabs */
+button.tabnav-tab:not(:first-child) {
+  border-left: none;
+}
+
+/* Simulated box-shadow via ::after pseudo. The pseudo is a rectangle the same size
+   as the tab, offset by (-1rem, +1rem) — matching the site's shadow style. Clipped
+   to show only the left column (1rem-wide strip to the left of the tab), which is
+   the only part outside the comment body's area. */
+.tabnav-tab:first-child::after {
+  content: "";
+  position: absolute;
+  top: calc(1rem - 4px);
+  left: calc(-1rem - 4px);
+  width: 100%;
+  height: 100%;
+  background: rgba(23, 23, 23, 0.7);
+  clip-path: inset(0 calc(100% - 1rem) 0 0);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .tabnav-tab:hover, .tabnav-tab:focus {
   color: #fff;
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #252525;
 }
 
 .tabnav-tab.selected,
 .tabnav-tab[aria-current],
 .tabnav-tab[aria-selected=true] {
   color: #fff;
-  background-color: #1e1e1e;
-  border: none;
+  background-color: #2f2f2f;
+  border: 4px solid #0a0a0a;
+  border-bottom: none;
   border-radius: 0;
   opacity: 1;
   font-weight: 700;
@@ -322,7 +359,7 @@ a.btn-primary:focus {
 
 /* reactions popover dropdown */
 .reactions-popover .Popover-message {
-  background-color: #252525;
+  background-color: #3a3a3a;
   border: 4px solid #0a0a0a;
   border-radius: 0;
   box-shadow: -1rem 1rem rgba(23, 23, 23, 0.7) !important; /* override .box-shadow-large */
@@ -340,7 +377,7 @@ a.btn-primary:focus {
   display: block;
   top: -8px;
   border: 4px solid transparent;
-  border-bottom-color: #252525;
+  border-bottom-color: #3a3a3a;
 }
 
 /* right-aligned popover arrow positioning */
@@ -357,7 +394,7 @@ a.btn-primary:focus {
 }
 
 .reaction-name {
-  background-color: #252525;
+  background-color: #3a3a3a;
   border-bottom-color: #0a0a0a;
 }
 
