@@ -20,9 +20,9 @@ What if we could hide data in a place _no one would ever think to look_? What if
 
 ## [`tbrockman/recipe-blog-encoding`](https://github.com/tbrockman/recipe-blog-encoding)
 
-is a vibe-coded (and at least partially plagiarized[^1]) Python CLI that allows you to encode data as completely natural-looking recipe blog introductions[^2] using [neural linguistic steganography](https://aclanthology.org/D19-1115/). 
+is a vibe-coded (and at least partially plagiarized[^1]) Python CLI that allows you to encode data as completely natural language[^2] using [neural linguistic steganography](https://aclanthology.org/D19-1115/). 
 
-Given a shared prompt and a model, it can hide your secrets where they're least expected: **online recipe introductions**.
+Given a shared prompt and a model, it can hide your secrets where they're least expected: **recipe blog introductions**.
 
 [`example.sh`](https://github.com/tbrockman/recipe-blog-encoding/blob/main/example.sh)
 ```sh
@@ -144,7 +144,20 @@ The prompt acts as a shared key, but it's a leaky one. The generated text is sta
 
 Not that it's not possible to use any remote APIs (it should be so long as they provide sufficient determinism and logits), local's just all that was implemented.
 
+## try it out
+
+Available on [Google Collab](https://colab.research.google.com/github/tbrockman/recipe-blog-encoding/blob/main/notebook.ipynb) or from source:
+
+```sh
+git clone https://github.com/tbrockman/recipe-blog-encoding/
+cd recipe-blog-encoding
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+python main.py --help
+```
+
 have fun cooking ✌️
 
 [^1]: Subsequent investigation suggests that [`artkpv/arithmetic-coding-steganography/`](https://github.com/artkpv/arithmetic-coding-steganography/) is likely where Claude found inspiration for the implementation
-[^2]: Or whatever style you choose, it's determined by the prompt
+[^2]: As determined by the shared prompt and model
