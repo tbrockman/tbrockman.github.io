@@ -120,7 +120,7 @@ Decoding is just the reverse: run the same model with the same prompt, reconstru
 
 **it's pretty wasteful**
 
-You're loading massive models to encode and decode a small amount of information, slowly, at ~2-3 bits/token. It's not a great use of compute.
+You're loading massive models to encode and decode a small amount of information, slowly, at < 2-3 bits/token. It's not a great use of compute.
 
 **bpe tokenization**
 
