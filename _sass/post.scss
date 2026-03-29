@@ -343,6 +343,10 @@ details:open {
 	gap: 1rem;
 }
 
+details>summary {
+	cursor: pointer;
+}
+
 code.language-md, code.language-plaintext {
   white-space: pre-wrap;
   color: white;
