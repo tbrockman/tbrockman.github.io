@@ -1,6 +1,6 @@
 $color-primary: #fe5858;
 $color-hover: #fb6e6e;
-$hover-background-color: #2f2f2f;
+$hover-background-color: #383838;
 $hover-box-shadow: -1rem 1rem #171717;
 $hover-box-border: 4px solid #0a0a0a;
 $breakpoint-navbar: 1400px;
@@ -311,4 +311,29 @@ pre[class*='language-'] {
 
 pre[class*='language-'] {
 	margin-bottom: 4rem;
+}
+
+.footnotes {
+	border: 4px dashed #2f2f2f;
+	padding-left: 2rem;
+	padding-right: 1rem;
+	background-color: #1b1b1b;
+}
+
+details {
+	border: 4px dashed #2f2f2f;
+	background-color: #1b1b1b;
+	width: fit-content;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+details:open {
+	gap: 1rem;
+}
+
+code.language-md, code.language-sh, code.language-plaintext {
+  white-space: pre-wrap;
+  color: white;
 }
