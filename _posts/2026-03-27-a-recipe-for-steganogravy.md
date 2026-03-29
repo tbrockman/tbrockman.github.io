@@ -22,7 +22,7 @@ What if we could hide data in a place _no one would ever think to look_? What if
 
 is a vibe-coded (and at least partially plagiarized[^1]) Python CLI that allows you to encode data as completely natural-looking recipe blog introductions[^2] using [neural linguistic steganography](https://aclanthology.org/D19-1115/). 
 
-Given a shared prompt and a model, it can hide your secrets where they're least expected: **online recipe introductions**
+Given a shared prompt and a model, it can hide your secrets where they're least expected: **online recipe introductions**.
 
 [`example.sh`](https://github.com/tbrockman/recipe-blog-encoding/blob/main/example.sh)
 ```sh
@@ -118,9 +118,9 @@ Decoding is just the reverse: run the same model with the same prompt, reconstru
 
 ## limitations
 
-**wasteful**
+**it's pretty wasteful**
 
-You're loading massive models to encode and decode a small amount of information, slowly. It's not a good use of compute.
+You're loading massive models to encode and decode a small amount of information, slowly, at ~2-3 bits/token. It's not a great use of compute.
 
 **bpe tokenization**
 
